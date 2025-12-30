@@ -1,7 +1,7 @@
 "use client";
 
-import React, { useState } from "react";
-import { motion } from "framer-motion";
+import React, { useRef } from "react";
+import { motion, useInView } from "framer-motion";
 import { WashiTape } from "./SketchyElements";
 import {
   PythonIcon,
@@ -36,21 +36,96 @@ const skills: Skill[] = [
   { name: "ChimeraX", category: "tool", icon: <DNAIcon size={20} />, color: "#3b82f6" },
 ];
 
-const categories = [
-  { id: "all", label: "All Skills" },
-  { id: "language", label: "Languages" },
-  { id: "framework", label: "Frameworks" },
-  { id: "tool", label: "Bio Tools" },
-];
+const languages = skills.filter((s) => s.category === "language");
+const frameworks = skills.filter((s) => s.category === "framework");
+const tools = skills.filter((s) => s.category === "tool");
+
+interface CardStackProps {
+  items: Skill[];
+  title: string;
+}
+
+function CardStack({ items, title }: CardStackProps) {
+  const ref = useRef<HTMLDivElement>(null);
+  const isInView = useInView(ref, { amount: 0.3, margin: "-50px" });
+
+  return (
+    <div ref={ref} className="flex flex-col items-center">
+      <h3 className="font-handwriting text-2xl sm:text-3xl text-pencil mb-8">
+        {title}
+      </h3>
+      <div className="relative h-[280px] w-full flex items-center justify-center">
+        {items.map((skill, index) => {
+          const totalCards = items.length;
+          const middleIndex = (totalCards - 1) / 2;
+
+          // Stacked state: cards pile on top of each other with slight offsets
+          const stackedRotate = (index - middleIndex) * 3;
+          const stackedX = (index - middleIndex) * 2;
+          const stackedY = index * -2;
+
+          // Fanned out state: cards spread horizontally
+          const spreadX = (index - middleIndex) * 90;
+          const spreadRotate = (index - middleIndex) * 5;
+          const spreadY = Math.abs(index - middleIndex) * 8;
+
+          return (
+            <motion.div
+              key={skill.name}
+              className="absolute"
+              initial={false}
+              animate={{
+                x: isInView ? spreadX : stackedX,
+                y: isInView ? spreadY : stackedY,
+                rotate: isInView ? spreadRotate : stackedRotate,
+                scale: isInView ? 1 : 1 - index * 0.02,
+                zIndex: isInView ? totalCards - Math.abs(index - middleIndex) : totalCards - index,
+              }}
+              transition={{
+                type: "spring",
+                stiffness: 200,
+                damping: 25,
+                delay: isInView ? index * 0.05 : (totalCards - index) * 0.03,
+              }}
+              whileHover={{
+                scale: 1.15,
+                zIndex: 50,
+                rotate: 0,
+                y: -20,
+              }}
+            >
+              <div
+                className="bg-white p-4 flex flex-col items-center justify-center gap-2 w-20 h-24 sm:w-24 sm:h-28 shadow-paper hover:shadow-paper-hover transition-shadow cursor-pointer"
+                style={{
+                  border: "2px solid #2d2d2d",
+                  borderRadius: "8px 4px 12px 4px",
+                }}
+              >
+                {/* Colored circle decoration */}
+                <div
+                  className="absolute top-2 right-2 w-2 h-2 rounded-full opacity-60"
+                  style={{ backgroundColor: skill.color }}
+                />
+
+                {/* Icon */}
+                <div style={{ color: skill.color }}>
+                  {skill.icon || <CodeIcon size={24} />}
+                </div>
+
+                {/* Skill name */}
+                <p className="font-sketch text-xs sm:text-sm text-pencil text-center leading-tight">
+                  {skill.name}
+                </p>
+              </div>
+            </motion.div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
 
 export default function Skills() {
-  const [activeCategory, setActiveCategory] = useState("all");
-
-  const filteredSkills =
-    activeCategory === "all"
-      ? skills
-      : skills.filter((skill) => skill.category === activeCategory);
-
   return (
     <section id="skills" className="py-20 px-4 relative overflow-hidden">
       {/* Background decoration */}
@@ -63,13 +138,13 @@ export default function Skills() {
         }}
       />
 
-      <div className="max-w-5xl mx-auto relative">
+      <div className="max-w-6xl mx-auto relative">
         {/* Section Title */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-12"
+          className="text-center mb-16"
         >
           <h2 className="font-handwriting text-5xl sm:text-6xl text-pencil inline-block relative">
             Technical Skills
@@ -93,103 +168,12 @@ export default function Skills() {
           </h2>
         </motion.div>
 
-        {/* Category Filters */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="flex flex-wrap justify-center gap-3 mb-12"
-        >
-          {categories.map((category) => (
-            <motion.button
-              key={category.id}
-              onClick={() => setActiveCategory(category.id)}
-              whileHover={{ scale: 1.05, rotate: 1 }}
-              whileTap={{ scale: 0.95 }}
-              className={`px-5 py-2 font-sketch text-lg rounded-full transition-all ${
-                activeCategory === category.id
-                  ? "bg-pencil text-white shadow-paper"
-                  : "bg-white text-pencil-light hover:text-pencil shadow-sm"
-              }`}
-              style={{
-                border: "2px solid #2d2d2d",
-              }}
-            >
-              {category.label}
-            </motion.button>
-          ))}
-        </motion.div>
-
-        {/* Skills Grid */}
-        <motion.div
-          layout
-          className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4"
-        >
-          {filteredSkills.map((skill, index) => (
-            <motion.div
-              key={skill.name}
-              layout
-              initial={{ opacity: 0, scale: 0.8, rotate: -5 }}
-              animate={{ opacity: 1, scale: 1, rotate: 0 }}
-              exit={{ opacity: 0, scale: 0.8 }}
-              transition={{ delay: index * 0.05 }}
-              whileHover={{
-                scale: 1.1,
-                rotate: 3,
-                zIndex: 10,
-              }}
-              className="relative group"
-            >
-              <div
-                className="bg-white p-4 flex flex-col items-center justify-center gap-2 aspect-square shadow-paper hover:shadow-paper-hover transition-all cursor-pointer"
-                style={{
-                  border: "2px solid #2d2d2d",
-                  borderRadius: "8px 4px 12px 4px",
-                }}
-              >
-                {/* Colored circle decoration */}
-                <div
-                  className="absolute top-2 right-2 w-3 h-3 rounded-full opacity-60"
-                  style={{ backgroundColor: skill.color }}
-                />
-
-                {/* Icon */}
-                <div style={{ color: skill.color }}>
-                  {skill.icon || <CodeIcon size={24} />}
-                </div>
-
-                {/* Skill name */}
-                <p className="font-sketch text-sm sm:text-base text-pencil text-center">
-                  {skill.name}
-                </p>
-
-                {/* Hover circle effect */}
-                <motion.div
-                  className="absolute inset-0 pointer-events-none"
-                  initial={{ opacity: 0 }}
-                  whileHover={{ opacity: 1 }}
-                >
-                  <svg className="w-full h-full" style={{ overflow: "visible" }}>
-                    <ellipse
-                      cx="50%"
-                      cy="50%"
-                      rx="48%"
-                      ry="48%"
-                      fill="none"
-                      stroke={skill.color}
-                      strokeWidth="2.5"
-                      strokeDasharray="8 4"
-                      style={{
-                        transform: "rotate(-5deg)",
-                        transformOrigin: "center",
-                      }}
-                    />
-                  </svg>
-                </motion.div>
-              </div>
-            </motion.div>
-          ))}
-        </motion.div>
+        {/* Card Stacks */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-4">
+          <CardStack items={languages} title="Languages" />
+          <CardStack items={frameworks} title="Frameworks" />
+          <CardStack items={tools} title="Bio Tools" />
+        </div>
 
         {/* Decorative elements */}
         <div className="absolute -left-4 top-1/4 hidden lg:block">
