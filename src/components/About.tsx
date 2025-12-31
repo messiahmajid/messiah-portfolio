@@ -373,6 +373,104 @@ const HandwrittenCheck = ({ isChecked }: { isChecked: boolean }) => (
   </svg>
 );
 
+// Scattered decorative doodles for right page
+const RightPageDoodles = () => (
+  <svg className="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 400 450" preserveAspectRatio="none">
+    <g fill="none" stroke="#c75d4a" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" opacity="0.25">
+      {/* Top right corner - star */}
+      <g transform="translate(350, 30)">
+        <path d="M0 -8 L2 -2 L8 -2 L4 2 L5 8 L0 4 L-5 8 L-4 2 L-8 -2 L-2 -2 Z" fill="#c75d4a" fillOpacity="0.3" />
+      </g>
+      {/* Top left - small flower */}
+      <g transform="translate(30, 50)">
+        <circle cx="0" cy="0" r="4" fill="#c75d4a" fillOpacity="0.2" />
+        <path d="M0 -8 Q2 -5 0 -4 Q-2 -5 0 -8" fill="#c75d4a" fillOpacity="0.2" />
+        <path d="M0 4 Q2 7 0 8 Q-2 7 0 4" fill="#c75d4a" fillOpacity="0.2" />
+        <path d="M-5 0 Q-3 2 -4 0 Q-3 -2 -5 0" fill="#c75d4a" fillOpacity="0.2" />
+        <path d="M5 0 Q3 2 4 0 Q3 -2 5 0" fill="#c75d4a" fillOpacity="0.2" />
+      </g>
+      {/* Middle right - squiggle */}
+      <path d="M370 180 Q380 170 375 160 Q370 150 380 145" strokeWidth="2" />
+      {/* Bottom left - sparkle */}
+      <g transform="translate(40, 380)">
+        <path d="M0 -6 L1.5 -1.5 L6 0 L1.5 1.5 L0 6 L-1.5 1.5 L-6 0 L-1.5 -1.5 Z" fill="#c75d4a" fillOpacity="0.3" />
+      </g>
+      {/* Bottom right - tiny heart */}
+      <g transform="translate(360, 400)">
+        <path d="M0 4 L-6 -2 Q-6 -8 0 -4 Q6 -8 6 -2 Z" fill="#c75d4a" fillOpacity="0.25" />
+      </g>
+      {/* Middle left - dots */}
+      <circle cx="25" cy="200" r="2" fill="#c75d4a" fillOpacity="0.3" />
+      <circle cx="35" cy="210" r="1.5" fill="#c75d4a" fillOpacity="0.2" />
+      <circle cx="20" cy="220" r="2.5" fill="#c75d4a" fillOpacity="0.25" />
+      {/* Top middle - small cloud */}
+      <g transform="translate(200, 25)">
+        <path d="M0 8 Q-4 8 -4 4 Q-5 0 -1 0 Q1 -3 5 -2 Q9 -3 11 1 Q14 3 12 6 Q14 10 8 9 Q4 12 0 8" fill="#c75d4a" fillOpacity="0.15" stroke="none" />
+      </g>
+      {/* Right side - wavy line */}
+      <path d="M385 250 Q390 260 385 270 Q380 280 385 290" strokeWidth="1.5" opacity="0.3" />
+      {/* Bottom middle - small star */}
+      <g transform="translate(180, 420)">
+        <path d="M0 -5 L1.5 -1.5 L5 -1.5 L2.5 1 L3.5 5 L0 2.5 L-3.5 5 L-2.5 1 L-5 -1.5 L-1.5 -1.5 Z" fill="#c75d4a" fillOpacity="0.25" />
+      </g>
+    </g>
+  </svg>
+);
+
+// Scattered doodles for What I Look For section
+const WhatILookForDoodles = () => (
+  <svg className="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 800 400" preserveAspectRatio="none">
+    <g fill="none" stroke="#c75d4a" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" opacity="0.2">
+      {/* Top left corner - flower */}
+      <g transform="translate(50, 40)">
+        <circle cx="0" cy="0" r="5" fill="#c75d4a" fillOpacity="0.3" />
+        <ellipse cx="0" cy="-10" rx="4" ry="6" fill="#c75d4a" fillOpacity="0.2" />
+        <ellipse cx="8" cy="-5" rx="4" ry="6" fill="#c75d4a" fillOpacity="0.2" transform="rotate(60)" />
+        <ellipse cx="-8" cy="-5" rx="4" ry="6" fill="#c75d4a" fillOpacity="0.2" transform="rotate(-60)" />
+      </g>
+      {/* Top right - stars cluster */}
+      <g transform="translate(720, 50)">
+        <path d="M0 -8 L2 -2 L8 -2 L4 2 L5 8 L0 4 L-5 8 L-4 2 L-8 -2 L-2 -2 Z" fill="#c75d4a" fillOpacity="0.3" />
+      </g>
+      <g transform="translate(750, 80)">
+        <path d="M0 -5 L1.5 -1.5 L5 -1.5 L2.5 1 L3.5 5 L0 2.5 L-3.5 5 L-2.5 1 L-5 -1.5 L-1.5 -1.5 Z" fill="#c75d4a" fillOpacity="0.25" />
+      </g>
+      {/* Left side - swirl */}
+      <path d="M30 200 Q20 180 40 170 Q60 160 50 190 Q40 210 55 220" strokeWidth="2" />
+      {/* Bottom left - heart */}
+      <g transform="translate(80, 350)">
+        <path d="M0 6 L-10 -4 Q-10 -12 0 -6 Q10 -12 10 -4 Z" fill="#c75d4a" fillOpacity="0.2" />
+      </g>
+      {/* Bottom middle - dots trail */}
+      <circle cx="300" cy="370" r="2" fill="#c75d4a" fillOpacity="0.3" />
+      <circle cx="320" cy="365" r="1.5" fill="#c75d4a" fillOpacity="0.25" />
+      <circle cx="340" cy="372" r="2.5" fill="#c75d4a" fillOpacity="0.3" />
+      <circle cx="360" cy="368" r="1.5" fill="#c75d4a" fillOpacity="0.2" />
+      {/* Right side - sparkles */}
+      <g transform="translate(770, 300)">
+        <path d="M0 -6 L1.5 -1.5 L6 0 L1.5 1.5 L0 6 L-1.5 1.5 L-6 0 L-1.5 -1.5 Z" fill="#c75d4a" fillOpacity="0.35" />
+      </g>
+      {/* Middle top - small cloud */}
+      <g transform="translate(400, 30)">
+        <path d="M0 10 Q-6 10 -6 5 Q-8 0 -2 0 Q1 -4 7 -2 Q13 -4 15 2 Q20 4 17 8 Q20 13 12 12 Q6 16 0 10" fill="#c75d4a" fillOpacity="0.1" />
+      </g>
+      {/* Left middle - squiggle */}
+      <path d="M20 280 Q30 270 25 260 Q20 250 30 245 Q40 240 35 230" strokeWidth="1.5" />
+      {/* Top middle decorations */}
+      <g transform="translate(550, 60)">
+        <circle cx="0" cy="0" r="3" fill="#c75d4a" fillOpacity="0.2" />
+        <circle cx="15" cy="5" r="2" fill="#c75d4a" fillOpacity="0.15" />
+        <circle cx="8" cy="12" r="2.5" fill="#c75d4a" fillOpacity="0.2" />
+      </g>
+      {/* Bottom right - leaf */}
+      <g transform="translate(680, 360)">
+        <path d="M0 0 Q10 -10 20 0 Q10 10 0 0" fill="#c75d4a" fillOpacity="0.2" />
+        <path d="M0 0 L20 0" strokeWidth="1" />
+      </g>
+    </g>
+  </svg>
+);
+
 export default function About() {
   const sectionRef = useRef<HTMLElement>(null);
   const [currentPage, setCurrentPage] = useState(0);
@@ -479,6 +577,8 @@ export default function About() {
 
               {/* Right page - Story text */}
               <div className="p-6 md:p-8 relative flex flex-col justify-center">
+                {/* Background doodles */}
+                <RightPageDoodles />
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={currentPage}
@@ -571,7 +671,10 @@ export default function About() {
               </svg>
             </div>
 
-            <div className="p-8 md:p-10">
+            {/* Background doodles */}
+            <WhatILookForDoodles />
+
+            <div className="p-8 md:p-10 relative z-10">
               {/* Title */}
               <h3 className="font-handwriting text-3xl md:text-4xl mb-8" style={{ color: '#c75d4a' }}>
                 What I look for
