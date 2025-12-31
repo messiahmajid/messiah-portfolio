@@ -145,12 +145,40 @@ interface ExtracurricularItem {
   name: string;
   icon: React.ReactNode;
   color: string;
+  photos: { id: string; color: string; label?: string }[];
 }
 
 const extracurriculars: ExtracurricularItem[] = [
-  { name: "Google Developer Students Club", icon: <RocketIcon size={20} />, color: "#4285f4" },
-  { name: "National Society of Black Engineers", icon: <UsersIcon size={20} />, color: "#ff6b6b" },
-  { name: "Kappa Theta Pi Technology Fraternity", icon: <CodeIcon size={20} />, color: "#a855f7" },
+  {
+    name: "Google Developer Students Club",
+    icon: <RocketIcon size={20} />,
+    color: "#4285f4",
+    photos: [
+      { id: "gdsc-1", color: "#4285f4", label: "Tech talk" },
+      { id: "gdsc-2", color: "#34a853", label: "Workshop" },
+      { id: "gdsc-3", color: "#fbbc05", label: "Hackathon" },
+    ],
+  },
+  {
+    name: "National Society of Black Engineers",
+    icon: <UsersIcon size={20} />,
+    color: "#ff6b6b",
+    photos: [
+      { id: "nsbe-1", color: "#ff6b6b", label: "Conference" },
+      { id: "nsbe-2", color: "#e85555", label: "Networking" },
+      { id: "nsbe-3", color: "#ff8080", label: "Meeting" },
+    ],
+  },
+  {
+    name: "Kappa Theta Pi Technology Fraternity",
+    icon: <CodeIcon size={20} />,
+    color: "#a855f7",
+    photos: [
+      { id: "ktp-1", color: "#a855f7", label: "Brotherhood" },
+      { id: "ktp-2", color: "#9333ea", label: "Rush" },
+      { id: "ktp-3", color: "#b865f7", label: "Social" },
+    ],
+  },
 ];
 
 export default function Leadership() {
@@ -401,34 +429,47 @@ export default function Leadership() {
           viewport={{ once: true }}
           className="relative"
         >
-          <div className="flex items-center justify-center gap-3 mb-8">
+          <div className="flex items-center justify-center gap-3 mb-10">
             <HeartIcon size={28} className="text-accent-coral" />
             <h3 className="font-marker text-2xl text-pencil">Also Part Of</h3>
           </div>
 
-          <div className="flex flex-wrap justify-center gap-4">
+          <div className="space-y-8">
             {extracurriculars.map((activity, index) => (
               <motion.div
                 key={activity.name}
-                initial={{ opacity: 0, scale: 0.8, rotate: -5 }}
-                whileInView={{ opacity: 1, scale: 1, rotate: (index - 1) * 3 }}
+                initial={{ opacity: 0, x: index % 2 === 0 ? -30 : 30 }}
+                whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                whileHover={{
-                  scale: 1.1,
-                  rotate: 0,
-                  boxShadow: "4px 4px 12px rgba(0,0,0,0.15)",
-                }}
-                className="px-6 py-4 bg-white shadow-paper cursor-default"
-                style={{
-                  border: "2px solid #2d2d2d",
-                  borderRadius: "4px 8px 4px 8px",
-                }}
+                className={`flex items-center gap-6 ${index % 2 === 0 ? "flex-row" : "flex-row-reverse"}`}
               >
-                <p className="font-sketch text-pencil flex items-center gap-3">
-                  <span style={{ color: activity.color }}>{activity.icon}</span>
-                  {activity.name}
-                </p>
+                {/* Tiny PhotoStack */}
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  className="flex-shrink-0"
+                >
+                  <SectionPhotoStack photos={activity.photos} size="small" interval={2500 + index * 300} />
+                </motion.div>
+
+                {/* Club Card */}
+                <motion.div
+                  whileHover={{
+                    scale: 1.02,
+                    rotate: index % 2 === 0 ? 1 : -1,
+                  }}
+                  className="flex-grow max-w-md bg-white px-6 py-4 shadow-paper"
+                  style={{
+                    border: "2px solid #2d2d2d",
+                    borderRadius: "4px 8px 4px 8px",
+                    transform: `rotate(${index % 2 === 0 ? -1 : 1}deg)`,
+                  }}
+                >
+                  <p className="font-sketch text-lg text-pencil flex items-center gap-3">
+                    <span style={{ color: activity.color }}>{activity.icon}</span>
+                    {activity.name}
+                  </p>
+                </motion.div>
               </motion.div>
             ))}
           </div>

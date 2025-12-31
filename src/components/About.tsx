@@ -102,40 +102,73 @@ export default function About() {
             className="relative"
           >
             <div
-              className="bg-cream p-8 relative shadow-paper"
+              className="bg-gradient-to-br from-amber-50 to-white p-8 relative shadow-paper"
               style={{
-                border: "2px solid #2d2d2d",
+                border: "3px solid #2d2d2d",
                 borderRadius: "8px 4px 4px 8px",
               }}
             >
-              <WashiTape className="-top-3 right-8" rotation={5} pattern="dots" color="#4ecdc4" />
+              <WashiTape className="-top-3 right-8" rotation={5} pattern="dots" color="#ffd54f" />
 
-              <div className="flex items-center gap-3 mb-4">
-                <TrophyIcon size={32} className="text-accent-teal" />
-                <h3 className="font-marker text-2xl text-pencil click-wiggle">Honors</h3>
+              <div className="flex items-center gap-3 mb-6">
+                <TrophyIcon size={32} className="text-yellow-500" />
+                <h3 className="font-marker text-2xl text-pencil click-wiggle">Honors & Awards</h3>
               </div>
 
-              <div className="space-y-4">
+              <div className="space-y-5">
+                {/* Stamps Scholarship - Featured */}
                 <motion.div
-                  whileHover={{ scale: 1.02, rotate: 1 }}
-                  className="bg-white p-4 rounded-lg shadow-sm"
-                  style={{ border: "1px dashed #ccc" }}
+                  whileHover={{ scale: 1.02 }}
+                  className="bg-gradient-to-r from-yellow-50 to-amber-50 p-5 rounded-lg shadow-md relative overflow-hidden"
+                  style={{ border: "2px solid #ffd54f" }}
                 >
-                  <p className="font-sketch text-lg text-pencil flex items-center gap-2 click-wiggle">
-                    <TrophyIcon size={20} className="text-yellow-500" />
-                    Stamps Excellence Scholarship
-                  </p>
+                  <div className="absolute top-0 right-0 bg-yellow-400 text-xs font-bold text-pencil px-2 py-1 rounded-bl">
+                    MOST PRESTIGIOUS
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <TrophyIcon size={24} className="text-yellow-500 flex-shrink-0 mt-1" />
+                    <div>
+                      <p className="font-marker text-lg text-pencil">
+                        Stamps Excellence Scholarship
+                      </p>
+                      <p className="font-sketch text-sm text-pencil-light mt-1">
+                        UM&apos;s most prestigious merit award, recognizing exceptional academic achievement and leadership potential.
+                      </p>
+                    </div>
+                  </div>
                 </motion.div>
 
+                {/* Robert Bates Cole Award */}
                 <motion.div
-                  whileHover={{ scale: 1.02, rotate: -1 }}
-                  className="bg-white p-4 rounded-lg shadow-sm"
-                  style={{ border: "1px dashed #ccc" }}
+                  whileHover={{ scale: 1.02 }}
+                  className="bg-gradient-to-r from-teal-50 to-cyan-50 p-5 rounded-lg shadow-md"
+                  style={{ border: "2px solid #4ecdc4" }}
                 >
-                  <p className="font-sketch text-lg text-pencil flex items-center gap-2 click-wiggle">
-                    <StarDoodle size={20} color="#ffd54f" filled />
-                    President&apos;s Honor Roll
-                  </p>
+                  <div className="flex items-start gap-3">
+                    <StarDoodle size={24} color="#4ecdc4" filled className="flex-shrink-0 mt-1" />
+                    <div>
+                      <p className="font-marker text-lg text-pencil">
+                        Robert Bates Cole Award
+                      </p>
+                      <p className="font-sketch text-sm text-pencil-light mt-1">
+                        For Volunteer Leadership—honoring integrity and dedication through exceptional community service.
+                      </p>
+                    </div>
+                  </div>
+                </motion.div>
+
+                {/* President's Honor Roll */}
+                <motion.div
+                  whileHover={{ scale: 1.02 }}
+                  className="bg-white p-4 rounded-lg shadow-sm"
+                  style={{ border: "2px dashed #a855f7" }}
+                >
+                  <div className="flex items-center gap-3">
+                    <StarDoodle size={20} color="#a855f7" filled />
+                    <p className="font-sketch text-pencil">
+                      President&apos;s Honor Roll
+                    </p>
+                  </div>
                 </motion.div>
               </div>
             </div>
