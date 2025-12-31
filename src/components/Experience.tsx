@@ -1,7 +1,7 @@
 "use client";
 
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { WashiTape, Pushpin, StarDoodle } from "./SketchyElements";
 import { RocketIcon, MicroscopeIcon } from "./DoodleIcons";
 import { SectionPhotoStack } from "./PhotoStack";
@@ -60,8 +60,20 @@ const experiences: ExperienceItem[] = [
 ];
 
 export default function Experience() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"]
+  });
+
+  // Parallax transforms for cards
+  const y1 = useTransform(scrollYProgress, [0, 1], [80, -80]);
+  const y2 = useTransform(scrollYProgress, [0, 1], [60, -60]);
+  const rotate1 = useTransform(scrollYProgress, [0, 0.5, 1], [-2, 0, 2]);
+  const rotate2 = useTransform(scrollYProgress, [0, 0.5, 1], [2, 0, -2]);
+
   return (
-    <section id="experience" className="py-20 px-4 relative">
+    <section id="experience" ref={sectionRef} className="py-20 px-4 relative">
       {/* Background pattern */}
       <div
         className="absolute inset-0 opacity-[0.015]"
@@ -81,7 +93,7 @@ export default function Experience() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="font-handwriting text-5xl sm:text-6xl text-pencil inline-block relative">
+          <h2 className="font-handwriting text-5xl sm:text-6xl text-white inline-block relative click-wiggle">
             Experience
             <motion.svg
               className="absolute -bottom-2 left-0 w-full"
@@ -112,6 +124,7 @@ export default function Experience() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.2 }}
+              style={{ y: index === 0 ? y1 : y2, rotate: index === 0 ? rotate1 : rotate2 }}
               className="relative"
             >
               <div className="grid md:grid-cols-2 gap-8 items-center">

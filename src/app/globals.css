@@ -5,8 +5,12 @@
 @tailwind utilities;
 
 :root {
-  --paper-color: #f0ebe3;
+  --bg-dark: #1c1c1c;
+  --paper-color: #f5ebe0;
+  --card-color: #f5ebe0;
+  --accent-red: #d35f5f;
   --pencil-color: #2d2d2d;
+  --chalk-color: rgba(255, 255, 255, 0.7);
   --highlight-yellow: #fff59d;
   --highlight-pink: #f8bbd9;
   --highlight-blue: #b3e5fc;
@@ -22,9 +26,7 @@ html {
 }
 
 body {
-  background-color: var(--paper-color);
-  background-image:
-    url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.04'/%3E%3C/svg%3E");
+  background-color: var(--bg-dark);
   font-family: 'Nunito', sans-serif;
   color: var(--pencil-color);
   overflow-x: hidden;

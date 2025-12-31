@@ -1,7 +1,7 @@
 "use client";
 
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { WashiTape, StarDoodle } from "./SketchyElements";
 import {
   EmailIcon,
@@ -11,8 +11,17 @@ import {
 } from "./DoodleIcons";
 
 export default function Contact() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"]
+  });
+
+  const yCard = useTransform(scrollYProgress, [0, 1], [50, -50]);
+  const rotateCard = useTransform(scrollYProgress, [0, 0.5, 1], [-2, 0, 2]);
+
   return (
-    <section id="contact" className="py-20 px-4 bg-paper-dark/30 relative overflow-hidden">
+    <section id="contact" ref={sectionRef} className="py-20 px-4 bg-paper-dark/30 relative overflow-hidden">
       {/* Background decorations */}
       <div className="absolute inset-0 pointer-events-none">
         {/* Floating paper planes */}
@@ -59,7 +68,7 @@ export default function Contact() {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <h2 className="font-handwriting text-5xl sm:text-6xl text-pencil inline-block relative">
+          <h2 className="font-handwriting text-5xl sm:text-6xl text-white inline-block relative click-wiggle">
             Get In Touch
             <motion.svg
               className="absolute -bottom-2 left-0 w-full"
@@ -86,6 +95,7 @@ export default function Contact() {
           initial={{ opacity: 0, y: 30, rotate: -1 }}
           whileInView={{ opacity: 1, y: 0, rotate: 0 }}
           viewport={{ once: true }}
+          style={{ y: yCard, rotate: rotateCard }}
           className="relative"
         >
           <div

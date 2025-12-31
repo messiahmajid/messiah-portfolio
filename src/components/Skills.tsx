@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useRef } from "react";
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, useScroll, useTransform } from "framer-motion";
 import { WashiTape, StarDoodle } from "./SketchyElements";
 import {
   PythonIcon,
@@ -183,8 +183,19 @@ function CardStack({ category }: { category: CategoryInfo }) {
 }
 
 export default function Skills() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"]
+  });
+
+  // Parallax transforms for each column
+  const y1 = useTransform(scrollYProgress, [0, 1], [40, -40]);
+  const y2 = useTransform(scrollYProgress, [0, 1], [60, -60]);
+  const y3 = useTransform(scrollYProgress, [0, 1], [50, -50]);
+
   return (
-    <section id="skills" className="py-24 px-4 relative overflow-hidden">
+    <section id="skills" ref={sectionRef} className="py-24 px-4 relative overflow-hidden">
       {/* Background decoration */}
       <div
         className="absolute inset-0 opacity-[0.02]"
@@ -203,7 +214,7 @@ export default function Skills() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="font-handwriting text-5xl sm:text-6xl text-pencil inline-block relative">
+          <h2 className="font-handwriting text-5xl sm:text-6xl text-white inline-block relative click-wiggle">
             Technical Skills
             <motion.svg
               className="absolute -bottom-2 left-0 w-full"
@@ -257,8 +268,13 @@ export default function Skills() {
             <span className="font-handwriting text-xs text-pencil-light opacity-50">enables</span>
           </motion.div>
 
-          {categories.map((category) => (
-            <CardStack key={category.title} category={category} />
+          {categories.map((category, index) => (
+            <motion.div
+              key={category.title}
+              style={{ y: index === 0 ? y1 : index === 1 ? y2 : y3 }}
+            >
+              <CardStack category={category} />
+            </motion.div>
           ))}
         </div>
 

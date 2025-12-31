@@ -918,3 +918,272 @@ export const SpiderVerseBackground: React.FC<{ className?: string }> = ({ classN
     </div>
   );
 };
+
+// ============================================
+// CHALK STYLE DOODLES FOR DARK BACKGROUND
+// ============================================
+
+const chalkColor = "rgba(255, 255, 255, 0.6)";
+const chalkColorLight = "rgba(255, 255, 255, 0.4)";
+
+// Chalk-style bird doodle
+export const ChalkBird: React.FC<{ className?: string; flip?: boolean }> = ({
+  className = "",
+  flip = false
+}) => {
+  return (
+    <motion.svg
+      className={`w-20 h-16 ${className}`}
+      viewBox="0 0 80 60"
+      style={{ transform: flip ? 'scaleX(-1)' : 'none' }}
+      animate={{ y: [0, -5, 0], rotate: [0, 2, 0] }}
+      transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+    >
+      {/* Body */}
+      <path
+        d="M20 35 Q 35 25, 55 30 Q 65 32, 60 40 Q 55 50, 35 48 Q 15 46, 20 35"
+        stroke={chalkColor}
+        strokeWidth="1.5"
+        fill="none"
+        strokeLinecap="round"
+      />
+      {/* Head */}
+      <circle cx="58" cy="28" r="8" stroke={chalkColor} strokeWidth="1.5" fill="none" />
+      {/* Eye */}
+      <circle cx="60" cy="26" r="2" fill={chalkColor} />
+      {/* Beak */}
+      <path d="M66 28 L72 26 L66 30" stroke={chalkColor} strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+      {/* Tail feathers */}
+      <path d="M15 38 Q 5 35, 8 42" stroke={chalkColor} strokeWidth="1.5" fill="none" strokeLinecap="round" />
+      <path d="M15 40 Q 3 40, 6 48" stroke={chalkColor} strokeWidth="1.5" fill="none" strokeLinecap="round" />
+      {/* Feet */}
+      <path d="M35 48 L33 55 M33 55 L30 58 M33 55 L36 58" stroke={chalkColor} strokeWidth="1" fill="none" strokeLinecap="round" />
+      <path d="M45 48 L47 55 M47 55 L44 58 M47 55 L50 58" stroke={chalkColor} strokeWidth="1" fill="none" strokeLinecap="round" />
+    </motion.svg>
+  );
+};
+
+// Chalk-style flower doodle
+export const ChalkFlower: React.FC<{ className?: string }> = ({ className = "" }) => {
+  return (
+    <motion.svg
+      className={`w-24 h-32 ${className}`}
+      viewBox="0 0 80 120"
+      animate={{ rotate: [-2, 2, -2] }}
+      transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+    >
+      {/* Stem */}
+      <path
+        d="M40 50 Q 38 70, 42 90 Q 44 100, 40 115"
+        stroke={chalkColor}
+        strokeWidth="1.5"
+        fill="none"
+        strokeLinecap="round"
+      />
+      {/* Leaves */}
+      <path d="M40 70 Q 25 65, 20 75 Q 25 80, 38 72" stroke={chalkColor} strokeWidth="1.5" fill="none" strokeLinecap="round" />
+      <path d="M42 85 Q 55 80, 60 88 Q 55 95, 44 87" stroke={chalkColor} strokeWidth="1.5" fill="none" strokeLinecap="round" />
+      {/* Flower petals */}
+      <ellipse cx="40" cy="30" rx="8" ry="15" stroke={chalkColor} strokeWidth="1.5" fill="none" transform="rotate(-30 40 30)" />
+      <ellipse cx="40" cy="30" rx="8" ry="15" stroke={chalkColor} strokeWidth="1.5" fill="none" transform="rotate(30 40 30)" />
+      <ellipse cx="40" cy="30" rx="8" ry="15" stroke={chalkColor} strokeWidth="1.5" fill="none" transform="rotate(90 40 30)" />
+      <ellipse cx="40" cy="30" rx="8" ry="15" stroke={chalkColor} strokeWidth="1.5" fill="none" transform="rotate(-90 40 30)" />
+      <ellipse cx="40" cy="30" rx="8" ry="15" stroke={chalkColor} strokeWidth="1.5" fill="none" />
+      {/* Center */}
+      <circle cx="40" cy="30" r="6" stroke={chalkColor} strokeWidth="1.5" fill="none" />
+    </motion.svg>
+  );
+};
+
+// Chalk-style fish doodle
+export const ChalkFish: React.FC<{ className?: string }> = ({ className = "" }) => {
+  return (
+    <motion.svg
+      className={`w-16 h-12 ${className}`}
+      viewBox="0 0 60 40"
+      animate={{ x: [0, 10, 0], y: [0, -3, 0] }}
+      transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+    >
+      {/* Body */}
+      <ellipse cx="30" cy="20" rx="18" ry="12" stroke={chalkColor} strokeWidth="1.5" fill="none" />
+      {/* Tail */}
+      <path d="M12 20 L2 10 L5 20 L2 30 L12 20" stroke={chalkColor} strokeWidth="1.5" fill="none" strokeLinejoin="round" />
+      {/* Eye */}
+      <circle cx="38" cy="17" r="3" stroke={chalkColor} strokeWidth="1.5" fill="none" />
+      <circle cx="39" cy="16" r="1" fill={chalkColor} />
+      {/* Fins */}
+      <path d="M25 8 Q 30 2, 35 8" stroke={chalkColor} strokeWidth="1.5" fill="none" strokeLinecap="round" />
+      <path d="M25 32 Q 28 36, 32 32" stroke={chalkColor} strokeWidth="1.5" fill="none" strokeLinecap="round" />
+      {/* Mouth */}
+      <path d="M48 20 Q 52 18, 48 16" stroke={chalkColor} strokeWidth="1" fill="none" strokeLinecap="round" />
+      {/* Bubbles */}
+      <circle cx="55" cy="12" r="2" stroke={chalkColorLight} strokeWidth="1" fill="none" />
+      <circle cx="58" cy="8" r="1.5" stroke={chalkColorLight} strokeWidth="1" fill="none" />
+    </motion.svg>
+  );
+};
+
+// Chalk-style computer/monitor doodle
+export const ChalkComputer: React.FC<{ className?: string }> = ({ className = "" }) => {
+  return (
+    <motion.svg
+      className={`w-20 h-24 ${className}`}
+      viewBox="0 0 70 90"
+      animate={{ y: [0, -3, 0] }}
+      transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+    >
+      {/* Monitor */}
+      <rect x="10" y="10" width="50" height="40" rx="3" stroke={chalkColor} strokeWidth="1.5" fill="none" />
+      {/* Screen */}
+      <rect x="15" y="15" width="40" height="30" rx="2" stroke={chalkColorLight} strokeWidth="1" fill="none" />
+      {/* Face on screen */}
+      <circle cx="28" cy="28" r="2" fill={chalkColor} />
+      <circle cx="42" cy="28" r="2" fill={chalkColor} />
+      <path d="M30 35 Q 35 38, 40 35" stroke={chalkColor} strokeWidth="1.5" fill="none" strokeLinecap="round" />
+      {/* Stand */}
+      <path d="M35 50 L35 60" stroke={chalkColor} strokeWidth="2" strokeLinecap="round" />
+      {/* Base */}
+      <ellipse cx="35" cy="65" rx="15" ry="5" stroke={chalkColor} strokeWidth="1.5" fill="none" />
+    </motion.svg>
+  );
+};
+
+// Chalk-style juice box doodle
+export const ChalkJuiceBox: React.FC<{ className?: string }> = ({ className = "" }) => {
+  return (
+    <motion.svg
+      className={`w-14 h-20 ${className}`}
+      viewBox="0 0 50 70"
+      animate={{ rotate: [-3, 3, -3] }}
+      transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+    >
+      {/* Box body */}
+      <path d="M10 20 L10 60 L40 60 L40 20 L25 8 L10 20" stroke={chalkColor} strokeWidth="1.5" fill="none" strokeLinejoin="round" />
+      {/* Top fold */}
+      <path d="M10 20 L25 28 L40 20" stroke={chalkColor} strokeWidth="1.5" fill="none" />
+      <path d="M25 8 L25 28" stroke={chalkColor} strokeWidth="1.5" />
+      {/* Straw */}
+      <path d="M30 5 L32 25" stroke={chalkColor} strokeWidth="2" strokeLinecap="round" />
+      {/* Fruit circle */}
+      <circle cx="25" cy="42" r="8" stroke={chalkColor} strokeWidth="1.5" fill="none" />
+      <path d="M22 40 Q 25 38, 28 40" stroke={chalkColor} strokeWidth="1" fill="none" />
+    </motion.svg>
+  );
+};
+
+// Chalk-style leaf/plant doodle
+export const ChalkLeaf: React.FC<{ className?: string }> = ({ className = "" }) => {
+  return (
+    <motion.svg
+      className={`w-16 h-20 ${className}`}
+      viewBox="0 0 60 80"
+      animate={{ rotate: [-5, 5, -5] }}
+      transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+    >
+      <path
+        d="M30 75 Q 30 50, 25 35 Q 15 15, 30 5 Q 45 15, 35 35 Q 30 50, 30 75"
+        stroke={chalkColor}
+        strokeWidth="1.5"
+        fill="none"
+        strokeLinecap="round"
+      />
+      {/* Veins */}
+      <path d="M30 70 L30 15" stroke={chalkColorLight} strokeWidth="1" strokeLinecap="round" />
+      <path d="M30 25 Q 22 30, 20 25" stroke={chalkColorLight} strokeWidth="1" fill="none" strokeLinecap="round" />
+      <path d="M30 35 Q 38 40, 42 35" stroke={chalkColorLight} strokeWidth="1" fill="none" strokeLinecap="round" />
+      <path d="M30 45 Q 24 48, 22 45" stroke={chalkColorLight} strokeWidth="1" fill="none" strokeLinecap="round" />
+    </motion.svg>
+  );
+};
+
+// Chalk-style Saturn/planet doodle
+export const ChalkPlanet: React.FC<{ className?: string }> = ({ className = "" }) => {
+  return (
+    <motion.svg
+      className={`w-20 h-16 ${className}`}
+      viewBox="0 0 80 60"
+      animate={{ rotate: [0, 5, 0] }}
+      transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+    >
+      {/* Planet */}
+      <circle cx="40" cy="30" r="15" stroke={chalkColor} strokeWidth="1.5" fill="none" />
+      {/* Ring */}
+      <ellipse cx="40" cy="30" rx="30" ry="8" stroke={chalkColor} strokeWidth="1.5" fill="none" transform="rotate(-20 40 30)" />
+    </motion.svg>
+  );
+};
+
+// Chalk-style dinosaur/creature doodle
+export const ChalkDino: React.FC<{ className?: string }> = ({ className = "" }) => {
+  return (
+    <motion.svg
+      className={`w-16 h-14 ${className}`}
+      viewBox="0 0 60 50"
+      animate={{ y: [0, -3, 0], rotate: [-2, 2, -2] }}
+      transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+    >
+      {/* Body */}
+      <ellipse cx="25" cy="30" rx="15" ry="12" stroke={chalkColor} strokeWidth="1.5" fill="none" />
+      {/* Head */}
+      <circle cx="45" cy="22" r="10" stroke={chalkColor} strokeWidth="1.5" fill="none" />
+      {/* Eye */}
+      <circle cx="48" cy="20" r="3" fill={chalkColor} />
+      {/* Spikes */}
+      <path d="M15 18 L12 10 L18 18" stroke={chalkColor} strokeWidth="1.5" fill="none" strokeLinejoin="round" />
+      <path d="M22 16 L22 8 L26 16" stroke={chalkColor} strokeWidth="1.5" fill="none" strokeLinejoin="round" />
+      <path d="M30 18 L32 12 L35 20" stroke={chalkColor} strokeWidth="1.5" fill="none" strokeLinejoin="round" />
+      {/* Legs */}
+      <path d="M18 42 L15 48" stroke={chalkColor} strokeWidth="1.5" strokeLinecap="round" />
+      <path d="M32 42 L35 48" stroke={chalkColor} strokeWidth="1.5" strokeLinecap="round" />
+      {/* Tail */}
+      <path d="M10 30 Q 2 28, 5 35" stroke={chalkColor} strokeWidth="1.5" fill="none" strokeLinecap="round" />
+    </motion.svg>
+  );
+};
+
+// Complete chalk background with all doodles
+export const ChalkBackground: React.FC<{ className?: string }> = ({ className = "" }) => {
+  return (
+    <div className={`fixed inset-0 pointer-events-none overflow-hidden ${className}`}>
+      {/* Birds */}
+      <ChalkBird className="absolute top-[8%] right-[8%]" />
+      <ChalkBird className="absolute top-[60%] right-[5%]" flip />
+      <ChalkBird className="absolute bottom-[15%] right-[15%]" />
+
+      {/* Flowers */}
+      <ChalkFlower className="absolute top-[20%] left-[3%]" />
+      <ChalkFlower className="absolute bottom-[10%] right-[8%]" />
+
+      {/* Fish */}
+      <ChalkFish className="absolute top-[45%] left-[2%]" />
+      <ChalkFish className="absolute bottom-[35%] left-[5%]" />
+
+      {/* Computer */}
+      <ChalkComputer className="absolute bottom-[5%] left-[45%]" />
+
+      {/* Juice box */}
+      <ChalkJuiceBox className="absolute top-[35%] left-[4%]" />
+
+      {/* Leaves */}
+      <ChalkLeaf className="absolute top-[5%] left-[15%]" />
+      <ChalkLeaf className="absolute bottom-[20%] left-[8%]" />
+
+      {/* Planet */}
+      <ChalkPlanet className="absolute top-[15%] right-[3%]" />
+
+      {/* Dino */}
+      <ChalkDino className="absolute bottom-[8%] right-[3%]" />
+
+      {/* Extra scattered elements */}
+      <motion.div
+        className="absolute top-[70%] left-[3%] w-8 h-8"
+        animate={{ rotate: [0, 360] }}
+        transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+      >
+        <svg viewBox="0 0 30 30">
+          <path d="M15 5 L17 12 L24 12 L18 17 L20 24 L15 20 L10 24 L12 17 L6 12 L13 12 Z" stroke={chalkColorLight} strokeWidth="1" fill="none" />
+        </svg>
+      </motion.div>
+    </div>
+  );
+};

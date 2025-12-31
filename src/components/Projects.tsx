@@ -1,7 +1,7 @@
 "use client";
 
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { WashiTape, StarDoodle } from "./SketchyElements";
 import { RocketIcon, DNAIcon, GitHubIcon, ArrowIcon, TrophyIcon } from "./DoodleIcons";
 
@@ -52,8 +52,20 @@ const projects: Project[] = [
 ];
 
 export default function Projects() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"]
+  });
+
+  // Parallax transforms for project cards
+  const y1 = useTransform(scrollYProgress, [0, 1], [70, -70]);
+  const y2 = useTransform(scrollYProgress, [0, 1], [50, -50]);
+  const rotate1 = useTransform(scrollYProgress, [0, 0.5, 1], [-3, -1, 1]);
+  const rotate2 = useTransform(scrollYProgress, [0, 0.5, 1], [3, 1, -1]);
+
   return (
-    <section id="projects" className="py-20 px-4 bg-paper-dark/30 relative overflow-hidden">
+    <section id="projects" ref={sectionRef} className="py-20 px-4 bg-paper-dark/30 relative overflow-hidden">
       {/* Background doodles */}
       <div className="absolute inset-0 pointer-events-none">
         <motion.div
@@ -80,7 +92,7 @@ export default function Projects() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="font-handwriting text-5xl sm:text-6xl text-pencil inline-block relative">
+          <h2 className="font-handwriting text-5xl sm:text-6xl text-white inline-block relative click-wiggle">
             Projects
             <motion.svg
               className="absolute -bottom-2 left-0 w-full"
@@ -111,9 +123,9 @@ export default function Projects() {
               whileInView={{ opacity: 1, y: 0, rotate: index % 2 === 0 ? -1 : 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.2 }}
+              style={{ y: index === 0 ? y1 : y2, rotate: index === 0 ? rotate1 : rotate2 }}
               whileHover={{
                 scale: 1.02,
-                rotate: 0,
                 transition: { duration: 0.3 },
               }}
               className="group"

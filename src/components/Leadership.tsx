@@ -1,7 +1,7 @@
 "use client";
 
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { WashiTape, StarDoodle, PaperClip } from "./SketchyElements";
 import { UsersIcon, LightbulbIcon, HeartIcon, CodeIcon, RocketIcon, GlobeIcon } from "./DoodleIcons";
 import { SectionPhotoStack } from "./PhotoStack";
@@ -182,8 +182,25 @@ const extracurriculars: ExtracurricularItem[] = [
 ];
 
 export default function Leadership() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"]
+  });
+
+  // Parallax transforms for various sections
+  const yTed = useTransform(scrollYProgress, [0, 1], [40, -40]);
+  const yFeatured = useTransform(scrollYProgress, [0, 1], [60, -60]);
+  const rotateFeatured = useTransform(scrollYProgress, [0, 0.5, 1], [-1, 0, 1]);
+
+  // Transforms for other roles (alternating)
+  const yRole1 = useTransform(scrollYProgress, [0, 1], [50, -50]);
+  const yRole2 = useTransform(scrollYProgress, [0, 1], [70, -70]);
+  const rotate1 = useTransform(scrollYProgress, [0, 0.5, 1], [-2, 0, 2]);
+  const rotate2 = useTransform(scrollYProgress, [0, 0.5, 1], [2, 0, -2]);
+
   return (
-    <section id="leadership" className="py-20 px-4 relative">
+    <section id="leadership" ref={sectionRef} className="py-20 px-4 relative">
       <div className="max-w-6xl mx-auto">
         {/* Section Title */}
         <motion.div
@@ -192,7 +209,7 @@ export default function Leadership() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="font-handwriting text-5xl sm:text-6xl text-pencil inline-block relative">
+          <h2 className="font-handwriting text-5xl sm:text-6xl text-white inline-block relative click-wiggle">
             Leadership & Impact
             <motion.svg
               className="absolute -bottom-2 left-0 w-full"
@@ -219,6 +236,7 @@ export default function Leadership() {
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
+          style={{ y: yTed }}
           className="mb-16"
         >
           <div
@@ -259,6 +277,7 @@ export default function Leadership() {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
+            style={{ y: yFeatured, rotate: rotateFeatured }}
             className="mb-16"
           >
             <div
@@ -334,6 +353,10 @@ export default function Leadership() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
+              style={{
+                y: index % 2 === 0 ? yRole1 : yRole2,
+                rotate: index % 2 === 0 ? rotate1 : rotate2
+              }}
             >
               <div className="grid md:grid-cols-2 gap-8 items-center">
                 {/* Photo Stack - alternating sides */}
