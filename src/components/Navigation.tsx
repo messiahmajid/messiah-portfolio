@@ -67,7 +67,7 @@ export default function Navigation() {
                 <motion.a
                   key={item.name}
                   href={item.href}
-                  className={`relative px-4 py-2 font-sketch text-lg transition-colors ${
+                  className={`relative px-4 py-2 font-sketch text-lg transition-colors click-ripple squiggle-click ${
                     activeSection === item.href.slice(1)
                       ? "text-accent-coral"
                       : "text-pencil-light hover:text-pencil"
@@ -80,21 +80,47 @@ export default function Navigation() {
                     <motion.svg
                       layoutId="navCircle"
                       className="absolute inset-0 pointer-events-none"
-                      style={{ overflow: "visible" }}
+                      viewBox="0 0 100 40"
+                      preserveAspectRatio="none"
+                      style={{ overflow: "visible", width: "100%", height: "100%" }}
                     >
-                      <ellipse
-                        cx="50%"
-                        cy="50%"
-                        rx="90%"
-                        ry="70%"
+                      {/* Hand-drawn sketchy circle path */}
+                      <motion.path
+                        d="M8 20
+                           C 5 8, 25 2, 50 4
+                           C 75 2, 98 10, 95 20
+                           C 98 32, 72 38, 50 36
+                           C 28 38, 2 30, 8 20
+                           C 6 18, 10 15, 12 18"
                         fill="none"
                         stroke="#ff6b6b"
-                        strokeWidth="2"
+                        strokeWidth="1.8"
                         strokeLinecap="round"
-                        style={{
-                          transform: "rotate(-2deg)",
-                          transformOrigin: "center",
+                        strokeLinejoin="round"
+                        initial={{ pathLength: 0, opacity: 0 }}
+                        animate={{
+                          pathLength: 1,
+                          opacity: 1,
+                          rotate: [0, 1, -1, 0],
                         }}
+                        transition={{
+                          pathLength: { duration: 0.4, ease: "easeOut" },
+                          opacity: { duration: 0.2 },
+                          rotate: { duration: 2, repeat: Infinity, ease: "easeInOut" }
+                        }}
+                        style={{ transformOrigin: "center" }}
+                      />
+                      {/* Small wobble line for extra sketchiness */}
+                      <motion.path
+                        d="M15 22 Q 20 24, 25 21"
+                        fill="none"
+                        stroke="#ff6b6b"
+                        strokeWidth="1.2"
+                        strokeLinecap="round"
+                        opacity="0.5"
+                        initial={{ pathLength: 0 }}
+                        animate={{ pathLength: 1 }}
+                        transition={{ delay: 0.3, duration: 0.2 }}
                       />
                     </motion.svg>
                   )}
@@ -168,7 +194,7 @@ export default function Navigation() {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: index * 0.1 }}
                     onClick={() => setIsMobileMenuOpen(false)}
-                    className={`font-sketch text-xl py-2 px-4 rounded-lg transition-all ${
+                    className={`font-sketch text-xl py-2 px-4 rounded-lg transition-all click-ripple ${
                       activeSection === item.href.slice(1)
                         ? "bg-highlight-yellow text-pencil"
                         : "text-pencil-light hover:bg-paper-dark"

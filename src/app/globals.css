@@ -416,3 +416,120 @@ body {
 .delay-300 { animation-delay: 300ms; }
 .delay-400 { animation-delay: 400ms; }
 .delay-500 { animation-delay: 500ms; }
+
+/* Click ripple with squiggly waves */
+.click-ripple {
+  position: relative;
+  overflow: visible;
+}
+
+.click-ripple::before,
+.click-ripple::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50% 45% 55% 48% / 52% 50% 48% 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  opacity: 0;
+}
+
+.click-ripple:active::before {
+  animation: squigglyRipple1 0.6s ease-out forwards;
+  border: 2px dashed #ff6b6b;
+}
+
+.click-ripple:active::after {
+  animation: squigglyRipple2 0.6s ease-out 0.1s forwards;
+  border: 2px dashed #4ecdc4;
+}
+
+@keyframes squigglyRipple1 {
+  0% {
+    width: 0;
+    height: 0;
+    opacity: 0.8;
+    border-radius: 50% 45% 55% 48% / 52% 50% 48% 50%;
+  }
+  50% {
+    border-radius: 45% 52% 48% 55% / 50% 48% 52% 50%;
+  }
+  100% {
+    width: 120px;
+    height: 120px;
+    opacity: 0;
+    border-radius: 52% 48% 50% 50% / 48% 52% 48% 52%;
+  }
+}
+
+@keyframes squigglyRipple2 {
+  0% {
+    width: 0;
+    height: 0;
+    opacity: 0.6;
+    border-radius: 48% 52% 50% 50% / 52% 48% 52% 48%;
+  }
+  50% {
+    border-radius: 55% 45% 52% 48% / 48% 52% 48% 52%;
+  }
+  100% {
+    width: 160px;
+    height: 160px;
+    opacity: 0;
+    border-radius: 50% 50% 48% 52% / 52% 48% 50% 50%;
+  }
+}
+
+/* Global click wave effect - applies to buttons and links */
+button:not(.no-ripple):active,
+a:not(.no-ripple):active {
+  animation: clickPop 0.15s ease-out;
+}
+
+@keyframes clickPop {
+  0% { transform: scale(1); }
+  50% { transform: scale(0.97); }
+  100% { transform: scale(1); }
+}
+
+/* Squiggly underline wave animation on click */
+.squiggle-click {
+  position: relative;
+}
+
+.squiggle-click::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 6px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 8'%3E%3Cpath d='M0 4 Q 12 0, 25 4 T 50 4 T 75 4 T 100 4' stroke='%23ff6b6b' stroke-width='2' fill='none' opacity='0.7'/%3E%3C/svg%3E") repeat-x;
+  background-size: 50px 8px;
+  opacity: 0;
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: none;
+}
+
+.squiggle-click:active::after {
+  animation: squiggleUnderline 0.4s ease-out forwards;
+}
+
+@keyframes squiggleUnderline {
+  0% {
+    opacity: 1;
+    transform: scaleX(0);
+  }
+  50% {
+    opacity: 1;
+    transform: scaleX(1.1);
+  }
+  100% {
+    opacity: 0;
+    transform: scaleX(1);
+  }
+}
