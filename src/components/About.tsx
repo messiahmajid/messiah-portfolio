@@ -160,14 +160,24 @@ export default function About() {
                 {/* President's Honor Roll */}
                 <motion.div
                   whileHover={{ scale: 1.02 }}
-                  className="bg-white p-4 rounded-lg shadow-sm"
-                  style={{ border: "2px dashed #a855f7" }}
+                  className="bg-gradient-to-r from-purple-50 to-violet-50 p-5 rounded-lg shadow-md"
+                  style={{ border: "2px solid #a855f7" }}
                 >
-                  <div className="flex items-center gap-3">
-                    <StarDoodle size={20} color="#a855f7" filled />
-                    <p className="font-sketch text-pencil">
-                      President&apos;s Honor Roll
-                    </p>
+                  <div className="flex items-start gap-3">
+                    <StarDoodle size={24} color="#a855f7" filled className="flex-shrink-0 mt-1" />
+                    <div>
+                      <div className="flex items-center gap-2 flex-wrap">
+                        <p className="font-marker text-lg text-pencil">
+                          President&apos;s Honor Roll
+                        </p>
+                        <span className="bg-purple-500 text-white text-xs font-bold px-2 py-0.5 rounded-full">
+                          5x CONSECUTIVE
+                        </span>
+                      </div>
+                      <p className="font-sketch text-sm text-pencil-light mt-1">
+                        Highest scholastic achievement every semester since enrollment—maintaining a perfect 4.0 GPA.
+                      </p>
+                    </div>
                   </div>
                 </motion.div>
               </div>
