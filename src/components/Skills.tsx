@@ -84,12 +84,12 @@ function CardStack({ category }: { category: CategoryInfo }) {
   return (
     <div ref={ref} className="flex flex-col items-center">
       {/* Title with underline */}
-      <h3 className="font-handwriting text-3xl sm:text-4xl text-pencil mb-2">
+      <h3 className="font-handwriting text-3xl sm:text-4xl text-white mb-2">
         {title}
       </h3>
 
       {/* Tagline */}
-      <p className="font-sketch text-base text-pencil-light mb-8 text-center italic">
+      <p className="font-sketch text-base text-white/70 mb-8 text-center italic">
         {tagline}
       </p>
 
@@ -234,7 +234,7 @@ export default function Skills() {
               />
             </motion.svg>
           </h2>
-          <p className="font-sketch text-lg text-pencil-light mt-6 max-w-xl mx-auto">
+          <p className="font-sketch text-lg text-white/70 mt-6 max-w-xl mx-auto">
             From data pipelines to protein structures—the tools I use to turn ideas into impact
           </p>
         </motion.div>
@@ -252,7 +252,7 @@ export default function Skills() {
               <path d="M0 15 Q 30 0, 60 15" stroke="#4ecdc4" strokeWidth="2" strokeDasharray="4 3" opacity="0.4" />
               <path d="M50 10 L 58 15 L 50 20" stroke="#4ecdc4" strokeWidth="2" fill="none" opacity="0.4" />
             </svg>
-            <span className="font-handwriting text-xs text-pencil-light opacity-50">powers</span>
+            <span className="font-handwriting text-xs text-white/50">powers</span>
           </motion.div>
 
           <motion.div
@@ -265,7 +265,7 @@ export default function Skills() {
               <path d="M0 15 Q 30 0, 60 15" stroke="#ff6b6b" strokeWidth="2" strokeDasharray="4 3" opacity="0.4" />
               <path d="M50 10 L 58 15 L 50 20" stroke="#ff6b6b" strokeWidth="2" fill="none" opacity="0.4" />
             </svg>
-            <span className="font-handwriting text-xs text-pencil-light opacity-50">enables</span>
+            <span className="font-handwriting text-xs text-white/50">enables</span>
           </motion.div>
 
           {categories.map((category, index) => (
@@ -287,7 +287,7 @@ export default function Skills() {
           className="flex justify-center items-center gap-3 mt-12"
         >
           <StarDoodle size={16} color="#ffd54f" filled />
-          <span className="font-sketch text-base text-pencil-light">= Primary skills</span>
+          <span className="font-sketch text-base text-white/70">= Primary skills</span>
         </motion.div>
 
         {/* Decorative elements */}

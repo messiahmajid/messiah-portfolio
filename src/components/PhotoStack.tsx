@@ -41,6 +41,17 @@ export default function PhotoStack({
     setActiveIndex((prev) => (prev + 1) % photos.length);
   };
 
+  // Auto-flip every 4 seconds when not hovered
+  useEffect(() => {
+    if (isHovered) return;
+
+    const timer = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % photos.length);
+    }, 4000);
+
+    return () => clearInterval(timer);
+  }, [isHovered, photos.length]);
+
   return (
     <div
       className={`fixed ${position === "left" ? "left-4 lg:left-8" : "right-4 lg:right-8"} top-1/2 -translate-y-1/2 z-30 hidden lg:block ${className}`}
