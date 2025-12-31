@@ -1,8 +1,11 @@
 "use client";
 
-import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { WashiTape } from "./SketchyElements";
+import React, { useState, useEffect, useRef } from "react";
+import { motion, AnimatePresence, useInView } from "framer-motion";
+
+// ============================================
+// Sidebar PhotoStack - Fixed position polaroid stack
+// ============================================
 
 interface Photo {
   id: number;
@@ -146,7 +149,131 @@ export default function PhotoStack({
   );
 }
 
-// Simpler inline photo polaroid for use within sections
+// ============================================
+// Section PhotoStack - Auto-swiping inline stack for sections
+// ============================================
+
+interface SectionPhotoStackProps {
+  photos: {
+    id: string;
+    color: string;
+    label?: string;
+  }[];
+  autoSwipe?: boolean;
+  interval?: number;
+  size?: "small" | "medium" | "large";
+}
+
+export function SectionPhotoStack({
+  photos,
+  autoSwipe = true,
+  interval = 3000,
+  size = "medium",
+}: SectionPhotoStackProps) {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const ref = useRef<HTMLDivElement>(null);
+  const isInView = useInView(ref, { amount: 0.3 });
+
+  const sizeClasses = {
+    small: "w-32 h-40",
+    medium: "w-48 h-56",
+    large: "w-64 h-72",
+  };
+
+  useEffect(() => {
+    if (!autoSwipe || !isInView) return;
+
+    const timer = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % photos.length);
+    }, interval);
+
+    return () => clearInterval(timer);
+  }, [autoSwipe, interval, photos.length, isInView]);
+
+  return (
+    <div ref={ref} className="relative flex items-center justify-center">
+      <div className={`relative ${sizeClasses[size]}`}>
+        {photos.map((photo, index) => {
+          const isActive = index === currentIndex;
+          const offset = index - currentIndex;
+          const normalizedOffset =
+            offset < -photos.length / 2
+              ? offset + photos.length
+              : offset > photos.length / 2
+              ? offset - photos.length
+              : offset;
+
+          return (
+            <motion.div
+              key={photo.id}
+              className={`absolute inset-0 ${sizeClasses[size]} cursor-pointer`}
+              initial={false}
+              animate={{
+                x: normalizedOffset * 8,
+                y: Math.abs(normalizedOffset) * 4,
+                rotate: normalizedOffset * 5,
+                scale: 1 - Math.abs(normalizedOffset) * 0.05,
+                zIndex: photos.length - Math.abs(normalizedOffset),
+                opacity: Math.abs(normalizedOffset) > 2 ? 0 : 1,
+              }}
+              transition={{
+                type: "spring",
+                stiffness: 300,
+                damping: 30,
+              }}
+              onClick={() => setCurrentIndex(index)}
+              whileHover={isActive ? { scale: 1.05, rotate: 0 } : {}}
+            >
+              <div
+                className="w-full h-full shadow-paper flex items-center justify-center"
+                style={{
+                  backgroundColor: photo.color,
+                  border: "3px solid #2d2d2d",
+                  borderRadius: "4px",
+                }}
+              >
+                {/* Placeholder for actual photos - shows colored card with label */}
+                <div className="absolute inset-2 border-2 border-white/30 rounded flex items-center justify-center">
+                  {photo.label && (
+                    <p className="font-handwriting text-white/80 text-center text-sm px-2">
+                      {photo.label}
+                    </p>
+                  )}
+                </div>
+
+                {/* Photo corner decorations */}
+                <div className="absolute top-1 left-1 w-3 h-3 border-t-2 border-l-2 border-white/40" />
+                <div className="absolute top-1 right-1 w-3 h-3 border-t-2 border-r-2 border-white/40" />
+                <div className="absolute bottom-1 left-1 w-3 h-3 border-b-2 border-l-2 border-white/40" />
+                <div className="absolute bottom-1 right-1 w-3 h-3 border-b-2 border-r-2 border-white/40" />
+              </div>
+            </motion.div>
+          );
+        })}
+      </div>
+
+      {/* Dots indicator */}
+      <div className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 flex gap-1.5">
+        {photos.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => setCurrentIndex(index)}
+            className={`w-2 h-2 rounded-full transition-all ${
+              index === currentIndex
+                ? "bg-pencil scale-125"
+                : "bg-pencil/30 hover:bg-pencil/50"
+            }`}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
+
+// ============================================
+// Inline Polaroid - Simple single polaroid for use in sections
+// ============================================
+
 export function InlinePolaroid({
   caption,
   rotation = -3,
