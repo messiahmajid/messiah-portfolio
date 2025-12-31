@@ -10,11 +10,14 @@ import Leadership from "@/components/Leadership";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import PhotoStack from "@/components/PhotoStack";
-import { FloatingDoodles, ScatteredDots, WavyDivider, CoffeeRing, TapeStrip } from "@/components/Doodles";
+import { FloatingDoodles, ScatteredDots, WavyDivider, CoffeeRing, TapeStrip, SpiderVerseBackground } from "@/components/Doodles";
 
 export default function Home() {
   return (
     <main className="min-h-screen relative">
+      {/* Spider-Verse style background effects */}
+      <SpiderVerseBackground className="z-0" />
+
       {/* Global floating doodles */}
       <FloatingDoodles className="fixed inset-0 z-0" />
 

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Nunito:wght@300;400;500;600;700&family=Patrick+Hand&family=Permanent+Marker&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Nunito:wght@300;400;500;600;700&family=Patrick+Hand&family=Permanent+Marker&family=Bangers&family=Comic+Neue:wght@700&family=Indie+Flower&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -532,4 +532,291 @@ a:not(.no-ripple):active {
     opacity: 0;
     transform: scaleX(1);
   }
+}
+
+/* ============================================
+   CARD WIGGLE/FLOAT ANIMATIONS
+   ============================================ */
+
+/* Gentle floating animation for cards */
+.card-float {
+  animation: cardFloat 4s ease-in-out infinite;
+}
+
+.card-float-delay-1 { animation-delay: 0.5s; }
+.card-float-delay-2 { animation-delay: 1s; }
+.card-float-delay-3 { animation-delay: 1.5s; }
+.card-float-delay-4 { animation-delay: 2s; }
+
+@keyframes cardFloat {
+  0%, 100% {
+    transform: translateY(0) rotate(var(--rotation, 0deg));
+  }
+  50% {
+    transform: translateY(-6px) rotate(calc(var(--rotation, 0deg) + 1deg));
+  }
+}
+
+/* Subtle wiggle for cards */
+.card-wiggle {
+  animation: cardWiggle 3s ease-in-out infinite;
+}
+
+@keyframes cardWiggle {
+  0%, 100% { transform: rotate(-1deg); }
+  25% { transform: rotate(0.5deg); }
+  50% { transform: rotate(1deg); }
+  75% { transform: rotate(-0.5deg); }
+}
+
+/* Breathing/pulse effect */
+.card-breathe {
+  animation: cardBreathe 4s ease-in-out infinite;
+}
+
+@keyframes cardBreathe {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.1);
+  }
+  50% {
+    transform: scale(1.01);
+    box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.12);
+  }
+}
+
+/* Jitter/shake effect for more energy */
+.card-jitter {
+  animation: cardJitter 0.15s ease-in-out infinite;
+}
+
+@keyframes cardJitter {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  25% { transform: translate(0.5px, -0.5px) rotate(0.3deg); }
+  50% { transform: translate(-0.5px, 0.5px) rotate(-0.3deg); }
+  75% { transform: translate(0.5px, 0.5px) rotate(0.2deg); }
+}
+
+/* Hover jitter - activates on hover */
+.hover-jitter:hover {
+  animation: cardJitter 0.1s ease-in-out infinite;
+}
+
+/* ============================================
+   SPIDER-VERSE STYLE EFFECTS
+   ============================================ */
+
+/* Font switching animation for glitchy text */
+.font-glitch {
+  animation: fontSwitch 3s steps(1) infinite;
+}
+
+@keyframes fontSwitch {
+  0%, 20% { font-family: 'Caveat', cursive; }
+  20.1%, 40% { font-family: 'Bangers', cursive; }
+  40.1%, 60% { font-family: 'Permanent Marker', cursive; }
+  60.1%, 80% { font-family: 'Comic Neue', cursive; }
+  80.1%, 100% { font-family: 'Indie Flower', cursive; }
+}
+
+/* Color offset/chromatic aberration */
+.chromatic-text {
+  position: relative;
+}
+
+.chromatic-text::before,
+.chromatic-text::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.chromatic-text::before {
+  color: #00ffff;
+  animation: chromaticShiftCyan 2s ease-in-out infinite;
+  mix-blend-mode: multiply;
+  opacity: 0.7;
+}
+
+.chromatic-text::after {
+  color: #ff0066;
+  animation: chromaticShiftMagenta 2s ease-in-out infinite;
+  mix-blend-mode: multiply;
+  opacity: 0.7;
+}
+
+@keyframes chromaticShiftCyan {
+  0%, 100% { transform: translate(-2px, 0); }
+  50% { transform: translate(2px, 1px); }
+}
+
+@keyframes chromaticShiftMagenta {
+  0%, 100% { transform: translate(2px, 0); }
+  50% { transform: translate(-2px, -1px); }
+}
+
+/* Halftone dot pattern overlay */
+.halftone-overlay {
+  position: relative;
+}
+
+.halftone-overlay::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, #2d2d2d 1px, transparent 1px);
+  background-size: 8px 8px;
+  opacity: 0.03;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Comic action lines background */
+.speed-lines {
+  position: relative;
+  overflow: hidden;
+}
+
+.speed-lines::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 200%;
+  height: 200%;
+  background: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 10px,
+    rgba(255, 107, 107, 0.03) 10px,
+    rgba(255, 107, 107, 0.03) 11px
+  );
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  animation: speedLinesRotate 20s linear infinite;
+}
+
+@keyframes speedLinesRotate {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* Ben-Day dots effect */
+.benday-dots {
+  position: relative;
+}
+
+.benday-dots::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 25% 25%, rgba(255, 107, 107, 0.1) 2px, transparent 2px),
+    radial-gradient(circle at 75% 75%, rgba(78, 205, 196, 0.1) 2px, transparent 2px);
+  background-size: 20px 20px;
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+/* Comic panel border with offset */
+.comic-panel {
+  position: relative;
+  border: 3px solid #2d2d2d;
+}
+
+.comic-panel::before {
+  content: '';
+  position: absolute;
+  inset: 3px;
+  border: 2px solid rgba(255, 107, 107, 0.5);
+  pointer-events: none;
+}
+
+.comic-panel::after {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border: 2px solid rgba(78, 205, 196, 0.5);
+  pointer-events: none;
+}
+
+/* Glitch/frame skip effect */
+.glitch-frame {
+  animation: glitchFrame 5s steps(1) infinite;
+}
+
+@keyframes glitchFrame {
+  0%, 95%, 100% {
+    transform: translate(0);
+    filter: none;
+  }
+  96% {
+    transform: translate(-2px, 1px);
+    filter: hue-rotate(90deg);
+  }
+  97% {
+    transform: translate(2px, -1px);
+    filter: hue-rotate(-90deg);
+  }
+  98% {
+    transform: translate(1px, 2px);
+    filter: saturate(2);
+  }
+  99% {
+    transform: translate(-1px, -2px);
+    filter: contrast(1.2);
+  }
+}
+
+/* Motion blur lines for elements */
+.motion-blur {
+  position: relative;
+}
+
+.motion-blur::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -20px;
+  right: 100%;
+  bottom: 0;
+  background: linear-gradient(90deg,
+    transparent,
+    rgba(255, 107, 107, 0.1) 20%,
+    rgba(78, 205, 196, 0.1) 40%,
+    rgba(255, 213, 79, 0.1) 60%,
+    transparent
+  );
+  animation: motionBlur 2s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes motionBlur {
+  0%, 100% { opacity: 0; transform: translateX(0); }
+  50% { opacity: 1; transform: translateX(30px); }
+}
+
+/* Onomatopoeia/comic text style */
+.comic-text {
+  font-family: 'Bangers', cursive;
+  letter-spacing: 2px;
+  text-shadow:
+    2px 2px 0 #fff,
+    3px 3px 0 #2d2d2d;
+}
+
+/* Pop art color shift */
+.pop-art-shift {
+  animation: popArtColors 8s ease-in-out infinite;
+}
+
+@keyframes popArtColors {
+  0%, 100% { filter: hue-rotate(0deg); }
+  25% { filter: hue-rotate(30deg); }
+  50% { filter: hue-rotate(-20deg); }
+  75% { filter: hue-rotate(15deg); }
 }
