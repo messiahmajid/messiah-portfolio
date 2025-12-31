@@ -9,33 +9,13 @@ import Projects from "@/components/Projects";
 import Leadership from "@/components/Leadership";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
-import PhotoStack from "@/components/PhotoStack";
-import { FloatingDoodles, ScatteredDots, WavyDivider, CoffeeRing, TapeStrip, SpiderVerseBackground } from "@/components/Doodles";
+import { ChalkBackground, WavyDivider } from "@/components/Doodles";
 
 export default function Home() {
   return (
     <main className="min-h-screen relative">
-      {/* Spider-Verse style background effects */}
-      <SpiderVerseBackground className="z-0" />
-
-      {/* Global floating doodles */}
-      <FloatingDoodles className="fixed inset-0 z-0" />
-
-      {/* Polaroid photo stacks on sides */}
-      <PhotoStack position="left" />
-      <PhotoStack position="right" />
-
-      {/* Scattered decorative elements */}
-      <ScatteredDots className="fixed inset-0 z-0" />
-
-      {/* Coffee ring stains for that authentic scrapbook feel */}
-      <CoffeeRing className="fixed top-[15%] right-[3%] z-0" size={80} />
-      <CoffeeRing className="fixed bottom-[25%] left-[2%] z-0" size={60} />
-
-      {/* Random tape strips */}
-      <TapeStrip className="fixed top-[30%] left-[1%] z-0" rotation={15} color="#f8bbd9" />
-      <TapeStrip className="fixed top-[60%] right-[2%] z-0" rotation={-10} color="#b3e5fc" />
-      <TapeStrip className="fixed bottom-[40%] left-[3%] z-0" rotation={5} color="#c8e6c9" />
+      {/* Chalk-style doodles on dark background */}
+      <ChalkBackground className="z-0" />
 
       {/* Main content */}
       <div className="relative z-10">

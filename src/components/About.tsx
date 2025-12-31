@@ -1,11 +1,23 @@
 "use client";
 
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { NotebookSpiral, WashiTape, StarDoodle } from "./SketchyElements";
 import { GraduationCapIcon, TrophyIcon, BookIcon } from "./DoodleIcons";
 
 export default function About() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"]
+  });
+
+  // Parallax transforms for cards
+  const y1 = useTransform(scrollYProgress, [0, 1], [60, -60]);
+  const y2 = useTransform(scrollYProgress, [0, 1], [80, -40]);
+  const rotate1 = useTransform(scrollYProgress, [0, 0.5, 1], [-3, 0, 2]);
+  const rotate2 = useTransform(scrollYProgress, [0, 0.5, 1], [3, 0, -2]);
+
   const courses = [
     "Data Structures & Algorithms",
     "Python Programming",
@@ -15,7 +27,7 @@ export default function About() {
   ];
 
   return (
-    <section id="about" className="py-20 px-4 relative">
+    <section id="about" ref={sectionRef} className="py-20 px-4 relative">
       <div className="max-w-5xl mx-auto">
         {/* Section Title */}
         <motion.div
@@ -24,7 +36,7 @@ export default function About() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="font-handwriting text-5xl sm:text-6xl text-pencil inline-block relative click-wiggle">
+          <h2 className="font-handwriting text-5xl sm:text-6xl text-white inline-block relative click-wiggle">
             About Me
             <motion.svg
               className="absolute -bottom-2 left-0 w-full"
@@ -37,7 +49,7 @@ export default function About() {
             >
               <path
                 d="M0 6 Q 50 0, 100 6 T 200 6"
-                stroke="#ff6b6b"
+                stroke="#d35f5f"
                 strokeWidth="3"
                 fill="none"
                 strokeLinecap="round"
