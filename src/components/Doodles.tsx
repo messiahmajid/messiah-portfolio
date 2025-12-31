@@ -615,3 +615,306 @@ export const FloatingBrackets: React.FC<{ className?: string }> = ({ className =
     </motion.svg>
   );
 };
+
+// ============================================
+// SPIDER-VERSE STYLE ELEMENTS
+// ============================================
+
+// Halftone dot pattern overlay
+export const HalftoneOverlay: React.FC<{ className?: string }> = ({ className = "" }) => {
+  return (
+    <div className={`pointer-events-none ${className}`}>
+      <svg className="absolute inset-0 w-full h-full opacity-[0.04]" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <pattern id="halftone" x="0" y="0" width="12" height="12" patternUnits="userSpaceOnUse">
+            <circle cx="3" cy="3" r="1.5" fill="#2d2d2d" />
+            <circle cx="9" cy="9" r="1" fill="#2d2d2d" />
+          </pattern>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#halftone)" />
+      </svg>
+    </div>
+  );
+};
+
+// Ben-Day dots (colored comic dots)
+export const BenDayDots: React.FC<{ className?: string }> = ({ className = "" }) => {
+  return (
+    <div className={`pointer-events-none ${className}`}>
+      <svg className="absolute inset-0 w-full h-full opacity-[0.06]" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <pattern id="benday-cyan" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+            <circle cx="5" cy="5" r="2" fill="#00ffff" />
+          </pattern>
+          <pattern id="benday-magenta" x="5" y="5" width="20" height="20" patternUnits="userSpaceOnUse">
+            <circle cx="5" cy="5" r="2" fill="#ff0066" />
+          </pattern>
+          <pattern id="benday-yellow" x="10" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+            <circle cx="5" cy="5" r="1.5" fill="#ffd54f" />
+          </pattern>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#benday-cyan)" />
+        <rect width="100%" height="100%" fill="url(#benday-magenta)" style={{ mixBlendMode: 'multiply' }} />
+        <rect width="100%" height="100%" fill="url(#benday-yellow)" style={{ mixBlendMode: 'multiply' }} />
+      </svg>
+    </div>
+  );
+};
+
+// Speed/action lines radiating from center
+export const SpeedLines: React.FC<{ className?: string }> = ({ className = "" }) => {
+  const lines = Array.from({ length: 24 }, (_, i) => ({
+    angle: i * 15,
+    length: 150 + Math.random() * 100,
+    opacity: 0.02 + Math.random() * 0.03,
+  }));
+
+  return (
+    <motion.svg
+      className={`absolute inset-0 w-full h-full pointer-events-none ${className}`}
+      viewBox="0 0 100 100"
+      preserveAspectRatio="xMidYMid slice"
+      animate={{ rotate: [0, 360] }}
+      transition={{ duration: 120, repeat: Infinity, ease: "linear" }}
+    >
+      {lines.map((line, i) => (
+        <line
+          key={i}
+          x1="50"
+          y1="50"
+          x2={50 + Math.cos((line.angle * Math.PI) / 180) * line.length}
+          y2={50 + Math.sin((line.angle * Math.PI) / 180) * line.length}
+          stroke="#2d2d2d"
+          strokeWidth="0.3"
+          opacity={line.opacity}
+        />
+      ))}
+    </motion.svg>
+  );
+};
+
+// Comic-style floating onomatopoeia
+export const ComicText: React.FC<{
+  text: string;
+  className?: string;
+  color?: string;
+}> = ({ text, className = "", color = "#ff6b6b" }) => {
+  return (
+    <motion.div
+      className={`font-bangers text-2xl pointer-events-none select-none ${className}`}
+      style={{
+        fontFamily: "'Bangers', cursive",
+        color: color,
+        textShadow: `2px 2px 0 #fff, 3px 3px 0 #2d2d2d`,
+        WebkitTextStroke: '1px #2d2d2d',
+      }}
+      animate={{
+        scale: [1, 1.1, 1],
+        rotate: [-5, 5, -5],
+      }}
+      transition={{ duration: 2, repeat: Infinity }}
+    >
+      {text}
+    </motion.div>
+  );
+};
+
+// Motion blur streaks
+export const MotionStreaks: React.FC<{ className?: string }> = ({ className = "" }) => {
+  const streaks = [
+    { top: '15%', left: '-5%', width: '30%', color: '#ff6b6b', delay: 0 },
+    { top: '35%', right: '-5%', width: '25%', color: '#4ecdc4', delay: 0.5 },
+    { top: '55%', left: '-5%', width: '20%', color: '#a855f7', delay: 1 },
+    { top: '75%', right: '-5%', width: '35%', color: '#ffd54f', delay: 1.5 },
+    { top: '25%', left: '-5%', width: '15%', color: '#3b82f6', delay: 2 },
+    { top: '85%', left: '-5%', width: '25%', color: '#ff6b6b', delay: 0.3 },
+  ];
+
+  return (
+    <div className={`pointer-events-none ${className}`}>
+      {streaks.map((streak, i) => (
+        <motion.div
+          key={i}
+          className="absolute h-0.5"
+          style={{
+            top: streak.top,
+            left: streak.left,
+            right: streak.right,
+            width: streak.width,
+            background: `linear-gradient(90deg, transparent, ${streak.color}40, transparent)`,
+          }}
+          animate={{
+            x: streak.left ? [0, 100, 0] : [0, -100, 0],
+            opacity: [0, 0.6, 0],
+          }}
+          transition={{
+            duration: 3,
+            delay: streak.delay,
+            repeat: Infinity,
+            repeatDelay: 2,
+          }}
+        />
+      ))}
+    </div>
+  );
+};
+
+// Comic panel frame effect
+export const ComicFrame: React.FC<{ className?: string; children?: React.ReactNode }> = ({
+  className = "",
+  children
+}) => {
+  return (
+    <div className={`relative ${className}`}>
+      {/* Offset colored borders for 3D comic effect */}
+      <div
+        className="absolute inset-0 border-2 border-cyan-400 opacity-50 pointer-events-none"
+        style={{ transform: 'translate(-3px, -3px)' }}
+      />
+      <div
+        className="absolute inset-0 border-2 border-pink-500 opacity-50 pointer-events-none"
+        style={{ transform: 'translate(3px, 3px)' }}
+      />
+      <div className="relative border-3 border-pencil">
+        {children}
+      </div>
+    </div>
+  );
+};
+
+// Floating comic speech bubble
+export const SpeechBubble: React.FC<{ className?: string; text?: string }> = ({
+  className = "",
+  text = "!"
+}) => {
+  return (
+    <motion.div
+      className={`pointer-events-none ${className}`}
+      animate={{ y: [0, -5, 0], rotate: [-2, 2, -2] }}
+      transition={{ duration: 3, repeat: Infinity }}
+    >
+      <svg width="60" height="50" viewBox="0 0 60 50" className="opacity-20">
+        <path
+          d="M5 5 Q 5 0, 10 0 L 50 0 Q 55 0, 55 5 L 55 30 Q 55 35, 50 35 L 25 35 L 15 45 L 18 35 L 10 35 Q 5 35, 5 30 Z"
+          fill="white"
+          stroke="#2d2d2d"
+          strokeWidth="2"
+        />
+        <text
+          x="30"
+          y="22"
+          textAnchor="middle"
+          fontFamily="'Bangers', cursive"
+          fontSize="16"
+          fill="#2d2d2d"
+        >
+          {text}
+        </text>
+      </svg>
+    </motion.div>
+  );
+};
+
+// Glitch flicker overlay
+export const GlitchOverlay: React.FC<{ className?: string }> = ({ className = "" }) => {
+  return (
+    <motion.div
+      className={`absolute inset-0 pointer-events-none ${className}`}
+      animate={{
+        opacity: [0, 0, 0.03, 0, 0, 0.02, 0],
+        x: [0, -2, 0, 2, 0],
+      }}
+      transition={{
+        duration: 0.5,
+        repeat: Infinity,
+        repeatDelay: 4,
+        times: [0, 0.1, 0.15, 0.2, 0.4, 0.45, 1],
+      }}
+      style={{
+        background: 'linear-gradient(90deg, transparent 0%, #00ffff 25%, transparent 50%, #ff0066 75%, transparent 100%)',
+      }}
+    />
+  );
+};
+
+// Burst/explosion effect
+export const BurstEffect: React.FC<{ className?: string; color?: string }> = ({
+  className = "",
+  color = "#ffd54f"
+}) => {
+  return (
+    <motion.svg
+      className={`w-24 h-24 opacity-15 ${className}`}
+      viewBox="0 0 100 100"
+      animate={{ rotate: [0, 5, -5, 0], scale: [1, 1.05, 1] }}
+      transition={{ duration: 4, repeat: Infinity }}
+    >
+      <polygon
+        points="50,5 58,35 90,35 65,55 75,90 50,70 25,90 35,55 10,35 42,35"
+        fill={color}
+        stroke="#2d2d2d"
+        strokeWidth="1"
+      />
+    </motion.svg>
+  );
+};
+
+// Chromatic aberration text effect wrapper
+export const ChromaticText: React.FC<{
+  children: React.ReactNode;
+  className?: string;
+}> = ({ children, className = "" }) => {
+  return (
+    <span className={`relative inline-block ${className}`}>
+      <motion.span
+        className="absolute inset-0 text-cyan-400 opacity-70"
+        style={{ mixBlendMode: 'multiply' }}
+        animate={{ x: [-2, 2, -2] }}
+        transition={{ duration: 2, repeat: Infinity }}
+        aria-hidden="true"
+      >
+        {children}
+      </motion.span>
+      <motion.span
+        className="absolute inset-0 text-pink-500 opacity-70"
+        style={{ mixBlendMode: 'multiply' }}
+        animate={{ x: [2, -2, 2] }}
+        transition={{ duration: 2, repeat: Infinity }}
+        aria-hidden="true"
+      >
+        {children}
+      </motion.span>
+      <span className="relative">{children}</span>
+    </span>
+  );
+};
+
+// Complete Spider-Verse background
+export const SpiderVerseBackground: React.FC<{ className?: string }> = ({ className = "" }) => {
+  return (
+    <div className={`fixed inset-0 pointer-events-none overflow-hidden ${className}`}>
+      {/* Base halftone pattern */}
+      <HalftoneOverlay />
+
+      {/* Colored Ben-Day dots */}
+      <BenDayDots />
+
+      {/* Rotating speed lines */}
+      <SpeedLines />
+
+      {/* Motion streaks */}
+      <MotionStreaks />
+
+      {/* Glitch effect */}
+      <GlitchOverlay />
+
+      {/* Floating comic elements */}
+      <SpeechBubble className="absolute top-[20%] right-[10%]" text="WOW" />
+      <SpeechBubble className="absolute top-[60%] left-[5%]" text="!" />
+      <ComicText text="POW!" className="absolute top-[15%] left-[8%] opacity-10" color="#ff6b6b" />
+      <ComicText text="ZAP!" className="absolute bottom-[25%] right-[12%] opacity-10" color="#4ecdc4" />
+      <BurstEffect className="absolute top-[40%] right-[5%]" color="#ffd54f" />
+      <BurstEffect className="absolute bottom-[15%] left-[10%]" color="#ff6b6b" />
+    </div>
+  );
+};
