@@ -65,7 +65,7 @@ export default function Projects() {
   const rotate2 = useTransform(scrollYProgress, [0, 0.5, 1], [3, 1, -1]);
 
   return (
-    <section id="projects" ref={sectionRef} className="py-20 px-4 bg-paper-dark/30 relative overflow-hidden">
+    <section id="projects" ref={sectionRef} className="py-20 px-4 relative overflow-hidden">
       {/* Background doodles */}
       <div className="absolute inset-0 pointer-events-none">
         <motion.div
@@ -131,8 +131,9 @@ export default function Projects() {
               className="group"
             >
               <div
-                className="bg-white p-5 pb-6 shadow-polaroid relative"
+                className="p-5 pb-6 shadow-polaroid relative rounded-2xl"
                 style={{
+                  background: 'var(--paper-color)',
                   border: "2px solid #2d2d2d",
                 }}
               >

@@ -240,10 +240,9 @@ export default function Leadership() {
           className="mb-16"
         >
           <div
-            className="relative bg-gradient-to-r from-red-500 to-red-600 p-8 text-white overflow-hidden"
+            className="relative bg-gradient-to-r from-red-500 to-red-600 p-8 text-white overflow-hidden rounded-2xl"
             style={{
               border: "3px solid #2d2d2d",
-              borderRadius: "12px",
             }}
           >
             {/* TED Logo styled decoration */}
@@ -281,10 +280,10 @@ export default function Leadership() {
             className="mb-16"
           >
             <div
-              className="relative bg-gradient-to-br from-purple-50 to-white p-8 shadow-lg"
+              className="relative p-8 shadow-lg rounded-2xl"
               style={{
+                background: 'var(--paper-color)',
                 border: "3px solid #a855f7",
-                borderRadius: "16px",
               }}
             >
               {/* Featured badge */}
@@ -379,10 +378,10 @@ export default function Leadership() {
                   />
 
                   <div
-                    className="bg-white p-6 shadow-paper relative"
+                    className="p-6 shadow-paper relative rounded-2xl"
                     style={{
+                      background: 'var(--paper-color)',
                       border: "2px solid #2d2d2d",
-                      borderRadius: "4px 8px 4px 8px",
                       transform: `rotate(${index % 2 === 0 ? -0.5 : 0.5}deg)`,
                     }}
                   >
@@ -481,10 +480,10 @@ export default function Leadership() {
                     scale: 1.02,
                     rotate: index % 2 === 0 ? 1 : -1,
                   }}
-                  className="flex-grow max-w-md bg-white px-6 py-4 shadow-paper"
+                  className="flex-grow max-w-md px-6 py-4 shadow-paper rounded-2xl"
                   style={{
+                    background: 'var(--paper-color)',
                     border: "2px solid #2d2d2d",
-                    borderRadius: "4px 8px 4px 8px",
                     transform: `rotate(${index % 2 === 0 ? -1 : 1}deg)`,
                   }}
                 >

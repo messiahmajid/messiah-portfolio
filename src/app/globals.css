@@ -5,10 +5,11 @@
 @tailwind utilities;
 
 :root {
-  --bg-dark: #1c1c1c;
+  --bg-dark: #1a1a1a;
   --paper-color: #f5ebe0;
   --card-color: #f5ebe0;
   --accent-red: #d35f5f;
+  --cream-text: #e8ddd4;
   --pencil-color: #2d2d2d;
   --chalk-color: rgba(255, 255, 255, 0.7);
   --highlight-yellow: #fff59d;

@@ -21,7 +21,7 @@ export default function Contact() {
   const rotateCard = useTransform(scrollYProgress, [0, 0.5, 1], [-2, 0, 2]);
 
   return (
-    <section id="contact" ref={sectionRef} className="py-20 px-4 bg-paper-dark/30 relative overflow-hidden">
+    <section id="contact" ref={sectionRef} className="py-20 px-4 relative overflow-hidden">
       {/* Background decorations */}
       <div className="absolute inset-0 pointer-events-none">
         {/* Floating paper planes */}
@@ -99,10 +99,10 @@ export default function Contact() {
           className="relative"
         >
           <div
-            className="bg-white p-8 md:p-12 shadow-paper relative"
+            className="p-8 md:p-12 shadow-paper relative rounded-2xl"
             style={{
+              background: 'var(--paper-color)',
               border: "2px solid #2d2d2d",
-              borderRadius: "8px 4px 12px 4px",
             }}
           >
             <WashiTape className="-top-3 left-12" rotation={-3} color="#ff6b6b" />
@@ -133,10 +133,10 @@ export default function Contact() {
                 href="mailto:messiah.majid@miami.edu"
                 whileHover={{ scale: 1.05, rotate: 2 }}
                 whileTap={{ scale: 0.95 }}
-                className="group flex flex-col items-center p-6 rounded-xl transition-all"
+                className="group flex flex-col items-center p-6 rounded-2xl transition-all"
                 style={{
-                  background: "#fff5f5",
-                  border: "2px dashed #ffcdd2",
+                  background: "var(--paper-color)",
+                  border: "2px dashed #d35f5f",
                 }}
               >
                 <div className="relative mb-3">
@@ -181,10 +181,10 @@ export default function Contact() {
                 href="tel:+17864132337"
                 whileHover={{ scale: 1.05, rotate: -2 }}
                 whileTap={{ scale: 0.95 }}
-                className="group flex flex-col items-center p-6 rounded-xl transition-all relative"
+                className="group flex flex-col items-center p-6 rounded-2xl transition-all relative"
                 style={{
-                  background: "#e8f5e9",
-                  border: "2px dashed #a5d6a7",
+                  background: "var(--paper-color)",
+                  border: "2px dashed #4ecdc4",
                 }}
               >
                 <div className="relative mb-3">
@@ -221,10 +221,10 @@ export default function Contact() {
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.05, rotate: 1 }}
                 whileTap={{ scale: 0.95 }}
-                className="group flex flex-col items-center p-6 rounded-xl transition-all relative"
+                className="group flex flex-col items-center p-6 rounded-2xl transition-all relative"
                 style={{
-                  background: "#e3f2fd",
-                  border: "2px dashed #90caf9",
+                  background: "var(--paper-color)",
+                  border: "2px dashed #3b82f6",
                 }}
               >
                 <div className="relative mb-3">
