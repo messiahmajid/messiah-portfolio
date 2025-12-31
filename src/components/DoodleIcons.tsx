@@ -393,3 +393,24 @@ export const UsersIcon: React.FC<IconProps> = ({ className = "", size = 24 }) =>
     <path d="M21 21V19C21 17 20 16 17 15.5" />
   </svg>
 );
+
+export const GlobeIcon: React.FC<IconProps> = ({ className = "", size = 24 }) => (
+  <svg
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+    fill="none"
+    className={className}
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <circle cx="12" cy="12" r="9" />
+    <path d="M12 3C8 7 8 17 12 21" />
+    <path d="M12 3C16 7 16 17 12 21" />
+    <path d="M3 12H21" />
+    <path d="M4 8H20" />
+    <path d="M4 16H20" />
+  </svg>
+);

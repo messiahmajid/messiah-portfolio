@@ -51,35 +51,35 @@ function CardStack({ items, title }: CardStackProps) {
 
   return (
     <div ref={ref} className="flex flex-col items-center">
-      <h3 className="font-handwriting text-2xl sm:text-3xl text-pencil mb-8">
+      <h3 className="font-handwriting text-2xl sm:text-3xl text-pencil mb-6">
         {title}
       </h3>
-      <div className="relative h-[280px] w-full flex items-center justify-center">
+      <div className="relative w-full flex flex-col items-center" style={{ minHeight: `${items.length * 50 + 100}px` }}>
         {items.map((skill, index) => {
           const totalCards = items.length;
-          const middleIndex = (totalCards - 1) / 2;
 
-          // Stacked state: cards pile on top of each other with slight offsets
-          const stackedRotate = (index - middleIndex) * 3;
-          const stackedX = (index - middleIndex) * 2;
-          const stackedY = index * -2;
+          // Stacked state: cards pile on top with slight rotation offsets
+          const stackedRotate = (index - totalCards / 2) * 2;
+          const stackedX = (index % 2 === 0 ? -1 : 1) * (index * 2);
+          const stackedY = index * 3;
 
-          // Fanned out state: cards spread horizontally
-          const spreadX = (index - middleIndex) * 90;
-          const spreadRotate = (index - middleIndex) * 5;
-          const spreadY = Math.abs(index - middleIndex) * 8;
+          // Fanned out state: cards cascade vertically
+          const spreadY = index * 55;
+          const spreadX = (index % 2 === 0 ? -1 : 1) * 15;
+          const spreadRotate = (index % 2 === 0 ? -3 : 3);
 
           return (
             <motion.div
               key={skill.name}
               className="absolute"
+              style={{ top: 0 }}
               initial={false}
               animate={{
                 x: isInView ? spreadX : stackedX,
                 y: isInView ? spreadY : stackedY,
                 rotate: isInView ? spreadRotate : stackedRotate,
                 scale: isInView ? 1 : 1 - index * 0.02,
-                zIndex: isInView ? totalCards - Math.abs(index - middleIndex) : totalCards - index,
+                zIndex: isInView ? totalCards - index : totalCards - index,
               }}
               transition={{
                 type: "spring",
@@ -88,32 +88,33 @@ function CardStack({ items, title }: CardStackProps) {
                 delay: isInView ? index * 0.05 : (totalCards - index) * 0.03,
               }}
               whileHover={{
-                scale: 1.15,
+                scale: 1.1,
                 zIndex: 50,
                 rotate: 0,
-                y: -20,
+                x: 0,
               }}
             >
               <div
-                className="bg-white p-4 flex flex-col items-center justify-center gap-2 w-20 h-24 sm:w-24 sm:h-28 shadow-paper hover:shadow-paper-hover transition-shadow cursor-pointer"
+                className="bg-white px-6 py-3 flex items-center gap-3 shadow-paper hover:shadow-paper-hover transition-shadow cursor-pointer"
                 style={{
                   border: "2px solid #2d2d2d",
                   borderRadius: "8px 4px 12px 4px",
+                  minWidth: "140px",
                 }}
               >
                 {/* Colored circle decoration */}
                 <div
-                  className="absolute top-2 right-2 w-2 h-2 rounded-full opacity-60"
+                  className="w-2 h-2 rounded-full flex-shrink-0"
                   style={{ backgroundColor: skill.color }}
                 />
 
                 {/* Icon */}
-                <div style={{ color: skill.color }}>
-                  {skill.icon || <CodeIcon size={24} />}
+                <div style={{ color: skill.color }} className="flex-shrink-0">
+                  {skill.icon || <CodeIcon size={20} />}
                 </div>
 
                 {/* Skill name */}
-                <p className="font-sketch text-xs sm:text-sm text-pencil text-center leading-tight">
+                <p className="font-sketch text-sm text-pencil whitespace-nowrap">
                   {skill.name}
                 </p>
               </div>
@@ -169,7 +170,7 @@ export default function Skills() {
         </motion.div>
 
         {/* Card Stacks */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8">
           <CardStack items={languages} title="Languages" />
           <CardStack items={frameworks} title="Frameworks" />
           <CardStack items={tools} title="Bio Tools" />
