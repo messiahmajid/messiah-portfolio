@@ -30,7 +30,7 @@ interface Skill {
 const skills: Skill[] = [
   { name: "Python", category: "language", icon: <PythonIcon size={28} />, color: "#4ecdc4", primary: true },
   { name: "Java", category: "language", icon: <JavaIcon size={28} />, color: "#ff6b6b", primary: true },
-  { name: "R", category: "language", icon: <RLangIcon size={28} />, color: "#a855f7" },
+  { name: "R", category: "language", icon: <RLangIcon size={28} />, color: "#a855f7", primary: true },
   { name: "SQL", category: "language", icon: <DatabaseIcon size={28} />, color: "#3b82f6", primary: true },
   { name: "MATLAB", category: "language", icon: <MatlabIcon size={28} />, color: "#f59e0b" },
   { name: "Databricks", category: "framework", icon: <DatabricksIcon size={28} />, color: "#ff6b6b" },
@@ -38,7 +38,7 @@ const skills: Skill[] = [
   { name: "Scikit-learn", category: "framework", icon: <ScikitIcon size={28} />, color: "#f59e0b", primary: true },
   { name: "Matplotlib", category: "framework", icon: <ChartIcon size={28} />, color: "#3b82f6" },
   { name: "TensorFlow", category: "framework", icon: <TensorflowIcon size={28} />, color: "#ff6b6b", primary: true },
-  { name: "PyTorch", category: "framework", icon: <PyTorchIcon size={28} />, color: "#a855f7" },
+  { name: "PyTorch", category: "framework", icon: <PyTorchIcon size={28} />, color: "#a855f7", primary: true },
   { name: "BLAST", category: "tool", icon: <DNAIcon size={28} />, color: "#4ecdc4", primary: true },
   { name: "BioPython", category: "tool", icon: <PythonIcon size={28} />, color: "#22c55e" },
   { name: "ChimeraX", category: "tool", icon: <DNAIcon size={28} />, color: "#3b82f6" },
@@ -142,9 +142,9 @@ function CardStack({ category }: { category: CategoryInfo }) {
                   minWidth: "180px",
                 }}
               >
-                {/* Primary badge */}
+                {/* Primary badge - positioned on left to avoid being covered by cards above */}
                 {skill.primary && (
-                  <div className="absolute -top-2 -right-2">
+                  <div className="absolute -top-2 -left-2">
                     <StarDoodle size={18} color={skill.color} filled />
                   </div>
                 )}
