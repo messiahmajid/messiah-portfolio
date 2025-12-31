@@ -43,18 +43,15 @@ export default function Navigation() {
       <motion.nav
         initial={{ y: -100 }}
         animate={{ y: 0 }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolled
-            ? "bg-paper/95 backdrop-blur-sm shadow-paper"
-            : "bg-transparent"
-        }`}
+        className="fixed top-0 left-0 right-0 z-50 bg-transparent"
       >
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16 sm:h-20">
             {/* Logo */}
             <motion.a
               href="#"
-              className="font-handwriting text-2xl sm:text-3xl text-pencil hover:text-accent-coral transition-colors"
+              className="font-handwriting text-2xl sm:text-3xl hover:text-accent-coral transition-colors"
+              style={{ color: 'var(--cream-text)' }}
               whileHover={{ scale: 1.05, rotate: -2 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -67,11 +64,12 @@ export default function Navigation() {
                 <motion.a
                   key={item.name}
                   href={item.href}
-                  className={`relative px-4 py-2 font-sketch text-lg transition-colors click-ripple squiggle-click ${
-                    activeSection === item.href.slice(1)
-                      ? "text-accent-coral"
-                      : "text-pencil-light hover:text-pencil"
-                  }`}
+                  className="relative px-4 py-2 font-sketch text-lg transition-colors click-ripple squiggle-click"
+                  style={{
+                    color: activeSection === item.href.slice(1)
+                      ? '#ff6b6b'
+                      : 'var(--cream-text)'
+                  }}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
@@ -136,20 +134,23 @@ export default function Navigation() {
             >
               <div className="w-6 flex flex-col items-center justify-center space-y-1.5">
                 <motion.span
-                  className="w-full h-0.5 bg-pencil rounded-full"
+                  className="w-full h-0.5 rounded-full"
+                  style={{ backgroundColor: 'var(--cream-text)' }}
                   animate={{
                     rotate: isMobileMenuOpen ? 45 : 0,
                     y: isMobileMenuOpen ? 8 : 0,
                   }}
                 />
                 <motion.span
-                  className="w-full h-0.5 bg-pencil rounded-full"
+                  className="w-full h-0.5 rounded-full"
+                  style={{ backgroundColor: 'var(--cream-text)' }}
                   animate={{
                     opacity: isMobileMenuOpen ? 0 : 1,
                   }}
                 />
                 <motion.span
-                  className="w-full h-0.5 bg-pencil rounded-full"
+                  className="w-full h-0.5 rounded-full"
+                  style={{ backgroundColor: 'var(--cream-text)' }}
                   animate={{
                     rotate: isMobileMenuOpen ? -45 : 0,
                     y: isMobileMenuOpen ? -8 : 0,

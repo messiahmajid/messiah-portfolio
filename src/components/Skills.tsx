@@ -135,10 +135,10 @@ function CardStack({ category }: { category: CategoryInfo }) {
               }}
             >
               <div
-                className={`bg-white px-6 py-4 flex items-center gap-4 shadow-paper hover:shadow-paper-hover transition-all cursor-pointer relative card-sweep`}
+                className="px-6 py-4 flex items-center gap-4 shadow-paper hover:shadow-paper-hover transition-all cursor-pointer relative card-sweep rounded-2xl"
                 style={{
+                  background: 'var(--paper-color)',
                   border: skill.primary ? `3px solid ${skill.color}` : "2px solid #2d2d2d",
-                  borderRadius: "12px 6px 16px 6px",
                   minWidth: "180px",
                 }}
               >
