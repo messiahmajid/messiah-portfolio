@@ -414,3 +414,164 @@ export const GlobeIcon: React.FC<IconProps> = ({ className = "", size = 24 }) =>
     <path d="M4 16H20" />
   </svg>
 );
+
+// Skill-specific icons (scribble style)
+export const RLangIcon: React.FC<IconProps> = ({ className = "", size = 24 }) => (
+  <svg
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+    fill="none"
+    className={className}
+    stroke="currentColor"
+    strokeWidth="2.5"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <path d="M6 4V20" />
+    <path d="M6 4C6 4 14 3 14 9C14 14 6 12 6 12" />
+    <path d="M10 12L16 20" />
+  </svg>
+);
+
+export const MatlabIcon: React.FC<IconProps> = ({ className = "", size = 24 }) => (
+  <svg
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+    fill="none"
+    className={className}
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <path d="M4 16L8 8L12 14L16 6L20 16" />
+    <path d="M4 20H20" />
+    <circle cx="12" cy="14" r="1.5" fill="currentColor" />
+  </svg>
+);
+
+export const DatabricksIcon: React.FC<IconProps> = ({ className = "", size = 24 }) => (
+  <svg
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+    fill="none"
+    className={className}
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <path d="M12 2L4 7V17L12 22L20 17V7L12 2Z" />
+    <path d="M4 12L12 17L20 12" />
+    <path d="M12 7L12 17" />
+  </svg>
+);
+
+export const TableauIcon: React.FC<IconProps> = ({ className = "", size = 24 }) => (
+  <svg
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+    fill="none"
+    className={className}
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <rect x="3" y="3" width="7" height="7" />
+    <rect x="14" y="3" width="7" height="7" />
+    <rect x="3" y="14" width="7" height="7" />
+    <rect x="14" y="14" width="7" height="7" />
+    <line x1="12" y1="6" x2="12" y2="6.5" />
+    <line x1="12" y1="17" x2="12" y2="17.5" />
+    <line x1="6" y1="12" x2="6.5" y2="12" />
+    <line x1="17" y1="12" x2="17.5" y2="12" />
+  </svg>
+);
+
+export const ChartIcon: React.FC<IconProps> = ({ className = "", size = 24 }) => (
+  <svg
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+    fill="none"
+    className={className}
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <path d="M3 3V21H21" />
+    <path d="M7 16L11 10L15 14L21 6" />
+    <circle cx="7" cy="16" r="1.5" fill="currentColor" />
+    <circle cx="11" cy="10" r="1.5" fill="currentColor" />
+    <circle cx="15" cy="14" r="1.5" fill="currentColor" />
+    <circle cx="21" cy="6" r="1.5" fill="currentColor" />
+  </svg>
+);
+
+export const TensorflowIcon: React.FC<IconProps> = ({ className = "", size = 24 }) => (
+  <svg
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+    fill="none"
+    className={className}
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <path d="M12 2L4 6V10L12 14L20 10V6L12 2Z" />
+    <path d="M4 10V18L12 22V14" />
+    <path d="M20 10V18L12 22" />
+    <path d="M12 14V22" />
+  </svg>
+);
+
+export const PyTorchIcon: React.FC<IconProps> = ({ className = "", size = 24 }) => (
+  <svg
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+    fill="none"
+    className={className}
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <circle cx="12" cy="14" r="7" />
+    <circle cx="15" cy="8" r="2" fill="currentColor" />
+    <path d="M12 3V7" />
+    <path d="M12 7L8 11" />
+  </svg>
+);
+
+export const ScikitIcon: React.FC<IconProps> = ({ className = "", size = 24 }) => (
+  <svg
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+    fill="none"
+    className={className}
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <circle cx="12" cy="12" r="3" />
+    <circle cx="12" cy="4" r="2" />
+    <circle cx="20" cy="12" r="2" />
+    <circle cx="12" cy="20" r="2" />
+    <circle cx="4" cy="12" r="2" />
+    <path d="M12 7V9" />
+    <path d="M17 12H15" />
+    <path d="M12 15V17" />
+    <path d="M7 12H9" />
+  </svg>
+);
