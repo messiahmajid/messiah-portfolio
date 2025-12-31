@@ -66,6 +66,7 @@ export default function About() {
             whileInView={{ opacity: 1, x: 0, rotate: -1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
+            style={{ y: y1, rotate: rotate1 }}
             className="relative"
           >
             <div
@@ -111,6 +112,7 @@ export default function About() {
             whileInView={{ opacity: 1, x: 0, rotate: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
+            style={{ y: y2, rotate: rotate2 }}
             className="relative"
           >
             <div
