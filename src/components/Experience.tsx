@@ -129,12 +129,11 @@ export default function Experience() {
                   className={`relative ${index % 2 === 1 ? "md:order-1" : ""}`}
                 >
                   <div
-                    className="bg-white p-8 shadow-paper relative card-float hover-jitter"
+                    className="bg-white p-8 shadow-paper relative card-sweep"
                     style={{
                       border: "2px solid #2d2d2d",
                       borderRadius: "8px 4px 12px 4px",
                       transform: `rotate(${index % 2 === 0 ? -0.5 : 0.5}deg)`,
-                      animationDelay: `${index * 0.5}s`,
                     }}
                   >
                     <Pushpin
