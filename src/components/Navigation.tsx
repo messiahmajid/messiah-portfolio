@@ -41,9 +41,9 @@ export default function Navigation() {
   return (
     <>
       <motion.nav
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        className="fixed top-0 left-0 right-0 z-50 bg-transparent"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        className="relative z-50 bg-transparent"
       >
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16 sm:h-20">
@@ -169,10 +169,10 @@ export default function Navigation() {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="fixed inset-0 z-40 md:hidden"
+            className="absolute left-0 right-0 top-full z-40 md:hidden"
           >
             <div
-              className="absolute inset-0 bg-pencil/20 backdrop-blur-sm"
+              className="fixed inset-0 bg-pencil/20 backdrop-blur-sm -z-10"
               onClick={() => setIsMobileMenuOpen(false)}
             />
             <motion.div
@@ -180,7 +180,7 @@ export default function Navigation() {
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "spring", damping: 25 }}
-              className="absolute right-0 top-16 w-64 bg-paper shadow-paper-hover rounded-l-2xl p-6"
+              className="absolute right-0 top-0 w-64 bg-paper shadow-paper-hover rounded-l-2xl p-6"
               style={{
                 border: "2px solid #2d2d2d",
                 borderRight: "none",
