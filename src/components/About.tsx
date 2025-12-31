@@ -57,7 +57,7 @@ export default function About() {
             className="relative"
           >
             <div
-              className="bg-white p-8 pl-12 relative shadow-paper card-float hover-jitter"
+              className="bg-white p-8 pl-12 relative shadow-paper card-sweep"
               style={{
                 border: "2px solid #2d2d2d",
                 borderRadius: "4px 8px 8px 4px",
@@ -102,11 +102,10 @@ export default function About() {
             className="relative"
           >
             <div
-              className="bg-gradient-to-br from-amber-50 to-white p-8 relative shadow-paper card-float hover-jitter"
+              className="bg-gradient-to-br from-amber-50 to-white p-8 relative shadow-paper card-sweep"
               style={{
                 border: "3px solid #2d2d2d",
                 borderRadius: "8px 4px 4px 8px",
-                animationDelay: "0.3s",
               }}
             >
               <WashiTape className="-top-3 right-8" rotation={5} pattern="dots" color="#ffd54f" />

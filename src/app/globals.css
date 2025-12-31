@@ -5,7 +5,7 @@
 @tailwind utilities;
 
 :root {
-  --paper-color: #faf8f5;
+  --paper-color: #f0ebe3;
   --pencil-color: #2d2d2d;
   --highlight-yellow: #fff59d;
   --highlight-pink: #f8bbd9;
@@ -535,71 +535,32 @@ a:not(.no-ripple):active {
 }
 
 /* ============================================
-   CARD WIGGLE/FLOAT ANIMATIONS
+   CARD SWEEP/PARALLAX ANIMATIONS
    ============================================ */
 
-/* Gentle floating animation for cards */
-.card-float {
-  animation: cardFloat 4s ease-in-out infinite;
+/* Smooth sweep transition for cards - responds to scroll */
+.card-sweep {
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-.card-float-delay-1 { animation-delay: 0.5s; }
-.card-float-delay-2 { animation-delay: 1s; }
-.card-float-delay-3 { animation-delay: 1.5s; }
-.card-float-delay-4 { animation-delay: 2s; }
-
-@keyframes cardFloat {
-  0%, 100% {
-    transform: translateY(0) rotate(var(--rotation, 0deg));
-  }
-  50% {
-    transform: translateY(-6px) rotate(calc(var(--rotation, 0deg) + 1deg));
-  }
+.card-sweep:hover {
+  transform: translateY(-4px) rotate(0deg);
 }
 
-/* Subtle wiggle for cards */
-.card-wiggle {
-  animation: cardWiggle 3s ease-in-out infinite;
+/* Subtle tilt on hover */
+.card-tilt:hover {
+  transform: perspective(1000px) rotateX(2deg) rotateY(-2deg) translateY(-4px);
+  transition: transform 0.3s ease-out;
 }
 
-@keyframes cardWiggle {
-  0%, 100% { transform: rotate(-1deg); }
-  25% { transform: rotate(0.5deg); }
-  50% { transform: rotate(1deg); }
-  75% { transform: rotate(-0.5deg); }
+/* Smooth lift effect */
+.card-lift {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Breathing/pulse effect */
-.card-breathe {
-  animation: cardBreathe 4s ease-in-out infinite;
-}
-
-@keyframes cardBreathe {
-  0%, 100% {
-    transform: scale(1);
-    box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.1);
-  }
-  50% {
-    transform: scale(1.01);
-    box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.12);
-  }
-}
-
-/* Jitter/shake effect for more energy */
-.card-jitter {
-  animation: cardJitter 0.15s ease-in-out infinite;
-}
-
-@keyframes cardJitter {
-  0%, 100% { transform: translate(0, 0) rotate(0deg); }
-  25% { transform: translate(0.5px, -0.5px) rotate(0.3deg); }
-  50% { transform: translate(-0.5px, 0.5px) rotate(-0.3deg); }
-  75% { transform: translate(0.5px, 0.5px) rotate(0.2deg); }
-}
-
-/* Hover jitter - activates on hover */
-.hover-jitter:hover {
-  animation: cardJitter 0.1s ease-in-out infinite;
+.card-lift:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 24px -8px rgba(0, 0, 0, 0.15);
 }
 
 /* ============================================

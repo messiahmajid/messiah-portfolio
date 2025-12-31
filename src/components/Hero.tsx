@@ -57,38 +57,15 @@ export default function Hero() {
           </span>
         </motion.div>
 
-        {/* Main Name - Spider-Verse Style */}
+        {/* Main Name */}
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="relative text-6xl sm:text-7xl md:text-8xl lg:text-9xl text-pencil mb-6 leading-tight click-wiggle"
+          className="font-handwriting text-6xl sm:text-7xl md:text-8xl lg:text-9xl text-pencil mb-6 leading-tight click-wiggle"
         >
           <ScribbleUnderline color="#ff6b6b">
-            <span className="font-glitch glitch-frame relative inline-block">
-              {/* Chromatic aberration layers */}
-              <span
-                className="absolute inset-0 text-cyan-400 opacity-70 mix-blend-multiply"
-                style={{
-                  animation: 'chromaticShiftCyan 2s ease-in-out infinite',
-                  transform: 'translate(-2px, 0)'
-                }}
-                aria-hidden="true"
-              >
-                Messiah Majid
-              </span>
-              <span
-                className="absolute inset-0 text-pink-500 opacity-70 mix-blend-multiply"
-                style={{
-                  animation: 'chromaticShiftMagenta 2s ease-in-out infinite',
-                  transform: 'translate(2px, 0)'
-                }}
-                aria-hidden="true"
-              >
-                Messiah Majid
-              </span>
-              <span className="relative">Messiah Majid</span>
-            </span>
+            Messiah Majid
           </ScribbleUnderline>
         </motion.h1>
 
