@@ -279,12 +279,14 @@ export default function Leadership() {
             style={{ y: yFeatured, rotate: rotateFeatured }}
             className="mb-16"
           >
-            <div
+            <motion.div
               className="relative p-8 shadow-lg rounded-2xl"
               style={{
                 background: '#FFFFFF',
                 border: "3px solid #a855f7",
               }}
+              whileHover={{ scale: 1.02, y: -4 }}
+              transition={{ duration: 0.3 }}
             >
               {/* Featured badge */}
               <div className="absolute -top-3 left-8 bg-purple-500 text-white px-4 py-1 font-sketch text-sm rounded-full">
@@ -339,7 +341,7 @@ export default function Leadership() {
                   </ul>
                 </div>
               </div>
-            </div>
+            </motion.div>
           </motion.div>
         ))}
 
