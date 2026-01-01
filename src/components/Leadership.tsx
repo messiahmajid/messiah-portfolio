@@ -261,8 +261,8 @@ export default function Leadership() {
                   COMING SOON
                 </span>
               </div>
-              <h3 className="font-marker text-3xl font-bold mb-2">{tedTalk.title}</h3>
-              <p className="font-sketch text-lg font-medium max-w-2xl" style={{ opacity: 0.95 }}>
+              <h3 className="font-marker text-3xl font-semibold mb-2">{tedTalk.title}</h3>
+              <p className="font-sketch text-lg max-w-2xl" style={{ opacity: 0.95 }}>
                 {tedTalk.description}
               </p>
             </motion.div>
@@ -307,13 +307,13 @@ export default function Leadership() {
                       <span style={{ color: role.color }}>{role.icon}</span>
                     </div>
                     <div>
-                      <h3 className="font-marker text-2xl text-pencil font-bold">{role.title}</h3>
-                      <p className="font-sketch text-xl text-purple-600 font-bold">{role.organization}</p>
-                      <p className="font-handwriting text-lg font-medium" style={{ color: '#5a5a5a' }}>{role.period}</p>
+                      <h3 className="font-marker text-2xl font-semibold" style={{ color: '#2d2d2d' }}>{role.title}</h3>
+                      <p className="font-sketch text-xl text-purple-600 font-semibold">{role.organization}</p>
+                      <p className="font-handwriting text-lg" style={{ color: '#4a4a4a' }}>{role.period}</p>
                     </div>
                   </div>
 
-                  <p className="font-sketch text-lg font-medium mb-4 italic" style={{ color: '#4a4a4a' }}>
+                  <p className="font-sketch text-lg mb-4 italic" style={{ color: '#3a3a3a' }}>
                     {role.description}
                   </p>
 
@@ -333,7 +333,7 @@ export default function Leadership() {
                           filled
                           className="flex-shrink-0 mt-1"
                         />
-                        <p className="font-sketch text-base font-medium leading-relaxed" style={{ color: '#3d3d3d' }}>
+                        <p className="font-sketch text-base leading-relaxed" style={{ color: '#2d2d2d' }}>
                           {highlight}
                         </p>
                       </motion.li>
@@ -403,16 +403,16 @@ export default function Leadership() {
                         <span style={{ color: role.color }}>{role.icon}</span>
                       </div>
                       <div>
-                        <h3 className="font-marker text-xl text-pencil font-bold">{role.title}</h3>
-                        <p className="font-sketch text-lg font-semibold" style={{ color: '#3d3d3d' }}>{role.organization}</p>
-                        <p className="font-handwriting text-lg font-medium" style={{ color: '#5a5a5a' }}>
+                        <h3 className="font-marker text-xl font-semibold" style={{ color: '#2d2d2d' }}>{role.title}</h3>
+                        <p className="font-sketch text-lg font-medium" style={{ color: '#3d3d3d' }}>{role.organization}</p>
+                        <p className="font-handwriting text-lg" style={{ color: '#4a4a4a' }}>
                           {role.period}
                         </p>
                       </div>
                     </div>
 
                     {/* Description */}
-                    <p className="font-sketch text-base font-medium mb-4 italic" style={{ color: '#4a4a4a' }}>
+                    <p className="font-sketch text-base mb-4 italic" style={{ color: '#3a3a3a' }}>
                       {role.description}
                     </p>
 
@@ -433,7 +433,7 @@ export default function Leadership() {
                             filled
                             className="flex-shrink-0 mt-1"
                           />
-                          <p className="font-sketch text-base font-medium leading-relaxed" style={{ color: '#3d3d3d' }}>
+                          <p className="font-sketch text-base leading-relaxed" style={{ color: '#2d2d2d' }}>
                             {highlight}
                           </p>
                         </motion.li>
@@ -455,7 +455,7 @@ export default function Leadership() {
         >
           <div className="flex items-center justify-center gap-3 mb-10">
             <HeartIcon size={28} className="text-accent-coral" />
-            <h3 className="font-marker text-2xl font-bold" style={{ color: '#2d2d2d' }}>Also Part Of</h3>
+            <h3 className="font-marker text-2xl font-semibold" style={{ color: '#2d2d2d' }}>Also Part Of</h3>
           </div>
 
           <div className="space-y-8">
@@ -489,7 +489,7 @@ export default function Leadership() {
                     transform: `rotate(${index % 2 === 0 ? -1 : 1}deg)`,
                   }}
                 >
-                  <p className="font-sketch text-lg font-semibold flex items-center gap-3" style={{ color: '#2d2d2d' }}>
+                  <p className="font-sketch text-lg font-medium flex items-center gap-3" style={{ color: '#2d2d2d' }}>
                     <span style={{ color: activity.color }}>{activity.icon}</span>
                     {activity.name}
                   </p>
