@@ -9,15 +9,12 @@ import Projects from "@/components/Projects";
 import Leadership from "@/components/Leadership";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
-import { ChalkBackground, WavyDivider } from "@/components/Doodles";
+import { WavyDivider } from "@/components/Doodles";
 import PhotoStack from "@/components/PhotoStack";
 
 export default function Home() {
   return (
     <main className="min-h-screen relative">
-      {/* Chalk-style doodles on dark background */}
-      <ChalkBackground className="z-0" />
-
       {/* Side PhotoStacks */}
       <PhotoStack position="left" />
       <PhotoStack position="right" />
