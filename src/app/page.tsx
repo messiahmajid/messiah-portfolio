@@ -11,12 +11,17 @@ import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import { ChalkBackground, WavyDivider } from "@/components/Doodles";
 import PhotoStack from "@/components/PhotoStack";
+import SidebarDoodles from "@/components/SidebarDoodles";
 
 export default function Home() {
   return (
     <main className="min-h-screen relative">
       {/* Chalk-style doodles on dark background */}
       <ChalkBackground className="z-0" />
+
+      {/* Sidebar Doodles - coral squares with icons */}
+      <SidebarDoodles position="left" count={10} />
+      <SidebarDoodles position="right" count={10} />
 
       {/* Side PhotoStacks */}
       <PhotoStack position="left" />
@@ -27,11 +32,11 @@ export default function Home() {
         <Navigation />
         <Hero />
 
-        <WavyDivider className="my-4 opacity-30" color="#ff6b6b" />
+        <WavyDivider className="my-4 opacity-30" color="#DC6B5A" />
 
         <About />
 
-        <WavyDivider className="my-4 opacity-30" color="#4ecdc4" />
+        <WavyDivider className="my-4 opacity-30" color="#5BA3D0" />
 
         <Skills />
 
@@ -39,15 +44,15 @@ export default function Home() {
 
         <Experience />
 
-        <WavyDivider className="my-4 opacity-30" color="#a855f7" />
+        <WavyDivider className="my-4 opacity-30" color="#DC6B5A" />
 
         <Projects />
 
-        <WavyDivider className="my-4 opacity-30" color="#3b82f6" />
+        <WavyDivider className="my-4 opacity-30" color="#5BA3D0" />
 
         <Leadership />
 
-        <WavyDivider className="my-4 opacity-30" color="#ff6b6b" />
+        <WavyDivider className="my-4 opacity-30" color="#DC6B5A" />
 
         <Contact />
         <Footer />

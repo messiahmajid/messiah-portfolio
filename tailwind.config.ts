@@ -9,11 +9,18 @@ export default {
   theme: {
     extend: {
       colors: {
-        paper: "#faf8f5",
-        "paper-dark": "#f0ebe3",
-        cream: "#fff9e6",
-        pencil: "#2d2d2d",
-        "pencil-light": "#666666",
+        // New Design System Primary Colors
+        paper: "#F2DCCB",
+        "paper-dark": "#e8d4c3",
+        cream: "#F2DCCB",
+        "dark-bg": "#212121",
+        pencil: "#1A1A1A",
+        "pencil-light": "#4a4a4a",
+        // Accent Colors
+        coral: "#DC6B5A",
+        "accent-light": "#F2DCCB",
+        "border-blue": "#5BA3D0",
+        // Highlight Colors
         highlight: {
           yellow: "#fff59d",
           pink: "#f8bbd9",
@@ -21,8 +28,9 @@ export default {
           green: "#c8e6c9",
           orange: "#ffcc80",
         },
+        // Legacy accent colors (keeping for compatibility)
         accent: {
-          coral: "#ff6b6b",
+          coral: "#DC6B5A",
           teal: "#4ecdc4",
           purple: "#a855f7",
           blue: "#3b82f6",
@@ -30,9 +38,11 @@ export default {
       },
       fontFamily: {
         handwriting: ["Caveat", "cursive"],
+        gochi: ["Gochi Hand", "sans-serif"],
         sketch: ["Patrick Hand", "cursive"],
         marker: ["Permanent Marker", "cursive"],
         body: ["Nunito", "sans-serif"],
+        serif: ["Times New Roman", "serif"],
       },
       animation: {
         "wiggle": "wiggle 0.5s ease-in-out",

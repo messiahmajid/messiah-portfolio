@@ -25,7 +25,7 @@ const projects: Project[] = [
     subtitle: "AI-Powered Fraud Detection Tool",
     date: "Feb 2025",
     icon: <RocketIcon size={32} />,
-    color: "#ff6b6b",
+    color: "#DC6B5A",
     tagColor: "#fff59d",
     highlights: [
       "Designed AI-powered Chrome extension and web platform for real-time scam detection, identifying 70% of social engineering scam attempts",
@@ -40,7 +40,7 @@ const projects: Project[] = [
     subtitle: "Computational Tool for Viral Capsid Dynamics",
     date: "Jan 2025",
     icon: <DNAIcon size={32} />,
-    color: "#4ecdc4",
+    color: "#5BA3D0",
     tagColor: "#b3e5fc",
     highlights: [
       "Innovated open-source Python package to model viral capsid mechanical behavior, achieving 95% accuracy in predicting quasi-rigid domains",
@@ -131,10 +131,11 @@ export default function Projects() {
               className="group"
             >
               <div
-                className="p-5 pb-6 shadow-polaroid relative rounded-2xl"
+                className="p-5 pb-6 relative rounded-3xl project-card"
                 style={{
-                  background: 'var(--paper-color)',
-                  border: "2px solid #2d2d2d",
+                  background: '#FFFFFF',
+                  border: "5px solid #FFFFFF",
+                  boxShadow: "0 10px 30px rgba(0, 0, 0, 0.2)",
                 }}
               >
                 {/* Tape decoration */}

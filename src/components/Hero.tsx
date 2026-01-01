@@ -23,23 +23,23 @@ export default function Hero() {
           animate={{ rotate: [0, -10, 0], y: [0, 5, 0] }}
           transition={{ duration: 5, repeat: Infinity }}
         >
-          <StarDoodle size={32} color="#ff6b6b" />
+          <StarDoodle size={32} color="#DC6B5A" />
         </motion.div>
         <motion.div
           className="absolute bottom-40 left-20 opacity-20"
           animate={{ rotate: [0, 15, 0] }}
           transition={{ duration: 6, repeat: Infinity }}
         >
-          <StarDoodle size={28} color="#4ecdc4" filled />
+          <StarDoodle size={28} color="#5BA3D0" filled />
         </motion.div>
 
-        {/* Grid paper lines in background */}
+        {/* Grid paper lines in background - updated design */}
         <div
-          className="absolute inset-0 opacity-[0.03]"
+          className="absolute inset-0 opacity-[0.04]"
           style={{
             backgroundImage:
-              "linear-gradient(#2d2d2d 1px, transparent 1px), linear-gradient(90deg, #2d2d2d 1px, transparent 1px)",
-            backgroundSize: "40px 40px",
+              "linear-gradient(#5BA3D0 1px, transparent 1px), linear-gradient(90deg, #5BA3D0 1px, transparent 1px)",
+            backgroundSize: "30px 30px",
           }}
         />
       </div>
@@ -65,7 +65,7 @@ export default function Hero() {
           className="font-handwriting text-6xl sm:text-7xl md:text-8xl lg:text-9xl mb-6 leading-tight click-wiggle"
           style={{ color: 'var(--cream-text)' }}
         >
-          <ScribbleUnderline color="#c75d4a">
+          <ScribbleUnderline color="#DC6B5A">
             Messiah Majid
           </ScribbleUnderline>
         </motion.h1>
@@ -80,11 +80,11 @@ export default function Hero() {
           <span className="font-sketch text-2xl sm:text-3xl click-wiggle hover-wiggle" style={{ color: 'var(--cream-text)' }}>
             Computer Science
           </span>
-          <span className="hidden sm:inline font-handwriting text-3xl click-wiggle" style={{ color: '#4ecdc4' }}>+</span>
+          <span className="hidden sm:inline font-handwriting text-3xl click-wiggle" style={{ color: '#5BA3D0' }}>+</span>
           <span className="font-sketch text-2xl sm:text-3xl click-wiggle hover-wiggle" style={{ color: 'var(--cream-text)' }}>
             Math
           </span>
-          <span className="hidden sm:inline font-handwriting text-3xl click-wiggle" style={{ color: '#c75d4a' }}>+</span>
+          <span className="hidden sm:inline font-handwriting text-3xl click-wiggle" style={{ color: '#DC6B5A' }}>+</span>
           <span className="font-sketch text-2xl sm:text-3xl click-wiggle hover-wiggle" style={{ color: 'var(--cream-text)' }}>
             Biology
           </span>
@@ -98,13 +98,13 @@ export default function Hero() {
           className="relative max-w-2xl mx-auto mb-10"
         >
           <div
-            className="p-6 rounded-2xl shadow-paper transform rotate-1"
+            className="p-6 rounded-2xl shadow-paper transform rotate-1 grid-background"
             style={{
               background: 'var(--paper-color)',
-              border: "3px solid #c75d4a",
+              border: "5px solid #DC6B5A",
             }}
           >
-            <p className="font-sketch text-lg sm:text-xl leading-relaxed" style={{ color: '#5a4a42' }}>
+            <p className="font-sketch text-lg sm:text-xl leading-relaxed relative z-10" style={{ color: '#1A1A1A' }}>
               Building impactful software at the intersection of{" "}
               <span className="highlight-text click-wiggle">technology</span> and{" "}
               <span className="highlight-pink click-wiggle">life sciences</span>.
@@ -117,7 +117,7 @@ export default function Hero() {
             className="absolute -top-3 left-1/2 transform -translate-x-1/2 -rotate-2 w-16 h-6 opacity-80"
             style={{
               background:
-                "repeating-linear-gradient(45deg, #c75d4a, #c75d4a 4px, rgba(255,255,255,0.3) 4px, rgba(255,255,255,0.3) 8px)",
+                "repeating-linear-gradient(45deg, #DC6B5A, #DC6B5A 4px, rgba(255,255,255,0.3) 4px, rgba(255,255,255,0.3) 8px)",
               boxShadow: "1px 2px 3px rgba(0,0,0,0.1)",
             }}
           />
@@ -132,39 +132,39 @@ export default function Hero() {
         >
           <motion.a
             href="mailto:messiah.majid@miami.edu"
-            className="group flex items-center gap-2 px-4 py-2 rounded-full shadow-paper hover:shadow-paper-hover transition-all"
-            style={{ background: 'var(--paper-color)', border: "2px solid #c75d4a" }}
+            className="group flex items-center gap-2 px-4 py-2 rounded-full shadow-paper hover:shadow-paper-hover transition-all hover-scale"
+            style={{ background: 'var(--paper-color)', border: "3px solid #DC6B5A" }}
             whileHover={{ scale: 1.05, rotate: -2 }}
             whileTap={{ scale: 0.95 }}
           >
-            <EmailIcon size={20} className="text-[#c75d4a]" />
-            <span className="font-sketch text-sm sm:text-base hidden sm:inline" style={{ color: '#5a4a42' }}>Email</span>
+            <EmailIcon size={20} className="text-[#DC6B5A]" />
+            <span className="font-sketch text-sm sm:text-base hidden sm:inline" style={{ color: '#1A1A1A' }}>Email</span>
           </motion.a>
 
           <motion.a
             href="https://www.linkedin.com/in/messiahmajid"
             target="_blank"
             rel="noopener noreferrer"
-            className="group flex items-center gap-2 px-4 py-2 rounded-full shadow-paper hover:shadow-paper-hover transition-all"
-            style={{ background: 'var(--paper-color)', border: "2px solid #c75d4a" }}
+            className="group flex items-center gap-2 px-4 py-2 rounded-full shadow-paper hover:shadow-paper-hover transition-all hover-scale"
+            style={{ background: 'var(--paper-color)', border: "3px solid #DC6B5A" }}
             whileHover={{ scale: 1.05, rotate: 2 }}
             whileTap={{ scale: 0.95 }}
           >
-            <LinkedInIcon size={20} className="text-[#c75d4a]" />
-            <span className="font-sketch text-sm sm:text-base hidden sm:inline" style={{ color: '#5a4a42' }}>LinkedIn</span>
+            <LinkedInIcon size={20} className="text-[#DC6B5A]" />
+            <span className="font-sketch text-sm sm:text-base hidden sm:inline" style={{ color: '#1A1A1A' }}>LinkedIn</span>
           </motion.a>
 
           <motion.a
             href="https://github.com/messiahmajid"
             target="_blank"
             rel="noopener noreferrer"
-            className="group flex items-center gap-2 px-4 py-2 rounded-full shadow-paper hover:shadow-paper-hover transition-all"
-            style={{ background: 'var(--paper-color)', border: "2px solid #c75d4a" }}
+            className="group flex items-center gap-2 px-4 py-2 rounded-full shadow-paper hover:shadow-paper-hover transition-all hover-scale"
+            style={{ background: 'var(--paper-color)', border: "3px solid #DC6B5A" }}
             whileHover={{ scale: 1.05, rotate: -1 }}
             whileTap={{ scale: 0.95 }}
           >
-            <GitHubIcon size={20} className="text-[#c75d4a]" />
-            <span className="font-sketch text-sm sm:text-base hidden sm:inline" style={{ color: '#5a4a42' }}>GitHub</span>
+            <GitHubIcon size={20} className="text-[#DC6B5A]" />
+            <span className="font-sketch text-sm sm:text-base hidden sm:inline" style={{ color: '#1A1A1A' }}>GitHub</span>
           </motion.a>
         </motion.div>
 
