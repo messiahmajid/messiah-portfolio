@@ -67,7 +67,7 @@ export default function Navigation() {
                   className="relative px-4 py-2 font-sketch text-lg transition-colors click-ripple squiggle-click"
                   style={{
                     color: activeSection === item.href.slice(1)
-                      ? '#ff6b6b'
+                      ? '#DC6B5A'
                       : 'var(--cream-text)'
                   }}
                   whileHover={{ scale: 1.05 }}
@@ -91,7 +91,7 @@ export default function Navigation() {
                            C 28 38, 2 30, 8 20
                            C 6 18, 10 15, 12 18"
                         fill="none"
-                        stroke="#ff6b6b"
+                        stroke="#DC6B5A"
                         strokeWidth="1.8"
                         strokeLinecap="round"
                         strokeLinejoin="round"
@@ -112,7 +112,7 @@ export default function Navigation() {
                       <motion.path
                         d="M15 22 Q 20 24, 25 21"
                         fill="none"
-                        stroke="#ff6b6b"
+                        stroke="#DC6B5A"
                         strokeWidth="1.2"
                         strokeLinecap="round"
                         opacity="0.5"
@@ -182,7 +182,7 @@ export default function Navigation() {
               transition={{ type: "spring", damping: 25 }}
               className="absolute right-0 top-0 w-64 bg-paper shadow-paper-hover rounded-l-2xl p-6"
               style={{
-                border: "2px solid #2d2d2d",
+                border: "3px solid #DC6B5A",
                 borderRight: "none",
               }}
             >

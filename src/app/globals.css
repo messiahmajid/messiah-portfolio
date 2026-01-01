@@ -1,17 +1,28 @@
-@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Nunito:wght@300;400;500;600;700&family=Patrick+Hand&family=Permanent+Marker&family=Bangers&family=Comic+Neue:wght@700&family=Indie+Flower&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Gochi+Hand&family=Nunito:wght@300;400;500;600;700&family=Patrick+Hand&family=Permanent+Marker&family=Bangers&family=Comic+Neue:wght@700&family=Indie+Flower&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --bg-dark: #1a1a1a;
-  --paper-color: #f5ebe0;
-  --card-color: #f5ebe0;
-  --accent-red: #d35f5f;
-  --cream-text: #e8ddd4;
-  --pencil-color: #2d2d2d;
+  /* Primary Colors - New Design System */
+  --bg-dark: #212121;
+  --paper-color: #F2DCCB;
+  --card-color: #F2DCCB;
+  --accent-coral: #DC6B5A;
+  --accent-red: #DC6B5A;
+  --accent-light: #F2DCCB;
+  --cream-text: #F2DCCB;
+  --text-dark: #1A1A1A;
+  --pencil-color: #1A1A1A;
   --chalk-color: rgba(255, 255, 255, 0.7);
+
+  /* Neutral Colors */
+  --white: #FFFFFF;
+  --light-gray: #F5F5F5;
+  --border-blue: #5BA3D0;
+
+  /* Highlight Colors */
   --highlight-yellow: #fff59d;
   --highlight-pink: #f8bbd9;
   --highlight-blue: #b3e5fc;
@@ -36,6 +47,10 @@ body {
 /* Handwriting text styles */
 .handwriting {
   font-family: 'Caveat', cursive;
+}
+
+.gochi-hand {
+  font-family: 'Gochi Hand', sans-serif;
 }
 
 .sketch-text {
@@ -159,7 +174,7 @@ body {
 }
 
 .circle-hover:hover::after {
-  border-color: #ff6b6b;
+  border-color: #DC6B5A;
   animation: scribbleCircle 0.5s ease-in-out;
 }
 
@@ -190,7 +205,7 @@ body {
   left: 0;
   width: 100%;
   height: 8px;
-  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 10'%3E%3Cpath d='M0 5 Q 25 0, 50 5 T 100 5' stroke='%23ff6b6b' stroke-width='2' fill='none'/%3E%3C/svg%3E") repeat-x;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 10'%3E%3Cpath d='M0 5 Q 25 0, 50 5 T 100 5' stroke='%23DC6B5A' stroke-width='2' fill='none'/%3E%3C/svg%3E") repeat-x;
   background-size: 100px 10px;
 }
 
@@ -442,7 +457,7 @@ body {
 
 .click-ripple:active::before {
   animation: squigglyRipple1 0.6s ease-out forwards;
-  border: 2px dashed #ff6b6b;
+  border: 2px dashed #DC6B5A;
 }
 
 .click-ripple:active::after {
@@ -510,7 +525,7 @@ a:not(.no-ripple):active {
   left: 0;
   width: 100%;
   height: 6px;
-  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 8'%3E%3Cpath d='M0 4 Q 12 0, 25 4 T 50 4 T 75 4 T 100 4' stroke='%23ff6b6b' stroke-width='2' fill='none' opacity='0.7'/%3E%3C/svg%3E") repeat-x;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 8'%3E%3Cpath d='M0 4 Q 12 0, 25 4 T 50 4 T 75 4 T 100 4' stroke='%23DC6B5A' stroke-width='2' fill='none' opacity='0.7'/%3E%3C/svg%3E") repeat-x;
   background-size: 50px 8px;
   opacity: 0;
   transform: scaleX(0);
@@ -783,4 +798,163 @@ a:not(.no-ripple):active {
   25% { filter: hue-rotate(30deg); }
   50% { filter: hue-rotate(-20deg); }
   75% { filter: hue-rotate(15deg); }
+}
+
+/* ============================================
+   NEW DESIGN SYSTEM STYLES
+   ============================================ */
+
+/* Hero card with thick coral border */
+.hero-card {
+  border: 15px solid var(--accent-coral);
+  border-radius: 24px;
+  background: var(--accent-light);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle grid pattern background */
+.grid-background {
+  position: relative;
+}
+
+.grid-background::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(90, 90, 90, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(90, 90, 90, 0.1) 1px, transparent 1px);
+  background-size: 20px 20px;
+  pointer-events: none;
+}
+
+/* Project card styling */
+.project-card {
+  border: 5px solid #FFFFFF;
+  border-radius: 24px;
+  background: #FFFFFF;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* Doodle box styling for sidebar */
+.doodle-box {
+  width: 50px;
+  height: 50px;
+  background: var(--accent-coral);
+  border: 2px solid var(--accent-coral);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Sidebar container */
+.sidebar-doodles {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 60px;
+  top: 120px;
+  z-index: 5;
+}
+
+.sidebar-left {
+  left: 10px;
+}
+
+.sidebar-right {
+  right: 10px;
+}
+
+/* Tilted notepad effect */
+.tilted-note {
+  transform: rotate(-3deg);
+}
+
+.tilted-note-reverse {
+  transform: rotate(3deg);
+}
+
+/* New animation keyframes */
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes hoverBounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+/* Enhanced hover effects */
+.hover-scale {
+  transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+}
+
+.hover-scale:hover {
+  transform: scale(1.05);
+}
+
+/* Border blue accent line */
+.border-accent-blue {
+  border-color: var(--border-blue);
+}
+
+/* Card with coral accent border */
+.coral-border {
+  border: 3px solid var(--accent-coral);
+}
+
+.coral-border-thick {
+  border: 5px solid var(--accent-coral);
+}
+
+/* Cream background utility */
+.bg-cream {
+  background-color: var(--accent-light);
+}
+
+/* Text color utilities */
+.text-coral {
+  color: var(--accent-coral);
+}
+
+.text-cream {
+  color: var(--cream-text);
+}
+
+/* Responsive sidebar hiding */
+@media (max-width: 1199px) {
+  .sidebar-doodles {
+    display: none;
+  }
+}
+
+@media (min-width: 1200px) {
+  .sidebar-left {
+    display: flex;
+  }
+  .sidebar-right {
+    display: flex;
+  }
 }
