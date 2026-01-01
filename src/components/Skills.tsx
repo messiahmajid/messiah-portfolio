@@ -241,31 +241,31 @@ export default function Skills() {
 
         {/* Card Stacks */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8 relative">
-          {/* Decorative connecting elements between columns (desktop only) */}
+          {/* Decorative connecting elements between columns (desktop only) - LARGER and more visible */}
           <motion.div
-            className="hidden md:flex absolute top-24 left-[32%] flex-col items-center gap-2"
+            className="hidden md:flex absolute top-20 left-[30%] flex-col items-center gap-3"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
           >
-            <svg width="60" height="30" viewBox="0 0 60 30" fill="none">
-              <path d="M0 15 Q 30 0, 60 15" stroke="#4ecdc4" strokeWidth="2" strokeDasharray="4 3" opacity="0.4" />
-              <path d="M50 10 L 58 15 L 50 20" stroke="#4ecdc4" strokeWidth="2" fill="none" opacity="0.4" />
+            <svg width="90" height="45" viewBox="0 0 90 45" fill="none">
+              <path d="M0 22 Q 45 0, 90 22" stroke="#4ecdc4" strokeWidth="3" strokeDasharray="6 4" opacity="0.7" />
+              <path d="M72 14 L 86 22 L 72 30" stroke="#4ecdc4" strokeWidth="3" fill="none" opacity="0.7" />
             </svg>
-            <span className="font-handwriting text-xs text-white/50">powers</span>
+            <span className="font-handwriting text-base text-white/80 font-semibold">powers</span>
           </motion.div>
 
           <motion.div
-            className="hidden md:flex absolute top-24 right-[32%] flex-col items-center gap-2"
+            className="hidden md:flex absolute top-20 right-[30%] flex-col items-center gap-3"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
           >
-            <svg width="60" height="30" viewBox="0 0 60 30" fill="none">
-              <path d="M0 15 Q 30 0, 60 15" stroke="#ff6b6b" strokeWidth="2" strokeDasharray="4 3" opacity="0.4" />
-              <path d="M50 10 L 58 15 L 50 20" stroke="#ff6b6b" strokeWidth="2" fill="none" opacity="0.4" />
+            <svg width="90" height="45" viewBox="0 0 90 45" fill="none">
+              <path d="M0 22 Q 45 0, 90 22" stroke="#ff6b6b" strokeWidth="3" strokeDasharray="6 4" opacity="0.7" />
+              <path d="M72 14 L 86 22 L 72 30" stroke="#ff6b6b" strokeWidth="3" fill="none" opacity="0.7" />
             </svg>
-            <span className="font-handwriting text-xs text-white/50">enables</span>
+            <span className="font-handwriting text-base text-white/80 font-semibold">enables</span>
           </motion.div>
 
           {categories.map((category, index) => (
@@ -278,16 +278,16 @@ export default function Skills() {
           ))}
         </div>
 
-        {/* Legend */}
+        {/* Legend - LARGER and more visible */}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.8 }}
-          className="flex justify-center items-center gap-3 mt-12"
+          className="flex justify-center items-center gap-4 mt-16"
         >
-          <StarDoodle size={16} color="#ffd54f" filled />
-          <span className="font-sketch text-base text-white/70">= Primary skills</span>
+          <StarDoodle size={24} color="#ffd54f" filled />
+          <span className="font-sketch text-xl text-white/90 font-semibold">= Primary skills</span>
         </motion.div>
 
         {/* Decorative elements */}

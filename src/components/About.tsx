@@ -258,25 +258,38 @@ const lookingForItems = [
   { id: 3, label: "Diverse team of talented folks" },
 ];
 
-// Animated handwritten checkmark component
+// Animated handwritten checkmark component with fill effect
 const HandwrittenCheck = ({ isChecked }: { isChecked: boolean }) => (
-  <svg width="24" height="24" viewBox="0 0 24 24" className="flex-shrink-0">
+  <svg width="32" height="32" viewBox="0 0 32 32" className="flex-shrink-0">
+    {/* Background fill when checked */}
+    <motion.rect
+      x="3"
+      y="3"
+      width="26"
+      height="26"
+      rx="4"
+      fill="#DC6B5A"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: isChecked ? 0.15 : 0 }}
+      transition={{ duration: 0.3 }}
+    />
+    {/* Border */}
     <rect
-      x="2"
-      y="2"
-      width="20"
-      height="20"
-      rx="3"
+      x="3"
+      y="3"
+      width="26"
+      height="26"
+      rx="4"
       fill="none"
       stroke="#DC6B5A"
-      strokeWidth="2"
+      strokeWidth="3"
     />
     {isChecked && (
       <motion.path
-        d="M6 12 L10 16 L18 8"
+        d="M8 16 L13 21 L24 10"
         fill="none"
         stroke="#DC6B5A"
-        strokeWidth="3"
+        strokeWidth="4"
         strokeLinecap="round"
         strokeLinejoin="round"
         initial={{ pathLength: 0 }}
@@ -733,32 +746,32 @@ export default function About() {
             {/* Background doodles */}
             <WhatILookForDoodles />
 
-            <div className="p-8 md:p-10 relative z-10">
-              {/* Title */}
-              <h3 className="font-handwriting text-3xl md:text-4xl mb-8 font-bold" style={{ color: '#3d3d3d' }}>
+            <div className="p-10 md:p-14 relative z-10">
+              {/* Title - LARGER and BOLDER */}
+              <h3 className="font-handwriting text-4xl md:text-5xl lg:text-6xl mb-10 font-bold" style={{ color: '#2d2d2d' }}>
                 What I look for
               </h3>
 
-              <div className="grid md:grid-cols-2 gap-8 items-start">
+              <div className="grid md:grid-cols-2 gap-10 items-start">
                 {/* Checkboxes with paper lines */}
-                <div className="space-y-0">
+                <div className="space-y-2">
                   {lookingForItems.map((item, index) => (
                     <motion.div
                       key={item.id}
-                      className="relative py-4 cursor-pointer"
+                      className="relative py-5 cursor-pointer"
                       style={{
-                        borderBottom: index < lookingForItems.length - 1 ? '1px dashed rgba(199, 93, 74, 0.3)' : 'none',
+                        borderBottom: index < lookingForItems.length - 1 ? '2px dashed rgba(199, 93, 74, 0.3)' : 'none',
                       }}
                       onClick={() => handleCheckboxChange(item.id)}
-                      whileHover={{ x: 5 }}
+                      whileHover={{ x: 8 }}
                       whileTap={{ scale: 0.98 }}
                     >
-                      <div className="flex items-center gap-4">
+                      <div className="flex items-center gap-5">
                         <HandwrittenCheck isChecked={checkedItems.includes(item.id)} />
                         <span
-                          className="font-handwriting text-xl font-semibold"
+                          className="font-handwriting text-2xl md:text-3xl font-bold"
                           style={{
-                            color: '#3d3d3d',
+                            color: '#2d2d2d',
                             textDecoration: checkedItems.includes(item.id) ? 'line-through' : 'none',
                             opacity: checkedItems.includes(item.id) ? 0.7 : 1,
                           }}
@@ -769,81 +782,121 @@ export default function About() {
                     </motion.div>
                   ))}
 
-                  {/* Let's chat button */}
+                  {/* Let's connect button - LARGER and BOLDER */}
                   <motion.a
                     href="#contact"
-                    className="inline-block mt-6 px-8 py-3 font-handwriting text-xl rounded-lg transition-colors"
+                    className="inline-block mt-8 px-10 py-4 font-handwriting text-2xl md:text-3xl font-bold rounded-xl transition-colors"
                     style={{
-                      border: '2px solid #DC6B5A',
+                      border: '4px solid #DC6B5A',
                       color: '#DC6B5A',
                       background: 'transparent',
                     }}
                     whileHover={{ scale: 1.05, background: 'rgba(199, 93, 74, 0.1)' }}
                     whileTap={{ scale: 0.95 }}
                   >
-                    let&apos;s chat!
+                    let&apos;s connect!
                   </motion.a>
                 </div>
 
-                {/* Illustration that fills up */}
+                {/* Stacked images that appear as checkboxes are checked */}
                 <div className="relative">
                   <div
-                    className="w-full aspect-square max-w-[280px] mx-auto rounded-2xl overflow-hidden relative"
-                    style={{ border: '3px solid #DC6B5A' }}
+                    className="w-full aspect-square max-w-[350px] mx-auto rounded-2xl overflow-hidden relative"
+                    style={{ border: '4px solid #DC6B5A' }}
                   >
-                    <CuteSceneIllustration fillLevel={fillPercentage} />
+                    {/* Base image - always visible but faded */}
+                    <div className="absolute inset-0">
+                      <Image
+                        src="/images/what-i-look-for/base.png"
+                        alt="Base illustration"
+                        fill
+                        className="object-cover"
+                        style={{ opacity: 0.3 }}
+                      />
+                    </div>
+                    {/* Image 1 - appears when first checkbox is checked */}
+                    <AnimatePresence>
+                      {checkedItems.length >= 1 && (
+                        <motion.div
+                          initial={{ opacity: 0, scale: 0.9 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          exit={{ opacity: 0, scale: 0.9 }}
+                          className="absolute inset-0"
+                        >
+                          <Image
+                            src="/images/what-i-look-for/layer-1.png"
+                            alt="First layer"
+                            fill
+                            className="object-cover"
+                          />
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                    {/* Image 2 - appears when second checkbox is checked */}
+                    <AnimatePresence>
+                      {checkedItems.length >= 2 && (
+                        <motion.div
+                          initial={{ opacity: 0, scale: 0.9 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          exit={{ opacity: 0, scale: 0.9 }}
+                          className="absolute inset-0"
+                        >
+                          <Image
+                            src="/images/what-i-look-for/layer-2.png"
+                            alt="Second layer"
+                            fill
+                            className="object-cover"
+                          />
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                    {/* Image 3 - appears when third checkbox is checked */}
+                    <AnimatePresence>
+                      {checkedItems.length >= 3 && (
+                        <motion.div
+                          initial={{ opacity: 0, scale: 0.9 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          exit={{ opacity: 0, scale: 0.9 }}
+                          className="absolute inset-0"
+                        >
+                          <Image
+                            src="/images/what-i-look-for/layer-3.png"
+                            alt="Third layer"
+                            fill
+                            className="object-cover"
+                          />
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
                   </div>
 
-                  {/* Celebration popup with GIF */}
+                  {/* Sliding GIF tray - slides up when all checked */}
                   <AnimatePresence>
                     {showCelebration && (
                       <motion.div
-                        initial={{ opacity: 0, scale: 0.5, y: 20 }}
-                        animate={{ opacity: 1, scale: 1, y: 0 }}
-                        exit={{ opacity: 0, scale: 0.5, y: 20 }}
-                        className="absolute -bottom-4 left-1/2 -translate-x-1/2 z-20 w-[320px]"
+                        initial={{ y: 100, opacity: 0 }}
+                        animate={{ y: 0, opacity: 1 }}
+                        exit={{ y: 100, opacity: 0 }}
+                        transition={{
+                          type: "spring",
+                          stiffness: 300,
+                          damping: 30,
+                        }}
+                        className="absolute -bottom-6 left-1/2 -translate-x-1/2 z-20 w-[340px]"
                       >
                         <div
                           className="bg-white rounded-2xl overflow-hidden shadow-2xl"
                           style={{ border: '4px solid #DC6B5A' }}
                         >
-                          {/* GIF image - "We have much to discuss" style */}
-                          <div className="relative w-full aspect-video bg-gradient-to-b from-teal-500 to-teal-700 overflow-hidden">
-                            {/* Stylized character silhouette */}
-                            <div className="absolute inset-0 flex items-center justify-center">
-                              <svg viewBox="0 0 200 120" className="w-full h-full">
-                                {/* Teal gradient background */}
-                                <defs>
-                                  <linearGradient id="bgGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-                                    <stop offset="0%" stopColor="#14b8a6" />
-                                    <stop offset="100%" stopColor="#0d9488" />
-                                  </linearGradient>
-                                </defs>
-                                <rect fill="url(#bgGrad)" width="200" height="120" />
-                                {/* Character with beard silhouette */}
-                                <ellipse cx="100" cy="85" rx="35" ry="30" fill="#8B4513" opacity="0.9" />
-                                <circle cx="100" cy="50" r="25" fill="#D2691E" />
-                                {/* Hair */}
-                                <ellipse cx="100" cy="35" rx="28" ry="15" fill="#1a1a1a" />
-                                <ellipse cx="75" cy="55" rx="8" ry="15" fill="#1a1a1a" />
-                                <ellipse cx="125" cy="55" rx="8" ry="15" fill="#1a1a1a" />
-                                {/* Eyes */}
-                                <circle cx="90" cy="48" r="3" fill="#1a1a1a" />
-                                <circle cx="110" cy="48" r="3" fill="#1a1a1a" />
-                                {/* Beard */}
-                                <path d="M85 60 Q100 80 115 60 Q120 75 100 85 Q80 75 85 60" fill="#1a1a1a" />
-                                {/* Sweater pattern */}
-                                <path d="M70 85 Q100 75 130 85 L135 110 L65 110 Z" fill="#D4A017" />
-                                <path d="M75 90 L80 100" stroke="#B8860B" strokeWidth="2" />
-                                <path d="M85 88 L88 98" stroke="#B8860B" strokeWidth="2" />
-                                <path d="M115 88 L112 98" stroke="#B8860B" strokeWidth="2" />
-                                <path d="M125 90 L120 100" stroke="#B8860B" strokeWidth="2" />
-                              </svg>
-                            </div>
-                          </div>
-                          {/* Caption */}
-                          <div className="p-4 text-center bg-black">
-                            <p className="font-sketch text-white text-lg">We have much to discuss.</p>
+                          {/* User-provided GIF placeholder */}
+                          <div className="relative w-full aspect-video overflow-hidden">
+                            <Image
+                              src="/images/celebration.gif"
+                              alt="Celebration"
+                              fill
+                              className="object-cover"
+                              unoptimized
+                            />
                           </div>
                         </div>
                       </motion.div>
