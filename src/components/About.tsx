@@ -683,11 +683,10 @@ export default function About() {
                     <button
                       key={index}
                       onClick={() => setCurrentPage(index)}
-                      className={`w-3 h-3 rounded-full transition-all ${
-                        index === currentPage
+                      className={`w-3 h-3 rounded-full transition-all ${index === currentPage
                           ? 'scale-125'
                           : 'opacity-40 hover:opacity-60'
-                      }`}
+                        }`}
                       style={{
                         backgroundColor: '#DC6B5A'
                       }}
@@ -722,205 +721,207 @@ export default function About() {
         </motion.div>
 
         {/* What I Look For Section - Tilted card with paper lines */}
-        <motion.div
-          initial={{ opacity: 0, y: 30, rotate: -1 }}
-          whileInView={{ opacity: 1, y: 0, rotate: -1 }}
-          viewport={{ once: true }}
-          className="mb-16"
-        >
-          <div
-            className="relative rounded-2xl overflow-hidden shadow-xl"
-            style={{
-              border: '3px solid #DC6B5A',
-              background: 'var(--paper-color)',
-              transform: 'rotate(-1deg)',
-            }}
+        <div className="mb-16">
+          <motion.div
+            initial={{ opacity: 0, y: 30, rotate: -1 }}
+            whileInView={{ opacity: 1, y: 0, rotate: -1 }}
+            viewport={{ once: true }}
+            className="mb-16"
           >
-            {/* Torn paper edge effect - top */}
-            <div className="absolute top-0 left-0 right-0 h-3 overflow-hidden">
-              <svg width="100%" height="12" preserveAspectRatio="none">
-                <path d="M0 12 Q10 8 20 12 T40 12 T60 12 T80 12 T100 12 T120 12 T140 12 T160 12 T180 12 T200 12 T220 12 T240 12 T260 12 T280 12 T300 12 L300 0 L0 0 Z" fill="var(--paper-color)" />
-              </svg>
-            </div>
+            <div
+              className="relative rounded-2xl overflow-hidden shadow-xl"
+              style={{
+                border: '3px solid #DC6B5A',
+                background: 'var(--paper-color)',
+                transform: 'rotate(-1deg)',
+              }}
+            >
+              {/* Torn paper edge effect - top */}
+              <div className="absolute top-0 left-0 right-0 h-3 overflow-hidden">
+                <svg width="100%" height="12" preserveAspectRatio="none">
+                  <path d="M0 12 Q10 8 20 12 T40 12 T60 12 T80 12 T100 12 T120 12 T140 12 T160 12 T180 12 T200 12 T220 12 T240 12 T260 12 T280 12 T300 12 L300 0 L0 0 Z" fill="var(--paper-color)" />
+                </svg>
+              </div>
 
-            {/* Background doodles */}
-            <WhatILookForDoodles />
+              {/* Background doodles */}
+              <WhatILookForDoodles />
 
-            <div className="p-10 md:p-14 relative z-10">
-              {/* Title - LARGER and BOLDER */}
-              <h3 className="font-handwriting text-4xl md:text-5xl lg:text-6xl mb-10 font-bold" style={{ color: '#2d2d2d' }}>
-                What I look for
-              </h3>
+              <div className="p-10 md:p-14 relative z-10">
+                {/* Title - LARGER and BOLDER */}
+                <h3 className="font-handwriting text-4xl md:text-5xl lg:text-6xl mb-10 font-bold" style={{ color: '#2d2d2d' }}>
+                  What I look for
+                </h3>
 
-              <div className="grid md:grid-cols-2 gap-10 items-start">
-                {/* Checkboxes with paper lines */}
-                <div className="space-y-2">
-                  {lookingForItems.map((item, index) => (
-                    <motion.div
-                      key={item.id}
-                      className="relative py-5 cursor-pointer"
+                <div className="grid md:grid-cols-2 gap-10 items-start">
+                  {/* Checkboxes with paper lines */}
+                  <div className="space-y-2">
+                    {lookingForItems.map((item, index) => (
+                      <motion.div
+                        key={item.id}
+                        className="relative py-5 cursor-pointer"
+                        style={{
+                          borderBottom: index < lookingForItems.length - 1 ? '2px dashed rgba(199, 93, 74, 0.3)' : 'none',
+                        }}
+                        onClick={() => handleCheckboxChange(item.id)}
+                        whileHover={{ x: 8 }}
+                        whileTap={{ scale: 0.98 }}
+                      >
+                        <div className="flex items-center gap-5">
+                          <HandwrittenCheck isChecked={checkedItems.includes(item.id)} />
+                          <span
+                            className="font-handwriting text-2xl md:text-3xl font-bold"
+                            style={{
+                              color: '#2d2d2d',
+                              textDecoration: checkedItems.includes(item.id) ? 'line-through' : 'none',
+                              opacity: checkedItems.includes(item.id) ? 0.7 : 1,
+                            }}
+                          >
+                            {item.label}
+                          </span>
+                        </div>
+                      </motion.div>
+                    ))}
+
+                    {/* Let's connect button - LARGER and BOLDER */}
+                    <motion.a
+                      href="#contact"
+                      className="inline-block mt-8 px-10 py-4 font-handwriting text-2xl md:text-3xl font-bold rounded-xl transition-colors"
                       style={{
-                        borderBottom: index < lookingForItems.length - 1 ? '2px dashed rgba(199, 93, 74, 0.3)' : 'none',
+                        border: '4px solid #DC6B5A',
+                        color: '#DC6B5A',
+                        background: 'transparent',
                       }}
-                      onClick={() => handleCheckboxChange(item.id)}
-                      whileHover={{ x: 8 }}
-                      whileTap={{ scale: 0.98 }}
+                      whileHover={{ scale: 1.05, background: 'rgba(199, 93, 74, 0.1)' }}
+                      whileTap={{ scale: 0.95 }}
                     >
-                      <div className="flex items-center gap-5">
-                        <HandwrittenCheck isChecked={checkedItems.includes(item.id)} />
-                        <span
-                          className="font-handwriting text-2xl md:text-3xl font-bold"
-                          style={{
-                            color: '#2d2d2d',
-                            textDecoration: checkedItems.includes(item.id) ? 'line-through' : 'none',
-                            opacity: checkedItems.includes(item.id) ? 0.7 : 1,
-                          }}
-                        >
-                          {item.label}
-                        </span>
-                      </div>
-                    </motion.div>
-                  ))}
-
-                  {/* Let's connect button - LARGER and BOLDER */}
-                  <motion.a
-                    href="#contact"
-                    className="inline-block mt-8 px-10 py-4 font-handwriting text-2xl md:text-3xl font-bold rounded-xl transition-colors"
-                    style={{
-                      border: '4px solid #DC6B5A',
-                      color: '#DC6B5A',
-                      background: 'transparent',
-                    }}
-                    whileHover={{ scale: 1.05, background: 'rgba(199, 93, 74, 0.1)' }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    let&apos;s connect!
-                  </motion.a>
-                </div>
-
-                {/* Stacked images that appear as checkboxes are checked */}
-                <div className="relative">
-                  <div
-                    className="w-full aspect-square max-w-[350px] mx-auto rounded-2xl overflow-hidden relative"
-                    style={{ border: '4px solid #DC6B5A' }}
-                  >
-                    {/* Base image - always visible but faded */}
-                    <div className="absolute inset-0">
-                      <Image
-                        src="/images/what-i-look-for/base.png"
-                        alt="Base illustration"
-                        fill
-                        className="object-cover"
-                        style={{ opacity: 0.3 }}
-                      />
-                    </div>
-                    {/* Image 1 - appears when first checkbox is checked */}
-                    <AnimatePresence>
-                      {checkedItems.length >= 1 && (
-                        <motion.div
-                          initial={{ opacity: 0, scale: 0.9 }}
-                          animate={{ opacity: 1, scale: 1 }}
-                          exit={{ opacity: 0, scale: 0.9 }}
-                          className="absolute inset-0"
-                        >
-                          <Image
-                            src="/images/what-i-look-for/layer-1.png"
-                            alt="First layer"
-                            fill
-                            className="object-cover"
-                          />
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-                    {/* Image 2 - appears when second checkbox is checked */}
-                    <AnimatePresence>
-                      {checkedItems.length >= 2 && (
-                        <motion.div
-                          initial={{ opacity: 0, scale: 0.9 }}
-                          animate={{ opacity: 1, scale: 1 }}
-                          exit={{ opacity: 0, scale: 0.9 }}
-                          className="absolute inset-0"
-                        >
-                          <Image
-                            src="/images/what-i-look-for/layer-2.png"
-                            alt="Second layer"
-                            fill
-                            className="object-cover"
-                          />
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-                    {/* Image 3 - appears when third checkbox is checked */}
-                    <AnimatePresence>
-                      {checkedItems.length >= 3 && (
-                        <motion.div
-                          initial={{ opacity: 0, scale: 0.9 }}
-                          animate={{ opacity: 1, scale: 1 }}
-                          exit={{ opacity: 0, scale: 0.9 }}
-                          className="absolute inset-0"
-                        >
-                          <Image
-                            src="/images/what-i-look-for/layer-3.png"
-                            alt="Third layer"
-                            fill
-                            className="object-cover"
-                          />
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
+                      let&apos;s connect!
+                    </motion.a>
                   </div>
 
+                  {/* Stacked images that appear as checkboxes are checked */}
+                  <div className="relative">
+                    <div
+                      className="w-full aspect-square max-w-[350px] mx-auto rounded-2xl overflow-hidden relative"
+                      style={{ border: '4px solid #DC6B5A' }}
+                    >
+                      {/* Base image - always visible but faded */}
+                      <div className="absolute inset-0">
+                        <Image
+                          src="/images/what-i-look-for/base.png"
+                          alt="Base illustration"
+                          fill
+                          className="object-cover"
+                          style={{ opacity: 0.3 }}
+                        />
+                      </div>
+                      {/* Image 1 - appears when first checkbox is checked */}
+                      <AnimatePresence>
+                        {checkedItems.length >= 1 && (
+                          <motion.div
+                            initial={{ opacity: 0, scale: 0.9 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            exit={{ opacity: 0, scale: 0.9 }}
+                            className="absolute inset-0"
+                          >
+                            <Image
+                              src="/images/what-i-look-for/layer-1.png"
+                              alt="First layer"
+                              fill
+                              className="object-cover"
+                            />
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                      {/* Image 2 - appears when second checkbox is checked */}
+                      <AnimatePresence>
+                        {checkedItems.length >= 2 && (
+                          <motion.div
+                            initial={{ opacity: 0, scale: 0.9 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            exit={{ opacity: 0, scale: 0.9 }}
+                            className="absolute inset-0"
+                          >
+                            <Image
+                              src="/images/what-i-look-for/layer-2.png"
+                              alt="Second layer"
+                              fill
+                              className="object-cover"
+                            />
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                      {/* Image 3 - appears when third checkbox is checked */}
+                      <AnimatePresence>
+                        {checkedItems.length >= 3 && (
+                          <motion.div
+                            initial={{ opacity: 0, scale: 0.9 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            exit={{ opacity: 0, scale: 0.9 }}
+                            className="absolute inset-0"
+                          >
+                            <Image
+                              src="/images/what-i-look-for/layer-3.png"
+                              alt="Third layer"
+                              fill
+                              className="object-cover"
+                            />
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </div>
+
+                  </div>
                 </div>
               </div>
+
             </div>
+          </motion.div>
 
-          </div>
-        </motion.div>
-
-        {/* Sliding GIF tray - slides out from bottom of the card like a drawer */}
-        <AnimatePresence>
-          {showCelebration && (
-            <motion.div
-              initial={{ height: 0 }}
-              animate={{ height: "auto" }}
-              exit={{ height: 0 }}
-              transition={{
-                duration: 0.4,
-                ease: [0.4, 0, 0.2, 1],
-              }}
-              className="relative z-10 mx-auto w-full max-w-md overflow-hidden"
-              style={{ marginTop: "-24px" }}
-            >
-              {/* Cover strip to hide the gap */}
-              <div
-                className="absolute top-0 left-0 right-0 h-8 z-20"
-                style={{
-                  background: 'var(--paper-color)',
-                  borderLeft: '3px solid #DC6B5A',
-                  borderRight: '3px solid #DC6B5A',
+          {/* Sliding GIF tray - slides out from bottom of the card like a drawer */}
+          <AnimatePresence>
+            {showCelebration && (
+              <motion.div
+                initial={{ height: 0 }}
+                animate={{ height: "auto" }}
+                exit={{ height: 0 }}
+                transition={{
+                  duration: 0.4,
+                  ease: [0.4, 0, 0.2, 1],
                 }}
-              />
-              <div
-                className="bg-white rounded-b-2xl overflow-hidden shadow-xl pt-6"
-                style={{
-                  border: '4px solid #DC6B5A',
-                  borderTop: 'none',
-                }}
+                className="relative z-10 mx-auto w-full max-w-md overflow-hidden"
+                style={{ marginTop: "-24px" }}
               >
-                {/* User-provided GIF placeholder */}
-                <div className="relative w-full aspect-video overflow-hidden">
-                  <Image
-                    src="/images/celebration.gif"
-                    alt="Celebration"
-                    fill
-                    className="object-cover"
-                    unoptimized
-                  />
+                {/* Cover strip to hide the gap */}
+                <div
+                  className="absolute top-0 left-0 right-0 h-8 z-20"
+                  style={{
+                    background: 'var(--paper-color)',
+                    borderLeft: '3px solid #DC6B5A',
+                    borderRight: '3px solid #DC6B5A',
+                  }}
+                />
+                <div
+                  className="bg-white rounded-b-2xl overflow-hidden shadow-xl pt-6"
+                  style={{
+                    border: '4px solid #DC6B5A',
+                    borderTop: 'none',
+                  }}
+                >
+                  {/* User-provided GIF placeholder */}
+                  <div className="relative w-full aspect-video overflow-hidden">
+                    <Image
+                      src="/images/celebration.gif"
+                      alt="Celebration"
+                      fill
+                      className="object-cover"
+                      unoptimized
+                    />
+                  </div>
                 </div>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
 
         {/* Education and Honors Cards */}
         <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
