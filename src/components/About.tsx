@@ -874,44 +874,53 @@ export default function About() {
               </div>
             </div>
 
-            {/* Sliding GIF tray - slides out from bottom of the card like a drawer */}
-            <AnimatePresence>
-              {showCelebration && (
-                <motion.div
-                  initial={{ height: 0, opacity: 1 }}
-                  animate={{ height: "auto", opacity: 1 }}
-                  exit={{ height: 0, opacity: 1 }}
-                  transition={{
-                    type: "spring",
-                    stiffness: 300,
-                    damping: 30,
-                  }}
-                  className="relative z-0 mx-auto w-full max-w-md overflow-hidden"
-                  style={{ marginTop: "-4px" }}
-                >
-                  <div
-                    className="bg-white rounded-b-2xl overflow-hidden shadow-xl"
-                    style={{
-                      border: '4px solid #DC6B5A',
-                      borderTop: 'none',
-                    }}
-                  >
-                    {/* User-provided GIF placeholder */}
-                    <div className="relative w-full aspect-video overflow-hidden">
-                      <Image
-                        src="/images/celebration.gif"
-                        alt="Celebration"
-                        fill
-                        className="object-cover"
-                        unoptimized
-                      />
-                    </div>
-                  </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
           </div>
         </motion.div>
+
+        {/* Sliding GIF tray - slides out from bottom of the card like a drawer */}
+        <AnimatePresence>
+          {showCelebration && (
+            <motion.div
+              initial={{ height: 0 }}
+              animate={{ height: "auto" }}
+              exit={{ height: 0 }}
+              transition={{
+                duration: 0.4,
+                ease: [0.4, 0, 0.2, 1],
+              }}
+              className="relative z-10 mx-auto w-full max-w-md overflow-hidden"
+              style={{ marginTop: "-24px" }}
+            >
+              {/* Cover strip to hide the gap */}
+              <div
+                className="absolute top-0 left-0 right-0 h-8 z-20"
+                style={{
+                  background: 'var(--paper-color)',
+                  borderLeft: '3px solid #DC6B5A',
+                  borderRight: '3px solid #DC6B5A',
+                }}
+              />
+              <div
+                className="bg-white rounded-b-2xl overflow-hidden shadow-xl pt-6"
+                style={{
+                  border: '4px solid #DC6B5A',
+                  borderTop: 'none',
+                }}
+              >
+                {/* User-provided GIF placeholder */}
+                <div className="relative w-full aspect-video overflow-hidden">
+                  <Image
+                    src="/images/celebration.gif"
+                    alt="Celebration"
+                    fill
+                    className="object-cover"
+                    unoptimized
+                  />
+                </div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
 
         {/* Education and Honors Cards */}
         <div className="grid md:grid-cols-2 gap-8 lg:gap-12">

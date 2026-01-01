@@ -455,7 +455,7 @@ export default function Leadership() {
         >
           <div className="flex items-center justify-center gap-3 mb-10">
             <HeartIcon size={28} className="text-accent-coral" />
-            <h3 className="font-marker text-2xl font-semibold" style={{ color: '#2d2d2d' }}>Also Part Of</h3>
+            <h3 className="font-marker text-2xl font-semibold" style={{ color: '#5a5a5a' }}>Also Part Of</h3>
           </div>
 
           <div className="space-y-8">

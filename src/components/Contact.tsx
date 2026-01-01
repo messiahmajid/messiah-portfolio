@@ -2,7 +2,7 @@
 
 import React, { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { WashiTape, StarDoodle, DoodleArrow } from "./SketchyElements";
+import { WashiTape, StarDoodle } from "./SketchyElements";
 import {
   EmailIcon,
   LinkedInIcon,
@@ -106,26 +106,6 @@ export default function Contact() {
           >
             <WashiTape className="-top-3 left-12" rotation={-3} color="#ff6b6b" />
             <WashiTape className="-top-3 right-12" rotation={5} pattern="dots" color="#4ecdc4" />
-
-            {/* Animated arrow that flies around and taps the cards */}
-            <motion.div
-              className="absolute z-20"
-              initial={{ x: "50%", y: -20, rotate: 135 }}
-              animate={{
-                x: ["50%", "15%", "15%", "75%", "75%", "50%"],
-                y: [-20, 100, 120, 100, 120, -20],
-                rotate: [135, 135, 180, 180, 135, 135],
-                scale: [1, 1, 1.2, 1, 1.2, 1],
-              }}
-              transition={{
-                duration: 6,
-                repeat: Infinity,
-                ease: "easeInOut",
-                times: [0, 0.2, 0.35, 0.5, 0.65, 1],
-              }}
-            >
-              <DoodleArrow direction="down" color="#DC6B5A" />
-            </motion.div>
 
             {/* Intro text - MORE LEGIBLE */}
             <div className="text-center mb-10">

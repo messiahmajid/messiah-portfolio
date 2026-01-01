@@ -39,9 +39,9 @@ export default {
       fontFamily: {
         handwriting: ["Caveat", "cursive"],
         gochi: ["Gochi Hand", "sans-serif"],
-        sketch: ["Patrick Hand", "cursive"],
+        sketch: ["Inter", "sans-serif"],
         marker: ["Permanent Marker", "cursive"],
-        body: ["Nunito", "sans-serif"],
+        body: ["Inter", "sans-serif"],
         serif: ["Times New Roman", "serif"],
       },
       animation: {
