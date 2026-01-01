@@ -66,11 +66,9 @@ export default function Experience() {
     offset: ["start end", "end start"]
   });
 
-  // Parallax transforms for cards
-  const y1 = useTransform(scrollYProgress, [0, 1], [80, -80]);
-  const y2 = useTransform(scrollYProgress, [0, 1], [60, -60]);
-  const rotate1 = useTransform(scrollYProgress, [0, 0.5, 1], [-2, 0, 2]);
-  const rotate2 = useTransform(scrollYProgress, [0, 0.5, 1], [2, 0, -2]);
+  // Subtle parallax transforms for cards (reduced to prevent jitter)
+  const y1 = useTransform(scrollYProgress, [0, 1], [20, -20]);
+  const y2 = useTransform(scrollYProgress, [0, 1], [15, -15]);
 
   return (
     <section id="experience" ref={sectionRef} className="py-20 px-4 relative">
@@ -124,7 +122,7 @@ export default function Experience() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.2 }}
-              style={{ y: index === 0 ? y1 : y2, rotate: index === 0 ? rotate1 : rotate2 }}
+              style={{ y: index === 0 ? y1 : y2 }}
               className="relative"
             >
               <div className="grid md:grid-cols-2 gap-8 items-center">
