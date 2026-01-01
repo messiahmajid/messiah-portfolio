@@ -870,41 +870,45 @@ export default function About() {
                     </AnimatePresence>
                   </div>
 
-                  {/* Sliding GIF tray - slides up when all checked */}
-                  <AnimatePresence>
-                    {showCelebration && (
-                      <motion.div
-                        initial={{ y: 100, opacity: 0 }}
-                        animate={{ y: 0, opacity: 1 }}
-                        exit={{ y: 100, opacity: 0 }}
-                        transition={{
-                          type: "spring",
-                          stiffness: 300,
-                          damping: 30,
-                        }}
-                        className="absolute -bottom-6 left-1/2 -translate-x-1/2 z-20 w-[340px]"
-                      >
-                        <div
-                          className="bg-white rounded-2xl overflow-hidden shadow-2xl"
-                          style={{ border: '4px solid #DC6B5A' }}
-                        >
-                          {/* User-provided GIF placeholder */}
-                          <div className="relative w-full aspect-video overflow-hidden">
-                            <Image
-                              src="/images/celebration.gif"
-                              alt="Celebration"
-                              fill
-                              className="object-cover"
-                              unoptimized
-                            />
-                          </div>
-                        </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
                 </div>
               </div>
             </div>
+
+            {/* Sliding GIF tray - slides out from under the card like a drawer */}
+            <AnimatePresence>
+              {showCelebration && (
+                <motion.div
+                  initial={{ y: -100, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  exit={{ y: -100, opacity: 0 }}
+                  transition={{
+                    type: "spring",
+                    stiffness: 200,
+                    damping: 25,
+                  }}
+                  className="relative z-0 -mt-4 mx-auto w-full max-w-md"
+                >
+                  <div
+                    className="bg-white rounded-b-2xl overflow-hidden shadow-xl"
+                    style={{
+                      border: '4px solid #DC6B5A',
+                      borderTop: 'none',
+                    }}
+                  >
+                    {/* User-provided GIF placeholder */}
+                    <div className="relative w-full aspect-video overflow-hidden">
+                      <Image
+                        src="/images/celebration.gif"
+                        alt="Celebration"
+                        fill
+                        className="object-cover"
+                        unoptimized
+                      />
+                    </div>
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
         </motion.div>
 

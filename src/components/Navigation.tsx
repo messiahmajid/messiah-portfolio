@@ -15,7 +15,13 @@ const navItems = [
 export default function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState("");
+  const [activeSection, setActiveSection] = useState("about");
+
+  // Handle click on nav item
+  const handleNavClick = (href: string) => {
+    const section = href.slice(1);
+    setActiveSection(section);
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -35,6 +41,7 @@ export default function Navigation() {
     };
 
     window.addEventListener("scroll", handleScroll);
+    handleScroll(); // Check initial position
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -64,7 +71,8 @@ export default function Navigation() {
                 <motion.a
                   key={item.name}
                   href={item.href}
-                  className="relative px-4 py-2 font-sketch text-lg transition-colors click-ripple squiggle-click"
+                  onClick={() => handleNavClick(item.href)}
+                  className="relative px-4 py-2 font-sketch text-xl transition-colors click-ripple squiggle-click font-semibold"
                   style={{
                     color: activeSection === item.href.slice(1)
                       ? '#DC6B5A'
