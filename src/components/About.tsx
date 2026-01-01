@@ -338,9 +338,9 @@ const ServiceDoodles = () => (
   </svg>
 );
 
-// Cute scene illustration for "What I look for" - detailed with many elements
+// Cute scene illustration for "What I look for" - detailed with many elements and varied colors
 const CuteSceneIllustration = ({ fillLevel }: { fillLevel: number }) => (
-  <svg viewBox="0 0 280 280" className="w-full h-full" style={{ color: '#DC6B5A' }}>
+  <svg viewBox="0 0 280 280" className="w-full h-full">
     <defs>
       <clipPath id="fillClip">
         <rect x="0" y={280 - (280 * fillLevel / 100)} width="280" height={280 * fillLevel / 100} />
@@ -348,150 +348,203 @@ const CuteSceneIllustration = ({ fillLevel }: { fillLevel: number }) => (
     </defs>
 
     {/* Background elements - always visible */}
-    <g fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" opacity="0.25">
+    <g fill="none" stroke="#5BA3D0" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" opacity="0.25">
       {/* Landscape outline */}
       <path d="M0 240 Q70 200 140 220 Q210 240 280 210 L280 280 L0 280 Z" />
       {/* Leaves scattered */}
       <ellipse cx="20" cy="120" rx="8" ry="15" transform="rotate(-20 20 120)" />
       <ellipse cx="260" cy="100" rx="10" ry="18" transform="rotate(15 260 100)" />
       <ellipse cx="250" cy="60" rx="6" ry="12" transform="rotate(-30 250 60)" />
+      {/* More background elements */}
+      <circle cx="140" cy="30" r="4" />
+      <path d="M100 20 Q110 15 120 22" strokeWidth="1" />
+      <path d="M200 40 Q210 35 220 42" strokeWidth="1" />
     </g>
 
     {/* Filled version - clips based on fill level */}
     <g clipPath="url(#fillClip)">
-      <g fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        {/* Ground/landscape */}
-        <path d="M0 240 Q70 200 140 220 Q210 240 280 210 L280 280 L0 280 Z" fill="currentColor" fillOpacity="0.12" />
+      <g fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        {/* Ground/landscape - teal green */}
+        <path d="M0 240 Q70 200 140 220 Q210 240 280 210 L280 280 L0 280 Z" fill="#4ecdc4" fillOpacity="0.2" stroke="#4ecdc4" />
 
-        {/* Left bush with flowers */}
+        {/* Left bush with flowers - varied colors */}
         <g transform="translate(10, 200)">
-          <path d="M0 40 Q-10 20 10 15 Q5 0 25 5 Q40 -5 45 15 Q60 10 55 30 Q70 45 50 50 Q30 60 10 50 Q-10 55 0 40" fill="currentColor" fillOpacity="0.2" strokeWidth="1.5" />
-          {/* Small flowers */}
-          <circle cx="20" cy="25" r="4" fill="currentColor" fillOpacity="0.4" />
-          <circle cx="35" cy="20" r="3" fill="currentColor" fillOpacity="0.35" />
-          <circle cx="15" cy="35" r="3" fill="currentColor" fillOpacity="0.35" />
+          <path d="M0 40 Q-10 20 10 15 Q5 0 25 5 Q40 -5 45 15 Q60 10 55 30 Q70 45 50 50 Q30 60 10 50 Q-10 55 0 40" fill="#4ecdc4" fillOpacity="0.25" stroke="#4ecdc4" strokeWidth="1.5" />
+          {/* Small flowers in coral */}
+          <circle cx="20" cy="25" r="5" fill="#DC6B5A" fillOpacity="0.5" stroke="#DC6B5A" />
+          <circle cx="35" cy="20" r="4" fill="#5BA3D0" fillOpacity="0.45" stroke="#5BA3D0" />
+          <circle cx="15" cy="35" r="4" fill="#DC6B5A" fillOpacity="0.4" stroke="#DC6B5A" />
+          <circle cx="45" cy="35" r="3" fill="#5BA3D0" fillOpacity="0.4" stroke="#5BA3D0" />
         </g>
 
-        {/* Right bush */}
+        {/* Right bush - teal */}
         <g transform="translate(200, 180)">
-          <path d="M0 50 Q-15 30 15 20 Q10 0 35 10 Q55 -5 60 20 Q80 15 75 40 Q90 55 65 60 Q40 70 15 60 Q-10 65 0 50" fill="currentColor" fillOpacity="0.2" strokeWidth="1.5" />
-          <circle cx="30" cy="30" r="4" fill="currentColor" fillOpacity="0.4" />
-          <circle cx="50" cy="25" r="3" fill="currentColor" fillOpacity="0.35" />
+          <path d="M0 50 Q-15 30 15 20 Q10 0 35 10 Q55 -5 60 20 Q80 15 75 40 Q90 55 65 60 Q40 70 15 60 Q-10 65 0 50" fill="#4ecdc4" fillOpacity="0.25" stroke="#4ecdc4" strokeWidth="1.5" />
+          <circle cx="30" cy="30" r="5" fill="#DC6B5A" fillOpacity="0.5" stroke="#DC6B5A" />
+          <circle cx="50" cy="25" r="4" fill="#5BA3D0" fillOpacity="0.4" stroke="#5BA3D0" />
+          <circle cx="20" cy="40" r="3" fill="#DC6B5A" fillOpacity="0.4" stroke="#DC6B5A" />
         </g>
 
         {/* Main character - person holding sign */}
         <g transform="translate(100, 90)">
-          {/* Sign/board being held */}
-          <rect x="25" y="-20" width="40" height="55" rx="5" fill="white" fillOpacity="0.8" strokeWidth="2" />
-          <path d="M35 5 L55 5" strokeWidth="1.5" />
-          <path d="M35 15 L55 15" strokeWidth="1.5" />
-          <path d="M35 25 L50 25" strokeWidth="1.5" />
+          {/* Sign/board being held - blue accent */}
+          <rect x="25" y="-20" width="40" height="55" rx="5" fill="white" fillOpacity="0.9" stroke="#5BA3D0" strokeWidth="2" />
+          <path d="M35 5 L55 5" stroke="#5BA3D0" strokeWidth="1.5" />
+          <path d="M35 15 L55 15" stroke="#DC6B5A" strokeWidth="1.5" />
+          <path d="M35 25 L50 25" stroke="#4ecdc4" strokeWidth="1.5" />
 
-          {/* Body */}
-          <ellipse cx="40" cy="80" rx="20" ry="25" fill="currentColor" fillOpacity="0.15" strokeWidth="2" />
+          {/* Body - coral shirt */}
+          <ellipse cx="40" cy="80" rx="20" ry="25" fill="#DC6B5A" fillOpacity="0.25" stroke="#DC6B5A" strokeWidth="2" />
           {/* Head */}
-          <circle cx="40" cy="45" r="20" fill="currentColor" fillOpacity="0.12" strokeWidth="2" />
-          {/* Hair/curls */}
-          <path d="M22 40 Q18 30 25 25 Q35 18 45 25 Q55 20 58 30 Q62 40 55 45" strokeWidth="2" fill="currentColor" fillOpacity="0.2" />
+          <circle cx="40" cy="45" r="20" fill="#D2B48C" fillOpacity="0.3" stroke="#8B7355" strokeWidth="2" />
+          {/* Hair/curls - dark */}
+          <path d="M22 40 Q18 30 25 25 Q35 18 45 25 Q55 20 58 30 Q62 40 55 45" strokeWidth="2" fill="#333" fillOpacity="0.4" stroke="#333" />
           {/* Face */}
-          <circle cx="33" cy="43" r="2.5" fill="currentColor" />
-          <circle cx="47" cy="43" r="2.5" fill="currentColor" />
-          <path d="M35 52 Q40 57 45 52" strokeWidth="2" />
+          <circle cx="33" cy="43" r="2.5" fill="#333" />
+          <circle cx="47" cy="43" r="2.5" fill="#333" />
+          <path d="M35 52 Q40 57 45 52" stroke="#333" strokeWidth="2" />
+          {/* Rosy cheeks */}
+          <circle cx="28" cy="48" r="3" fill="#DC6B5A" fillOpacity="0.3" stroke="none" />
+          <circle cx="52" cy="48" r="3" fill="#DC6B5A" fillOpacity="0.3" stroke="none" />
           {/* Ears */}
-          <circle cx="20" cy="45" r="4" fill="currentColor" fillOpacity="0.1" strokeWidth="1.5" />
-          <circle cx="60" cy="45" r="4" fill="currentColor" fillOpacity="0.1" strokeWidth="1.5" />
+          <circle cx="20" cy="45" r="4" fill="#D2B48C" fillOpacity="0.2" stroke="#8B7355" strokeWidth="1.5" />
+          <circle cx="60" cy="45" r="4" fill="#D2B48C" fillOpacity="0.2" stroke="#8B7355" strokeWidth="1.5" />
           {/* Arms holding sign */}
-          <path d="M20 65 Q15 50 25 35" strokeWidth="2.5" />
-          <path d="M60 65 Q65 50 55 35" strokeWidth="2.5" />
-          {/* Legs */}
-          <path d="M30 102 L25 130" strokeWidth="3" />
-          <path d="M50 102 L55 130" strokeWidth="3" />
+          <path d="M20 65 Q15 50 25 35" stroke="#D2B48C" strokeWidth="2.5" />
+          <path d="M60 65 Q65 50 55 35" stroke="#D2B48C" strokeWidth="2.5" />
+          {/* Legs - blue pants */}
+          <path d="M30 102 L25 130" stroke="#5BA3D0" strokeWidth="4" />
+          <path d="M50 102 L55 130" stroke="#5BA3D0" strokeWidth="4" />
         </g>
 
-        {/* Cute animal - small lamb/goat on right */}
+        {/* Cute animal - small lamb/goat on right - teal */}
         <g transform="translate(200, 140)">
-          <ellipse cx="30" cy="35" rx="20" ry="15" fill="currentColor" fillOpacity="0.15" strokeWidth="1.5" />
-          <circle cx="45" cy="25" r="12" fill="currentColor" fillOpacity="0.12" strokeWidth="1.5" />
-          {/* Ear */}
-          <ellipse cx="55" cy="18" rx="6" ry="4" fill="currentColor" fillOpacity="0.15" strokeWidth="1" transform="rotate(30 55 18)" />
+          <ellipse cx="30" cy="35" rx="20" ry="15" fill="#f5f5f5" fillOpacity="0.6" stroke="#5BA3D0" strokeWidth="1.5" />
+          <circle cx="45" cy="25" r="12" fill="#f5f5f5" fillOpacity="0.6" stroke="#5BA3D0" strokeWidth="1.5" />
+          {/* Curly wool texture */}
+          <circle cx="20" cy="32" r="4" fill="#f5f5f5" fillOpacity="0.5" stroke="#5BA3D0" strokeWidth="0.5" />
+          <circle cx="30" cy="28" r="3" fill="#f5f5f5" fillOpacity="0.5" stroke="#5BA3D0" strokeWidth="0.5" />
+          <circle cx="38" cy="32" r="3" fill="#f5f5f5" fillOpacity="0.5" stroke="#5BA3D0" strokeWidth="0.5" />
+          {/* Ear - pink */}
+          <ellipse cx="55" cy="18" rx="6" ry="4" fill="#DC6B5A" fillOpacity="0.3" stroke="#DC6B5A" strokeWidth="1" transform="rotate(30 55 18)" />
           {/* Eye */}
-          <circle cx="50" cy="24" r="2" fill="currentColor" />
-          {/* Nose */}
-          <ellipse cx="56" cy="28" rx="2" ry="1.5" fill="currentColor" fillOpacity="0.5" />
+          <circle cx="50" cy="24" r="2" fill="#333" />
+          {/* Nose - coral */}
+          <ellipse cx="56" cy="28" rx="2" ry="1.5" fill="#DC6B5A" fillOpacity="0.6" stroke="#DC6B5A" />
           {/* Legs */}
-          <path d="M18 48 L18 60" strokeWidth="2" />
-          <path d="M28 48 L28 60" strokeWidth="2" />
-          <path d="M35 48 L35 58" strokeWidth="2" />
-          <path d="M42 46 L44 56" strokeWidth="2" />
-          {/* Bell */}
-          <circle cx="38" cy="38" r="3" fill="currentColor" fillOpacity="0.3" strokeWidth="1" />
+          <path d="M18 48 L18 60" stroke="#5BA3D0" strokeWidth="2" />
+          <path d="M28 48 L28 60" stroke="#5BA3D0" strokeWidth="2" />
+          <path d="M35 48 L35 58" stroke="#5BA3D0" strokeWidth="2" />
+          <path d="M42 46 L44 56" stroke="#5BA3D0" strokeWidth="2" />
+          {/* Bell - coral */}
+          <circle cx="38" cy="38" r="4" fill="#DC6B5A" fillOpacity="0.4" stroke="#DC6B5A" strokeWidth="1" />
         </g>
 
-        {/* Large flower on left */}
+        {/* Large flower on left - coral center, teal petals */}
         <g transform="translate(30, 150)">
-          <path d="M15 80 L15 40" strokeWidth="2" />
-          <circle cx="15" cy="30" r="12" fill="currentColor" fillOpacity="0.3" strokeWidth="1.5" />
-          <circle cx="15" cy="15" r="8" fill="currentColor" fillOpacity="0.25" strokeWidth="1" />
-          <circle cx="5" cy="25" r="7" fill="currentColor" fillOpacity="0.25" strokeWidth="1" />
-          <circle cx="25" cy="25" r="7" fill="currentColor" fillOpacity="0.25" strokeWidth="1" />
-          <circle cx="8" cy="38" r="6" fill="currentColor" fillOpacity="0.25" strokeWidth="1" />
-          <circle cx="22" cy="38" r="6" fill="currentColor" fillOpacity="0.25" strokeWidth="1" />
-          {/* Center */}
-          <circle cx="15" cy="30" r="5" fill="currentColor" fillOpacity="0.5" />
+          <path d="M15 80 L15 40" stroke="#4ecdc4" strokeWidth="2.5" />
+          {/* Petals in varied colors */}
+          <circle cx="15" cy="15" r="9" fill="#5BA3D0" fillOpacity="0.35" stroke="#5BA3D0" strokeWidth="1" />
+          <circle cx="3" cy="27" r="8" fill="#4ecdc4" fillOpacity="0.35" stroke="#4ecdc4" strokeWidth="1" />
+          <circle cx="27" cy="27" r="8" fill="#5BA3D0" fillOpacity="0.35" stroke="#5BA3D0" strokeWidth="1" />
+          <circle cx="6" cy="42" r="7" fill="#4ecdc4" fillOpacity="0.35" stroke="#4ecdc4" strokeWidth="1" />
+          <circle cx="24" cy="42" r="7" fill="#5BA3D0" fillOpacity="0.35" stroke="#5BA3D0" strokeWidth="1" />
+          {/* Center - coral */}
+          <circle cx="15" cy="30" r="7" fill="#DC6B5A" fillOpacity="0.6" stroke="#DC6B5A" strokeWidth="1.5" />
           {/* Stamens */}
-          <circle cx="12" cy="28" r="1" fill="currentColor" />
-          <circle cx="18" cy="28" r="1" fill="currentColor" />
-          <circle cx="15" cy="32" r="1" fill="currentColor" />
-          {/* Leaves on stem */}
-          <ellipse cx="8" cy="60" rx="6" ry="10" fill="currentColor" fillOpacity="0.2" strokeWidth="1" transform="rotate(-20 8 60)" />
-          <ellipse cx="22" cy="70" rx="5" ry="8" fill="currentColor" fillOpacity="0.2" strokeWidth="1" transform="rotate(25 22 70)" />
+          <circle cx="12" cy="28" r="1.5" fill="#333" />
+          <circle cx="18" cy="28" r="1.5" fill="#333" />
+          <circle cx="15" cy="33" r="1.5" fill="#333" />
+          {/* Leaves on stem - teal */}
+          <ellipse cx="6" cy="60" rx="7" ry="12" fill="#4ecdc4" fillOpacity="0.3" stroke="#4ecdc4" strokeWidth="1" transform="rotate(-20 6 60)" />
+          <ellipse cx="24" cy="70" rx="6" ry="10" fill="#4ecdc4" fillOpacity="0.3" stroke="#4ecdc4" strokeWidth="1" transform="rotate(25 24 70)" />
         </g>
 
-        {/* Small mouse/creature at bottom */}
+        {/* Butterfly - near flower */}
+        <g transform="translate(60, 130)">
+          <ellipse cx="0" cy="0" rx="8" ry="5" fill="#5BA3D0" fillOpacity="0.4" stroke="#5BA3D0" transform="rotate(-30)" />
+          <ellipse cx="8" cy="5" rx="6" ry="4" fill="#DC6B5A" fillOpacity="0.4" stroke="#DC6B5A" transform="rotate(30)" />
+          <path d="M4 2 L4 10" stroke="#333" strokeWidth="1" />
+          <path d="M2 0 Q0 -5 -2 -3" stroke="#333" strokeWidth="0.5" />
+          <path d="M6 0 Q8 -5 10 -3" stroke="#333" strokeWidth="0.5" />
+        </g>
+
+        {/* Small mouse/creature at bottom - light gray with coral ear */}
         <g transform="translate(170, 250)">
-          <ellipse cx="15" cy="12" rx="12" ry="8" fill="currentColor" fillOpacity="0.2" strokeWidth="1.5" />
-          <circle cx="25" cy="8" r="6" fill="currentColor" fillOpacity="0.15" strokeWidth="1.5" />
-          {/* Ears */}
-          <circle cx="22" cy="2" r="3" fill="currentColor" fillOpacity="0.2" strokeWidth="1" />
-          <circle cx="30" cy="4" r="3" fill="currentColor" fillOpacity="0.2" strokeWidth="1" />
+          <ellipse cx="15" cy="12" rx="12" ry="8" fill="#ddd" fillOpacity="0.5" stroke="#999" strokeWidth="1.5" />
+          <circle cx="25" cy="8" r="6" fill="#ddd" fillOpacity="0.5" stroke="#999" strokeWidth="1.5" />
+          {/* Ears - coral */}
+          <circle cx="22" cy="2" r="3.5" fill="#DC6B5A" fillOpacity="0.4" stroke="#DC6B5A" strokeWidth="1" />
+          <circle cx="30" cy="4" r="3.5" fill="#DC6B5A" fillOpacity="0.4" stroke="#DC6B5A" strokeWidth="1" />
           {/* Eye */}
-          <circle cx="27" cy="7" r="1.5" fill="currentColor" />
+          <circle cx="27" cy="7" r="1.5" fill="#333" />
+          {/* Nose - coral */}
+          <circle cx="31" cy="9" r="1" fill="#DC6B5A" />
+          {/* Whiskers */}
+          <path d="M30 10 L38 8" stroke="#999" strokeWidth="0.5" />
+          <path d="M30 11 L38 12" stroke="#999" strokeWidth="0.5" />
           {/* Tail */}
-          <path d="M3 12 Q-5 5 -2 0" strokeWidth="1.5" />
+          <path d="M3 12 Q-5 5 -2 0" stroke="#999" strokeWidth="1.5" />
         </g>
 
-        {/* Grass tufts */}
-        <g transform="translate(80, 260)">
-          <path d="M0 0 Q2 -15 5 -20 Q8 -15 10 0" strokeWidth="1.5" />
-          <path d="M8 0 Q12 -12 15 -18 Q18 -12 20 0" strokeWidth="1.5" />
+        {/* Grass tufts - teal */}
+        <g transform="translate(80, 260)" stroke="#4ecdc4">
+          <path d="M0 0 Q2 -15 5 -22 Q8 -15 10 0" strokeWidth="1.5" />
+          <path d="M8 0 Q12 -12 15 -20 Q18 -12 20 0" strokeWidth="1.5" />
+          <path d="M-5 0 Q-2 -10 0 -15 Q3 -10 5 0" strokeWidth="1.5" />
         </g>
-        <g transform="translate(150, 255)">
-          <path d="M0 0 Q3 -10 6 -15 Q9 -10 12 0" strokeWidth="1.5" />
+        <g transform="translate(150, 255)" stroke="#4ecdc4">
+          <path d="M0 0 Q3 -10 6 -18 Q9 -10 12 0" strokeWidth="1.5" />
+          <path d="M10 0 Q14 -8 17 -14 Q20 -8 22 0" strokeWidth="1.5" />
+        </g>
+        <g transform="translate(230, 260)" stroke="#4ecdc4">
+          <path d="M0 0 Q2 -12 5 -17 Q8 -12 10 0" strokeWidth="1.5" />
         </g>
 
-        {/* Decorative leaves top */}
+        {/* Decorative leaves top - teal */}
         <g transform="translate(0, 50)">
-          <ellipse cx="20" cy="30" rx="12" ry="25" fill="currentColor" fillOpacity="0.2" strokeWidth="1.5" transform="rotate(-30 20 30)" />
-          <path d="M20 30 L10 15" strokeWidth="1" />
-          <ellipse cx="5" cy="60" rx="10" ry="20" fill="currentColor" fillOpacity="0.18" strokeWidth="1.5" transform="rotate(-15 5 60)" />
+          <ellipse cx="20" cy="30" rx="12" ry="25" fill="#4ecdc4" fillOpacity="0.25" stroke="#4ecdc4" strokeWidth="1.5" transform="rotate(-30 20 30)" />
+          <path d="M20 30 L10 15" stroke="#4ecdc4" strokeWidth="1" />
+          <ellipse cx="5" cy="60" rx="10" ry="20" fill="#5BA3D0" fillOpacity="0.22" stroke="#5BA3D0" strokeWidth="1.5" transform="rotate(-15 5 60)" />
         </g>
 
-        {/* Top right decorative leaves */}
+        {/* Top right decorative leaves - teal */}
         <g transform="translate(240, 20)">
-          <ellipse cx="20" cy="40" rx="15" ry="30" fill="currentColor" fillOpacity="0.2" strokeWidth="1.5" transform="rotate(20 20 40)" />
-          <path d="M20 40 L30 20" strokeWidth="1" />
-          <ellipse cx="35" cy="70" rx="12" ry="22" fill="currentColor" fillOpacity="0.18" strokeWidth="1.5" transform="rotate(35 35 70)" />
+          <ellipse cx="20" cy="40" rx="15" ry="30" fill="#4ecdc4" fillOpacity="0.25" stroke="#4ecdc4" strokeWidth="1.5" transform="rotate(20 20 40)" />
+          <path d="M20 40 L30 20" stroke="#4ecdc4" strokeWidth="1" />
+          <ellipse cx="35" cy="70" rx="12" ry="22" fill="#5BA3D0" fillOpacity="0.22" stroke="#5BA3D0" strokeWidth="1.5" transform="rotate(35 35 70)" />
         </g>
 
-        {/* Stars/sparkles */}
+        {/* Sun in corner - coral */}
+        <g transform="translate(250, 25)">
+          <circle cx="0" cy="0" r="12" fill="#DC6B5A" fillOpacity="0.4" stroke="#DC6B5A" strokeWidth="1.5" />
+          <path d="M0 -18 L0 -22" stroke="#DC6B5A" strokeWidth="2" />
+          <path d="M13 -13 L16 -16" stroke="#DC6B5A" strokeWidth="2" />
+          <path d="M18 0 L22 0" stroke="#DC6B5A" strokeWidth="2" />
+          <path d="M13 13 L16 16" stroke="#DC6B5A" strokeWidth="2" />
+          <path d="M-13 -13 L-16 -16" stroke="#DC6B5A" strokeWidth="2" />
+        </g>
+
+        {/* Stars/sparkles - varied colors */}
         <g transform="translate(70, 40)">
-          <path d="M0 -8 L2 -2 L8 -2 L3 2 L5 8 L0 4 L-5 8 L-3 2 L-8 -2 L-2 -2 Z" fill="currentColor" fillOpacity="0.5" />
+          <path d="M0 -10 L2.5 -3 L10 -3 L4 2 L6 10 L0 5 L-6 10 L-4 2 L-10 -3 L-2.5 -3 Z" fill="#5BA3D0" fillOpacity="0.5" stroke="#5BA3D0" />
         </g>
         <g transform="translate(220, 130)">
-          <path d="M0 -6 L1.5 -1.5 L6 -1.5 L2.5 1 L3.5 6 L0 3 L-3.5 6 L-2.5 1 L-6 -1.5 L-1.5 -1.5 Z" fill="currentColor" fillOpacity="0.4" />
+          <path d="M0 -7 L2 -2 L7 -2 L3 1.5 L4 7 L0 4 L-4 7 L-3 1.5 L-7 -2 L-2 -2 Z" fill="#DC6B5A" fillOpacity="0.45" stroke="#DC6B5A" />
         </g>
         <g transform="translate(50, 120)">
-          <path d="M0 -5 L1 -1 L5 -1 L2 1 L3 5 L0 2.5 L-3 5 L-2 1 L-5 -1 L-1 -1 Z" fill="currentColor" fillOpacity="0.35" />
+          <path d="M0 -6 L1.5 -1.5 L6 -1.5 L2.5 1 L3.5 6 L0 3 L-3.5 6 L-2.5 1 L-6 -1.5 L-1.5 -1.5 Z" fill="#4ecdc4" fillOpacity="0.4" stroke="#4ecdc4" />
+        </g>
+        <g transform="translate(160, 60)">
+          <path d="M0 -5 L1 -1 L5 -1 L2 1 L3 5 L0 2.5 L-3 5 L-2 1 L-5 -1 L-1 -1 Z" fill="#5BA3D0" fillOpacity="0.35" stroke="#5BA3D0" />
+        </g>
+
+        {/* Small clouds */}
+        <g transform="translate(100, 20)">
+          <path d="M0 8 Q-5 8 -5 4 Q-7 0 -2 0 Q0 -4 6 -2 Q12 -4 14 2 Q18 4 15 7 Q18 11 10 10 Q5 14 0 8" fill="white" fillOpacity="0.6" stroke="#5BA3D0" strokeWidth="1" />
+        </g>
+        <g transform="translate(180, 35)">
+          <path d="M0 6 Q-4 6 -4 3 Q-5 0 -1 0 Q0 -3 4 -1 Q8 -3 10 1 Q13 3 11 5 Q13 8 7 7 Q3 10 0 6" fill="white" fillOpacity="0.5" stroke="#5BA3D0" strokeWidth="0.8" />
         </g>
       </g>
     </g>
@@ -610,56 +663,132 @@ const RightPageDoodles = () => (
   </svg>
 );
 
-// Scattered doodles for What I Look For section
+// Scattered doodles for What I Look For section - many more elements with varied colors
 const WhatILookForDoodles = () => (
   <svg className="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 800 400" preserveAspectRatio="none">
-    <g fill="none" stroke="#DC6B5A" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" opacity="0.2">
-      {/* Top left corner - flower */}
-      <g transform="translate(50, 40)">
-        <circle cx="0" cy="0" r="5" fill="#DC6B5A" fillOpacity="0.3" />
-        <ellipse cx="0" cy="-10" rx="4" ry="6" fill="#DC6B5A" fillOpacity="0.2" />
-        <ellipse cx="8" cy="-5" rx="4" ry="6" fill="#DC6B5A" fillOpacity="0.2" transform="rotate(60)" />
-        <ellipse cx="-8" cy="-5" rx="4" ry="6" fill="#DC6B5A" fillOpacity="0.2" transform="rotate(-60)" />
+    <g fill="none" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" opacity="0.35">
+      {/* Top left corner - flower in teal */}
+      <g transform="translate(50, 40)" stroke="#5BA3D0">
+        <circle cx="0" cy="0" r="6" fill="#5BA3D0" fillOpacity="0.3" />
+        <ellipse cx="0" cy="-12" rx="5" ry="8" fill="#5BA3D0" fillOpacity="0.25" />
+        <ellipse cx="10" cy="-6" rx="5" ry="8" fill="#5BA3D0" fillOpacity="0.25" transform="rotate(72)" />
+        <ellipse cx="6" cy="10" rx="5" ry="8" fill="#5BA3D0" fillOpacity="0.25" transform="rotate(144)" />
+        <ellipse cx="-6" cy="10" rx="5" ry="8" fill="#5BA3D0" fillOpacity="0.25" transform="rotate(216)" />
+        <ellipse cx="-10" cy="-6" rx="5" ry="8" fill="#5BA3D0" fillOpacity="0.25" transform="rotate(288)" />
       </g>
-      {/* Top right - stars cluster */}
-      <g transform="translate(720, 50)">
-        <path d="M0 -8 L2 -2 L8 -2 L4 2 L5 8 L0 4 L-5 8 L-4 2 L-8 -2 L-2 -2 Z" fill="#DC6B5A" fillOpacity="0.3" />
+      {/* Top right - stars cluster in coral */}
+      <g transform="translate(720, 50)" stroke="#DC6B5A">
+        <path d="M0 -10 L2.5 -2.5 L10 -2.5 L5 2.5 L6 10 L0 5 L-6 10 L-5 2.5 L-10 -2.5 L-2.5 -2.5 Z" fill="#DC6B5A" fillOpacity="0.35" />
       </g>
-      <g transform="translate(750, 80)">
-        <path d="M0 -5 L1.5 -1.5 L5 -1.5 L2.5 1 L3.5 5 L0 2.5 L-3.5 5 L-2.5 1 L-5 -1.5 L-1.5 -1.5 Z" fill="#DC6B5A" fillOpacity="0.25" />
+      <g transform="translate(750, 85)" stroke="#5BA3D0">
+        <path d="M0 -6 L1.5 -1.5 L6 -1.5 L3 1 L4 6 L0 3 L-4 6 L-3 1 L-6 -1.5 L-1.5 -1.5 Z" fill="#5BA3D0" fillOpacity="0.3" />
       </g>
-      {/* Left side - swirl */}
-      <path d="M30 200 Q20 180 40 170 Q60 160 50 190 Q40 210 55 220" strokeWidth="2" />
-      {/* Bottom left - heart */}
-      <g transform="translate(80, 350)">
-        <path d="M0 6 L-10 -4 Q-10 -12 0 -6 Q10 -12 10 -4 Z" fill="#DC6B5A" fillOpacity="0.2" />
+      <g transform="translate(690, 75)" stroke="#4ecdc4">
+        <path d="M0 -5 L1 -1 L5 -1 L2 1 L3 5 L0 2.5 L-3 5 L-2 1 L-5 -1 L-1 -1 Z" fill="#4ecdc4" fillOpacity="0.3" />
       </g>
-      {/* Bottom middle - dots trail */}
-      <circle cx="300" cy="370" r="2" fill="#DC6B5A" fillOpacity="0.3" />
-      <circle cx="320" cy="365" r="1.5" fill="#DC6B5A" fillOpacity="0.25" />
-      <circle cx="340" cy="372" r="2.5" fill="#DC6B5A" fillOpacity="0.3" />
-      <circle cx="360" cy="368" r="1.5" fill="#DC6B5A" fillOpacity="0.2" />
-      {/* Right side - sparkles */}
-      <g transform="translate(770, 300)">
-        <path d="M0 -6 L1.5 -1.5 L6 0 L1.5 1.5 L0 6 L-1.5 1.5 L-6 0 L-1.5 -1.5 Z" fill="#DC6B5A" fillOpacity="0.35" />
+      {/* Left side - decorative vine/swirl in teal */}
+      <g stroke="#5BA3D0">
+        <path d="M25 180 Q15 160 35 150 Q55 140 45 170 Q35 190 50 200" strokeWidth="2" />
+        <circle cx="35" cy="145" r="4" fill="#5BA3D0" fillOpacity="0.25" />
+        <circle cx="50" cy="165" r="3" fill="#5BA3D0" fillOpacity="0.2" />
+        <path d="M40 155 Q50 150 45 140" strokeWidth="1.5" />
       </g>
-      {/* Middle top - small cloud */}
-      <g transform="translate(400, 30)">
-        <path d="M0 10 Q-6 10 -6 5 Q-8 0 -2 0 Q1 -4 7 -2 Q13 -4 15 2 Q20 4 17 8 Q20 13 12 12 Q6 16 0 10" fill="#DC6B5A" fillOpacity="0.1" />
+      {/* Bottom left - heart in coral */}
+      <g transform="translate(80, 350)" stroke="#DC6B5A">
+        <path d="M0 8 L-12 -5 Q-12 -15 0 -8 Q12 -15 12 -5 Z" fill="#DC6B5A" fillOpacity="0.25" />
       </g>
-      {/* Left middle - squiggle */}
-      <path d="M20 280 Q30 270 25 260 Q20 250 30 245 Q40 240 35 230" strokeWidth="1.5" />
-      {/* Top middle decorations */}
-      <g transform="translate(550, 60)">
-        <circle cx="0" cy="0" r="3" fill="#DC6B5A" fillOpacity="0.2" />
-        <circle cx="15" cy="5" r="2" fill="#DC6B5A" fillOpacity="0.15" />
-        <circle cx="8" cy="12" r="2.5" fill="#DC6B5A" fillOpacity="0.2" />
+      {/* Additional heart nearby */}
+      <g transform="translate(120, 340)" stroke="#4ecdc4">
+        <path d="M0 5 L-8 -3 Q-8 -10 0 -5 Q8 -10 8 -3 Z" fill="#4ecdc4" fillOpacity="0.2" />
       </g>
-      {/* Bottom right - leaf */}
-      <g transform="translate(680, 360)">
-        <path d="M0 0 Q10 -10 20 0 Q10 10 0 0" fill="#DC6B5A" fillOpacity="0.2" />
-        <path d="M0 0 L20 0" strokeWidth="1" />
+      {/* Bottom middle - dots trail in varied colors */}
+      <circle cx="280" cy="375" r="3" fill="#DC6B5A" fillOpacity="0.35" stroke="#DC6B5A" />
+      <circle cx="300" cy="368" r="2" fill="#5BA3D0" fillOpacity="0.3" stroke="#5BA3D0" />
+      <circle cx="320" cy="372" r="2.5" fill="#4ecdc4" fillOpacity="0.3" stroke="#4ecdc4" />
+      <circle cx="340" cy="365" r="2" fill="#DC6B5A" fillOpacity="0.25" stroke="#DC6B5A" />
+      <circle cx="360" cy="370" r="3" fill="#5BA3D0" fillOpacity="0.3" stroke="#5BA3D0" />
+      <circle cx="380" cy="368" r="1.5" fill="#4ecdc4" fillOpacity="0.25" stroke="#4ecdc4" />
+      {/* Right side - sparkles in teal */}
+      <g transform="translate(770, 280)" stroke="#5BA3D0">
+        <path d="M0 -8 L2 -2 L8 0 L2 2 L0 8 L-2 2 L-8 0 L-2 -2 Z" fill="#5BA3D0" fillOpacity="0.4" />
       </g>
+      <g transform="translate(755, 320)" stroke="#DC6B5A">
+        <path d="M0 -5 L1.5 -1.5 L5 0 L1.5 1.5 L0 5 L-1.5 1.5 L-5 0 L-1.5 -1.5 Z" fill="#DC6B5A" fillOpacity="0.3" />
+      </g>
+      {/* Middle top - small cloud in light gray/blue */}
+      <g transform="translate(380, 30)" stroke="#5BA3D0">
+        <path d="M0 12 Q-8 12 -8 6 Q-10 0 -3 0 Q1 -5 9 -3 Q17 -5 19 3 Q25 5 21 10 Q25 16 15 15 Q8 20 0 12" fill="#5BA3D0" fillOpacity="0.12" />
+      </g>
+      {/* Left middle - wavy lines */}
+      <g stroke="#4ecdc4">
+        <path d="M20 260 Q35 250 25 240 Q15 230 30 220" strokeWidth="2" />
+        <path d="M35 275 Q45 265 40 255" strokeWidth="1.5" />
+      </g>
+      {/* Top middle decorations - circles in teal */}
+      <g transform="translate(550, 55)" stroke="#5BA3D0">
+        <circle cx="0" cy="0" r="4" fill="#5BA3D0" fillOpacity="0.25" />
+        <circle cx="18" cy="6" r="3" fill="#4ecdc4" fillOpacity="0.2" stroke="#4ecdc4" />
+        <circle cx="10" cy="15" r="3.5" fill="#DC6B5A" fillOpacity="0.2" stroke="#DC6B5A" />
+      </g>
+      {/* Bottom right - decorative leaf in teal */}
+      <g transform="translate(680, 355)" stroke="#4ecdc4">
+        <path d="M0 0 Q12 -12 24 0 Q12 12 0 0" fill="#4ecdc4" fillOpacity="0.25" />
+        <path d="M0 0 L24 0" strokeWidth="1.5" />
+        <path d="M6 -3 L6 3" strokeWidth="1" />
+        <path d="M12 -5 L12 5" strokeWidth="1" />
+        <path d="M18 -3 L18 3" strokeWidth="1" />
+      </g>
+      {/* Additional leaf */}
+      <g transform="translate(720, 370)" stroke="#5BA3D0">
+        <path d="M0 0 Q8 -8 16 0 Q8 8 0 0" fill="#5BA3D0" fillOpacity="0.2" />
+        <path d="M0 0 L16 0" strokeWidth="1" />
+      </g>
+      {/* Scattered decorative lines - top area */}
+      <g stroke="#DC6B5A" opacity="0.4">
+        <path d="M150 50 Q160 45 170 52" strokeWidth="1.5" />
+        <path d="M180 45 L195 50" strokeWidth="1.5" />
+        <path d="M200 42 Q210 48 220 44" strokeWidth="1.5" />
+      </g>
+      {/* Right edge decorations */}
+      <g stroke="#5BA3D0">
+        <path d="M780 180 Q785 170 780 160" strokeWidth="2" />
+        <circle cx="778" cy="200" r="3" fill="#5BA3D0" fillOpacity="0.25" />
+        <path d="M775 220 Q785 230 780 240" strokeWidth="1.5" />
+      </g>
+      {/* Middle area scattered elements */}
+      <g transform="translate(600, 180)" stroke="#4ecdc4">
+        <circle cx="0" cy="0" r="5" strokeWidth="1.5" fill="none" />
+        <circle cx="0" cy="0" r="2" fill="#4ecdc4" fillOpacity="0.3" />
+      </g>
+      <g transform="translate(650, 150)" stroke="#DC6B5A">
+        <path d="M0 -4 L4 0 L0 4 L-4 0 Z" fill="#DC6B5A" fillOpacity="0.25" />
+      </g>
+      {/* Left edge - more doodles */}
+      <g transform="translate(40, 120)" stroke="#DC6B5A">
+        <path d="M0 0 Q10 -5 15 5 Q20 15 10 20" strokeWidth="1.5" />
+      </g>
+      <g transform="translate(25, 320)" stroke="#5BA3D0">
+        <circle cx="0" cy="0" r="4" fill="#5BA3D0" fillOpacity="0.2" />
+        <circle cx="12" cy="5" r="3" fill="#4ecdc4" fillOpacity="0.2" stroke="#4ecdc4" />
+      </g>
+      {/* Top area - more stars */}
+      <g transform="translate(250, 45)" stroke="#5BA3D0">
+        <path d="M0 -6 L1.5 -1.5 L6 -1.5 L2.5 1 L3.5 6 L0 3 L-3.5 6 L-2.5 1 L-6 -1.5 L-1.5 -1.5 Z" fill="#5BA3D0" fillOpacity="0.25" />
+      </g>
+      <g transform="translate(480, 60)" stroke="#DC6B5A">
+        <path d="M0 -5 L1 -1 L5 -1 L2 1 L3 5 L0 2.5 L-3 5 L-2 1 L-5 -1 L-1 -1 Z" fill="#DC6B5A" fillOpacity="0.2" />
+      </g>
+      {/* Bottom edge decorations */}
+      <g transform="translate(500, 380)" stroke="#4ecdc4">
+        <path d="M0 0 Q8 -5 16 0 Q8 5 0 0" fill="#4ecdc4" fillOpacity="0.2" />
+      </g>
+      <g transform="translate(580, 375)" stroke="#5BA3D0">
+        <circle cx="0" cy="0" r="3" fill="#5BA3D0" fillOpacity="0.25" />
+        <circle cx="10" cy="-3" r="2" fill="#DC6B5A" fillOpacity="0.2" stroke="#DC6B5A" />
+      </g>
+      {/* Decorative squiggles throughout */}
+      <path d="M450 380 Q460 375 470 382 Q480 388 490 380" stroke="#DC6B5A" strokeWidth="1.5" opacity="0.4" />
+      <path d="M200 380 Q210 372 220 378" stroke="#5BA3D0" strokeWidth="1.5" opacity="0.4" />
     </g>
   </svg>
 );
@@ -877,7 +1006,7 @@ export default function About() {
 
             <div className="p-8 md:p-10 relative z-10">
               {/* Title */}
-              <h3 className="font-handwriting text-3xl md:text-4xl mb-8" style={{ color: '#DC6B5A' }}>
+              <h3 className="font-handwriting text-3xl md:text-4xl mb-8 font-bold" style={{ color: '#3d3d3d' }}>
                 What I look for
               </h3>
 
@@ -898,9 +1027,9 @@ export default function About() {
                       <div className="flex items-center gap-4">
                         <HandwrittenCheck isChecked={checkedItems.includes(item.id)} />
                         <span
-                          className="font-handwriting text-xl"
+                          className="font-handwriting text-xl font-semibold"
                           style={{
-                            color: '#DC6B5A',
+                            color: '#3d3d3d',
                             textDecoration: checkedItems.includes(item.id) ? 'line-through' : 'none',
                             opacity: checkedItems.includes(item.id) ? 0.7 : 1,
                           }}
@@ -1069,11 +1198,11 @@ export default function About() {
               </div>
 
               <div className="space-y-5">
-                {/* Stamps Scholarship */}
+                {/* Stamps Scholarship - coral accent */}
                 <motion.div
                   whileHover={{ scale: 1.02 }}
                   className="p-4 rounded-xl shadow-md relative overflow-hidden"
-                  style={{ background: 'rgba(199, 93, 74, 0.1)', border: "2px solid #DC6B5A" }}
+                  style={{ background: 'rgba(199, 93, 74, 0.08)', border: "2px solid #DC6B5A" }}
                 >
                   <div className="absolute top-0 right-0 text-xs font-bold px-2 py-1 rounded-bl" style={{ background: '#DC6B5A', color: 'white' }}>
                     MOST PRESTIGIOUS
@@ -1081,53 +1210,53 @@ export default function About() {
                   <div className="flex items-start gap-3">
                     <TrophyIcon size={24} className="text-[#DC6B5A] flex-shrink-0 mt-1" />
                     <div>
-                      <p className="font-marker text-lg" style={{ color: '#5a4a42' }}>
+                      <p className="font-marker text-lg" style={{ color: '#3d3d3d' }}>
                         Stamps Excellence Scholarship
                       </p>
-                      <p className="font-sketch text-sm mt-1" style={{ color: '#7a6a62' }}>
+                      <p className="font-sketch text-sm mt-1" style={{ color: '#5a5a5a' }}>
                         UM&apos;s most prestigious merit award
                       </p>
                     </div>
                   </div>
                 </motion.div>
 
-                {/* Robert Bates Cole Award */}
+                {/* Robert Bates Cole Award - blue accent */}
                 <motion.div
                   whileHover={{ scale: 1.02 }}
                   className="p-4 rounded-xl shadow-md"
-                  style={{ background: 'rgba(199, 93, 74, 0.08)', border: "2px solid rgba(199, 93, 74, 0.5)" }}
+                  style={{ background: 'rgba(91, 163, 208, 0.08)', border: "2px solid #5BA3D0" }}
                 >
                   <div className="flex items-start gap-3">
-                    <StarDoodle size={24} color="#DC6B5A" filled className="flex-shrink-0 mt-1" />
+                    <StarDoodle size={24} color="#5BA3D0" filled className="flex-shrink-0 mt-1" />
                     <div>
-                      <p className="font-marker text-lg" style={{ color: '#5a4a42' }}>
+                      <p className="font-marker text-lg" style={{ color: '#3d3d3d' }}>
                         Robert Bates Cole Award
                       </p>
-                      <p className="font-sketch text-sm mt-1" style={{ color: '#7a6a62' }}>
+                      <p className="font-sketch text-sm mt-1" style={{ color: '#5a5a5a' }}>
                         For Volunteer Leadership
                       </p>
                     </div>
                   </div>
                 </motion.div>
 
-                {/* President's Honor Roll */}
+                {/* President's Honor Roll - teal accent */}
                 <motion.div
                   whileHover={{ scale: 1.02 }}
                   className="p-4 rounded-xl shadow-md"
-                  style={{ background: 'rgba(199, 93, 74, 0.08)', border: "2px solid rgba(199, 93, 74, 0.5)" }}
+                  style={{ background: 'rgba(78, 205, 196, 0.08)', border: "2px solid #4ecdc4" }}
                 >
                   <div className="flex items-start gap-3">
-                    <StarDoodle size={24} color="#DC6B5A" filled className="flex-shrink-0 mt-1" />
+                    <StarDoodle size={24} color="#4ecdc4" filled className="flex-shrink-0 mt-1" />
                     <div>
                       <div className="flex items-center gap-2 flex-wrap">
-                        <p className="font-marker text-lg" style={{ color: '#5a4a42' }}>
+                        <p className="font-marker text-lg" style={{ color: '#3d3d3d' }}>
                           President&apos;s Honor Roll
                         </p>
-                        <span className="text-white text-xs font-bold px-2 py-0.5 rounded-full" style={{ background: '#DC6B5A' }}>
+                        <span className="text-white text-xs font-bold px-2 py-0.5 rounded-full" style={{ background: '#4ecdc4' }}>
                           5x
                         </span>
                       </div>
-                      <p className="font-sketch text-sm mt-1" style={{ color: '#7a6a62' }}>
+                      <p className="font-sketch text-sm mt-1" style={{ color: '#5a5a5a' }}>
                         Consecutive semesters with 4.0 GPA
                       </p>
                     </div>
