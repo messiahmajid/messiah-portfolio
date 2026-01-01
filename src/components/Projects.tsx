@@ -31,7 +31,7 @@ const projects: Project[] = [
       "Designed AI-powered Chrome extension and web platform for real-time scam detection, identifying 70% of social engineering scam attempts",
       "Formulated ML pipeline with fine-tuned LLMs for NLP-based text extraction on 10,000+ scam conversations, achieving 95% accuracy",
     ],
-    tags: ["AI/ML", "Chrome Extension", "NLP", "Hackathon Winner"],
+    tags: ["AI/ML", "Chrome Extension", "NLP",],
     github: "https://github.com/messiahmajid/scamspot",
     badge: "Horizons AI Hackathon",
   },
