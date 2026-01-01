@@ -282,7 +282,7 @@ export default function Leadership() {
             <div
               className="relative p-8 shadow-lg rounded-2xl"
               style={{
-                background: 'var(--paper-color)',
+                background: '#FFFFFF',
                 border: "3px solid #a855f7",
               }}
             >
@@ -380,7 +380,7 @@ export default function Leadership() {
                   <div
                     className="p-6 shadow-paper relative rounded-2xl"
                     style={{
-                      background: 'var(--paper-color)',
+                      background: '#FFFFFF',
                       border: "2px solid #2d2d2d",
                       transform: `rotate(${index % 2 === 0 ? -0.5 : 0.5}deg)`,
                     }}
@@ -482,7 +482,7 @@ export default function Leadership() {
                   }}
                   className="flex-grow max-w-md px-6 py-4 shadow-paper rounded-2xl"
                   style={{
-                    background: 'var(--paper-color)',
+                    background: '#FFFFFF',
                     border: "2px solid #2d2d2d",
                     transform: `rotate(${index % 2 === 0 ? -1 : 1}deg)`,
                   }}
