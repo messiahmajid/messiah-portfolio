@@ -874,19 +874,20 @@ export default function About() {
               </div>
             </div>
 
-            {/* Sliding GIF tray - slides out from under the card like a drawer */}
+            {/* Sliding GIF tray - slides out from bottom of the card like a drawer */}
             <AnimatePresence>
               {showCelebration && (
                 <motion.div
-                  initial={{ y: -100, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  exit={{ y: -100, opacity: 0 }}
+                  initial={{ height: 0, opacity: 1 }}
+                  animate={{ height: "auto", opacity: 1 }}
+                  exit={{ height: 0, opacity: 1 }}
                   transition={{
                     type: "spring",
-                    stiffness: 200,
-                    damping: 25,
+                    stiffness: 300,
+                    damping: 30,
                   }}
-                  className="relative z-0 -mt-4 mx-auto w-full max-w-md"
+                  className="relative z-0 mx-auto w-full max-w-md overflow-hidden"
+                  style={{ marginTop: "-4px" }}
                 >
                   <div
                     className="bg-white rounded-b-2xl overflow-hidden shadow-xl"

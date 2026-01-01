@@ -174,11 +174,12 @@ export default function Projects() {
                   {/* Badge for hackathon */}
                   {project.badge && (
                     <div
-                      className="absolute top-3 right-3 px-3 py-1 font-sketch text-sm transform rotate-3 flex items-center gap-1"
+                      className="absolute top-3 right-3 px-3 py-1 font-sketch text-sm font-bold transform rotate-3 flex items-center gap-1"
                       style={{
                         background: "#ffd54f",
                         border: "2px solid #2d2d2d",
                         borderRadius: "2px",
+                        color: '#2d2d2d',
                       }}
                     >
                       <TrophyIcon size={14} className="text-pencil" />
@@ -189,13 +190,13 @@ export default function Projects() {
 
                 {/* Title & Date - handwritten style */}
                 <div className="mb-4">
-                  <h3 className="font-marker text-2xl text-pencil mb-1">
+                  <h3 className="font-marker text-2xl text-pencil font-bold mb-1">
                     {project.title}
                   </h3>
-                  <p className="font-sketch text-pencil-light">
+                  <p className="font-sketch text-lg font-semibold" style={{ color: '#3d3d3d' }}>
                     {project.subtitle}
                   </p>
-                  <p className="font-handwriting text-lg text-pencil-light mt-1">
+                  <p className="font-handwriting text-lg font-medium mt-1" style={{ color: '#5a5a5a' }}>
                     {project.date}
                   </p>
                 </div>
@@ -204,8 +205,8 @@ export default function Projects() {
                 <ul className="space-y-2 mb-4">
                   {project.highlights.map((highlight, i) => (
                     <li key={i} className="flex items-start gap-2">
-                      <span style={{ color: project.color }}>*</span>
-                      <p className="font-sketch text-sm text-pencil leading-relaxed">
+                      <span className="font-bold" style={{ color: project.color }}>*</span>
+                      <p className="font-sketch text-base font-medium leading-relaxed" style={{ color: '#3d3d3d' }}>
                         {highlight}
                       </p>
                     </li>
@@ -217,10 +218,11 @@ export default function Projects() {
                   {project.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="px-3 py-1 font-sketch text-xs text-pencil rounded-full"
+                      className="px-3 py-1 font-sketch text-sm font-semibold rounded-full"
                       style={{
                         background: project.tagColor,
-                        border: "1px solid rgba(0,0,0,0.1)",
+                        border: "1px solid rgba(0,0,0,0.15)",
+                        color: '#2d2d2d',
                       }}
                     >
                       {tag}

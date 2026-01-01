@@ -168,16 +168,16 @@ export default function Experience() {
                         <span style={{ color: exp.color }}>{exp.icon}</span>
                       </div>
                       <div>
-                        <h3 className="font-marker text-2xl text-pencil">{exp.company}</h3>
-                        <p className="font-sketch text-lg text-pencil-light">{exp.role}</p>
-                        <p className="font-sketch text-sm text-pencil-light">
+                        <h3 className="font-marker text-2xl text-pencil font-bold">{exp.company}</h3>
+                        <p className="font-sketch text-lg font-semibold" style={{ color: '#3d3d3d' }}>{exp.role}</p>
+                        <p className="font-sketch text-base font-medium" style={{ color: '#5a5a5a' }}>
                           {exp.location} · {exp.period}
                         </p>
                       </div>
                     </div>
 
                     {/* Description */}
-                    <p className="font-sketch text-pencil mb-4 italic">
+                    <p className="font-sketch text-base font-medium mb-4 italic" style={{ color: '#4a4a4a' }}>
                       {exp.description}
                     </p>
 
@@ -198,7 +198,7 @@ export default function Experience() {
                             filled
                             className="flex-shrink-0 mt-1"
                           />
-                          <p className="font-sketch text-sm text-pencil leading-relaxed">
+                          <p className="font-sketch text-base font-medium leading-relaxed" style={{ color: '#3d3d3d' }}>
                             {highlight}
                           </p>
                         </motion.li>

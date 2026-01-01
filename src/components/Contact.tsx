@@ -2,10 +2,9 @@
 
 import React, { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { WashiTape, StarDoodle } from "./SketchyElements";
+import { WashiTape, StarDoodle, DoodleArrow } from "./SketchyElements";
 import {
   EmailIcon,
-  PhoneIcon,
   LinkedInIcon,
   PaperPlaneIcon,
 } from "./DoodleIcons";
@@ -102,13 +101,33 @@ export default function Contact() {
             className="p-8 md:p-12 shadow-paper relative rounded-2xl"
             style={{
               background: 'var(--paper-color)',
-              border: "2px solid #2d2d2d",
+              border: "3px solid #DC6B5A",
             }}
           >
             <WashiTape className="-top-3 left-12" rotation={-3} color="#ff6b6b" />
             <WashiTape className="-top-3 right-12" rotation={5} pattern="dots" color="#4ecdc4" />
 
-            {/* Intro text */}
+            {/* Animated arrow that flies around and taps the cards */}
+            <motion.div
+              className="absolute z-20"
+              initial={{ x: "50%", y: -20, rotate: 135 }}
+              animate={{
+                x: ["50%", "15%", "15%", "75%", "75%", "50%"],
+                y: [-20, 100, 120, 100, 120, -20],
+                rotate: [135, 135, 180, 180, 135, 135],
+                scale: [1, 1, 1.2, 1, 1.2, 1],
+              }}
+              transition={{
+                duration: 6,
+                repeat: Infinity,
+                ease: "easeInOut",
+                times: [0, 0.2, 0.35, 0.5, 0.65, 1],
+              }}
+            >
+              <DoodleArrow direction="down" color="#DC6B5A" />
+            </motion.div>
+
+            {/* Intro text - MORE LEGIBLE */}
             <div className="text-center mb-10">
               <motion.div
                 initial={{ scale: 0 }}
@@ -119,28 +138,28 @@ export default function Contact() {
               >
                 <PaperPlaneIcon size={48} className="text-accent-coral" />
               </motion.div>
-              <p className="font-sketch text-xl text-pencil leading-relaxed max-w-lg mx-auto">
+              <p className="font-sketch text-xl md:text-2xl font-semibold leading-relaxed max-w-lg mx-auto" style={{ color: '#3d3d3d' }}>
                 I&apos;m always excited to connect with fellow developers, researchers,
                 and innovators. Let&apos;s build something{" "}
-                <span className="highlight-text">amazing</span> together!
+                <span className="highlight-text font-bold">amazing</span> together!
               </p>
             </div>
 
-            {/* Contact Links */}
-            <div className="grid sm:grid-cols-3 gap-6">
+            {/* Contact Links - 2 columns only (no phone) */}
+            <div className="grid sm:grid-cols-2 gap-8 max-w-md mx-auto">
               {/* Email */}
               <motion.a
                 href="mailto:messiah.majid@miami.edu"
                 whileHover={{ scale: 1.05, rotate: 2 }}
                 whileTap={{ scale: 0.95 }}
-                className="group flex flex-col items-center p-6 rounded-2xl transition-all"
+                className="group flex flex-col items-center p-6 rounded-2xl transition-all relative"
                 style={{
                   background: "var(--paper-color)",
-                  border: "2px dashed #d35f5f",
+                  border: "3px solid #DC6B5A",
                 }}
               >
                 <div className="relative mb-3">
-                  <EmailIcon size={32} className="text-accent-coral" />
+                  <EmailIcon size={40} className="text-[#DC6B5A]" />
                   <motion.div
                     className="absolute inset-0"
                     whileHover={{ scale: 1.5, opacity: 0 }}
@@ -148,12 +167,12 @@ export default function Contact() {
                   >
                     <div
                       className="w-full h-full rounded-full"
-                      style={{ background: "rgba(255, 107, 107, 0.2)" }}
+                      style={{ background: "rgba(220, 107, 90, 0.2)" }}
                     />
                   </motion.div>
                 </div>
-                <p className="font-marker text-lg text-pencil mb-1">Email</p>
-                <p className="font-sketch text-sm text-pencil-light text-center break-all">
+                <p className="font-marker text-xl font-bold mb-1" style={{ color: '#2d2d2d' }}>Email</p>
+                <p className="font-sketch text-base font-semibold text-center break-all" style={{ color: '#5a5a5a' }}>
                   messiah.majid@miami.edu
                 </p>
 
@@ -168,48 +187,10 @@ export default function Contact() {
                     rx="48%"
                     ry="45%"
                     fill="none"
-                    stroke="#ff6b6b"
-                    strokeWidth="2.5"
+                    stroke="#DC6B5A"
+                    strokeWidth="3"
                     strokeDasharray="8 4"
                     style={{ transform: "rotate(-3deg)", transformOrigin: "center" }}
-                  />
-                </svg>
-              </motion.a>
-
-              {/* Phone */}
-              <motion.a
-                href="tel:+17864132337"
-                whileHover={{ scale: 1.05, rotate: -2 }}
-                whileTap={{ scale: 0.95 }}
-                className="group flex flex-col items-center p-6 rounded-2xl transition-all relative"
-                style={{
-                  background: "var(--paper-color)",
-                  border: "2px dashed #4ecdc4",
-                }}
-              >
-                <div className="relative mb-3">
-                  <PhoneIcon size={32} className="text-green-600" />
-                </div>
-                <p className="font-marker text-lg text-pencil mb-1">Phone</p>
-                <p className="font-sketch text-sm text-pencil-light">
-                  (786) 413-2337
-                </p>
-
-                {/* Circle hover effect */}
-                <svg
-                  className="absolute inset-0 w-full h-full pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity"
-                  style={{ overflow: "visible" }}
-                >
-                  <ellipse
-                    cx="50%"
-                    cy="50%"
-                    rx="48%"
-                    ry="45%"
-                    fill="none"
-                    stroke="#22c55e"
-                    strokeWidth="2.5"
-                    strokeDasharray="8 4"
-                    style={{ transform: "rotate(2deg)", transformOrigin: "center" }}
                   />
                 </svg>
               </motion.a>
@@ -219,19 +200,19 @@ export default function Contact() {
                 href="https://www.linkedin.com/in/messiahmajid"
                 target="_blank"
                 rel="noopener noreferrer"
-                whileHover={{ scale: 1.05, rotate: 1 }}
+                whileHover={{ scale: 1.05, rotate: -2 }}
                 whileTap={{ scale: 0.95 }}
                 className="group flex flex-col items-center p-6 rounded-2xl transition-all relative"
                 style={{
                   background: "var(--paper-color)",
-                  border: "2px dashed #3b82f6",
+                  border: "3px solid #0077B5",
                 }}
               >
                 <div className="relative mb-3">
-                  <LinkedInIcon size={32} className="text-accent-blue" />
+                  <LinkedInIcon size={40} className="text-[#0077B5]" />
                 </div>
-                <p className="font-marker text-lg text-pencil mb-1">LinkedIn</p>
-                <p className="font-sketch text-sm text-pencil-light">
+                <p className="font-marker text-xl font-bold mb-1" style={{ color: '#2d2d2d' }}>LinkedIn</p>
+                <p className="font-sketch text-base font-semibold" style={{ color: '#5a5a5a' }}>
                   /in/messiahmajid
                 </p>
 
@@ -246,10 +227,10 @@ export default function Contact() {
                     rx="48%"
                     ry="45%"
                     fill="none"
-                    stroke="#3b82f6"
-                    strokeWidth="2.5"
+                    stroke="#0077B5"
+                    strokeWidth="3"
                     strokeDasharray="8 4"
-                    style={{ transform: "rotate(-2deg)", transformOrigin: "center" }}
+                    style={{ transform: "rotate(2deg)", transformOrigin: "center" }}
                   />
                 </svg>
               </motion.a>
@@ -260,7 +241,7 @@ export default function Contact() {
               <StarDoodle size={24} color="#ffd54f" filled />
             </div>
             <div className="absolute -bottom-2 right-12">
-              <StarDoodle size={20} color="#ff6b6b" />
+              <StarDoodle size={20} color="#DC6B5A" />
             </div>
           </div>
         </motion.div>
