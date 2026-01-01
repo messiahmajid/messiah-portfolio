@@ -11,17 +11,12 @@ import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import { ChalkBackground, WavyDivider } from "@/components/Doodles";
 import PhotoStack from "@/components/PhotoStack";
-import SidebarDoodles from "@/components/SidebarDoodles";
 
 export default function Home() {
   return (
     <main className="min-h-screen relative">
       {/* Chalk-style doodles on dark background */}
       <ChalkBackground className="z-0" />
-
-      {/* Sidebar Doodles - coral squares with icons */}
-      <SidebarDoodles position="left" count={10} />
-      <SidebarDoodles position="right" count={10} />
 
       {/* Side PhotoStacks */}
       <PhotoStack position="left" />
