@@ -418,27 +418,24 @@ export default function About() {
           <AnimatePresence>
             {showCelebration && (
               <motion.div
-                initial={{ height: 0, opacity: 0 }}
-                animate={{ height: "auto", opacity: 1 }}
-                exit={{ height: 0, opacity: 0 }}
+                initial={{ height: 0 }}
+                animate={{ height: "auto" }}
+                exit={{ height: 0 }}
                 transition={{
-                  duration: 0.5,
-                  ease: [0.25, 0.1, 0.25, 1],
+                  duration: 0.4,
+                  ease: [0.4, 0, 0.2, 1],
                 }}
-                className="relative z-0 mx-auto w-full max-w-md overflow-hidden"
-                style={{ marginTop: "-20px" }}
+                className="relative z-0 w-full max-w-2xl overflow-hidden"
+                style={{ marginTop: "-3px" }}
               >
                 <div
-                  className="rounded-b-2xl overflow-hidden shadow-xl"
+                  className="rounded-b-2xl overflow-hidden"
                   style={{
-                    background: '#FFFFFF',
-                    border: '4px solid #DC6B5A',
+                    border: '3px solid #DC6B5A',
                     borderTop: 'none',
-                    paddingTop: '24px',
                   }}
                 >
-                  {/* User-provided GIF */}
-                  <div className="relative w-full aspect-video overflow-hidden">
+                  <div className="relative w-full aspect-video">
                     <Image
                       src="/images/celebration.gif"
                       alt="Celebration"
