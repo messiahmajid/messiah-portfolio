@@ -130,49 +130,38 @@ export default function Contact() {
               {/* Email */}
               <motion.a
                 href="mailto:messiah.majid@miami.edu"
-                whileHover={{ scale: 1.05, rotate: 2 }}
+                initial={{ boxShadow: "0 4px 6px rgba(0,0,0,0.1)" }}
+                whileHover={{
+                  scale: 1.08,
+                  y: -8,
+                  boxShadow: "0 20px 40px rgba(220, 107, 90, 0.3)",
+                }}
                 whileTap={{ scale: 0.95 }}
-                className="group flex flex-col items-center p-6 rounded-2xl transition-all relative"
+                transition={{ type: "spring", stiffness: 400, damping: 17 }}
+                className="group flex flex-col items-center p-6 rounded-2xl relative overflow-hidden"
                 style={{
                   background: "var(--paper-color)",
                   border: "3px solid #DC6B5A",
                 }}
               >
-                <div className="relative mb-3">
+                {/* Background glow on hover */}
+                <motion.div
+                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                  style={{
+                    background: "radial-gradient(circle at center, rgba(220, 107, 90, 0.15) 0%, transparent 70%)",
+                  }}
+                />
+                <motion.div
+                  className="relative mb-3 z-10"
+                  whileHover={{ rotate: [0, -10, 10, -5, 0], scale: 1.1 }}
+                  transition={{ duration: 0.5 }}
+                >
                   <EmailIcon size={40} className="text-[#DC6B5A]" />
-                  <motion.div
-                    className="absolute inset-0"
-                    whileHover={{ scale: 1.5, opacity: 0 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    <div
-                      className="w-full h-full rounded-full"
-                      style={{ background: "rgba(220, 107, 90, 0.2)" }}
-                    />
-                  </motion.div>
-                </div>
-                <p className="font-marker text-xl font-bold mb-1" style={{ color: '#2d2d2d' }}>Email</p>
-                <p className="font-sketch text-base font-semibold text-center break-all" style={{ color: '#5a5a5a' }}>
+                </motion.div>
+                <p className="font-marker text-xl font-bold mb-1 z-10" style={{ color: '#2d2d2d' }}>Email</p>
+                <p className="font-sketch text-base font-semibold text-center break-all z-10" style={{ color: '#5a5a5a' }}>
                   messiah.majid@miami.edu
                 </p>
-
-                {/* Circle hover effect */}
-                <svg
-                  className="absolute inset-0 w-full h-full pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity"
-                  style={{ overflow: "visible" }}
-                >
-                  <ellipse
-                    cx="50%"
-                    cy="50%"
-                    rx="48%"
-                    ry="45%"
-                    fill="none"
-                    stroke="#DC6B5A"
-                    strokeWidth="3"
-                    strokeDasharray="8 4"
-                    style={{ transform: "rotate(-3deg)", transformOrigin: "center" }}
-                  />
-                </svg>
               </motion.a>
 
               {/* LinkedIn */}
@@ -180,39 +169,38 @@ export default function Contact() {
                 href="https://www.linkedin.com/in/messiahmajid"
                 target="_blank"
                 rel="noopener noreferrer"
-                whileHover={{ scale: 1.05, rotate: -2 }}
+                initial={{ boxShadow: "0 4px 6px rgba(0,0,0,0.1)" }}
+                whileHover={{
+                  scale: 1.08,
+                  y: -8,
+                  boxShadow: "0 20px 40px rgba(0, 119, 181, 0.3)",
+                }}
                 whileTap={{ scale: 0.95 }}
-                className="group flex flex-col items-center p-6 rounded-2xl transition-all relative"
+                transition={{ type: "spring", stiffness: 400, damping: 17 }}
+                className="group flex flex-col items-center p-6 rounded-2xl relative overflow-hidden"
                 style={{
                   background: "var(--paper-color)",
                   border: "3px solid #0077B5",
                 }}
               >
-                <div className="relative mb-3">
+                {/* Background glow on hover */}
+                <motion.div
+                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                  style={{
+                    background: "radial-gradient(circle at center, rgba(0, 119, 181, 0.15) 0%, transparent 70%)",
+                  }}
+                />
+                <motion.div
+                  className="relative mb-3 z-10"
+                  whileHover={{ rotate: [0, -10, 10, -5, 0], scale: 1.1 }}
+                  transition={{ duration: 0.5 }}
+                >
                   <LinkedInIcon size={40} className="text-[#0077B5]" />
-                </div>
-                <p className="font-marker text-xl font-bold mb-1" style={{ color: '#2d2d2d' }}>LinkedIn</p>
-                <p className="font-sketch text-base font-semibold" style={{ color: '#5a5a5a' }}>
+                </motion.div>
+                <p className="font-marker text-xl font-bold mb-1 z-10" style={{ color: '#2d2d2d' }}>LinkedIn</p>
+                <p className="font-sketch text-base font-semibold z-10" style={{ color: '#5a5a5a' }}>
                   /in/messiahmajid
                 </p>
-
-                {/* Circle hover effect */}
-                <svg
-                  className="absolute inset-0 w-full h-full pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity"
-                  style={{ overflow: "visible" }}
-                >
-                  <ellipse
-                    cx="50%"
-                    cy="50%"
-                    rx="48%"
-                    ry="45%"
-                    fill="none"
-                    stroke="#0077B5"
-                    strokeWidth="3"
-                    strokeDasharray="8 4"
-                    style={{ transform: "rotate(2deg)", transformOrigin: "center" }}
-                  />
-                </svg>
               </motion.a>
             </div>
 
