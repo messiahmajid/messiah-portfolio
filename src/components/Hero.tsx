@@ -146,11 +146,11 @@ export default function Hero() {
             target="_blank"
             rel="noopener noreferrer"
             className="group flex items-center gap-2 px-4 py-2 rounded-full shadow-paper hover:shadow-paper-hover transition-all hover-scale"
-            style={{ background: 'var(--paper-color)', border: "3px solid #DC6B5A" }}
+            style={{ background: 'var(--paper-color)', border: "3px solid #0077B5" }}
             whileHover={{ scale: 1.05, rotate: 2 }}
             whileTap={{ scale: 0.95 }}
           >
-            <LinkedInIcon size={20} className="text-[#DC6B5A]" />
+            <LinkedInIcon size={20} className="text-[#0077B5]" />
             <span className="font-sketch text-sm sm:text-base hidden sm:inline" style={{ color: '#1A1A1A' }}>LinkedIn</span>
           </motion.a>
 
@@ -159,11 +159,11 @@ export default function Hero() {
             target="_blank"
             rel="noopener noreferrer"
             className="group flex items-center gap-2 px-4 py-2 rounded-full shadow-paper hover:shadow-paper-hover transition-all hover-scale"
-            style={{ background: 'var(--paper-color)', border: "3px solid #DC6B5A" }}
+            style={{ background: 'var(--paper-color)', border: "3px solid #333333" }}
             whileHover={{ scale: 1.05, rotate: -1 }}
             whileTap={{ scale: 0.95 }}
           >
-            <GitHubIcon size={20} className="text-[#DC6B5A]" />
+            <GitHubIcon size={20} className="text-[#333333]" />
             <span className="font-sketch text-sm sm:text-base hidden sm:inline" style={{ color: '#1A1A1A' }}>GitHub</span>
           </motion.a>
         </motion.div>
