@@ -172,12 +172,8 @@ export default function About() {
         ? prev.filter(i => i !== id)
         : [...prev, id];
 
-      // Logic: Once all are checked, celebration stays visible
-      if (newChecked.length === lookingForItems.length) {
-        setShowCelebration(true);
-      } else {
-        setShowCelebration(false);
-      }
+      // Show GIF when all checked, hide when any unchecked
+      setShowCelebration(newChecked.length === lookingForItems.length);
 
       return newChecked;
     });
@@ -422,28 +418,26 @@ export default function About() {
           <AnimatePresence>
             {showCelebration && (
               <motion.div
-                initial={{ height: 0 }}
-                animate={{ height: "auto" }}
-                exit={{ height: 0 }}
-                transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
-                className="relative z-10 mx-auto w-full max-w-md overflow-hidden"
-                style={{ marginTop: "-24px" }}
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ height: "auto", opacity: 1 }}
+                exit={{ height: 0, opacity: 0 }}
+                transition={{
+                  duration: 0.5,
+                  ease: [0.25, 0.1, 0.25, 1],
+                }}
+                className="relative z-0 mx-auto w-full max-w-md overflow-hidden"
+                style={{ marginTop: "-20px" }}
               >
                 <div
-                  className="absolute top-0 left-0 right-0 h-8 z-20"
+                  className="rounded-b-2xl overflow-hidden shadow-xl"
                   style={{
-                    background: 'var(--paper-color)',
-                    borderLeft: '3px solid #DC6B5A',
-                    borderRight: '3px solid #DC6B5A',
-                  }}
-                />
-                <div
-                  className="bg-white rounded-b-2xl overflow-hidden shadow-xl pt-6"
-                  style={{
+                    background: '#FFFFFF',
                     border: '4px solid #DC6B5A',
                     borderTop: 'none',
+                    paddingTop: '24px',
                   }}
                 >
+                  {/* User-provided GIF */}
                   <div className="relative w-full aspect-video overflow-hidden">
                     <Image
                       src="/images/celebration.gif"

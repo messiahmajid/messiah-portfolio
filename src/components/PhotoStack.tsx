@@ -54,7 +54,7 @@ export default function PhotoStack({
 
   return (
     <div
-      className={`fixed ${position === "left" ? "left-10 xl:left-14" : "right-10 xl:right-14"} top-1/2 -translate-y-1/2 z-30 hidden lg:block ${className}`}
+      className={`fixed ${position === "left" ? "left-4 xl:left-8" : "right-4 xl:right-8"} top-1/2 -translate-y-1/2 z-30 hidden lg:block ${className}`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >

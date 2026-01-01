@@ -188,16 +188,13 @@ export default function Leadership() {
     offset: ["start end", "end start"]
   });
 
-  // Parallax transforms for various sections
-  const yTed = useTransform(scrollYProgress, [0, 1], [40, -40]);
-  const yFeatured = useTransform(scrollYProgress, [0, 1], [60, -60]);
-  const rotateFeatured = useTransform(scrollYProgress, [0, 0.5, 1], [-1, 0, 1]);
+  // Subtle parallax transforms (reduced to prevent jitter)
+  const yTed = useTransform(scrollYProgress, [0, 1], [15, -15]);
+  const yFeatured = useTransform(scrollYProgress, [0, 1], [20, -20]);
 
   // Transforms for other roles (alternating)
-  const yRole1 = useTransform(scrollYProgress, [0, 1], [50, -50]);
-  const yRole2 = useTransform(scrollYProgress, [0, 1], [70, -70]);
-  const rotate1 = useTransform(scrollYProgress, [0, 0.5, 1], [-2, 0, 2]);
-  const rotate2 = useTransform(scrollYProgress, [0, 0.5, 1], [2, 0, -2]);
+  const yRole1 = useTransform(scrollYProgress, [0, 1], [15, -15]);
+  const yRole2 = useTransform(scrollYProgress, [0, 1], [20, -20]);
 
   return (
     <section id="leadership" ref={sectionRef} className="py-20 px-4 relative">
@@ -276,7 +273,7 @@ export default function Leadership() {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            style={{ y: yFeatured, rotate: rotateFeatured }}
+            style={{ y: yFeatured }}
             className="mb-16"
           >
             <motion.div
@@ -356,7 +353,6 @@ export default function Leadership() {
               transition={{ duration: 0.6, delay: index * 0.1 }}
               style={{
                 y: index % 2 === 0 ? yRole1 : yRole2,
-                rotate: index % 2 === 0 ? rotate1 : rotate2
               }}
             >
               <div className="grid md:grid-cols-2 gap-8 items-center">
