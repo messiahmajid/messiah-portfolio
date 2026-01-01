@@ -722,11 +722,11 @@ export default function About() {
         </motion.div>
 
         {/* What I Look For Section - Tilted card with paper lines */}
+        <div className="mb-16">
         <motion.div
           initial={{ opacity: 0, y: 30, rotate: -1 }}
           whileInView={{ opacity: 1, y: 0, rotate: -1 }}
           viewport={{ once: true }}
-          className="mb-16"
         >
           <div
             className="relative rounded-2xl overflow-hidden shadow-xl"
@@ -921,6 +921,7 @@ export default function About() {
             </motion.div>
           )}
         </AnimatePresence>
+        </div>
 
         {/* Education and Honors Cards */}
         <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
