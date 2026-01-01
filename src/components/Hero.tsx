@@ -129,17 +129,17 @@ export default function Hero() {
             <div className="relative grid md:grid-cols-2 gap-6 p-8 md:p-12">
               {/* Left side - Text content */}
               <div className="flex flex-col justify-center z-10">
-                {/* Philosophy phrase that ties into software should feel */}
-                <p className="font-sketch text-lg sm:text-xl mb-4" style={{ color: '#5a4a42' }}>
-                  I believe in building things that
+                {/* Main belief statement - CLEAR and READABLE */}
+                <p className="font-sketch text-xl sm:text-2xl mb-2 font-semibold" style={{ color: '#5a4a42' }}>
+                  I believe that
                 </p>
 
-                {/* Cycling headline - LARGER */}
+                {/* Cycling headline - LARGER and BOLDER */}
                 <div className="mb-6">
-                  <p className="font-marker text-3xl sm:text-4xl md:text-5xl leading-tight font-bold" style={{ color: '#DC6B5A' }}>
+                  <p className="font-marker text-4xl sm:text-5xl md:text-6xl leading-tight font-bold" style={{ color: '#DC6B5A' }}>
                     Software should
                   </p>
-                  <p className="font-marker text-3xl sm:text-4xl md:text-5xl leading-tight font-bold" style={{ color: '#DC6B5A' }}>
+                  <p className="font-marker text-4xl sm:text-5xl md:text-6xl leading-tight font-bold" style={{ color: '#DC6B5A' }}>
                     feel{' '}
                     <span className="relative inline-block">
                       <AnimatePresence mode="wait">
@@ -154,7 +154,7 @@ export default function Hero() {
                             color: '#DC6B5A',
                             textDecoration: 'underline',
                             textDecorationStyle: 'wavy',
-                            textUnderlineOffset: '4px',
+                            textUnderlineOffset: '6px',
                           }}
                         >
                           {cyclingWords[currentWordIndex]}
@@ -165,7 +165,7 @@ export default function Hero() {
                 </div>
 
                 {/* Location - LARGER and more visible */}
-                <p className="font-sketch text-lg sm:text-xl font-semibold" style={{ color: '#DC6B5A' }}>
+                <p className="font-sketch text-xl sm:text-2xl font-bold" style={{ color: '#DC6B5A' }}>
                   Coral Gables, FL • EST
                 </p>
               </div>
