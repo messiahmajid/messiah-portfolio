@@ -276,6 +276,7 @@ export default function About() {
                 className="p-6 md:p-8 relative flex flex-col justify-center"
                 style={{ transformStyle: 'preserve-3d' }}
               >
+                <RightPageDoodles />
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={currentPage}
@@ -359,6 +360,8 @@ export default function About() {
                   <path d="M0 12 Q10 8 20 12 T40 12 T60 12 T80 12 T100 12 T120 12 T140 12 T160 12 T180 12 T200 12 T220 12 T240 12 T260 12 T280 12 T300 12 L300 0 L0 0 Z" fill="var(--paper-color)" />
                 </svg>
               </div>
+
+              <WhatILookForDoodles />
 
               <div className="p-8 md:p-12 relative z-10 text-center">
                 <h3 className="font-handwriting text-4xl md:text-5xl mb-10 font-bold" style={{ color: '#2d2d2d' }}>
