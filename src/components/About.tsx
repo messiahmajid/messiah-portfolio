@@ -748,7 +748,7 @@ export default function About() {
 
             <div className="p-10 md:p-14 relative z-10">
               {/* Title - LARGER and BOLDER */}
-              <h3 className="font-handwriting text-4xl md:text-5xl lg:text-6xl mb-10 font-bold" style={{ color: '#DC6B5A' }}>
+              <h3 className="font-handwriting text-4xl md:text-5xl lg:text-6xl mb-10 font-bold" style={{ color: '#2d2d2d' }}>
                 What I look for
               </h3>
 
