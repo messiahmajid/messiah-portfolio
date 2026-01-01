@@ -211,8 +211,8 @@ export function SectionPhotoStack({
             offset < -photos.length / 2
               ? offset + photos.length
               : offset > photos.length / 2
-              ? offset - photos.length
-              : offset;
+                ? offset - photos.length
+                : offset;
 
           return (
             <motion.div
@@ -269,11 +269,10 @@ export function SectionPhotoStack({
           <button
             key={index}
             onClick={() => setCurrentIndex(index)}
-            className={`w-2 h-2 rounded-full transition-all ${
-              index === currentIndex
-                ? "bg-pencil scale-125"
-                : "bg-pencil/30 hover:bg-pencil/50"
-            }`}
+            className={`w-2 h-2 rounded-full transition-all ${index === currentIndex
+              ? "bg-pencil scale-125"
+              : "bg-pencil/30 hover:bg-pencil/50"
+              }`}
           />
         ))}
       </div>
