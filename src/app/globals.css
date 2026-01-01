@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Gochi+Hand&family=Inter:wght@300;400;500;600;700&family=Patrick+Hand&family=Permanent+Marker&family=Bangers&family=Comic+Neue:wght@700&family=Indie+Flower&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Gochi+Hand&family=Lexend:wght@300;400;500;600;700&family=Patrick+Hand&family=Permanent+Marker&family=Bangers&family=Comic+Neue:wght@700&family=Indie+Flower&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -39,7 +39,7 @@ html {
 
 body {
   background-color: var(--bg-dark);
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: 'Lexend', -apple-system, BlinkMacSystemFont, sans-serif;
   color: var(--pencil-color);
   overflow-x: hidden;
   position: relative;
