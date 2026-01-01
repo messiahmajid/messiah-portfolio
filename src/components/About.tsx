@@ -7,7 +7,7 @@ import { GraduationCapIcon, TrophyIcon } from "./DoodleIcons";
 
 // Sketchy hand-drawn doodle for Ghana/Journey - scattered around edges
 const JourneyDoodles = () => (
-  <svg viewBox="0 0 300 250" className="w-full h-full" style={{ color: '#c75d4a' }}>
+  <svg viewBox="0 0 300 250" className="w-full h-full" style={{ color: '#DC6B5A' }}>
     <g fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
       {/* Airplane - top right */}
       <g transform="translate(230, 30)">
@@ -55,7 +55,7 @@ const JourneyDoodles = () => (
 
 // Tech & Bio doodles - scattered style
 const TechBioDoodles = () => (
-  <svg viewBox="0 0 300 250" className="w-full h-full" style={{ color: '#c75d4a' }}>
+  <svg viewBox="0 0 300 250" className="w-full h-full" style={{ color: '#DC6B5A' }}>
     <g fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
       {/* DNA helix - left */}
       <g transform="translate(25, 60)">
@@ -112,7 +112,7 @@ const TechBioDoodles = () => (
 
 // Interdisciplinary doodles
 const StudyDoodles = () => (
-  <svg viewBox="0 0 300 250" className="w-full h-full" style={{ color: '#c75d4a' }}>
+  <svg viewBox="0 0 300 250" className="w-full h-full" style={{ color: '#DC6B5A' }}>
     <g fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
       {/* Open book - center top */}
       <g transform="translate(120, 30)">
@@ -165,7 +165,7 @@ const StudyDoodles = () => (
 
 // Service/Volunteer doodles
 const ServiceDoodles = () => (
-  <svg viewBox="0 0 300 250" className="w-full h-full" style={{ color: '#c75d4a' }}>
+  <svg viewBox="0 0 300 250" className="w-full h-full" style={{ color: '#DC6B5A' }}>
     <g fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
       {/* Big heart - center */}
       <g transform="translate(120, 50)">
@@ -210,9 +210,9 @@ const ServiceDoodles = () => (
   </svg>
 );
 
-// Cute scene illustration for "What I look for" - like the reference with characters
+// Cute scene illustration for "What I look for" - detailed with many elements
 const CuteSceneIllustration = ({ fillLevel }: { fillLevel: number }) => (
-  <svg viewBox="0 0 280 280" className="w-full h-full" style={{ color: '#c75d4a' }}>
+  <svg viewBox="0 0 280 280" className="w-full h-full" style={{ color: '#DC6B5A' }}>
     <defs>
       <clipPath id="fillClip">
         <rect x="0" y={280 - (280 * fillLevel / 100)} width="280" height={280 * fillLevel / 100} />
@@ -220,85 +220,150 @@ const CuteSceneIllustration = ({ fillLevel }: { fillLevel: number }) => (
     </defs>
 
     {/* Background elements - always visible */}
-    <g fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" opacity="0.3">
-      {/* Mountains */}
-      <path d="M0 220 L50 140 L80 180 L130 100 L180 160 L220 120 L280 200 L280 280 L0 280 Z" />
-      {/* Sun */}
-      <circle cx="230" cy="50" r="25" />
-      <path d="M230 15 L230 5" />
-      <path d="M230 95 L230 85" />
-      <path d="M195 50 L185 50" />
-      <path d="M275 50 L265 50" />
+    <g fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" opacity="0.25">
+      {/* Landscape outline */}
+      <path d="M0 240 Q70 200 140 220 Q210 240 280 210 L280 280 L0 280 Z" />
+      {/* Leaves scattered */}
+      <ellipse cx="20" cy="120" rx="8" ry="15" transform="rotate(-20 20 120)" />
+      <ellipse cx="260" cy="100" rx="10" ry="18" transform="rotate(15 260 100)" />
+      <ellipse cx="250" cy="60" rx="6" ry="12" transform="rotate(-30 250 60)" />
     </g>
 
     {/* Filled version - clips based on fill level */}
     <g clipPath="url(#fillClip)">
-      <g fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-        {/* Mountains filled */}
-        <path d="M0 220 L50 140 L80 180 L130 100 L180 160 L220 120 L280 200 L280 280 L0 280 Z" fill="currentColor" fillOpacity="0.15" />
-        {/* Sun filled */}
-        <circle cx="230" cy="50" r="25" fill="currentColor" fillOpacity="0.2" />
-        <path d="M230 15 L230 5" />
-        <path d="M230 95 L230 85" />
-        <path d="M195 50 L185 50" />
-        <path d="M275 50 L265 50" />
-        {/* Trees */}
-        <g transform="translate(40, 180)">
-          <path d="M15 40 L15 20" strokeWidth="3" />
-          <path d="M0 25 L15 0 L30 25 Z" fill="currentColor" fillOpacity="0.3" />
-          <path d="M3 35 L15 10 L27 35 Z" fill="currentColor" fillOpacity="0.25" />
+      <g fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        {/* Ground/landscape */}
+        <path d="M0 240 Q70 200 140 220 Q210 240 280 210 L280 280 L0 280 Z" fill="currentColor" fillOpacity="0.12" />
+
+        {/* Left bush with flowers */}
+        <g transform="translate(10, 200)">
+          <path d="M0 40 Q-10 20 10 15 Q5 0 25 5 Q40 -5 45 15 Q60 10 55 30 Q70 45 50 50 Q30 60 10 50 Q-10 55 0 40" fill="currentColor" fillOpacity="0.2" strokeWidth="1.5" />
+          {/* Small flowers */}
+          <circle cx="20" cy="25" r="4" fill="currentColor" fillOpacity="0.4" />
+          <circle cx="35" cy="20" r="3" fill="currentColor" fillOpacity="0.35" />
+          <circle cx="15" cy="35" r="3" fill="currentColor" fillOpacity="0.35" />
         </g>
-        <g transform="translate(200, 160)">
-          <path d="M15 50 L15 25" strokeWidth="3" />
-          <path d="M0 30 L15 5 L30 30 Z" fill="currentColor" fillOpacity="0.3" />
-          <path d="M3 42 L15 15 L27 42 Z" fill="currentColor" fillOpacity="0.25" />
+
+        {/* Right bush */}
+        <g transform="translate(200, 180)">
+          <path d="M0 50 Q-15 30 15 20 Q10 0 35 10 Q55 -5 60 20 Q80 15 75 40 Q90 55 65 60 Q40 70 15 60 Q-10 65 0 50" fill="currentColor" fillOpacity="0.2" strokeWidth="1.5" />
+          <circle cx="30" cy="30" r="4" fill="currentColor" fillOpacity="0.4" />
+          <circle cx="50" cy="25" r="3" fill="currentColor" fillOpacity="0.35" />
         </g>
-        {/* Flowers */}
-        <g transform="translate(100, 230)">
-          <circle cx="0" cy="0" r="8" fill="currentColor" fillOpacity="0.4" />
-          <circle cx="0" cy="-12" r="5" fill="currentColor" fillOpacity="0.3" />
-          <circle cx="10" cy="-5" r="5" fill="currentColor" fillOpacity="0.3" />
-          <circle cx="-10" cy="-5" r="5" fill="currentColor" fillOpacity="0.3" />
-          <path d="M0 8 L0 30" strokeWidth="2" />
-        </g>
-        <g transform="translate(160, 240)">
-          <circle cx="0" cy="0" r="6" fill="currentColor" fillOpacity="0.4" />
-          <circle cx="0" cy="-10" r="4" fill="currentColor" fillOpacity="0.3" />
-          <circle cx="8" cy="-4" r="4" fill="currentColor" fillOpacity="0.3" />
-          <circle cx="-8" cy="-4" r="4" fill="currentColor" fillOpacity="0.3" />
-          <path d="M0 6 L0 25" strokeWidth="2" />
-        </g>
-        {/* Cute character - person with backpack */}
-        <g transform="translate(120, 140)">
+
+        {/* Main character - person holding sign */}
+        <g transform="translate(100, 90)">
+          {/* Sign/board being held */}
+          <rect x="25" y="-20" width="40" height="55" rx="5" fill="white" fillOpacity="0.8" strokeWidth="2" />
+          <path d="M35 5 L55 5" strokeWidth="1.5" />
+          <path d="M35 15 L55 15" strokeWidth="1.5" />
+          <path d="M35 25 L50 25" strokeWidth="1.5" />
+
           {/* Body */}
-          <ellipse cx="20" cy="50" rx="15" ry="20" fill="currentColor" fillOpacity="0.2" strokeWidth="2" />
+          <ellipse cx="40" cy="80" rx="20" ry="25" fill="currentColor" fillOpacity="0.15" strokeWidth="2" />
           {/* Head */}
-          <circle cx="20" cy="20" r="18" fill="currentColor" fillOpacity="0.15" strokeWidth="2" />
+          <circle cx="40" cy="45" r="20" fill="currentColor" fillOpacity="0.12" strokeWidth="2" />
+          {/* Hair/curls */}
+          <path d="M22 40 Q18 30 25 25 Q35 18 45 25 Q55 20 58 30 Q62 40 55 45" strokeWidth="2" fill="currentColor" fillOpacity="0.2" />
           {/* Face */}
-          <circle cx="14" cy="18" r="2" fill="currentColor" />
-          <circle cx="26" cy="18" r="2" fill="currentColor" />
-          <path d="M16 26 Q20 30 24 26" strokeWidth="2" />
-          {/* Hair */}
-          <path d="M5 15 Q10 0 20 2 Q30 0 35 15" strokeWidth="2" />
-          {/* Backpack */}
-          <rect x="30" y="35" width="15" height="25" rx="3" fill="currentColor" fillOpacity="0.25" strokeWidth="2" />
+          <circle cx="33" cy="43" r="2.5" fill="currentColor" />
+          <circle cx="47" cy="43" r="2.5" fill="currentColor" />
+          <path d="M35 52 Q40 57 45 52" strokeWidth="2" />
+          {/* Ears */}
+          <circle cx="20" cy="45" r="4" fill="currentColor" fillOpacity="0.1" strokeWidth="1.5" />
+          <circle cx="60" cy="45" r="4" fill="currentColor" fillOpacity="0.1" strokeWidth="1.5" />
+          {/* Arms holding sign */}
+          <path d="M20 65 Q15 50 25 35" strokeWidth="2.5" />
+          <path d="M60 65 Q65 50 55 35" strokeWidth="2.5" />
           {/* Legs */}
-          <path d="M12 68 L8 90" strokeWidth="3" />
-          <path d="M28 68 L32 90" strokeWidth="3" />
-          {/* Arms */}
-          <path d="M5 45 L-5 60" strokeWidth="2.5" />
-          <path d="M35 50 L45 45" strokeWidth="2.5" />
+          <path d="M30 102 L25 130" strokeWidth="3" />
+          <path d="M50 102 L55 130" strokeWidth="3" />
         </g>
-        {/* Stars */}
-        <g transform="translate(60, 60)">
-          <path d="M0 -10 L3 -3 L10 -3 L5 2 L7 10 L0 5 L-7 10 L-5 2 L-10 -3 L-3 -3 Z" fill="currentColor" fillOpacity="0.5" />
+
+        {/* Cute animal - small lamb/goat on right */}
+        <g transform="translate(200, 140)">
+          <ellipse cx="30" cy="35" rx="20" ry="15" fill="currentColor" fillOpacity="0.15" strokeWidth="1.5" />
+          <circle cx="45" cy="25" r="12" fill="currentColor" fillOpacity="0.12" strokeWidth="1.5" />
+          {/* Ear */}
+          <ellipse cx="55" cy="18" rx="6" ry="4" fill="currentColor" fillOpacity="0.15" strokeWidth="1" transform="rotate(30 55 18)" />
+          {/* Eye */}
+          <circle cx="50" cy="24" r="2" fill="currentColor" />
+          {/* Nose */}
+          <ellipse cx="56" cy="28" rx="2" ry="1.5" fill="currentColor" fillOpacity="0.5" />
+          {/* Legs */}
+          <path d="M18 48 L18 60" strokeWidth="2" />
+          <path d="M28 48 L28 60" strokeWidth="2" />
+          <path d="M35 48 L35 58" strokeWidth="2" />
+          <path d="M42 46 L44 56" strokeWidth="2" />
+          {/* Bell */}
+          <circle cx="38" cy="38" r="3" fill="currentColor" fillOpacity="0.3" strokeWidth="1" />
         </g>
-        <g transform="translate(180, 40)">
-          <path d="M0 -8 L2 -2 L8 -2 L4 2 L5 8 L0 4 L-5 8 L-4 2 L-8 -2 L-2 -2 Z" fill="currentColor" fillOpacity="0.4" />
+
+        {/* Large flower on left */}
+        <g transform="translate(30, 150)">
+          <path d="M15 80 L15 40" strokeWidth="2" />
+          <circle cx="15" cy="30" r="12" fill="currentColor" fillOpacity="0.3" strokeWidth="1.5" />
+          <circle cx="15" cy="15" r="8" fill="currentColor" fillOpacity="0.25" strokeWidth="1" />
+          <circle cx="5" cy="25" r="7" fill="currentColor" fillOpacity="0.25" strokeWidth="1" />
+          <circle cx="25" cy="25" r="7" fill="currentColor" fillOpacity="0.25" strokeWidth="1" />
+          <circle cx="8" cy="38" r="6" fill="currentColor" fillOpacity="0.25" strokeWidth="1" />
+          <circle cx="22" cy="38" r="6" fill="currentColor" fillOpacity="0.25" strokeWidth="1" />
+          {/* Center */}
+          <circle cx="15" cy="30" r="5" fill="currentColor" fillOpacity="0.5" />
+          {/* Stamens */}
+          <circle cx="12" cy="28" r="1" fill="currentColor" />
+          <circle cx="18" cy="28" r="1" fill="currentColor" />
+          <circle cx="15" cy="32" r="1" fill="currentColor" />
+          {/* Leaves on stem */}
+          <ellipse cx="8" cy="60" rx="6" ry="10" fill="currentColor" fillOpacity="0.2" strokeWidth="1" transform="rotate(-20 8 60)" />
+          <ellipse cx="22" cy="70" rx="5" ry="8" fill="currentColor" fillOpacity="0.2" strokeWidth="1" transform="rotate(25 22 70)" />
         </g>
-        {/* Clouds */}
-        <g transform="translate(30, 30)">
-          <path d="M0 15 Q-8 15 -8 8 Q-10 0 -2 0 Q2 -5 10 -3 Q18 -5 22 2 Q28 5 25 12 Q28 18 20 18 Q10 22 0 15" fill="white" fillOpacity="0.6" stroke="currentColor" strokeWidth="2" />
+
+        {/* Small mouse/creature at bottom */}
+        <g transform="translate(170, 250)">
+          <ellipse cx="15" cy="12" rx="12" ry="8" fill="currentColor" fillOpacity="0.2" strokeWidth="1.5" />
+          <circle cx="25" cy="8" r="6" fill="currentColor" fillOpacity="0.15" strokeWidth="1.5" />
+          {/* Ears */}
+          <circle cx="22" cy="2" r="3" fill="currentColor" fillOpacity="0.2" strokeWidth="1" />
+          <circle cx="30" cy="4" r="3" fill="currentColor" fillOpacity="0.2" strokeWidth="1" />
+          {/* Eye */}
+          <circle cx="27" cy="7" r="1.5" fill="currentColor" />
+          {/* Tail */}
+          <path d="M3 12 Q-5 5 -2 0" strokeWidth="1.5" />
+        </g>
+
+        {/* Grass tufts */}
+        <g transform="translate(80, 260)">
+          <path d="M0 0 Q2 -15 5 -20 Q8 -15 10 0" strokeWidth="1.5" />
+          <path d="M8 0 Q12 -12 15 -18 Q18 -12 20 0" strokeWidth="1.5" />
+        </g>
+        <g transform="translate(150, 255)">
+          <path d="M0 0 Q3 -10 6 -15 Q9 -10 12 0" strokeWidth="1.5" />
+        </g>
+
+        {/* Decorative leaves top */}
+        <g transform="translate(0, 50)">
+          <ellipse cx="20" cy="30" rx="12" ry="25" fill="currentColor" fillOpacity="0.2" strokeWidth="1.5" transform="rotate(-30 20 30)" />
+          <path d="M20 30 L10 15" strokeWidth="1" />
+          <ellipse cx="5" cy="60" rx="10" ry="20" fill="currentColor" fillOpacity="0.18" strokeWidth="1.5" transform="rotate(-15 5 60)" />
+        </g>
+
+        {/* Top right decorative leaves */}
+        <g transform="translate(240, 20)">
+          <ellipse cx="20" cy="40" rx="15" ry="30" fill="currentColor" fillOpacity="0.2" strokeWidth="1.5" transform="rotate(20 20 40)" />
+          <path d="M20 40 L30 20" strokeWidth="1" />
+          <ellipse cx="35" cy="70" rx="12" ry="22" fill="currentColor" fillOpacity="0.18" strokeWidth="1.5" transform="rotate(35 35 70)" />
+        </g>
+
+        {/* Stars/sparkles */}
+        <g transform="translate(70, 40)">
+          <path d="M0 -8 L2 -2 L8 -2 L3 2 L5 8 L0 4 L-5 8 L-3 2 L-8 -2 L-2 -2 Z" fill="currentColor" fillOpacity="0.5" />
+        </g>
+        <g transform="translate(220, 130)">
+          <path d="M0 -6 L1.5 -1.5 L6 -1.5 L2.5 1 L3.5 6 L0 3 L-3.5 6 L-2.5 1 L-6 -1.5 L-1.5 -1.5 Z" fill="currentColor" fillOpacity="0.4" />
+        </g>
+        <g transform="translate(50, 120)">
+          <path d="M0 -5 L1 -1 L5 -1 L2 1 L3 5 L0 2.5 L-3 5 L-2 1 L-5 -1 L-1 -1 Z" fill="currentColor" fillOpacity="0.35" />
         </g>
       </g>
     </g>
@@ -312,28 +377,28 @@ const storyPages = [
     title: "Where It Started",
     content: "I'm an international student from Accra, Ghana. Growing up, I was always curious about how things work - from the patterns in nature to the logic in machines.",
     Doodles: JourneyDoodles,
-    accentColor: "#c75d4a",
+    accentColor: "#DC6B5A",
   },
   {
     id: 2,
     title: "What Fascinates Me",
     content: "I'm fascinated by how data and technology can decode the complexities of life and inspire real-world solutions. The intersection of science and tech is where magic happens.",
     Doodles: TechBioDoodles,
-    accentColor: "#c75d4a",
+    accentColor: "#DC6B5A",
   },
   {
     id: 3,
     title: "My Approach",
     content: "At the University of Miami, I'm combining Mathematics, Computer Science, and Biology. Math sharpens my understanding, CS equips me to build tools, and Biology connects it all to living systems.",
     Doodles: StudyDoodles,
-    accentColor: "#c75d4a",
+    accentColor: "#DC6B5A",
   },
   {
     id: 4,
     title: "Beyond The Books",
     content: "I love volunteering and giving back to my community. Whether it's tutoring, organizing events, or mentoring - service is a core part of who I am.",
     Doodles: ServiceDoodles,
-    accentColor: "#c75d4a",
+    accentColor: "#DC6B5A",
   },
 ];
 
@@ -354,14 +419,14 @@ const HandwrittenCheck = ({ isChecked }: { isChecked: boolean }) => (
       height="20"
       rx="3"
       fill="none"
-      stroke="#c75d4a"
+      stroke="#DC6B5A"
       strokeWidth="2"
     />
     {isChecked && (
       <motion.path
         d="M6 12 L10 16 L18 8"
         fill="none"
-        stroke="#c75d4a"
+        stroke="#DC6B5A"
         strokeWidth="3"
         strokeLinecap="round"
         strokeLinejoin="round"
@@ -376,42 +441,42 @@ const HandwrittenCheck = ({ isChecked }: { isChecked: boolean }) => (
 // Scattered decorative doodles for right page
 const RightPageDoodles = () => (
   <svg className="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 400 450" preserveAspectRatio="none">
-    <g fill="none" stroke="#c75d4a" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" opacity="0.25">
+    <g fill="none" stroke="#DC6B5A" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" opacity="0.25">
       {/* Top right corner - star */}
       <g transform="translate(350, 30)">
-        <path d="M0 -8 L2 -2 L8 -2 L4 2 L5 8 L0 4 L-5 8 L-4 2 L-8 -2 L-2 -2 Z" fill="#c75d4a" fillOpacity="0.3" />
+        <path d="M0 -8 L2 -2 L8 -2 L4 2 L5 8 L0 4 L-5 8 L-4 2 L-8 -2 L-2 -2 Z" fill="#DC6B5A" fillOpacity="0.3" />
       </g>
       {/* Top left - small flower */}
       <g transform="translate(30, 50)">
-        <circle cx="0" cy="0" r="4" fill="#c75d4a" fillOpacity="0.2" />
-        <path d="M0 -8 Q2 -5 0 -4 Q-2 -5 0 -8" fill="#c75d4a" fillOpacity="0.2" />
-        <path d="M0 4 Q2 7 0 8 Q-2 7 0 4" fill="#c75d4a" fillOpacity="0.2" />
-        <path d="M-5 0 Q-3 2 -4 0 Q-3 -2 -5 0" fill="#c75d4a" fillOpacity="0.2" />
-        <path d="M5 0 Q3 2 4 0 Q3 -2 5 0" fill="#c75d4a" fillOpacity="0.2" />
+        <circle cx="0" cy="0" r="4" fill="#DC6B5A" fillOpacity="0.2" />
+        <path d="M0 -8 Q2 -5 0 -4 Q-2 -5 0 -8" fill="#DC6B5A" fillOpacity="0.2" />
+        <path d="M0 4 Q2 7 0 8 Q-2 7 0 4" fill="#DC6B5A" fillOpacity="0.2" />
+        <path d="M-5 0 Q-3 2 -4 0 Q-3 -2 -5 0" fill="#DC6B5A" fillOpacity="0.2" />
+        <path d="M5 0 Q3 2 4 0 Q3 -2 5 0" fill="#DC6B5A" fillOpacity="0.2" />
       </g>
       {/* Middle right - squiggle */}
       <path d="M370 180 Q380 170 375 160 Q370 150 380 145" strokeWidth="2" />
       {/* Bottom left - sparkle */}
       <g transform="translate(40, 380)">
-        <path d="M0 -6 L1.5 -1.5 L6 0 L1.5 1.5 L0 6 L-1.5 1.5 L-6 0 L-1.5 -1.5 Z" fill="#c75d4a" fillOpacity="0.3" />
+        <path d="M0 -6 L1.5 -1.5 L6 0 L1.5 1.5 L0 6 L-1.5 1.5 L-6 0 L-1.5 -1.5 Z" fill="#DC6B5A" fillOpacity="0.3" />
       </g>
       {/* Bottom right - tiny heart */}
       <g transform="translate(360, 400)">
-        <path d="M0 4 L-6 -2 Q-6 -8 0 -4 Q6 -8 6 -2 Z" fill="#c75d4a" fillOpacity="0.25" />
+        <path d="M0 4 L-6 -2 Q-6 -8 0 -4 Q6 -8 6 -2 Z" fill="#DC6B5A" fillOpacity="0.25" />
       </g>
       {/* Middle left - dots */}
-      <circle cx="25" cy="200" r="2" fill="#c75d4a" fillOpacity="0.3" />
-      <circle cx="35" cy="210" r="1.5" fill="#c75d4a" fillOpacity="0.2" />
-      <circle cx="20" cy="220" r="2.5" fill="#c75d4a" fillOpacity="0.25" />
+      <circle cx="25" cy="200" r="2" fill="#DC6B5A" fillOpacity="0.3" />
+      <circle cx="35" cy="210" r="1.5" fill="#DC6B5A" fillOpacity="0.2" />
+      <circle cx="20" cy="220" r="2.5" fill="#DC6B5A" fillOpacity="0.25" />
       {/* Top middle - small cloud */}
       <g transform="translate(200, 25)">
-        <path d="M0 8 Q-4 8 -4 4 Q-5 0 -1 0 Q1 -3 5 -2 Q9 -3 11 1 Q14 3 12 6 Q14 10 8 9 Q4 12 0 8" fill="#c75d4a" fillOpacity="0.15" stroke="none" />
+        <path d="M0 8 Q-4 8 -4 4 Q-5 0 -1 0 Q1 -3 5 -2 Q9 -3 11 1 Q14 3 12 6 Q14 10 8 9 Q4 12 0 8" fill="#DC6B5A" fillOpacity="0.15" stroke="none" />
       </g>
       {/* Right side - wavy line */}
       <path d="M385 250 Q390 260 385 270 Q380 280 385 290" strokeWidth="1.5" opacity="0.3" />
       {/* Bottom middle - small star */}
       <g transform="translate(180, 420)">
-        <path d="M0 -5 L1.5 -1.5 L5 -1.5 L2.5 1 L3.5 5 L0 2.5 L-3.5 5 L-2.5 1 L-5 -1.5 L-1.5 -1.5 Z" fill="#c75d4a" fillOpacity="0.25" />
+        <path d="M0 -5 L1.5 -1.5 L5 -1.5 L2.5 1 L3.5 5 L0 2.5 L-3.5 5 L-2.5 1 L-5 -1.5 L-1.5 -1.5 Z" fill="#DC6B5A" fillOpacity="0.25" />
       </g>
     </g>
   </svg>
@@ -420,51 +485,51 @@ const RightPageDoodles = () => (
 // Scattered doodles for What I Look For section
 const WhatILookForDoodles = () => (
   <svg className="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 800 400" preserveAspectRatio="none">
-    <g fill="none" stroke="#c75d4a" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" opacity="0.2">
+    <g fill="none" stroke="#DC6B5A" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" opacity="0.2">
       {/* Top left corner - flower */}
       <g transform="translate(50, 40)">
-        <circle cx="0" cy="0" r="5" fill="#c75d4a" fillOpacity="0.3" />
-        <ellipse cx="0" cy="-10" rx="4" ry="6" fill="#c75d4a" fillOpacity="0.2" />
-        <ellipse cx="8" cy="-5" rx="4" ry="6" fill="#c75d4a" fillOpacity="0.2" transform="rotate(60)" />
-        <ellipse cx="-8" cy="-5" rx="4" ry="6" fill="#c75d4a" fillOpacity="0.2" transform="rotate(-60)" />
+        <circle cx="0" cy="0" r="5" fill="#DC6B5A" fillOpacity="0.3" />
+        <ellipse cx="0" cy="-10" rx="4" ry="6" fill="#DC6B5A" fillOpacity="0.2" />
+        <ellipse cx="8" cy="-5" rx="4" ry="6" fill="#DC6B5A" fillOpacity="0.2" transform="rotate(60)" />
+        <ellipse cx="-8" cy="-5" rx="4" ry="6" fill="#DC6B5A" fillOpacity="0.2" transform="rotate(-60)" />
       </g>
       {/* Top right - stars cluster */}
       <g transform="translate(720, 50)">
-        <path d="M0 -8 L2 -2 L8 -2 L4 2 L5 8 L0 4 L-5 8 L-4 2 L-8 -2 L-2 -2 Z" fill="#c75d4a" fillOpacity="0.3" />
+        <path d="M0 -8 L2 -2 L8 -2 L4 2 L5 8 L0 4 L-5 8 L-4 2 L-8 -2 L-2 -2 Z" fill="#DC6B5A" fillOpacity="0.3" />
       </g>
       <g transform="translate(750, 80)">
-        <path d="M0 -5 L1.5 -1.5 L5 -1.5 L2.5 1 L3.5 5 L0 2.5 L-3.5 5 L-2.5 1 L-5 -1.5 L-1.5 -1.5 Z" fill="#c75d4a" fillOpacity="0.25" />
+        <path d="M0 -5 L1.5 -1.5 L5 -1.5 L2.5 1 L3.5 5 L0 2.5 L-3.5 5 L-2.5 1 L-5 -1.5 L-1.5 -1.5 Z" fill="#DC6B5A" fillOpacity="0.25" />
       </g>
       {/* Left side - swirl */}
       <path d="M30 200 Q20 180 40 170 Q60 160 50 190 Q40 210 55 220" strokeWidth="2" />
       {/* Bottom left - heart */}
       <g transform="translate(80, 350)">
-        <path d="M0 6 L-10 -4 Q-10 -12 0 -6 Q10 -12 10 -4 Z" fill="#c75d4a" fillOpacity="0.2" />
+        <path d="M0 6 L-10 -4 Q-10 -12 0 -6 Q10 -12 10 -4 Z" fill="#DC6B5A" fillOpacity="0.2" />
       </g>
       {/* Bottom middle - dots trail */}
-      <circle cx="300" cy="370" r="2" fill="#c75d4a" fillOpacity="0.3" />
-      <circle cx="320" cy="365" r="1.5" fill="#c75d4a" fillOpacity="0.25" />
-      <circle cx="340" cy="372" r="2.5" fill="#c75d4a" fillOpacity="0.3" />
-      <circle cx="360" cy="368" r="1.5" fill="#c75d4a" fillOpacity="0.2" />
+      <circle cx="300" cy="370" r="2" fill="#DC6B5A" fillOpacity="0.3" />
+      <circle cx="320" cy="365" r="1.5" fill="#DC6B5A" fillOpacity="0.25" />
+      <circle cx="340" cy="372" r="2.5" fill="#DC6B5A" fillOpacity="0.3" />
+      <circle cx="360" cy="368" r="1.5" fill="#DC6B5A" fillOpacity="0.2" />
       {/* Right side - sparkles */}
       <g transform="translate(770, 300)">
-        <path d="M0 -6 L1.5 -1.5 L6 0 L1.5 1.5 L0 6 L-1.5 1.5 L-6 0 L-1.5 -1.5 Z" fill="#c75d4a" fillOpacity="0.35" />
+        <path d="M0 -6 L1.5 -1.5 L6 0 L1.5 1.5 L0 6 L-1.5 1.5 L-6 0 L-1.5 -1.5 Z" fill="#DC6B5A" fillOpacity="0.35" />
       </g>
       {/* Middle top - small cloud */}
       <g transform="translate(400, 30)">
-        <path d="M0 10 Q-6 10 -6 5 Q-8 0 -2 0 Q1 -4 7 -2 Q13 -4 15 2 Q20 4 17 8 Q20 13 12 12 Q6 16 0 10" fill="#c75d4a" fillOpacity="0.1" />
+        <path d="M0 10 Q-6 10 -6 5 Q-8 0 -2 0 Q1 -4 7 -2 Q13 -4 15 2 Q20 4 17 8 Q20 13 12 12 Q6 16 0 10" fill="#DC6B5A" fillOpacity="0.1" />
       </g>
       {/* Left middle - squiggle */}
       <path d="M20 280 Q30 270 25 260 Q20 250 30 245 Q40 240 35 230" strokeWidth="1.5" />
       {/* Top middle decorations */}
       <g transform="translate(550, 60)">
-        <circle cx="0" cy="0" r="3" fill="#c75d4a" fillOpacity="0.2" />
-        <circle cx="15" cy="5" r="2" fill="#c75d4a" fillOpacity="0.15" />
-        <circle cx="8" cy="12" r="2.5" fill="#c75d4a" fillOpacity="0.2" />
+        <circle cx="0" cy="0" r="3" fill="#DC6B5A" fillOpacity="0.2" />
+        <circle cx="15" cy="5" r="2" fill="#DC6B5A" fillOpacity="0.15" />
+        <circle cx="8" cy="12" r="2.5" fill="#DC6B5A" fillOpacity="0.2" />
       </g>
       {/* Bottom right - leaf */}
       <g transform="translate(680, 360)">
-        <path d="M0 0 Q10 -10 20 0 Q10 10 0 0" fill="#c75d4a" fillOpacity="0.2" />
+        <path d="M0 0 Q10 -10 20 0 Q10 10 0 0" fill="#DC6B5A" fillOpacity="0.2" />
         <path d="M0 0 L20 0" strokeWidth="1" />
       </g>
     </g>
@@ -526,7 +591,7 @@ export default function About() {
             >
               <path
                 d="M0 6 Q 50 0, 100 6 T 200 6"
-                stroke="#c75d4a"
+                stroke="#DC6B5A"
                 strokeWidth="3"
                 fill="none"
                 strokeLinecap="round"
@@ -545,7 +610,7 @@ export default function About() {
           <div
             className="relative rounded-3xl overflow-hidden shadow-2xl"
             style={{
-              border: '3px solid #c75d4a',
+              border: '3px solid #DC6B5A',
               background: 'var(--paper-color)',
             }}
           >
@@ -591,12 +656,12 @@ export default function About() {
                       className="inline-block px-3 py-1 rounded-full text-xs font-sketch mb-3"
                       style={{
                         background: 'rgba(199, 93, 74, 0.15)',
-                        color: '#c75d4a'
+                        color: '#DC6B5A'
                       }}
                     >
                       {currentPage + 1} / {storyPages.length}
                     </span>
-                    <h3 className="font-handwriting text-3xl md:text-4xl mb-4" style={{ color: '#c75d4a' }}>
+                    <h3 className="font-handwriting text-3xl md:text-4xl mb-4" style={{ color: '#DC6B5A' }}>
                       {storyPages[currentPage].title}
                     </h3>
                     <p className="font-sketch text-lg leading-relaxed" style={{ color: '#5a4a42' }}>
@@ -617,7 +682,7 @@ export default function About() {
                           : 'opacity-40 hover:opacity-60'
                       }`}
                       style={{
-                        backgroundColor: '#c75d4a'
+                        backgroundColor: '#DC6B5A'
                       }}
                     />
                   ))}
@@ -630,9 +695,9 @@ export default function About() {
               onClick={() => setCurrentPage(prev => Math.max(0, prev - 1))}
               disabled={currentPage === 0}
               className="absolute left-2 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full shadow-md flex items-center justify-center disabled:opacity-30 disabled:cursor-not-allowed hover:bg-white/90 transition-colors z-20"
-              style={{ background: 'var(--paper-color)', border: '2px solid #c75d4a' }}
+              style={{ background: 'var(--paper-color)', border: '2px solid #DC6B5A' }}
             >
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#c75d4a" strokeWidth="2.5">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#DC6B5A" strokeWidth="2.5">
                 <path d="M15 18l-6-6 6-6" />
               </svg>
             </button>
@@ -640,9 +705,9 @@ export default function About() {
               onClick={() => setCurrentPage(prev => Math.min(storyPages.length - 1, prev + 1))}
               disabled={currentPage === storyPages.length - 1}
               className="absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full shadow-md flex items-center justify-center disabled:opacity-30 disabled:cursor-not-allowed hover:bg-white/90 transition-colors z-20"
-              style={{ background: 'var(--paper-color)', border: '2px solid #c75d4a' }}
+              style={{ background: 'var(--paper-color)', border: '2px solid #DC6B5A' }}
             >
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#c75d4a" strokeWidth="2.5">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#DC6B5A" strokeWidth="2.5">
                 <path d="M9 18l6-6-6-6" />
               </svg>
             </button>
@@ -659,7 +724,7 @@ export default function About() {
           <div
             className="relative rounded-2xl overflow-hidden shadow-xl"
             style={{
-              border: '3px solid #c75d4a',
+              border: '3px solid #DC6B5A',
               background: 'var(--paper-color)',
               transform: 'rotate(-1deg)',
             }}
@@ -676,7 +741,7 @@ export default function About() {
 
             <div className="p-8 md:p-10 relative z-10">
               {/* Title */}
-              <h3 className="font-handwriting text-3xl md:text-4xl mb-8" style={{ color: '#c75d4a' }}>
+              <h3 className="font-handwriting text-3xl md:text-4xl mb-8" style={{ color: '#DC6B5A' }}>
                 What I look for
               </h3>
 
@@ -699,7 +764,7 @@ export default function About() {
                         <span
                           className="font-handwriting text-xl"
                           style={{
-                            color: '#c75d4a',
+                            color: '#DC6B5A',
                             textDecoration: checkedItems.includes(item.id) ? 'line-through' : 'none',
                             opacity: checkedItems.includes(item.id) ? 0.7 : 1,
                           }}
@@ -715,8 +780,8 @@ export default function About() {
                     href="#contact"
                     className="inline-block mt-6 px-8 py-3 font-handwriting text-xl rounded-lg transition-colors"
                     style={{
-                      border: '2px solid #c75d4a',
-                      color: '#c75d4a',
+                      border: '2px solid #DC6B5A',
+                      color: '#DC6B5A',
                       background: 'transparent',
                     }}
                     whileHover={{ scale: 1.05, background: 'rgba(199, 93, 74, 0.1)' }}
@@ -730,34 +795,62 @@ export default function About() {
                 <div className="relative">
                   <div
                     className="w-full aspect-square max-w-[280px] mx-auto rounded-2xl overflow-hidden relative"
-                    style={{ border: '3px solid #c75d4a' }}
+                    style={{ border: '3px solid #DC6B5A' }}
                   >
                     <CuteSceneIllustration fillLevel={fillPercentage} />
                   </div>
 
-                  {/* Celebration popup */}
+                  {/* Celebration popup with GIF */}
                   <AnimatePresence>
                     {showCelebration && (
                       <motion.div
                         initial={{ opacity: 0, scale: 0.5, y: 20 }}
                         animate={{ opacity: 1, scale: 1, y: 0 }}
                         exit={{ opacity: 0, scale: 0.5, y: 20 }}
-                        className="absolute inset-0 flex items-center justify-center z-10"
+                        className="absolute -bottom-4 left-1/2 -translate-x-1/2 z-20 w-[320px]"
                       >
                         <div
-                          className="bg-white rounded-2xl p-6 shadow-2xl text-center"
-                          style={{ border: '3px solid #c75d4a' }}
+                          className="bg-white rounded-2xl overflow-hidden shadow-2xl"
+                          style={{ border: '4px solid #DC6B5A' }}
                         >
-                          <p className="font-handwriting text-2xl mb-3" style={{ color: '#c75d4a' }}>Perfect match!</p>
-                          <motion.a
-                            href="#contact"
-                            className="inline-block px-6 py-2 text-white font-sketch rounded-xl"
-                            style={{ background: '#c75d4a' }}
-                            whileHover={{ scale: 1.05 }}
-                            whileTap={{ scale: 0.95 }}
-                          >
-                            Let&apos;s Connect
-                          </motion.a>
+                          {/* GIF image - "We have much to discuss" style */}
+                          <div className="relative w-full aspect-video bg-gradient-to-b from-teal-500 to-teal-700 overflow-hidden">
+                            {/* Stylized character silhouette */}
+                            <div className="absolute inset-0 flex items-center justify-center">
+                              <svg viewBox="0 0 200 120" className="w-full h-full">
+                                {/* Teal gradient background */}
+                                <defs>
+                                  <linearGradient id="bgGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                                    <stop offset="0%" stopColor="#14b8a6" />
+                                    <stop offset="100%" stopColor="#0d9488" />
+                                  </linearGradient>
+                                </defs>
+                                <rect fill="url(#bgGrad)" width="200" height="120" />
+                                {/* Character with beard silhouette */}
+                                <ellipse cx="100" cy="85" rx="35" ry="30" fill="#8B4513" opacity="0.9" />
+                                <circle cx="100" cy="50" r="25" fill="#D2691E" />
+                                {/* Hair */}
+                                <ellipse cx="100" cy="35" rx="28" ry="15" fill="#1a1a1a" />
+                                <ellipse cx="75" cy="55" rx="8" ry="15" fill="#1a1a1a" />
+                                <ellipse cx="125" cy="55" rx="8" ry="15" fill="#1a1a1a" />
+                                {/* Eyes */}
+                                <circle cx="90" cy="48" r="3" fill="#1a1a1a" />
+                                <circle cx="110" cy="48" r="3" fill="#1a1a1a" />
+                                {/* Beard */}
+                                <path d="M85 60 Q100 80 115 60 Q120 75 100 85 Q80 75 85 60" fill="#1a1a1a" />
+                                {/* Sweater pattern */}
+                                <path d="M70 85 Q100 75 130 85 L135 110 L65 110 Z" fill="#D4A017" />
+                                <path d="M75 90 L80 100" stroke="#B8860B" strokeWidth="2" />
+                                <path d="M85 88 L88 98" stroke="#B8860B" strokeWidth="2" />
+                                <path d="M115 88 L112 98" stroke="#B8860B" strokeWidth="2" />
+                                <path d="M125 90 L120 100" stroke="#B8860B" strokeWidth="2" />
+                              </svg>
+                            </div>
+                          </div>
+                          {/* Caption */}
+                          <div className="p-4 text-center bg-black">
+                            <p className="font-sketch text-white text-lg">We have much to discuss.</p>
+                          </div>
                         </div>
                       </motion.div>
                     )}
@@ -783,17 +876,17 @@ export default function About() {
               className="p-8 pl-12 relative shadow-paper card-sweep rounded-2xl"
               style={{
                 background: 'var(--paper-color)',
-                border: "2px solid #c75d4a",
+                border: "2px solid #DC6B5A",
                 backgroundImage:
                   "repeating-linear-gradient(transparent, transparent 31px, rgba(199, 93, 74, 0.15) 31px, rgba(199, 93, 74, 0.15) 32px)",
               }}
             >
               <NotebookSpiral />
-              <WashiTape className="-top-3 left-8" rotation={-3} color="#c75d4a" />
+              <WashiTape className="-top-3 left-8" rotation={-3} color="#DC6B5A" />
 
               <div className="flex items-center gap-3 mb-4">
-                <GraduationCapIcon size={32} className="text-[#c75d4a]" />
-                <h3 className="font-marker text-2xl click-wiggle" style={{ color: '#c75d4a' }}>Education</h3>
+                <GraduationCapIcon size={32} className="text-[#DC6B5A]" />
+                <h3 className="font-marker text-2xl click-wiggle" style={{ color: '#DC6B5A' }}>Education</h3>
               </div>
 
               <div className="space-y-3 font-sketch text-lg">
@@ -807,8 +900,8 @@ export default function About() {
                   <span className="highlight-pink">Math</span> and{" "}
                   <span className="highlight-blue">Biology</span>
                 </p>
-                <p className="flex items-center gap-2 font-semibold" style={{ color: '#c75d4a' }}>
-                  <StarDoodle size={20} color="#c75d4a" filled />
+                <p className="flex items-center gap-2 font-semibold" style={{ color: '#DC6B5A' }}>
+                  <StarDoodle size={20} color="#DC6B5A" filled />
                   GPA: 4.0
                 </p>
                 <p className="text-base" style={{ color: '#7a6a62' }}>Expected May 2027</p>
@@ -829,14 +922,14 @@ export default function About() {
               className="p-8 relative shadow-paper card-sweep rounded-2xl"
               style={{
                 background: 'var(--paper-color)',
-                border: "3px solid #c75d4a",
+                border: "3px solid #DC6B5A",
               }}
             >
-              <WashiTape className="-top-3 right-8" rotation={5} pattern="dots" color="#c75d4a" />
+              <WashiTape className="-top-3 right-8" rotation={5} pattern="dots" color="#DC6B5A" />
 
               <div className="flex items-center gap-3 mb-6">
-                <TrophyIcon size={32} className="text-[#c75d4a]" />
-                <h3 className="font-marker text-2xl click-wiggle" style={{ color: '#c75d4a' }}>Honors & Awards</h3>
+                <TrophyIcon size={32} className="text-[#DC6B5A]" />
+                <h3 className="font-marker text-2xl click-wiggle" style={{ color: '#DC6B5A' }}>Honors & Awards</h3>
               </div>
 
               <div className="space-y-5">
@@ -844,13 +937,13 @@ export default function About() {
                 <motion.div
                   whileHover={{ scale: 1.02 }}
                   className="p-4 rounded-xl shadow-md relative overflow-hidden"
-                  style={{ background: 'rgba(199, 93, 74, 0.1)', border: "2px solid #c75d4a" }}
+                  style={{ background: 'rgba(199, 93, 74, 0.1)', border: "2px solid #DC6B5A" }}
                 >
-                  <div className="absolute top-0 right-0 text-xs font-bold px-2 py-1 rounded-bl" style={{ background: '#c75d4a', color: 'white' }}>
+                  <div className="absolute top-0 right-0 text-xs font-bold px-2 py-1 rounded-bl" style={{ background: '#DC6B5A', color: 'white' }}>
                     MOST PRESTIGIOUS
                   </div>
                   <div className="flex items-start gap-3">
-                    <TrophyIcon size={24} className="text-[#c75d4a] flex-shrink-0 mt-1" />
+                    <TrophyIcon size={24} className="text-[#DC6B5A] flex-shrink-0 mt-1" />
                     <div>
                       <p className="font-marker text-lg" style={{ color: '#5a4a42' }}>
                         Stamps Excellence Scholarship
@@ -869,7 +962,7 @@ export default function About() {
                   style={{ background: 'rgba(199, 93, 74, 0.08)', border: "2px solid rgba(199, 93, 74, 0.5)" }}
                 >
                   <div className="flex items-start gap-3">
-                    <StarDoodle size={24} color="#c75d4a" filled className="flex-shrink-0 mt-1" />
+                    <StarDoodle size={24} color="#DC6B5A" filled className="flex-shrink-0 mt-1" />
                     <div>
                       <p className="font-marker text-lg" style={{ color: '#5a4a42' }}>
                         Robert Bates Cole Award
@@ -888,13 +981,13 @@ export default function About() {
                   style={{ background: 'rgba(199, 93, 74, 0.08)', border: "2px solid rgba(199, 93, 74, 0.5)" }}
                 >
                   <div className="flex items-start gap-3">
-                    <StarDoodle size={24} color="#c75d4a" filled className="flex-shrink-0 mt-1" />
+                    <StarDoodle size={24} color="#DC6B5A" filled className="flex-shrink-0 mt-1" />
                     <div>
                       <div className="flex items-center gap-2 flex-wrap">
                         <p className="font-marker text-lg" style={{ color: '#5a4a42' }}>
                           President&apos;s Honor Roll
                         </p>
-                        <span className="text-white text-xs font-bold px-2 py-0.5 rounded-full" style={{ background: '#c75d4a' }}>
+                        <span className="text-white text-xs font-bold px-2 py-0.5 rounded-full" style={{ background: '#DC6B5A' }}>
                           5x
                         </span>
                       </div>

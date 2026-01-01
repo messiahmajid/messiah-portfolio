@@ -144,7 +144,7 @@ export default function Experience() {
                   <div
                     className="p-8 shadow-paper relative card-sweep rounded-2xl"
                     style={{
-                      background: 'var(--paper-color)',
+                      background: '#FFFFFF',
                       border: "2px solid #2d2d2d",
                       transform: `rotate(${index % 2 === 0 ? -0.5 : 0.5}deg)`,
                     }}
