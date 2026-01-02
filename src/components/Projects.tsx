@@ -58,11 +58,11 @@ export default function Projects() {
     offset: ["start end", "end start"]
   });
 
-  // Parallax transforms for project cards
-  const y1 = useTransform(scrollYProgress, [0, 1], [70, -70]);
-  const y2 = useTransform(scrollYProgress, [0, 1], [50, -50]);
-  const rotate1 = useTransform(scrollYProgress, [0, 0.5, 1], [-3, -1, 1]);
-  const rotate2 = useTransform(scrollYProgress, [0, 0.5, 1], [3, 1, -1]);
+  // Subtle parallax transforms for project cards (reduced to prevent jitter)
+  const y1 = useTransform(scrollYProgress, [0, 1], [20, -20]);
+  const y2 = useTransform(scrollYProgress, [0, 1], [15, -15]);
+  const rotate1 = useTransform(scrollYProgress, [0, 0.5, 1], [-1, -0.5, 0.5]);
+  const rotate2 = useTransform(scrollYProgress, [0, 0.5, 1], [1, 0.5, -0.5]);
 
   return (
     <section id="projects" ref={sectionRef} className="py-20 px-4 relative overflow-hidden">

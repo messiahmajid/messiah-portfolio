@@ -67,71 +67,76 @@ export default function Navigation() {
 
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center space-x-1">
-              {navItems.map((item) => (
-                <motion.a
-                  key={item.name}
-                  href={item.href}
-                  onClick={() => handleNavClick(item.href)}
-                  className="relative px-4 py-2 font-sketch text-xl transition-colors click-ripple squiggle-click font-semibold"
-                  style={{
-                    color: activeSection === item.href.slice(1)
-                      ? '#DC6B5A'
-                      : 'var(--cream-text)'
-                  }}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  {item.name}
-                  {activeSection === item.href.slice(1) && (
-                    <motion.svg
-                      layoutId="navCircle"
-                      className="absolute inset-0 pointer-events-none"
-                      viewBox="0 0 100 40"
-                      preserveAspectRatio="none"
-                      style={{ overflow: "visible", width: "100%", height: "100%" }}
-                    >
-                      {/* Hand-drawn sketchy circle path */}
-                      <motion.path
-                        d="M8 20
-                           C 5 8, 25 2, 50 4
-                           C 75 2, 98 10, 95 20
-                           C 98 32, 72 38, 50 36
-                           C 28 38, 2 30, 8 20
-                           C 6 18, 10 15, 12 18"
-                        fill="none"
-                        stroke="#DC6B5A"
-                        strokeWidth="1.8"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        initial={{ pathLength: 0, opacity: 0 }}
-                        animate={{
-                          pathLength: 1,
-                          opacity: 1,
-                          rotate: [0, 1, -1, 0],
-                        }}
-                        transition={{
-                          pathLength: { duration: 0.4, ease: "easeOut" },
-                          opacity: { duration: 0.2 },
-                          rotate: { duration: 2, repeat: Infinity, ease: "easeInOut" }
-                        }}
-                        style={{ transformOrigin: "center" }}
-                      />
-                      {/* Small wobble line for extra sketchiness */}
-                      <motion.path
-                        d="M15 22 Q 20 24, 25 21"
-                        fill="none"
-                        stroke="#DC6B5A"
-                        strokeWidth="1.2"
-                        strokeLinecap="round"
-                        opacity="0.5"
-                        initial={{ pathLength: 0 }}
-                        animate={{ pathLength: 1 }}
-                        transition={{ delay: 0.3, duration: 0.2 }}
-                      />
-                    </motion.svg>
-                  )}
-                </motion.a>
-              ))}
+              {navItems.map((item) => {
+                const [isHovered, setIsHovered] = useState(false);
+                const isActive = activeSection === item.href.slice(1);
+
+                return (
+                  <motion.a
+                    key={item.name}
+                    href={item.href}
+                    onClick={() => handleNavClick(item.href)}
+                    onMouseEnter={() => setIsHovered(true)}
+                    onMouseLeave={() => setIsHovered(false)}
+                    className="relative px-4 py-2 font-sketch text-xl transition-colors click-ripple squiggle-click font-semibold"
+                    style={{
+                      color: isActive ? '#DC6B5A' : 'var(--cream-text)'
+                    }}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    {item.name}
+                    {(isActive || isHovered) && (
+                      <motion.svg
+                        layoutId={isActive ? "navCircle" : undefined}
+                        className="absolute inset-0 pointer-events-none"
+                        viewBox="0 0 100 40"
+                        preserveAspectRatio="none"
+                        style={{ overflow: "visible", width: "100%", height: "100%" }}
+                      >
+                        {/* Hand-drawn sketchy circle path */}
+                        <motion.path
+                          d="M8 20
+                             C 5 8, 25 2, 50 4
+                             C 75 2, 98 10, 95 20
+                             C 98 32, 72 38, 50 36
+                             C 28 38, 2 30, 8 20
+                             C 6 18, 10 15, 12 18"
+                          fill="none"
+                          stroke="#DC6B5A"
+                          strokeWidth="1.8"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          initial={{ pathLength: 0, opacity: 0 }}
+                          animate={{
+                            pathLength: 1,
+                            opacity: 1,
+                            rotate: isActive ? [0, 1, -1, 0] : 0,
+                          }}
+                          transition={{
+                            pathLength: { duration: 0.4, ease: "easeOut" },
+                            opacity: { duration: 0.2 },
+                            rotate: isActive ? { duration: 2, repeat: Infinity, ease: "easeInOut" } : { duration: 0 }
+                          }}
+                          style={{ transformOrigin: "center" }}
+                        />
+                        {/* Small wobble line for extra sketchiness */}
+                        <motion.path
+                          d="M15 22 Q 20 24, 25 21"
+                          fill="none"
+                          stroke="#DC6B5A"
+                          strokeWidth="1.2"
+                          strokeLinecap="round"
+                          opacity="0.5"
+                          initial={{ pathLength: 0 }}
+                          animate={{ pathLength: 1 }}
+                          transition={{ delay: 0.3, duration: 0.2 }}
+                        />
+                      </motion.svg>
+                    )}
+                  </motion.a>
+                );
+              })}
             </div>
 
             {/* Mobile Menu Button */}
