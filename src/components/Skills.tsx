@@ -189,10 +189,10 @@ export default function Skills() {
     offset: ["start end", "end start"]
   });
 
-  // Parallax transforms for each column
-  const y1 = useTransform(scrollYProgress, [0, 1], [40, -40]);
-  const y2 = useTransform(scrollYProgress, [0, 1], [60, -60]);
-  const y3 = useTransform(scrollYProgress, [0, 1], [50, -50]);
+  // Subtle parallax transforms for each column (reduced to prevent jitter)
+  const y1 = useTransform(scrollYProgress, [0, 1], [15, -15]);
+  const y2 = useTransform(scrollYProgress, [0, 1], [20, -20]);
+  const y3 = useTransform(scrollYProgress, [0, 1], [17, -17]);
 
   return (
     <section id="skills" ref={sectionRef} className="py-24 px-4 relative overflow-hidden">
