@@ -17,6 +17,7 @@ interface Project {
   github?: string;
   demo?: string;
   badge?: string;
+  image?: string; // Optional image URL to replace grid background
 }
 
 const projects: Project[] = [
@@ -149,27 +150,40 @@ export default function Projects() {
                 <div
                   className="aspect-video rounded-sm mb-4 flex items-center justify-center relative overflow-hidden"
                   style={{
-                    background: `linear-gradient(135deg, ${project.color}20 0%, ${project.color}40 100%)`,
+                    background: project.image
+                      ? 'transparent'
+                      : `linear-gradient(135deg, ${project.color}20 0%, ${project.color}40 100%)`,
                     border: "1px solid rgba(0,0,0,0.1)",
                   }}
                 >
-                  {/* Grid pattern overlay */}
-                  <div
-                    className="absolute inset-0 opacity-20"
-                    style={{
-                      backgroundImage:
-                        "linear-gradient(#2d2d2d 1px, transparent 1px), linear-gradient(90deg, #2d2d2d 1px, transparent 1px)",
-                      backgroundSize: "20px 20px",
-                    }}
-                  />
+                  {project.image ? (
+                    // Display actual image
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="w-full h-full object-cover"
+                    />
+                  ) : (
+                    <>
+                      {/* Grid pattern overlay */}
+                      <div
+                        className="absolute inset-0 opacity-20"
+                        style={{
+                          backgroundImage:
+                            "linear-gradient(#2d2d2d 1px, transparent 1px), linear-gradient(90deg, #2d2d2d 1px, transparent 1px)",
+                          backgroundSize: "20px 20px",
+                        }}
+                      />
 
-                  {/* Icon */}
-                  <motion.div
-                    whileHover={{ scale: 1.2, rotate: 10 }}
-                    style={{ color: project.color }}
-                  >
-                    {project.icon}
-                  </motion.div>
+                      {/* Icon */}
+                      <motion.div
+                        whileHover={{ scale: 1.2, rotate: 10 }}
+                        style={{ color: project.color }}
+                      >
+                        {project.icon}
+                      </motion.div>
+                    </>
+                  )}
 
                   {/* Badge for hackathon */}
                   {project.badge && (
