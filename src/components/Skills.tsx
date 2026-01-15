@@ -1,302 +1,155 @@
 "use client";
 
-import React, { useRef } from "react";
-import { motion, useInView, useScroll, useTransform } from "framer-motion";
-import { WashiTape, StarDoodle } from "./SketchyElements";
-import {
-  PythonIcon,
-  JavaIcon,
-  DatabaseIcon,
-  CodeIcon,
-  DNAIcon,
-  RLangIcon,
-  MatlabIcon,
-  DatabricksIcon,
-  TableauIcon,
-  ChartIcon,
-  TensorflowIcon,
-  PyTorchIcon,
-  ScikitIcon,
-} from "./DoodleIcons";
+import React from "react";
+import { motion } from "framer-motion";
 
 interface Skill {
   name: string;
-  category: "language" | "framework" | "tool";
-  icon: React.ReactNode;
-  color: string;
-  primary?: boolean;
+  level: "Expert" | "Advanced" | "Proficient";
+  category: string;
 }
 
-const skills: Skill[] = [
-  { name: "Python", category: "language", icon: <PythonIcon size={28} />, color: "#4ecdc4", primary: true },
-  { name: "Java", category: "language", icon: <JavaIcon size={28} />, color: "#ff6b6b", primary: true },
-  { name: "R", category: "language", icon: <RLangIcon size={28} />, color: "#a855f7", primary: true },
-  { name: "SQL", category: "language", icon: <DatabaseIcon size={28} />, color: "#3b82f6", primary: true },
-  { name: "MATLAB", category: "language", icon: <MatlabIcon size={28} />, color: "#f59e0b" },
-  { name: "Databricks", category: "framework", icon: <DatabricksIcon size={28} />, color: "#ff6b6b" },
-  { name: "Tableau", category: "framework", icon: <TableauIcon size={28} />, color: "#4ecdc4" },
-  { name: "Scikit-learn", category: "framework", icon: <ScikitIcon size={28} />, color: "#f59e0b", primary: true },
-  { name: "Matplotlib", category: "framework", icon: <ChartIcon size={28} />, color: "#3b82f6" },
-  { name: "TensorFlow", category: "framework", icon: <TensorflowIcon size={28} />, color: "#ff6b6b", primary: true },
-  { name: "PyTorch", category: "framework", icon: <PyTorchIcon size={28} />, color: "#a855f7", primary: true },
-  { name: "BLAST", category: "tool", icon: <DNAIcon size={28} />, color: "#4ecdc4", primary: true },
-  { name: "BioPython", category: "tool", icon: <PythonIcon size={28} />, color: "#22c55e" },
-  { name: "ChimeraX", category: "tool", icon: <DNAIcon size={28} />, color: "#3b82f6" },
+const skillsData: Skill[] = [
+  // Languages
+  { name: "Python", level: "Expert", category: "Languages" },
+  { name: "Java", level: "Advanced", category: "Languages" },
+  { name: "R", level: "Advanced", category: "Languages" },
+  { name: "SQL", level: "Advanced", category: "Languages" },
+  { name: "MATLAB", level: "Proficient", category: "Languages" },
+
+  // ML/AI
+  { name: "TensorFlow", level: "Expert", category: "ML/AI" },
+  { name: "PyTorch", level: "Expert", category: "ML/AI" },
+  { name: "Scikit-learn", level: "Expert", category: "ML/AI" },
+  { name: "NLP", level: "Advanced", category: "ML/AI" },
+
+  // Data & Analytics
+  { name: "Databricks", level: "Advanced", category: "Data" },
+  { name: "Tableau", level: "Advanced", category: "Data" },
+  { name: "Matplotlib", level: "Proficient", category: "Data" },
+
+  // Bioinformatics
+  { name: "BLAST", level: "Expert", category: "Bio" },
+  { name: "BioPython", level: "Advanced", category: "Bio" },
+  { name: "ChimeraX", level: "Proficient", category: "Bio" },
 ];
 
-const languages = skills.filter((s) => s.category === "language");
-const frameworks = skills.filter((s) => s.category === "framework");
-const tools = skills.filter((s) => s.category === "tool");
-
-interface CategoryInfo {
-  title: string;
-  tagline: string;
-  color: string;
-  items: Skill[];
-}
-
-const categories: CategoryInfo[] = [
-  {
-    title: "Languages",
-    tagline: "The foundations I build with",
-    color: "#4ecdc4",
-    items: languages,
-  },
-  {
-    title: "Frameworks",
-    tagline: "ML & data visualization toolkit",
-    color: "#ff6b6b",
-    items: frameworks,
-  },
-  {
-    title: "Bio Tools",
-    tagline: "Research & analysis arsenal",
-    color: "#22c55e",
-    items: tools,
-  },
-];
-
-function CardStack({ category }: { category: CategoryInfo }) {
-  const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { amount: 0.3, margin: "-50px" });
-  const { items, title, tagline, color } = category;
-
-  return (
-    <div ref={ref} className="flex flex-col items-center">
-      {/* Title with underline */}
-      <h3 className="font-handwriting text-3xl sm:text-4xl text-white mb-2">
-        {title}
-      </h3>
-
-      {/* Tagline */}
-      <p className="font-sketch text-base text-white/70 mb-8 text-center italic">
-        {tagline}
-      </p>
-
-      {/* Card stack container */}
-      <div className="relative w-full flex flex-col items-center" style={{ minHeight: `${items.length * 70 + 60}px` }}>
-        {items.map((skill, index) => {
-          const totalCards = items.length;
-
-          // Stacked state: cards pile on top with slight rotation offsets
-          const stackedRotate = (index - totalCards / 2) * 2;
-          const stackedX = (index % 2 === 0 ? -1 : 1) * (index * 3);
-          const stackedY = index * 4;
-
-          // Fanned out state: cards cascade vertically
-          const spreadY = index * 68;
-          const spreadX = (index % 2 === 0 ? -1 : 1) * 20;
-          const spreadRotate = (index % 2 === 0 ? -2 : 2);
-
-          return (
-            <motion.div
-              key={skill.name}
-              className="absolute"
-              style={{ top: 0 }}
-              initial={false}
-              animate={{
-                x: isInView ? spreadX : stackedX,
-                y: isInView ? spreadY : stackedY,
-                rotate: isInView ? spreadRotate : stackedRotate,
-                scale: isInView ? 1 : 1 - index * 0.02,
-                zIndex: isInView ? totalCards - index : totalCards - index,
-              }}
-              transition={{
-                type: "spring",
-                stiffness: 200,
-                damping: 25,
-                delay: isInView ? index * 0.05 : (totalCards - index) * 0.03,
-              }}
-              whileHover={{
-                scale: 1.08,
-                zIndex: 50,
-                rotate: 0,
-                x: 0,
-              }}
-            >
-              <div
-                className="px-6 py-4 flex items-center gap-4 shadow-paper hover:shadow-paper-hover transition-all cursor-pointer relative card-sweep rounded-2xl"
-                style={{
-                  background: '#FFFFFF',
-                  border: skill.primary ? `3px solid ${skill.color}` : "2px solid #2d2d2d",
-                  minWidth: "180px",
-                }}
-              >
-                {/* Primary badge - positioned on left to avoid being covered by cards above */}
-                {skill.primary && (
-                  <div className="absolute -top-2 -left-2">
-                    <StarDoodle size={18} color={skill.color} filled />
-                  </div>
-                )}
-
-                {/* Icon with background */}
-                <div
-                  className="p-2 rounded-lg flex-shrink-0"
-                  style={{ backgroundColor: `${skill.color}15` }}
-                >
-                  <div style={{ color: skill.color }}>
-                    {skill.icon}
-                  </div>
-                </div>
-
-                {/* Skill name */}
-                <p className="font-sketch text-lg text-pencil whitespace-nowrap font-medium">
-                  {skill.name}
-                </p>
-              </div>
-            </motion.div>
-          );
-        })}
-      </div>
-
-      {/* Category accent line */}
-      <motion.div
-        initial={{ scaleX: 0 }}
-        whileInView={{ scaleX: 1 }}
-        viewport={{ once: true }}
-        transition={{ delay: 0.5, duration: 0.6 }}
-        className="w-24 h-1.5 rounded-full mt-6"
-        style={{ backgroundColor: color, opacity: 0.6 }}
-      />
-    </div>
-  );
-}
+const categories = ["Languages", "ML/AI", "Data", "Bio"];
 
 export default function Skills() {
-  const sectionRef = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start end", "end start"]
-  });
-
-  // Subtle parallax transforms for each column (reduced to prevent jitter)
-  const y1 = useTransform(scrollYProgress, [0, 1], [15, -15]);
-  const y2 = useTransform(scrollYProgress, [0, 1], [20, -20]);
-  const y3 = useTransform(scrollYProgress, [0, 1], [17, -17]);
-
   return (
-    <section id="skills" ref={sectionRef} className="py-24 px-4 relative overflow-hidden">
-      {/* Background decoration */}
-      <div
-        className="absolute inset-0 opacity-[0.02]"
-        style={{
-          backgroundImage:
-            "radial-gradient(circle, #2d2d2d 1px, transparent 1px)",
-          backgroundSize: "30px 30px",
-        }}
-      />
-
-      <div className="max-w-7xl mx-auto relative">
+    <section id="skills" className="py-20 px-4 bg-white">
+      <div className="sherwood-single-column max-w-6xl">
         {/* Section Title */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="mb-16"
         >
-          <h2 className="font-handwriting text-5xl sm:text-6xl text-white inline-block relative click-wiggle">
-            Technical Skills
-            <motion.svg
-              className="absolute -bottom-2 left-0 w-full"
-              height="12"
-              viewBox="0 0 200 12"
-              initial={{ pathLength: 0 }}
-              whileInView={{ pathLength: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-            >
-              <path
-                d="M0 6 Q 50 12, 100 6 T 200 6"
-                stroke="#4ecdc4"
-                strokeWidth="3"
-                fill="none"
-                strokeLinecap="round"
-              />
-            </motion.svg>
+          <h2 className="sherwood-headline text-7xl md:text-9xl text-sherwood-black mb-2">
+            SKILLS
           </h2>
-          <p className="font-sketch text-lg text-white/70 mt-6 max-w-xl mx-auto">
-            From data pipelines to protein structures—the tools I use to turn ideas into impact
+          <p className="sherwood-body text-xl text-sherwood-gray-600 mt-4">
+            Technologies and tools I work with every day
           </p>
+          <div className="sherwood-divider" />
         </motion.div>
 
-        {/* Card Stacks */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8 relative">
-          {/* Decorative connecting elements between columns (desktop only) - LARGER and more visible */}
-          <motion.div
-            className="hidden md:flex absolute top-20 left-[30%] flex-col items-center gap-3"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-          >
-            <svg width="90" height="45" viewBox="0 0 90 45" fill="none">
-              <path d="M0 22 Q 45 0, 90 22" stroke="#4ecdc4" strokeWidth="3" strokeDasharray="6 4" opacity="0.7" />
-              <path d="M72 14 L 86 22 L 72 30" stroke="#4ecdc4" strokeWidth="3" fill="none" opacity="0.7" />
-            </svg>
-            <span className="font-handwriting text-base text-white/80 font-semibold">powers</span>
-          </motion.div>
+        {/* Skills Grid by Category */}
+        <div className="space-y-12">
+          {categories.map((category, catIndex) => {
+            const categorySkills = skillsData.filter(s => s.category === category);
 
-          <motion.div
-            className="hidden md:flex absolute top-20 right-[30%] flex-col items-center gap-3"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-          >
-            <svg width="90" height="45" viewBox="0 0 90 45" fill="none">
-              <path d="M0 22 Q 45 0, 90 22" stroke="#ff6b6b" strokeWidth="3" strokeDasharray="6 4" opacity="0.7" />
-              <path d="M72 14 L 86 22 L 72 30" stroke="#ff6b6b" strokeWidth="3" fill="none" opacity="0.7" />
-            </svg>
-            <span className="font-handwriting text-base text-white/80 font-semibold">enables</span>
-          </motion.div>
+            return (
+              <motion.div
+                key={category}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: catIndex * 0.1 }}
+              >
+                {/* Category Header */}
+                <div className="mb-6">
+                  <h3 className="sherwood-headline text-4xl md:text-5xl text-sherwood-black inline-block">
+                    {category}
+                  </h3>
+                </div>
 
-          {categories.map((category, index) => (
-            <motion.div
-              key={category.title}
-              style={{ y: index === 0 ? y1 : index === 1 ? y2 : y3 }}
-            >
-              <CardStack category={category} />
-            </motion.div>
-          ))}
+                {/* Skills in this category */}
+                <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                  {categorySkills.map((skill, index) => (
+                    <motion.div
+                      key={skill.name}
+                      initial={{ opacity: 0, scale: 0.9 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: index * 0.05 }}
+                      whileHover={{ scale: 1.05, y: -4 }}
+                      className={`p-6 border-2 transition-all cursor-pointer ${
+                        skill.level === "Expert"
+                          ? "bg-neon-yellow border-sherwood-black shadow-neon-glow"
+                          : skill.level === "Advanced"
+                          ? "bg-white border-sherwood-black"
+                          : "bg-white border-sherwood-gray-300"
+                      }`}
+                    >
+                      <div className="flex justify-between items-start mb-2">
+                        <h4 className="sherwood-headline text-2xl text-sherwood-black">
+                          {skill.name}
+                        </h4>
+                        {skill.level === "Expert" && (
+                          <span className="text-2xl">⭐</span>
+                        )}
+                      </div>
+                      <div className="sherwood-body text-xs uppercase tracking-wide text-sherwood-gray-600">
+                        {skill.level}
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
+              </motion.div>
+            );
+          })}
         </div>
 
-        {/* Legend - LARGER and more visible */}
+        {/* Skills Summary */}
         <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ delay: 0.8 }}
-          className="flex justify-center items-center gap-4 mt-16"
+          className="mt-16 bg-sherwood-black text-white p-8 md:p-12"
         >
-          <StarDoodle size={24} color="#ffd54f" filled />
-          <span className="font-sketch text-xl text-white/90 font-semibold">= Primary skills</span>
+          <h3 className="sherwood-headline text-4xl md:text-5xl mb-6">
+            WHAT I BRING TO THE TABLE
+          </h3>
+          <p className="sherwood-body text-xl leading-relaxed mb-6">
+            Full-stack expertise spanning AI/ML, data science, and computational biology.
+            I specialize in building intelligent systems that solve real-world problems—from
+            fraud detection to protein structure analysis.
+          </p>
+          <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-4 mt-8">
+            <div className="bg-white/10 p-4">
+              <div className="sherwood-headline text-3xl mb-2">5+</div>
+              <div className="sherwood-body text-sm uppercase tracking-wide">Languages</div>
+            </div>
+            <div className="bg-white/10 p-4">
+              <div className="sherwood-headline text-3xl mb-2">10+</div>
+              <div className="sherwood-body text-sm uppercase tracking-wide">Frameworks</div>
+            </div>
+            <div className="bg-white/10 p-4">
+              <div className="sherwood-headline text-3xl mb-2">3</div>
+              <div className="sherwood-body text-sm uppercase tracking-wide">Domains</div>
+            </div>
+            <div className="bg-white/10 p-4">
+              <div className="sherwood-headline text-3xl mb-2">∞</div>
+              <div className="sherwood-body text-sm uppercase tracking-wide">Curiosity</div>
+            </div>
+          </div>
         </motion.div>
 
-        {/* Decorative elements */}
-        <div className="absolute -left-4 top-1/4 hidden lg:block">
-          <WashiTape rotation={90} color="#ffd54f" />
-        </div>
-        <div className="absolute -right-4 top-1/2 hidden lg:block">
-          <WashiTape rotation={-90} pattern="dots" color="#ff6b6b" />
-        </div>
+        {/* Bottom Divider */}
+        <div className="sherwood-divider mt-16" />
       </div>
     </section>
   );

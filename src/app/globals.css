@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Lexend:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Anton&family=Inter:wght@300;400;500;600;700;800;900&family=Lexend:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -984,19 +984,19 @@ a:not(.no-ripple):active {
 
 /* Typography Styles */
 .sherwood-headline {
-  font-family: Impact, 'Arial Black', sans-serif;
-  font-weight: 900;
+  font-family: 'Bebas Neue', 'Anton', Impact, 'Arial Black', sans-serif;
+  font-weight: 400;
   line-height: 0.95;
-  letter-spacing: -0.02em;
+  letter-spacing: 0.02em;
   text-transform: uppercase;
 }
 
 .sherwood-headline-huge {
   font-size: clamp(2.5rem, 8vw, 6rem);
-  font-family: Impact, 'Arial Black', sans-serif;
-  font-weight: 900;
-  line-height: 0.9;
-  letter-spacing: -0.03em;
+  font-family: 'Bebas Neue', 'Anton', Impact, 'Arial Black', sans-serif;
+  font-weight: 400;
+  line-height: 0.85;
+  letter-spacing: 0.02em;
   text-transform: uppercase;
 }
 
