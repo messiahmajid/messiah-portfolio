@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Gochi+Hand&family=Lexend:wght@300;400;500;600;700&family=Patrick+Hand&family=Permanent+Marker&family=Bangers&family=Comic+Neue:wght@700&family=Indie+Flower&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Gochi+Hand&family=Lexend:wght@300;400;500;600;700&family=Patrick+Hand&family=Permanent+Marker&family=Bangers&family=Comic+Neue:wght@700&family=Indie+Flower&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -83,6 +83,18 @@ body::before {
 
 .marker-text {
   font-family: 'Permanent Marker', cursive;
+}
+
+/* Editorial serif - Sherwood News style */
+.font-editorial {
+  font-family: 'Playfair Display', 'Georgia', serif;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+.font-editorial-body {
+  font-family: 'Source Serif 4', 'Georgia', serif;
+  font-weight: 400;
 }
 
 /* Sketchy border effect */

@@ -43,6 +43,8 @@ export default {
         marker: ["Permanent Marker", "cursive"],
         body: ["Lexend", "sans-serif"],
         serif: ["Times New Roman", "serif"],
+        editorial: ["Playfair Display", "Georgia", "serif"],
+        "editorial-body": ["Source Serif 4", "Georgia", "serif"],
       },
       animation: {
         "wiggle": "wiggle 0.5s ease-in-out",

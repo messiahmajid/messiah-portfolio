@@ -5,6 +5,7 @@ import React from "react";
 interface IconProps {
   className?: string;
   size?: number;
+  style?: React.CSSProperties;
 }
 
 export const CodeIcon: React.FC<IconProps> = ({ className = "", size = 24 }) => (
@@ -154,7 +155,7 @@ export const HeartIcon: React.FC<IconProps> = ({ className = "", size = 24 }) =>
   </svg>
 );
 
-export const EmailIcon: React.FC<IconProps> = ({ className = "", size = 24 }) => (
+export const EmailIcon: React.FC<IconProps> = ({ className = "", size = 24, style }) => (
   <svg
     width={size}
     height={size}
@@ -165,13 +166,14 @@ export const EmailIcon: React.FC<IconProps> = ({ className = "", size = 24 }) =>
     strokeWidth="2"
     strokeLinecap="round"
     strokeLinejoin="round"
+    style={style}
   >
     <rect x="3" y="5" width="18" height="14" rx="2" />
     <path d="M3 7L12 13L21 7" />
   </svg>
 );
 
-export const LinkedInIcon: React.FC<IconProps> = ({ className = "", size = 24 }) => (
+export const LinkedInIcon: React.FC<IconProps> = ({ className = "", size = 24, style }) => (
   <svg
     width={size}
     height={size}
@@ -182,6 +184,7 @@ export const LinkedInIcon: React.FC<IconProps> = ({ className = "", size = 24 })
     strokeWidth="2"
     strokeLinecap="round"
     strokeLinejoin="round"
+    style={style}
   >
     <rect x="3" y="3" width="18" height="18" rx="3" />
     <line x1="8" y1="11" x2="8" y2="17" />
@@ -191,7 +194,7 @@ export const LinkedInIcon: React.FC<IconProps> = ({ className = "", size = 24 })
   </svg>
 );
 
-export const GitHubIcon: React.FC<IconProps> = ({ className = "", size = 24 }) => (
+export const GitHubIcon: React.FC<IconProps> = ({ className = "", size = 24, style }) => (
   <svg
     width={size}
     height={size}
@@ -202,6 +205,7 @@ export const GitHubIcon: React.FC<IconProps> = ({ className = "", size = 24 }) =
     strokeWidth="2"
     strokeLinecap="round"
     strokeLinejoin="round"
+    style={style}
   >
     <circle cx="12" cy="12" r="9" />
     <path d="M9 18C9 15 7 14 7 12C7 10 8 9 8 9C7 7 8 5 8 5C10 5 11 6 11 6C11.5 5.8 12.5 5.8 13 6C13 6 14 5 16 5C16 5 17 7 16 9C16 9 17 10 17 12C17 14 15 15 15 18" />
