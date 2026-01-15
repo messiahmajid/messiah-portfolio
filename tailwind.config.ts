@@ -9,53 +9,81 @@ export default {
   theme: {
     extend: {
       colors: {
-        // New Design System Primary Colors
-        paper: "#F2DCCB",
-        "paper-dark": "#e8d4c3",
-        cream: "#F2DCCB",
-        "dark-bg": "#212121",
-        pencil: "#1A1A1A",
-        "pencil-light": "#4a4a4a",
-        // Accent Colors
-        coral: "#DC6B5A",
-        "accent-light": "#F2DCCB",
-        "border-blue": "#5BA3D0",
-        // Highlight Colors
-        highlight: {
-          yellow: "#fff59d",
-          pink: "#f8bbd9",
-          blue: "#b3e5fc",
-          green: "#c8e6c9",
-          orange: "#ffcc80",
+        // Sherwood News Color System
+        "sherwood-black": "#000000",
+        "sherwood-white": "#FFFFFF",
+        "sherwood-gray": {
+          50: "#FAFAFA",
+          100: "#F5F5F5",
+          200: "#E5E5E5",
+          300: "#D4D4D4",
+          400: "#A3A3A3",
+          500: "#737373",
+          600: "#525252",
+          700: "#404040",
+          800: "#262626",
+          900: "#171717",
         },
-        // Legacy accent colors (keeping for compatibility)
-        accent: {
-          coral: "#DC6B5A",
-          teal: "#4ecdc4",
-          purple: "#a855f7",
-          blue: "#3b82f6",
+        // Neon highlight colors
+        "neon-yellow": "#EAFF00",
+        "neon-green": "#C7FF00",
+        "neon-lime": "#D4FF00",
+        // Legacy accent colors (keeping for backward compatibility)
+        "dark-bg": "#000000",
+        pencil: "#000000",
+        paper: "#FFFFFF",
+        highlight: {
+          yellow: "#EAFF00",
+          green: "#C7FF00",
+          lime: "#D4FF00",
         },
       },
       fontFamily: {
+        // Sherwood News Typography
+        headline: ["Impact", "Arial Black", "sans-serif-condensed", "sans-serif"],
+        "headline-alt": ["Arial Black", "Arial", "Helvetica", "sans-serif"],
+        body: ["Inter", "Helvetica Neue", "Helvetica", "Arial", "sans-serif"],
+        mono: ["Courier New", "Courier", "monospace"],
+        // Legacy fonts (keeping for backward compatibility)
         handwriting: ["Caveat", "cursive"],
-        gochi: ["Gochi Hand", "sans-serif"],
         sketch: ["Lexend", "sans-serif"],
-        marker: ["Permanent Marker", "cursive"],
-        body: ["Lexend", "sans-serif"],
-        serif: ["Times New Roman", "serif"],
       },
       animation: {
+        // Sherwood News Animations
+        "sherwood-lift": "sherwoodLift 0.3s ease-out forwards",
+        "sherwood-glow": "sherwoodGlow 0.4s ease-out forwards",
+        "fade-in-up": "fadeInUp 0.6s ease-out forwards",
+        "zoom-in": "zoomIn 0.3s ease-out forwards",
+        "highlight-expand": "highlightExpand 0.3s ease-out forwards",
+        // Legacy animations
         "wiggle": "wiggle 0.5s ease-in-out",
         "float": "float 3s ease-in-out infinite",
-        "scribble": "scribble 0.3s ease-in-out",
-        "draw": "draw 1s ease-in-out forwards",
-        "bounce-subtle": "bounce-subtle 2s ease-in-out infinite",
-        "spin-slow": "spin 8s linear infinite",
         "fade-in": "fadeIn 0.5s ease-out forwards",
         "slide-up": "slideUp 0.5s ease-out forwards",
-        "paper-float": "paperFloat 4s ease-in-out infinite",
       },
       keyframes: {
+        // Sherwood News Keyframes
+        sherwoodLift: {
+          "0%": { transform: "translateY(0)" },
+          "100%": { transform: "translateY(-8px)" },
+        },
+        sherwoodGlow: {
+          "0%": { boxShadow: "0 0 0 0 rgba(234, 255, 0, 0)" },
+          "100%": { boxShadow: "0 0 20px 5px rgba(234, 255, 0, 0.3)" },
+        },
+        fadeInUp: {
+          "0%": { opacity: "0", transform: "translateY(30px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
+        },
+        zoomIn: {
+          "0%": { transform: "scale(1)" },
+          "100%": { transform: "scale(1.05)" },
+        },
+        highlightExpand: {
+          "0%": { transform: "scaleX(0)", transformOrigin: "left" },
+          "100%": { transform: "scaleX(1)", transformOrigin: "left" },
+        },
+        // Legacy keyframes
         wiggle: {
           "0%, 100%": { transform: "rotate(-2deg)" },
           "50%": { transform: "rotate(2deg)" },
@@ -63,21 +91,6 @@ export default {
         float: {
           "0%, 100%": { transform: "translateY(0px)" },
           "50%": { transform: "translateY(-10px)" },
-        },
-        scribble: {
-          "0%": { transform: "scale(1) rotate(0deg)" },
-          "25%": { transform: "scale(1.02) rotate(1deg)" },
-          "50%": { transform: "scale(1) rotate(-1deg)" },
-          "75%": { transform: "scale(1.02) rotate(1deg)" },
-          "100%": { transform: "scale(1) rotate(0deg)" },
-        },
-        draw: {
-          "0%": { strokeDashoffset: "1000" },
-          "100%": { strokeDashoffset: "0" },
-        },
-        "bounce-subtle": {
-          "0%, 100%": { transform: "translateY(0)" },
-          "50%": { transform: "translateY(-5px)" },
         },
         fadeIn: {
           "0%": { opacity: "0" },
@@ -87,21 +100,23 @@ export default {
           "0%": { opacity: "0", transform: "translateY(20px)" },
           "100%": { opacity: "1", transform: "translateY(0)" },
         },
-        paperFloat: {
-          "0%, 100%": { transform: "translateY(0) rotate(-1deg)" },
-          "50%": { transform: "translateY(-8px) rotate(1deg)" },
-        },
       },
       boxShadow: {
-        "paper": "2px 2px 8px rgba(0, 0, 0, 0.1), -1px -1px 4px rgba(255, 255, 255, 0.5)",
-        "paper-hover": "4px 4px 12px rgba(0, 0, 0, 0.15), -2px -2px 6px rgba(255, 255, 255, 0.6)",
-        "polaroid": "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06), 4px 4px 0 rgba(0, 0, 0, 0.05)",
-        "tape": "1px 1px 3px rgba(0, 0, 0, 0.1)",
+        // Sherwood News Shadows
+        "sherwood": "0 2px 8px rgba(0, 0, 0, 0.08)",
+        "sherwood-hover": "0 8px 24px rgba(0, 0, 0, 0.12)",
+        "sherwood-strong": "0 12px 32px rgba(0, 0, 0, 0.15)",
+        "neon-glow": "0 0 20px rgba(234, 255, 0, 0.3)",
+        // Legacy shadows
+        "paper": "2px 2px 8px rgba(0, 0, 0, 0.1)",
+        "polaroid": "0 4px 6px -1px rgba(0, 0, 0, 0.1)",
       },
       backgroundImage: {
-        "notebook-lines": "repeating-linear-gradient(transparent, transparent 31px, #e5e5e5 31px, #e5e5e5 32px)",
-        "grid-paper": "linear-gradient(#e5e5e5 1px, transparent 1px), linear-gradient(90deg, #e5e5e5 1px, transparent 1px)",
-        "paper-texture": "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%' height='100%' filter='url(%23noiseFilter)'/%3E%3C/svg%3E\")",
+        // Sherwood News Gradients
+        "fade-black": "linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.7) 100%)",
+        "fade-black-sides": "linear-gradient(to right, rgba(0,0,0,0.3) 0%, transparent 20%, transparent 80%, rgba(0,0,0,0.3) 100%)",
+        "fade-black-radial": "radial-gradient(circle, transparent 0%, rgba(0,0,0,0.5) 100%)",
+        "neon-highlight": "linear-gradient(104deg, rgba(234, 255, 0, 0) 0%, rgba(234, 255, 0, 0.8) 2%, rgba(234, 255, 0, 0.4) 5%, rgba(234, 255, 0, 0) 98%)",
       },
     },
   },

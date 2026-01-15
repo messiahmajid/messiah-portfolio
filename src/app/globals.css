@@ -1,32 +1,27 @@
-@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Gochi+Hand&family=Lexend:wght@300;400;500;600;700&family=Patrick+Hand&family=Permanent+Marker&family=Bangers&family=Comic+Neue:wght@700&family=Indie+Flower&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Lexend:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  /* Primary Colors - New Design System */
-  --bg-dark: #212121;
-  --paper-color: #F2DCCB;
-  --card-color: #F2DCCB;
-  --accent-coral: #DC6B5A;
-  --accent-red: #DC6B5A;
-  --accent-light: #F2DCCB;
-  --cream-text: #F2DCCB;
-  --text-dark: #1A1A1A;
-  --pencil-color: #1A1A1A;
-  --chalk-color: rgba(255, 255, 255, 0.7);
+  /* Sherwood News Color System */
+  --bg-white: #FFFFFF;
+  --bg-light: #FAFAFA;
+  --text-black: #000000;
+  --text-gray: #737373;
+  --text-light-gray: #A3A3A3;
+  --border-gray: #E5E5E5;
 
-  /* Neutral Colors */
-  --white: #FFFFFF;
-  --light-gray: #F5F5F5;
-  --border-blue: #5BA3D0;
+  /* Neon Highlights */
+  --neon-yellow: #EAFF00;
+  --neon-green: #C7FF00;
+  --neon-lime: #D4FF00;
 
-  /* Highlight Colors */
-  --highlight-yellow: #fff59d;
-  --highlight-pink: #f8bbd9;
-  --highlight-blue: #b3e5fc;
-  --highlight-green: #c8e6c9;
+  /* Legacy Support */
+  --bg-dark: #000000;
+  --paper-color: #FFFFFF;
+  --text-dark: #000000;
 }
 
 * {
@@ -45,27 +40,12 @@ html {
 }
 
 body {
-  background-color: var(--bg-dark);
-  font-family: 'Lexend', -apple-system, BlinkMacSystemFont, sans-serif;
-  color: var(--pencil-color);
+  background-color: var(--bg-white);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+  color: var(--text-black);
   overflow-x: hidden;
   position: relative;
-}
-
-/* Global grid pattern overlay */
-body::before {
-  content: '';
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image:
-    linear-gradient(rgba(91, 163, 208, 0.06) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(91, 163, 208, 0.06) 1px, transparent 1px);
-  background-size: 30px 30px;
-  pointer-events: none;
-  z-index: 0;
+  line-height: 1.6;
 }
 
 /* Handwriting text styles */
@@ -995,5 +975,233 @@ a:not(.no-ripple):active {
   }
   .sidebar-right {
     display: flex;
+  }
+}
+
+/* ============================================
+   SHERWOOD NEWS DESIGN SYSTEM
+   ============================================ */
+
+/* Typography Styles */
+.sherwood-headline {
+  font-family: Impact, 'Arial Black', sans-serif;
+  font-weight: 900;
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+}
+
+.sherwood-headline-huge {
+  font-size: clamp(2.5rem, 8vw, 6rem);
+  font-family: Impact, 'Arial Black', sans-serif;
+  font-weight: 900;
+  line-height: 0.9;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+}
+
+.sherwood-body {
+  font-family: 'Inter', 'Helvetica Neue', sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--text-black);
+}
+
+/* Neon Highlight Box */
+.neon-highlight-box {
+  background: var(--neon-yellow);
+  padding: 0.25rem 0.75rem;
+  display: inline-block;
+  position: relative;
+  box-shadow: 0 0 20px rgba(234, 255, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+.neon-highlight-box:hover {
+  background: var(--neon-lime);
+  transform: scaleX(1.02);
+  box-shadow: 0 0 30px rgba(234, 255, 0, 0.5);
+}
+
+/* Image with Fade-to-Black Effect */
+.sherwood-image-wrapper {
+  position: relative;
+  overflow: hidden;
+  border-radius: 0;
+}
+
+.sherwood-image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(20%);
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.sherwood-image-wrapper:hover img {
+  transform: scale(1.05);
+  filter: grayscale(0%) brightness(1.1);
+}
+
+.sherwood-image-wrapper::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    transparent 50%,
+    rgba(0, 0, 0, 0.4) 80%,
+    rgba(0, 0, 0, 0.7) 100%
+  );
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.sherwood-image-wrapper:hover::after {
+  opacity: 0.7;
+}
+
+/* Minimal Card Style */
+.sherwood-card {
+  background: white;
+  border: 1px solid var(--border-gray);
+  border-radius: 0;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.sherwood-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+  border-color: var(--text-black);
+}
+
+/* Timestamp Style */
+.sherwood-timestamp {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--text-light-gray);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Author Byline */
+.sherwood-author {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-black);
+  letter-spacing: 0;
+}
+
+/* Section Divider */
+.sherwood-divider {
+  border: 0;
+  border-top: 1px solid var(--border-gray);
+  margin: 3rem 0;
+}
+
+/* Hover Underline Effect */
+.sherwood-hover-underline {
+  position: relative;
+  display: inline-block;
+  transition: color 0.3s ease;
+}
+
+.sherwood-hover-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background: var(--neon-yellow);
+  transition: width 0.3s ease;
+}
+
+.sherwood-hover-underline:hover::after {
+  width: 100%;
+}
+
+/* Single Column Layout */
+.sherwood-single-column {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* Card Lift Animation */
+.sherwood-lift-on-hover {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.sherwood-lift-on-hover:hover {
+  transform: translateY(-8px) scale(1.01);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+}
+
+/* Smooth Scroll */
+html.sherwood-smooth {
+  scroll-behavior: smooth;
+}
+
+/* High Contrast Text */
+.sherwood-contrast {
+  color: var(--text-black);
+  font-weight: 700;
+}
+
+/* Minimal Button */
+.sherwood-button {
+  background: var(--text-black);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.sherwood-button:hover {
+  background: var(--neon-yellow);
+  color: var(--text-black);
+  transform: translateY(-2px);
+}
+
+/* Image Glow Effect */
+.sherwood-image-glow {
+  position: relative;
+}
+
+.sherwood-image-glow::before {
+  content: '';
+  position: absolute;
+  inset: -10px;
+  background: var(--neon-yellow);
+  opacity: 0;
+  filter: blur(20px);
+  z-index: -1;
+  transition: opacity 0.3s ease;
+}
+
+.sherwood-image-glow:hover::before {
+  opacity: 0.3;
+}
+
+/* Responsive Typography */
+@media (max-width: 768px) {
+  .sherwood-headline-huge {
+    font-size: clamp(2rem, 10vw, 3.5rem);
+    line-height: 1;
+  }
+
+  .sherwood-single-column {
+    padding: 0 1rem;
   }
 }
