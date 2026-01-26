@@ -1,301 +1,156 @@
 "use client";
 
-import React, { useRef } from "react";
-import { motion, useInView, useScroll, useTransform } from "framer-motion";
-import { WashiTape, StarDoodle } from "./SketchyElements";
-import {
-  PythonIcon,
-  JavaIcon,
-  DatabaseIcon,
-  CodeIcon,
-  DNAIcon,
-  RLangIcon,
-  MatlabIcon,
-  DatabricksIcon,
-  TableauIcon,
-  ChartIcon,
-  TensorflowIcon,
-  PyTorchIcon,
-  ScikitIcon,
-} from "./DoodleIcons";
+import React from "react";
+import { motion } from "framer-motion";
+import { FaPython, FaJava, FaReact, FaNodeJs, FaGitAlt, FaDocker } from "react-icons/fa";
+import { SiTypescript, SiJavascript, SiTensorflow, SiPytorch, SiPandas, SiNumpy, SiPostgresql, SiAmazon, SiDatabricks } from "react-icons/si";
+import { IconType } from "react-icons";
 
 interface Skill {
   name: string;
-  category: "language" | "framework" | "tool";
-  icon: React.ReactNode;
-  color: string;
-  primary?: boolean;
+  icon: IconType;
+  level: number;
 }
 
-const skills: Skill[] = [
-  { name: "Python", category: "language", icon: <PythonIcon size={28} />, color: "#4ecdc4", primary: true },
-  { name: "Java", category: "language", icon: <JavaIcon size={28} />, color: "#ff6b6b", primary: true },
-  { name: "R", category: "language", icon: <RLangIcon size={28} />, color: "#a855f7", primary: true },
-  { name: "SQL", category: "language", icon: <DatabaseIcon size={28} />, color: "#3b82f6", primary: true },
-  { name: "MATLAB", category: "language", icon: <MatlabIcon size={28} />, color: "#f59e0b" },
-  { name: "Databricks", category: "framework", icon: <DatabricksIcon size={28} />, color: "#ff6b6b" },
-  { name: "Tableau", category: "framework", icon: <TableauIcon size={28} />, color: "#4ecdc4" },
-  { name: "Scikit-learn", category: "framework", icon: <ScikitIcon size={28} />, color: "#f59e0b", primary: true },
-  { name: "Matplotlib", category: "framework", icon: <ChartIcon size={28} />, color: "#3b82f6" },
-  { name: "TensorFlow", category: "framework", icon: <TensorflowIcon size={28} />, color: "#ff6b6b", primary: true },
-  { name: "PyTorch", category: "framework", icon: <PyTorchIcon size={28} />, color: "#a855f7", primary: true },
-  { name: "BLAST", category: "tool", icon: <DNAIcon size={28} />, color: "#4ecdc4", primary: true },
-  { name: "BioPython", category: "tool", icon: <PythonIcon size={28} />, color: "#22c55e" },
-  { name: "ChimeraX", category: "tool", icon: <DNAIcon size={28} />, color: "#3b82f6" },
-];
-
-const languages = skills.filter((s) => s.category === "language");
-const frameworks = skills.filter((s) => s.category === "framework");
-const tools = skills.filter((s) => s.category === "tool");
-
-interface CategoryInfo {
+interface SkillCategory {
   title: string;
-  tagline: string;
-  color: string;
-  items: Skill[];
+  skills: Skill[];
 }
 
-const categories: CategoryInfo[] = [
+const skillCategories: SkillCategory[] = [
   {
     title: "Languages",
-    tagline: "The foundations I build with",
-    color: "#4ecdc4",
-    items: languages,
+    skills: [
+      { name: "Python", icon: FaPython, level: 5 },
+      { name: "Java", icon: FaJava, level: 4 },
+      { name: "JavaScript", icon: SiJavascript, level: 4 },
+      { name: "TypeScript", icon: SiTypescript, level: 4 },
+    ],
   },
   {
-    title: "Frameworks",
-    tagline: "ML & data visualization toolkit",
-    color: "#ff6b6b",
-    items: frameworks,
+    title: "ML & Data",
+    skills: [
+      { name: "TensorFlow", icon: SiTensorflow, level: 4 },
+      { name: "PyTorch", icon: SiPytorch, level: 4 },
+      { name: "Pandas", icon: SiPandas, level: 5 },
+      { name: "NumPy", icon: SiNumpy, level: 5 },
+    ],
   },
   {
-    title: "Bio Tools",
-    tagline: "Research & analysis arsenal",
-    color: "#22c55e",
-    items: tools,
+    title: "Web Dev",
+    skills: [
+      { name: "React", icon: FaReact, level: 4 },
+      { name: "Node.js", icon: FaNodeJs, level: 4 },
+      { name: "PostgreSQL", icon: SiPostgresql, level: 3 },
+    ],
+  },
+  {
+    title: "DevOps",
+    skills: [
+      { name: "Git", icon: FaGitAlt, level: 5 },
+      { name: "Docker", icon: FaDocker, level: 3 },
+      { name: "AWS", icon: SiAmazon, level: 3 },
+      { name: "Databricks", icon: SiDatabricks, level: 4 },
+    ],
   },
 ];
 
-function CardStack({ category }: { category: CategoryInfo }) {
-  const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { amount: 0.3, margin: "-50px" });
-  const { items, title, tagline, color } = category;
+function KeyCap({ skill, index }: { skill: Skill; index: number }) {
+  const Icon = skill.icon;
 
   return (
-    <div ref={ref} className="flex flex-col items-center">
-      {/* Title with underline */}
-      <h3 className="font-handwriting text-3xl sm:text-4xl text-white mb-2">
-        {title}
-      </h3>
+    <motion.div
+      initial={{ opacity: 0, y: 20, rotateX: -30 }}
+      whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
+      whileHover={{ y: -4, scale: 1.05 }}
+      whileTap={{ y: 2, scale: 0.98 }}
+      viewport={{ once: true }}
+      transition={{ delay: index * 0.05 }}
+      className="group cursor-pointer"
+    >
+      <div className="relative">
+        <div className="absolute inset-0 bg-te-dark/20 rounded-lg translate-y-1.5" />
 
-      {/* Tagline */}
-      <p className="font-sketch text-base text-white/70 mb-8 text-center italic">
-        {tagline}
-      </p>
+        <div className="relative bg-white border-2 border-te-dark/10 rounded-lg p-4
+                      shadow-[inset_0_-4px_0_rgba(0,0,0,0.1)]
+                      group-hover:shadow-[inset_0_-2px_0_rgba(0,0,0,0.1)]
+                      group-hover:border-te-orange/50
+                      transition-all">
+          <div className="text-3xl text-te-orange mb-2 group-hover:scale-110 transition-transform">
+            <Icon />
+          </div>
 
-      {/* Card stack container */}
-      <div className="relative w-full flex flex-col items-center" style={{ minHeight: `${items.length * 70 + 60}px` }}>
-        {items.map((skill, index) => {
-          const totalCards = items.length;
+          <p className="text-sm font-medium text-te-dark">{skill.name}</p>
 
-          // Stacked state: cards pile on top with slight rotation offsets
-          const stackedRotate = (index - totalCards / 2) * 2;
-          const stackedX = (index % 2 === 0 ? -1 : 1) * (index * 3);
-          const stackedY = index * 4;
-
-          // Fanned out state: cards cascade vertically
-          const spreadY = index * 68;
-          const spreadX = (index % 2 === 0 ? -1 : 1) * 20;
-          const spreadRotate = (index % 2 === 0 ? -2 : 2);
-
-          return (
-            <motion.div
-              key={skill.name}
-              className="absolute"
-              style={{ top: 0 }}
-              initial={false}
-              animate={{
-                x: isInView ? spreadX : stackedX,
-                y: isInView ? spreadY : stackedY,
-                rotate: isInView ? spreadRotate : stackedRotate,
-                scale: isInView ? 1 : 1 - index * 0.02,
-                zIndex: isInView ? totalCards - index : totalCards - index,
-              }}
-              transition={{
-                type: "spring",
-                stiffness: 200,
-                damping: 25,
-                delay: isInView ? index * 0.05 : (totalCards - index) * 0.03,
-              }}
-              whileHover={{
-                scale: 1.08,
-                zIndex: 50,
-                rotate: 0,
-                x: 0,
-              }}
-            >
+          <div className="flex gap-1 mt-2">
+            {[...Array(5)].map((_, i) => (
               <div
-                className="px-6 py-4 flex items-center gap-4 shadow-paper hover:shadow-paper-hover transition-all cursor-pointer relative card-sweep rounded-2xl"
-                style={{
-                  background: '#FFFFFF',
-                  border: skill.primary ? `3px solid ${skill.color}` : "2px solid #2d2d2d",
-                  minWidth: "180px",
-                }}
-              >
-                {/* Primary badge - positioned on left to avoid being covered by cards above */}
-                {skill.primary && (
-                  <div className="absolute -top-2 -left-2">
-                    <StarDoodle size={18} color={skill.color} filled />
-                  </div>
-                )}
-
-                {/* Icon with background */}
-                <div
-                  className="p-2 rounded-lg flex-shrink-0"
-                  style={{ backgroundColor: `${skill.color}15` }}
-                >
-                  <div style={{ color: skill.color }}>
-                    {skill.icon}
-                  </div>
-                </div>
-
-                {/* Skill name */}
-                <p className="font-sketch text-lg text-pencil whitespace-nowrap font-medium">
-                  {skill.name}
-                </p>
-              </div>
-            </motion.div>
-          );
-        })}
+                key={i}
+                className={`w-1.5 h-1.5 rounded-full transition-colors ${
+                  i < skill.level ? 'bg-te-orange' : 'bg-te-dark/10'
+                }`}
+              />
+            ))}
+          </div>
+        </div>
       </div>
+    </motion.div>
+  );
+}
 
-      {/* Category accent line */}
-      <motion.div
-        initial={{ scaleX: 0 }}
-        whileInView={{ scaleX: 1 }}
-        viewport={{ once: true }}
-        transition={{ delay: 0.5, duration: 0.6 }}
-        className="w-24 h-1.5 rounded-full mt-6"
-        style={{ backgroundColor: color, opacity: 0.6 }}
-      />
-    </div>
+function CategoryBox({ category, index }: { category: SkillCategory; index: number }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ delay: index * 0.1 }}
+    >
+      <div className="relative">
+        <div className="flex justify-center mb-2">
+          <div className="w-16 h-2 bg-te-surface rounded-full border border-te-dark/10" />
+        </div>
+
+        <div className="bg-te-surface/50 rounded-xl border border-te-dark/10 p-5">
+          <h3 className="text-lg font-bold text-te-dark mb-4">{category.title}</h3>
+
+          <div className="grid grid-cols-2 gap-3">
+            {category.skills.map((skill, skillIndex) => (
+              <KeyCap
+                key={skill.name}
+                skill={skill}
+                index={index * 4 + skillIndex}
+              />
+            ))}
+          </div>
+        </div>
+      </div>
+    </motion.div>
   );
 }
 
 export default function Skills() {
-  const sectionRef = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start end", "end start"]
-  });
-
-  // Subtle parallax transforms for each column (reduced to prevent jitter)
-  const y1 = useTransform(scrollYProgress, [0, 1], [15, -15]);
-  const y2 = useTransform(scrollYProgress, [0, 1], [20, -20]);
-  const y3 = useTransform(scrollYProgress, [0, 1], [17, -17]);
-
   return (
-    <section id="skills" ref={sectionRef} className="py-24 px-4 relative overflow-hidden">
-      {/* Background decoration */}
-      <div
-        className="absolute inset-0 opacity-[0.02]"
-        style={{
-          backgroundImage:
-            "radial-gradient(circle, #2d2d2d 1px, transparent 1px)",
-          backgroundSize: "30px 30px",
-        }}
-      />
-
-      <div className="max-w-7xl mx-auto relative">
-        {/* Section Title */}
+    <section id="skills" className="py-16 px-4">
+      <div className="max-w-5xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="mb-12"
         >
-          <h2 className="font-handwriting text-5xl sm:text-6xl text-white inline-block relative click-wiggle">
-            Technical Skills
-            <motion.svg
-              className="absolute -bottom-2 left-0 w-full"
-              height="12"
-              viewBox="0 0 200 12"
-              initial={{ pathLength: 0 }}
-              whileInView={{ pathLength: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-            >
-              <path
-                d="M0 6 Q 50 12, 100 6 T 200 6"
-                stroke="#4ecdc4"
-                strokeWidth="3"
-                fill="none"
-                strokeLinecap="round"
-              />
-            </motion.svg>
+          <h2 className="text-4xl sm:text-5xl font-bold text-te-dark mb-4">
+            Skills & <span className="text-te-orange">Tools</span>
           </h2>
-          <p className="font-sketch text-lg text-white/70 mt-6 max-w-xl mx-auto">
-            From data pipelines to protein structures—the tools I use to turn ideas into impact
+          <p className="text-text-secondary max-w-xl">
+            Technologies I use to build and ship products.
           </p>
         </motion.div>
 
-        {/* Card Stacks */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8 relative">
-          {/* Decorative connecting elements between columns (desktop only) - LARGER and more visible */}
-          <motion.div
-            className="hidden md:flex absolute top-20 left-[30%] flex-col items-center gap-3"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-          >
-            <svg width="90" height="45" viewBox="0 0 90 45" fill="none">
-              <path d="M0 22 Q 45 0, 90 22" stroke="#4ecdc4" strokeWidth="3" strokeDasharray="6 4" opacity="0.7" />
-              <path d="M72 14 L 86 22 L 72 30" stroke="#4ecdc4" strokeWidth="3" fill="none" opacity="0.7" />
-            </svg>
-            <span className="font-handwriting text-base text-white/80 font-semibold">powers</span>
-          </motion.div>
-
-          <motion.div
-            className="hidden md:flex absolute top-20 right-[30%] flex-col items-center gap-3"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-          >
-            <svg width="90" height="45" viewBox="0 0 90 45" fill="none">
-              <path d="M0 22 Q 45 0, 90 22" stroke="#ff6b6b" strokeWidth="3" strokeDasharray="6 4" opacity="0.7" />
-              <path d="M72 14 L 86 22 L 72 30" stroke="#ff6b6b" strokeWidth="3" fill="none" opacity="0.7" />
-            </svg>
-            <span className="font-handwriting text-base text-white/80 font-semibold">enables</span>
-          </motion.div>
-
-          {categories.map((category, index) => (
-            <motion.div
-              key={category.title}
-              style={{ y: index === 0 ? y1 : index === 1 ? y2 : y3 }}
-            >
-              <CardStack category={category} />
-            </motion.div>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {skillCategories.map((category, index) => (
+            <CategoryBox key={category.title} category={category} index={index} />
           ))}
-        </div>
-
-        {/* Legend - LARGER and more visible */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.8 }}
-          className="flex justify-center items-center gap-4 mt-16"
-        >
-          <StarDoodle size={24} color="#ffd54f" filled />
-          <span className="font-sketch text-xl text-white/90 font-semibold">= Primary skills</span>
-        </motion.div>
-
-        {/* Decorative elements */}
-        <div className="absolute -left-4 top-1/4 hidden lg:block">
-          <WashiTape rotation={90} color="#ffd54f" />
-        </div>
-        <div className="absolute -right-4 top-1/2 hidden lg:block">
-          <WashiTape rotation={-90} pattern="dots" color="#ff6b6b" />
         </div>
       </div>
     </section>

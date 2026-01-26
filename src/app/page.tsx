@@ -9,46 +9,33 @@ import Projects from "@/components/Projects";
 import Leadership from "@/components/Leadership";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
-import { WavyDivider } from "@/components/Doodles";
-import PhotoStack from "@/components/PhotoStack";
+import MainContainer from "@/components/MainContainer";
+import SectionDivider from "@/components/SectionDivider";
 
 export default function Home() {
   return (
-    <main className="min-h-screen relative">
-      {/* Side PhotoStacks */}
-      <PhotoStack position="left" />
-      <PhotoStack position="right" />
-
-      {/* Main content */}
-      <div className="relative z-10">
-        <Navigation />
-        <Hero />
-
-        <WavyDivider className="my-4 opacity-30" color="#DC6B5A" />
-
-        <About />
-
-        <WavyDivider className="my-4 opacity-30" color="#5BA3D0" />
-
-        <Skills />
-
-        <WavyDivider className="my-4 opacity-30" color="#ffd54f" />
-
-        <Experience />
-
-        <WavyDivider className="my-4 opacity-30" color="#DC6B5A" />
-
-        <Projects />
-
-        <WavyDivider className="my-4 opacity-30" color="#5BA3D0" />
-
-        <Leadership />
-
-        <WavyDivider className="my-4 opacity-30" color="#DC6B5A" />
-
-        <Contact />
-        <Footer />
-      </div>
-    </main>
+    <MainContainer>
+      <main className="min-h-screen relative">
+        <div className="relative z-10">
+          <Navigation />
+          <Hero />
+          <div className="max-w-6xl mx-auto px-4">
+            <SectionDivider variant="dots" />
+            <About />
+            <SectionDivider variant="brackets" />
+            <Skills />
+            <SectionDivider variant="wave" />
+            <Experience />
+            <SectionDivider variant="line" />
+            <Projects />
+            <SectionDivider variant="dots" />
+            <Leadership />
+            <SectionDivider variant="brackets" />
+            <Contact />
+          </div>
+          <Footer />
+        </div>
+      </main>
+    </MainContainer>
   );
 }

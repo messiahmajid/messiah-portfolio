@@ -1,286 +1,195 @@
 "use client";
 
-import React, { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
-import { WashiTape, StarDoodle } from "./SketchyElements";
-import { RocketIcon, DNAIcon, GitHubIcon, ArrowIcon, TrophyIcon } from "./DoodleIcons";
+import React from "react";
+import { motion } from "framer-motion";
+import { GitHubIcon, ExternalLinkIcon } from "./Icons";
 
 interface Project {
   title: string;
-  subtitle: string;
-  date: string;
-  icon: React.ReactNode;
-  color: string;
-  tagColor: string;
+  description: string;
+  role: string;
   highlights: string[];
   tags: string[];
   github?: string;
   demo?: string;
   badge?: string;
-  image?: string; // Optional image URL to replace grid background
 }
 
 const projects: Project[] = [
   {
     title: "ScamSpot",
-    subtitle: "AI-Powered Fraud Detection Tool",
-    date: "Feb 2025",
-    icon: <RocketIcon size={32} />,
-    color: "#DC6B5A",
-    tagColor: "#fff59d",
+    role: "Lead Developer",
+    description: "Chrome extension that detects social engineering in real-time using fine-tuned LLMs.",
     highlights: [
-      "Designed AI-powered Chrome extension and web platform for real-time scam detection, identifying 70% of social engineering scam attempts",
-      "Formulated ML pipeline with fine-tuned LLMs for NLP-based text extraction on 10,000+ scam conversations, achieving 95% accuracy",
+      "95% detection accuracy on 10K+ message dataset",
+      "Real-time analysis with sub-second response",
+      "Shipped to Chrome Web Store",
     ],
-    tags: ["AI/ML", "Chrome Extension", "NLP",],
+    tags: ["Python", "ML", "Chrome Extension"],
     github: "https://github.com/messiahmajid/scamspot",
-    badge: "Horizons AI Hackathon",
+    badge: "Hackathon Winner",
   },
   {
     title: "pyCapsid",
-    subtitle: "Computational Tool for Viral Capsid Dynamics",
-    date: "Jan 2025",
-    icon: <DNAIcon size={32} />,
-    color: "#5BA3D0",
-    tagColor: "#b3e5fc",
+    role: "Research Developer",
+    description: "Open-source Python package for modeling viral capsid dynamics. Used in active research.",
     highlights: [
-      "Innovated open-source Python package to model viral capsid mechanical behavior, achieving 95% accuracy in predicting quasi-rigid domains",
-      "Integrated advanced algorithms for normal mode analysis, achieving 0.88 correlation with experimental data for protein thermal fluctuations",
+      "95% accuracy in rigid domain identification",
+      "0.88 correlation with experimental data",
+      "Adopted by research lab for ongoing work",
     ],
-    tags: ["Python", "Bioinformatics", "Open Source", "Research"],
+    tags: ["Python", "Bioinformatics", "Open Source"],
     github: "https://github.com/messiahmajid/pycapsid",
   },
 ];
 
-export default function Projects() {
-  const sectionRef = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start end", "end start"]
-  });
-
-  // Subtle parallax transforms for project cards (reduced to prevent jitter)
-  const y1 = useTransform(scrollYProgress, [0, 1], [20, -20]);
-  const y2 = useTransform(scrollYProgress, [0, 1], [15, -15]);
-  const rotate1 = useTransform(scrollYProgress, [0, 0.5, 1], [-1, -0.5, 0.5]);
-  const rotate2 = useTransform(scrollYProgress, [0, 0.5, 1], [1, 0.5, -0.5]);
-
+function ProjectCard({ project, index }: { project: Project; index: number }) {
   return (
-    <section id="projects" ref={sectionRef} className="py-20 px-4 relative overflow-hidden">
-      {/* Background doodles */}
-      <div className="absolute inset-0 pointer-events-none">
-        <motion.div
-          className="absolute top-10 left-10 opacity-10"
-          animate={{ rotate: 360 }}
-          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-        >
-          <StarDoodle size={60} color="#ffd54f" />
-        </motion.div>
-        <motion.div
-          className="absolute bottom-20 right-10 opacity-10"
-          animate={{ rotate: -360 }}
-          transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-        >
-          <StarDoodle size={48} color="#ff6b6b" filled />
-        </motion.div>
-      </div>
+    <motion.div
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ delay: index * 0.2, duration: 0.5 }}
+      className="group relative"
+    >
+      {/* Stacked paper layers */}
+      <div className="absolute inset-0 bg-white rounded-lg border border-te-dark/10 transform rotate-2 translate-x-1 translate-y-1 group-hover:rotate-3 group-hover:translate-x-2 transition-transform duration-300" />
+      <div className="absolute inset-0 bg-te-surface rounded-lg border border-te-dark/10 transform -rotate-1 -translate-x-0.5 translate-y-0.5 group-hover:-rotate-2 group-hover:-translate-x-1 transition-transform duration-300" />
 
-      <div className="max-w-5xl mx-auto relative">
-        {/* Section Title */}
+      {/* Main card */}
+      <div className="relative bg-white rounded-lg border border-te-dark/10 p-6 md:p-8 group-hover:-translate-y-1 transition-transform duration-300 shadow-sm group-hover:shadow-md">
+        {/* Paper clip */}
+        <div className="absolute -top-2 right-8 w-6 h-10 pointer-events-none">
+          <div className="w-4 h-8 border-2 border-te-dark/30 rounded-full transform -rotate-12" />
+        </div>
+
+        {/* Corner fold */}
+        <div className="absolute top-0 left-0 w-8 h-8 overflow-hidden pointer-events-none">
+          <div className="absolute top-0 left-0 w-12 h-12 bg-te-beige transform -rotate-45 -translate-x-6 -translate-y-6 border-b border-te-dark/10" />
+        </div>
+
+        {/* Header */}
+        <div className="flex items-start justify-between mb-4 pt-2">
+          <div>
+            {project.badge && (
+              <span className="inline-block px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-te-orange border border-te-orange rounded mb-2">
+                {project.badge}
+              </span>
+            )}
+            <h3 className="text-2xl font-bold text-te-dark">
+              {project.title}
+            </h3>
+            <p className="text-sm text-text-muted font-medium">
+              {project.role}
+            </p>
+          </div>
+
+          <div className="flex gap-1">
+            {project.github && (
+              <motion.a
+                href={project.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 rounded-lg text-text-muted hover:text-te-orange transition-colors"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <GitHubIcon size={18} />
+              </motion.a>
+            )}
+            {project.demo && (
+              <motion.a
+                href={project.demo}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 rounded-lg text-text-muted hover:text-te-orange transition-colors"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <ExternalLinkIcon size={18} />
+              </motion.a>
+            )}
+          </div>
+        </div>
+
+        <div className="h-px bg-te-dark/10 mb-4" />
+
+        <p className="text-text-secondary mb-5 leading-relaxed">
+          {project.description}
+        </p>
+
+        <ul className="space-y-2 mb-5">
+          {project.highlights.map((highlight, i) => (
+            <li key={i} className="flex items-start gap-3 text-sm">
+              <span className="text-te-orange mt-0.5">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M2 7l3 3 7-7" />
+                </svg>
+              </span>
+              <span className="text-text-secondary">{highlight}</span>
+            </li>
+          ))}
+        </ul>
+
+        <div className="flex flex-wrap gap-2">
+          {project.tags.map((tag) => (
+            <span
+              key={tag}
+              className="px-2.5 py-1 text-xs font-medium text-text-muted bg-te-surface rounded"
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
+
+        <div className="absolute bottom-3 right-4 text-[10px] text-text-muted/50 font-mono">
+          {String(index + 1).padStart(2, '0')}
+        </div>
+      </div>
+    </motion.div>
+  );
+}
+
+export default function Projects() {
+  return (
+    <section id="projects" className="py-16 px-4">
+      <div className="max-w-5xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="mb-16"
         >
-          <h2 className="font-handwriting text-5xl sm:text-6xl text-white inline-block relative click-wiggle">
-            Projects
-            <motion.svg
-              className="absolute -bottom-2 left-0 w-full"
-              height="12"
-              viewBox="0 0 200 12"
-              initial={{ pathLength: 0 }}
-              whileInView={{ pathLength: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-            >
-              <path
-                d="M0 6 Q 25 2, 50 8 T 100 4 T 150 10 T 200 6"
-                stroke="#ffd54f"
-                strokeWidth="3"
-                fill="none"
-                strokeLinecap="round"
-              />
-            </motion.svg>
+          <h2 className="text-4xl sm:text-5xl font-bold text-te-dark mb-4">
+            Featured <span className="text-te-orange">Projects</span>
           </h2>
+          <p className="text-text-secondary max-w-xl">
+            Selected work in ML, bioinformatics, and software engineering.
+          </p>
         </motion.div>
 
-        {/* Projects Grid - Polaroid Style */}
-        <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
+        <div className="grid md:grid-cols-2 gap-10 md:gap-12">
           {projects.map((project, index) => (
-            <motion.div
-              key={project.title}
-              initial={{ opacity: 0, y: 30, rotate: index % 2 === 0 ? -3 : 3 }}
-              whileInView={{ opacity: 1, y: 0, rotate: index % 2 === 0 ? -1 : 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.2 }}
-              style={{ y: index === 0 ? y1 : y2, rotate: index === 0 ? rotate1 : rotate2 }}
-              whileHover={{
-                scale: 1.02,
-                transition: { duration: 0.3 },
-              }}
-              className="group"
-            >
-              <div
-                className="p-5 pb-6 relative rounded-3xl project-card"
-                style={{
-                  background: '#FFFFFF',
-                  border: "5px solid #FFFFFF",
-                  boxShadow: "0 10px 30px rgba(0, 0, 0, 0.2)",
-                }}
-              >
-                {/* Tape decoration */}
-                <WashiTape
-                  className="-top-3 left-1/2 -translate-x-1/2"
-                  rotation={index % 2 === 0 ? -2 : 2}
-                  color={project.color}
-                />
-
-                {/* Project "Image" area */}
-                <div
-                  className="aspect-video rounded-sm mb-4 flex items-center justify-center relative overflow-hidden"
-                  style={{
-                    background: project.image
-                      ? 'transparent'
-                      : `linear-gradient(135deg, ${project.color}20 0%, ${project.color}40 100%)`,
-                    border: "1px solid rgba(0,0,0,0.1)",
-                  }}
-                >
-                  {project.image ? (
-                    // Display actual image
-                    <img
-                      src={project.image}
-                      alt={project.title}
-                      className="w-full h-full object-cover"
-                    />
-                  ) : (
-                    <>
-                      {/* Grid pattern overlay */}
-                      <div
-                        className="absolute inset-0 opacity-20"
-                        style={{
-                          backgroundImage:
-                            "linear-gradient(#2d2d2d 1px, transparent 1px), linear-gradient(90deg, #2d2d2d 1px, transparent 1px)",
-                          backgroundSize: "20px 20px",
-                        }}
-                      />
-
-                      {/* Icon */}
-                      <motion.div
-                        whileHover={{ scale: 1.2, rotate: 10 }}
-                        style={{ color: project.color }}
-                      >
-                        {project.icon}
-                      </motion.div>
-                    </>
-                  )}
-
-                  {/* Badge for hackathon */}
-                  {project.badge && (
-                    <div
-                      className="absolute top-3 right-3 px-3 py-1 font-sketch text-sm font-semibold transform rotate-3 flex items-center gap-1"
-                      style={{
-                        background: "#ffd54f",
-                        border: "2px solid #2d2d2d",
-                        borderRadius: "2px",
-                        color: '#2d2d2d',
-                      }}
-                    >
-                      <TrophyIcon size={14} className="text-pencil" />
-                      {project.badge}
-                    </div>
-                  )}
-                </div>
-
-                {/* Title & Date - handwritten style */}
-                <div className="mb-4">
-                  <h3 className="font-marker text-2xl font-semibold mb-1" style={{ color: '#2d2d2d' }}>
-                    {project.title}
-                  </h3>
-                  <p className="font-sketch text-lg font-medium" style={{ color: '#3d3d3d' }}>
-                    {project.subtitle}
-                  </p>
-                  <p className="font-handwriting text-lg mt-1" style={{ color: '#4a4a4a' }}>
-                    {project.date}
-                  </p>
-                </div>
-
-                {/* Highlights */}
-                <ul className="space-y-2 mb-4">
-                  {project.highlights.map((highlight, i) => (
-                    <li key={i} className="flex items-start gap-2">
-                      <span className="font-semibold" style={{ color: project.color }}>*</span>
-                      <p className="font-sketch text-base leading-relaxed" style={{ color: '#2d2d2d' }}>
-                        {highlight}
-                      </p>
-                    </li>
-                  ))}
-                </ul>
-
-                {/* Tags */}
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {project.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="px-3 py-1 font-sketch text-sm font-medium rounded-full"
-                      style={{
-                        background: project.tagColor,
-                        border: "1px solid rgba(0,0,0,0.15)",
-                        color: '#2d2d2d',
-                      }}
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-
-                {/* Links */}
-                <div className="flex gap-3">
-                  {project.github && (
-                    <motion.a
-                      href={project.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      whileHover={{ scale: 1.1, rotate: 5 }}
-                      whileTap={{ scale: 0.95 }}
-                      className="flex items-center gap-2 px-4 py-2 bg-pencil text-white font-sketch text-sm rounded-lg shadow-sm"
-                    >
-                      <GitHubIcon size={16} />
-                      Code
-                    </motion.a>
-                  )}
-                  {project.demo && (
-                    <motion.a
-                      href={project.demo}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      whileHover={{ scale: 1.1, rotate: -5 }}
-                      whileTap={{ scale: 0.95 }}
-                      className="flex items-center gap-2 px-4 py-2 font-sketch text-sm rounded-lg shadow-sm"
-                      style={{
-                        background: project.color,
-                        color: "white",
-                      }}
-                    >
-                      Demo
-                      <ArrowIcon size={16} />
-                    </motion.a>
-                  )}
-                </div>
-              </div>
-            </motion.div>
+            <ProjectCard key={project.title} project={project} index={index} />
           ))}
         </div>
+
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          className="mt-16 text-center"
+        >
+          <a
+            href="https://github.com/messiahmajid"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-medium text-te-dark border border-te-dark/20 rounded-lg hover:border-te-orange hover:text-te-orange transition-colors"
+          >
+            <GitHubIcon size={16} />
+            View more on GitHub
+          </a>
+        </motion.div>
       </div>
     </section>
   );

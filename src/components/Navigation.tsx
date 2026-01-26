@@ -13,161 +13,120 @@ const navItems = [
 ];
 
 export default function Navigation() {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState("about");
-
-  // Handle click on nav item
-  const handleNavClick = (href: string) => {
-    const section = href.slice(1);
-    setActiveSection(section);
-  };
+  const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState("");
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      setScrolled(window.scrollY > 50);
 
-      // Update active section based on scroll position
+      // Determine active section
       const sections = navItems.map((item) => item.href.slice(1));
-      const current = sections.find((section) => {
+      for (const section of [...sections].reverse()) {
         const element = document.getElementById(section);
         if (element) {
           const rect = element.getBoundingClientRect();
-          return rect.top <= 150 && rect.bottom >= 150;
+          if (rect.top <= 150) {
+            setActiveSection(section);
+            break;
+          }
         }
-        return false;
-      });
-      if (current) setActiveSection(current);
+      }
     };
 
     window.addEventListener("scroll", handleScroll);
-    handleScroll(); // Check initial position
+    handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const scrollToSection = (href: string) => {
+    setIsOpen(false);
+    const element = document.querySelector(href);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
   return (
     <>
       <motion.nav
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        className="relative z-50 bg-transparent"
+        initial={{ y: -100, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+          scrolled
+            ? "py-3 bg-te-beige/90 backdrop-blur-lg border-b border-te-dark/5"
+            : "py-5 bg-transparent"
+        }`}
       >
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16 sm:h-20">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6">
+          <div className="flex items-center justify-between">
             {/* Logo */}
             <motion.a
               href="#"
-              className="font-handwriting text-2xl sm:text-3xl hover:text-accent-coral transition-colors"
-              style={{ color: 'var(--cream-text)' }}
-              whileHover={{ scale: 1.05, rotate: -2 }}
-              whileTap={{ scale: 0.95 }}
+              onClick={(e) => {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }}
+              className="relative group"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
             >
-              Messiah
+              <span className="text-xl font-bold text-te-dark">
+                Messiah
+                <span className="text-te-orange">.</span>
+              </span>
             </motion.a>
 
             {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center space-x-1">
-              {navItems.map((item) => {
-                const [isHovered, setIsHovered] = useState(false);
-                const isActive = activeSection === item.href.slice(1);
-
-                return (
-                  <motion.a
-                    key={item.name}
-                    href={item.href}
-                    onClick={() => handleNavClick(item.href)}
-                    onMouseEnter={() => setIsHovered(true)}
-                    onMouseLeave={() => setIsHovered(false)}
-                    className="relative px-4 py-2 font-sketch text-xl transition-colors click-ripple squiggle-click font-semibold"
-                    style={{
-                      color: isActive ? '#DC6B5A' : 'var(--cream-text)'
-                    }}
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
+            <div className="hidden md:flex items-center gap-1">
+              {navItems.map((item) => (
+                <motion.button
+                  key={item.name}
+                  onClick={() => scrollToSection(item.href)}
+                  className="relative px-4 py-2 text-sm font-medium"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  {activeSection === item.href.slice(1) && (
+                    <motion.div
+                      layoutId="activeNav"
+                      className="absolute inset-0 bg-te-dark/5 rounded-lg border border-te-dark/10"
+                      transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                    />
+                  )}
+                  <span
+                    className={`relative z-10 transition-colors ${
+                      activeSection === item.href.slice(1)
+                        ? "text-te-dark"
+                        : "text-text-secondary hover:text-te-dark"
+                    }`}
                   >
                     {item.name}
-                    {(isActive || isHovered) && (
-                      <motion.svg
-                        layoutId={isActive ? "navCircle" : undefined}
-                        className="absolute inset-0 pointer-events-none"
-                        viewBox="0 0 100 40"
-                        preserveAspectRatio="none"
-                        style={{ overflow: "visible", width: "100%", height: "100%" }}
-                      >
-                        {/* Hand-drawn sketchy circle path */}
-                        <motion.path
-                          d="M8 20
-                             C 5 8, 25 2, 50 4
-                             C 75 2, 98 10, 95 20
-                             C 98 32, 72 38, 50 36
-                             C 28 38, 2 30, 8 20
-                             C 6 18, 10 15, 12 18"
-                          fill="none"
-                          stroke="#DC6B5A"
-                          strokeWidth="1.8"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          initial={{ pathLength: 0, opacity: 0 }}
-                          animate={{
-                            pathLength: 1,
-                            opacity: 1,
-                            rotate: isActive ? [0, 1, -1, 0] : 0,
-                          }}
-                          transition={{
-                            pathLength: { duration: 0.4, ease: "easeOut" },
-                            opacity: { duration: 0.2 },
-                            rotate: isActive ? { duration: 2, repeat: Infinity, ease: "easeInOut" } : { duration: 0 }
-                          }}
-                          style={{ transformOrigin: "center" }}
-                        />
-                        {/* Small wobble line for extra sketchiness */}
-                        <motion.path
-                          d="M15 22 Q 20 24, 25 21"
-                          fill="none"
-                          stroke="#DC6B5A"
-                          strokeWidth="1.2"
-                          strokeLinecap="round"
-                          opacity="0.5"
-                          initial={{ pathLength: 0 }}
-                          animate={{ pathLength: 1 }}
-                          transition={{ delay: 0.3, duration: 0.2 }}
-                        />
-                      </motion.svg>
-                    )}
-                  </motion.a>
-                );
-              })}
+                  </span>
+                </motion.button>
+              ))}
             </div>
 
             {/* Mobile Menu Button */}
             <motion.button
+              onClick={() => setIsOpen(!isOpen)}
               className="md:hidden relative w-10 h-10 flex items-center justify-center"
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               whileTap={{ scale: 0.9 }}
             >
-              <div className="w-6 flex flex-col items-center justify-center space-y-1.5">
+              <div className="relative w-5 h-4 flex flex-col justify-between">
                 <motion.span
-                  className="w-full h-0.5 rounded-full"
-                  style={{ backgroundColor: 'var(--cream-text)' }}
-                  animate={{
-                    rotate: isMobileMenuOpen ? 45 : 0,
-                    y: isMobileMenuOpen ? 8 : 0,
-                  }}
+                  animate={isOpen ? { rotate: 45, y: 7 } : { rotate: 0, y: 0 }}
+                  className="w-full h-0.5 bg-te-dark origin-left transition-all"
                 />
                 <motion.span
-                  className="w-full h-0.5 rounded-full"
-                  style={{ backgroundColor: 'var(--cream-text)' }}
-                  animate={{
-                    opacity: isMobileMenuOpen ? 0 : 1,
-                  }}
+                  animate={isOpen ? { opacity: 0, x: -10 } : { opacity: 1, x: 0 }}
+                  className="w-full h-0.5 bg-te-dark transition-all"
                 />
                 <motion.span
-                  className="w-full h-0.5 rounded-full"
-                  style={{ backgroundColor: 'var(--cream-text)' }}
-                  animate={{
-                    rotate: isMobileMenuOpen ? -45 : 0,
-                    y: isMobileMenuOpen ? -8 : 0,
-                  }}
+                  animate={isOpen ? { rotate: -45, y: -7 } : { rotate: 0, y: 0 }}
+                  className="w-full h-0.5 bg-te-dark origin-left transition-all"
                 />
               </div>
             </motion.button>
@@ -177,49 +136,55 @@ export default function Navigation() {
 
       {/* Mobile Menu */}
       <AnimatePresence>
-        {isMobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="absolute left-0 right-0 top-full z-40 md:hidden"
-          >
-            <div
-              className="fixed inset-0 bg-pencil/20 backdrop-blur-sm -z-10"
-              onClick={() => setIsMobileMenuOpen(false)}
+        {isOpen && (
+          <>
+            {/* Backdrop */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setIsOpen(false)}
+              className="fixed inset-0 bg-te-dark/20 backdrop-blur-sm z-40 md:hidden"
             />
+
+            {/* Menu Panel */}
             <motion.div
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
-              transition={{ type: "spring", damping: 25 }}
-              className="absolute right-0 top-0 w-64 bg-paper shadow-paper-hover rounded-l-2xl p-6"
-              style={{
-                border: "3px solid #DC6B5A",
-                borderRight: "none",
-              }}
+              transition={{ type: "spring", stiffness: 300, damping: 30 }}
+              className="fixed right-0 top-0 h-full w-72 bg-te-beige border-l border-te-dark/10 z-50 md:hidden"
             >
-              <div className="flex flex-col space-y-4">
-                {navItems.map((item, index) => (
-                  <motion.a
-                    key={item.name}
-                    href={item.href}
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.1 }}
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    className={`font-sketch text-xl py-2 px-4 rounded-lg transition-all click-ripple ${
-                      activeSection === item.href.slice(1)
-                        ? "bg-highlight-yellow text-pencil"
-                        : "text-pencil-light hover:bg-paper-dark"
-                    }`}
-                  >
-                    {item.name}
-                  </motion.a>
-                ))}
+              <div className="flex flex-col h-full p-6 pt-20">
+                <nav className="flex flex-col gap-2">
+                  {navItems.map((item, index) => (
+                    <motion.button
+                      key={item.name}
+                      initial={{ opacity: 0, x: 20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: index * 0.05 }}
+                      onClick={() => scrollToSection(item.href)}
+                      className={`text-left px-4 py-3 rounded-lg transition-all ${
+                        activeSection === item.href.slice(1)
+                          ? "bg-te-dark/5 text-te-dark"
+                          : "text-text-secondary hover:bg-te-dark/5 hover:text-te-dark"
+                      }`}
+                    >
+                      <span className="text-lg font-medium">{item.name}</span>
+                    </motion.button>
+                  ))}
+                </nav>
+
+                {/* Footer */}
+                <div className="mt-auto">
+                  <div className="h-px w-full bg-te-dark/10" />
+                  <p className="text-text-muted text-sm mt-4 text-center">
+                    Built with Next.js & Framer Motion
+                  </p>
+                </div>
               </div>
             </motion.div>
-          </motion.div>
+          </>
         )}
       </AnimatePresence>
     </>

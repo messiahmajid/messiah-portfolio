@@ -1,21 +1,15 @@
 "use client";
 
-import React, { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
-import { WashiTape, Pushpin, StarDoodle } from "./SketchyElements";
-import { RocketIcon, MicroscopeIcon } from "./DoodleIcons";
-import { SectionPhotoStack } from "./PhotoStack";
+import React from "react";
+import { motion } from "framer-motion";
 
 interface ExperienceItem {
   company: string;
   role: string;
   location: string;
   period: string;
-  icon: React.ReactNode;
-  color: string;
-  description: string;
+  type: "industry" | "research";
   highlights: string[];
-  photos: { id: string; color: string; label?: string }[];
 }
 
 const experiences: ExperienceItem[] = [
@@ -24,18 +18,10 @@ const experiences: ExperienceItem[] = [
     role: "MedTech Supply Chain Intern",
     location: "Raritan, NJ",
     period: "May 2025 - Present",
-    icon: <RocketIcon size={32} />,
-    color: "#ff6b6b",
-    description: "Transforming healthcare logistics through data-driven innovation at one of the world's largest medical device companies.",
+    type: "industry",
     highlights: [
-      "Uncovering hidden patterns in ML-powered delivery systems, resolving 20+ critical data pipeline issues that directly impact patient care timelines",
-      "Building automated intelligence tools that give teams back 30+ hours monthly—time now spent on strategic innovation instead of manual reporting",
-    ],
-    photos: [
-      { id: "jnj-1", color: "#ff6b6b", label: "Team collaboration" },
-      { id: "jnj-2", color: "#e85555", label: "Data analysis" },
-      { id: "jnj-3", color: "#ff8080", label: "Innovation sprint" },
-      { id: "jnj-4", color: "#cc4444", label: "Healthcare impact" },
+      "Fixed 20+ data pipeline issues in ML-powered delivery systems",
+      "Built automation tools that save 30+ hours monthly",
     ],
   },
   {
@@ -43,169 +29,103 @@ const experiences: ExperienceItem[] = [
     role: "Research Assistant",
     location: "Coral Gables, FL",
     period: "Jan 2025 - Present",
-    icon: <MicroscopeIcon size={32} />,
-    color: "#4ecdc4",
-    description: "Pioneering computational approaches to decode the secret language between viruses and their hosts.",
+    type: "research",
     highlights: [
-      "Engineering Python-powered tools that predict viral behavior with 88% accuracy—turning abstract protein structures into actionable biological insights",
-      "Developing mathematical models that reveal hidden patterns in bacteriophage dynamics, boosting prediction accuracy by 72%",
-    ],
-    photos: [
-      { id: "lab-1", color: "#4ecdc4", label: "Lab work" },
-      { id: "lab-2", color: "#3dbdb4", label: "Protein modeling" },
-      { id: "lab-3", color: "#5dede4", label: "Data visualization" },
-      { id: "lab-4", color: "#2dadad", label: "Research presentation" },
+      "Developed viral behavior prediction tools (88% accuracy)",
+      "Analyzed thousands of genomic sequences for research validation",
     ],
   },
 ];
 
-export default function Experience() {
-  const sectionRef = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start end", "end start"]
-  });
-
-  // Subtle parallax transforms for cards (reduced to prevent jitter)
-  const y1 = useTransform(scrollYProgress, [0, 1], [20, -20]);
-  const y2 = useTransform(scrollYProgress, [0, 1], [15, -15]);
+function CalendarCard({ exp, index }: { exp: ExperienceItem; index: number }) {
+  const isLeft = index % 2 === 0;
 
   return (
-    <section id="experience" ref={sectionRef} className="py-20 px-4 relative">
-      {/* Background pattern */}
-      <div
-        className="absolute inset-0 opacity-[0.015]"
-        style={{
-          backgroundImage:
-            "linear-gradient(45deg, #2d2d2d 25%, transparent 25%), linear-gradient(-45deg, #2d2d2d 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #2d2d2d 75%), linear-gradient(-45deg, transparent 75%, #2d2d2d 75%)",
-          backgroundSize: "20px 20px",
-          backgroundPosition: "0 0, 0 10px, 10px -10px, -10px 0px",
-        }}
-      />
+    <motion.div
+      initial={{ opacity: 0, x: isLeft ? -30 : 30 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      viewport={{ once: true }}
+      transition={{ delay: index * 0.2 }}
+      className="relative"
+    >
+      <div className="bg-white rounded-xl border border-te-dark/10 overflow-hidden shadow-sm hover:shadow-lg transition-all group">
+        {/* Calendar header with rings */}
+        <div className="relative bg-te-surface px-5 py-3 border-b border-te-dark/10">
+          <div className="absolute top-0 left-0 right-0 flex justify-center gap-8 -translate-y-1/2">
+            {[...Array(5)].map((_, i) => (
+              <div key={i} className="w-3 h-3 rounded-full bg-te-beige border-2 border-te-dark/20" />
+            ))}
+          </div>
 
-      <div className="max-w-5xl mx-auto relative">
-        {/* Section Title */}
+          <div className="flex items-center justify-between pt-1">
+            <span className="text-xs font-mono text-text-muted uppercase tracking-wider">
+              {exp.type === "industry" ? "Industry" : "Research"}
+            </span>
+            <div className="w-8 h-8 rounded-full bg-te-orange/10 border border-te-orange/30 flex items-center justify-center">
+              <span className="text-te-orange font-bold text-xs">
+                {exp.type === "industry" ? "IN" : "RS"}
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div className="p-5">
+          <div className="inline-block px-3 py-1 bg-te-orange text-white text-xs font-bold rounded mb-3">
+            {exp.period}
+          </div>
+
+          <h3 className="text-xl font-bold text-te-dark mb-1 group-hover:text-te-orange transition-colors">
+            {exp.role}
+          </h3>
+
+          <p className="text-te-orange font-medium mb-1">{exp.company}</p>
+          <p className="text-text-muted text-sm font-mono mb-4">{exp.location}</p>
+
+          <ul className="space-y-2">
+            {exp.highlights.map((highlight, i) => (
+              <li key={i} className="flex items-start gap-3">
+                <span className="w-4 h-4 rounded border-2 border-te-orange/50 flex-shrink-0 mt-0.5 flex items-center justify-center">
+                  <motion.span
+                    initial={{ scale: 0 }}
+                    whileInView={{ scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.5 + i * 0.1 }}
+                    className="w-2 h-2 bg-te-orange rounded-sm"
+                  />
+                </span>
+                <span className="text-text-secondary text-sm">{highlight}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div className="h-4 bg-gradient-to-b from-transparent to-te-beige/50" />
+      </div>
+    </motion.div>
+  );
+}
+
+export default function Experience() {
+  return (
+    <section id="experience" className="py-16 px-4">
+      <div className="max-w-4xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="mb-12"
         >
-          <h2 className="font-handwriting text-5xl sm:text-6xl text-white inline-block relative click-wiggle">
-            Experience
-            <motion.svg
-              className="absolute -bottom-2 left-0 w-full"
-              height="12"
-              viewBox="0 0 200 12"
-              initial={{ pathLength: 0 }}
-              whileInView={{ pathLength: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-            >
-              <path
-                d="M0 8 C 30 2, 70 12, 100 6 S 170 2, 200 8"
-                stroke="#a855f7"
-                strokeWidth="3"
-                fill="none"
-                strokeLinecap="round"
-              />
-            </motion.svg>
+          <h2 className="text-4xl sm:text-5xl font-bold text-te-dark mb-4">
+            Work <span className="text-te-orange">Experience</span>
           </h2>
+          <p className="text-text-secondary max-w-xl">
+            Industry and research roles where I shipped real products.
+          </p>
         </motion.div>
 
-        {/* Experience Cards */}
-        <div className="space-y-16">
+        <div className="grid md:grid-cols-2 gap-8">
           {experiences.map((exp, index) => (
-            <motion.div
-              key={exp.company}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.2 }}
-              style={{ y: index === 0 ? y1 : y2 }}
-              className="relative"
-            >
-              <div className="grid md:grid-cols-2 gap-8 items-center">
-                {/* Photo Stack - alternating sides */}
-                <motion.div
-                  className={`flex justify-center ${index % 2 === 1 ? "md:order-2" : ""}`}
-                  whileHover={{ scale: 1.02 }}
-                >
-                  <SectionPhotoStack photos={exp.photos} size="large" interval={3500} />
-                </motion.div>
-
-                {/* Content Card */}
-                <motion.div
-                  whileHover={{ scale: 1.01, rotate: index % 2 === 0 ? 0.5 : -0.5 }}
-                  className={`relative ${index % 2 === 1 ? "md:order-1" : ""}`}
-                >
-                  <div
-                    className="p-8 shadow-paper relative card-sweep rounded-2xl"
-                    style={{
-                      background: '#FFFFFF',
-                      border: "2px solid #2d2d2d",
-                      transform: `rotate(${index % 2 === 0 ? -0.5 : 0.5}deg)`,
-                    }}
-                  >
-                    <Pushpin
-                      className={`${index % 2 === 0 ? "right-6" : "left-6"} -top-2`}
-                      color={exp.color}
-                    />
-                    <WashiTape
-                      className={`-top-3 ${index % 2 === 0 ? "left-8" : "right-8"}`}
-                      rotation={index % 2 === 0 ? -5 : 5}
-                      color={exp.color}
-                    />
-
-                    {/* Header */}
-                    <div className="flex items-start gap-4 mb-4">
-                      <div
-                        className="p-3 rounded-lg flex-shrink-0"
-                        style={{ backgroundColor: `${exp.color}20` }}
-                      >
-                        <span style={{ color: exp.color }}>{exp.icon}</span>
-                      </div>
-                      <div>
-                        <h3 className="font-marker text-2xl font-semibold" style={{ color: '#2d2d2d' }}>{exp.company}</h3>
-                        <p className="font-sketch text-lg font-medium" style={{ color: '#3d3d3d' }}>{exp.role}</p>
-                        <p className="font-sketch text-base" style={{ color: '#4a4a4a' }}>
-                          {exp.location} · {exp.period}
-                        </p>
-                      </div>
-                    </div>
-
-                    {/* Description */}
-                    <p className="font-sketch text-base mb-4 italic" style={{ color: '#3a3a3a' }}>
-                      {exp.description}
-                    </p>
-
-                    {/* Highlights */}
-                    <ul className="space-y-3">
-                      {exp.highlights.map((highlight, i) => (
-                        <motion.li
-                          key={i}
-                          initial={{ opacity: 0, x: -10 }}
-                          whileInView={{ opacity: 1, x: 0 }}
-                          viewport={{ once: true }}
-                          transition={{ delay: 0.3 + i * 0.1 }}
-                          className="flex items-start gap-2"
-                        >
-                          <StarDoodle
-                            size={16}
-                            color={exp.color}
-                            filled
-                            className="flex-shrink-0 mt-1"
-                          />
-                          <p className="font-sketch text-base leading-relaxed" style={{ color: '#2d2d2d' }}>
-                            {highlight}
-                          </p>
-                        </motion.li>
-                      ))}
-                    </ul>
-                  </div>
-                </motion.div>
-              </div>
-            </motion.div>
+            <CalendarCard key={exp.company} exp={exp} index={index} />
           ))}
         </div>
       </div>
