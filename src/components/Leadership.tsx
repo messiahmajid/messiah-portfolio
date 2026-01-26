@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import { motion } from "framer-motion";
 
 interface LeadershipItem {
@@ -8,6 +9,7 @@ interface LeadershipItem {
   organization: string;
   period: string;
   highlight: string;
+  image: string;
   featured?: boolean;
 }
 
@@ -17,6 +19,7 @@ const leadershipRoles: LeadershipItem[] = [
     organization: "ColorStack UM",
     period: "Aug 2023 - Present",
     highlight: "Founded UM's chapter, built community of 50+ Black & Latinx CS students",
+    image: "/leadership/colorstack.jpg",
     featured: true,
   },
   {
@@ -24,30 +27,35 @@ const leadershipRoles: LeadershipItem[] = [
     organization: "Miami Day of Service",
     period: "Mar 2024 - Present",
     highlight: "Secured 20+ sponsors, coordinated 6,000 students across 300 orgs",
+    image: "/leadership/dayofservice.jpg",
   },
   {
     title: "International Student Liaison",
     organization: "Student Government",
     period: "Mar 2024 - Present",
     highlight: "Connected 200+ international students to career resources",
+    image: "/leadership/studentgov.jpg",
   },
   {
     title: "First Year Fellow",
     organization: "UM Residential Life",
     period: "Apr 2024 - Present",
     highlight: "Mentored 78 students, led 12 coding workshops",
-  },
-  {
-    title: "Tech Mentor",
-    organization: "Foote Fellows Honors",
-    period: "Aug 2024 - Present",
-    highlight: "Increased mentee research participation by 40%",
+    image: "/leadership/reslife.jpg",
   },
   {
     title: "Facilitator",
     organization: "First Year U",
     period: "Aug 2023 - Present",
     highlight: "Led seminars on civic engagement and public health",
+    image: "/leadership/firstyearu.jpg",
+  },
+  {
+    title: "Sponsorship Chair",
+    organization: "African Students Union",
+    period: "Aug 2023 - Present",
+    highlight: "Helped raise thousands of dollars to host our annual Taste of Africa Gala showcase",
+    image: "/leadership/asu.jpg",
   },
 ];
 
@@ -58,41 +66,55 @@ const extracurriculars = [
 ];
 
 function BadgeCard({ role, index }: { role: LeadershipItem; index: number }) {
-  const rotation = index % 2 === 0 ? -1.5 : 1.5;
-  const hoverRotation = index % 2 === 0 ? 0.5 : -0.5;
+  const rotation = index % 2 === 0 ? -2 : 2;
+  const hoverRotation = index % 2 === 0 ? 1 : -1;
 
   return (
     <motion.div
       initial={{ opacity: 0, y: 30, rotate: rotation }}
       whileInView={{ opacity: 1, y: 0, rotate: rotation }}
-      whileHover={{ rotate: hoverRotation, y: -5, scale: 1.02 }}
+      whileHover={{ rotate: hoverRotation, y: -8, scale: 1.02 }}
       viewport={{ once: true }}
-      transition={{ delay: index * 0.08 }}
-      className={`relative ${role.featured ? 'md:col-span-2' : ''}`}
+      transition={{ delay: index * 0.08, type: "spring", stiffness: 200 }}
+      className={`relative ${role.featured ? 'sm:col-span-2 lg:col-span-1' : ''}`}
     >
-      <div className="relative bg-white rounded-xl border-2 border-te-dark/10 overflow-hidden shadow-sm hover:shadow-lg transition-shadow">
-        {/* Top bar with badge holes */}
-        <div className="relative h-6 bg-te-orange">
-          <div className="absolute top-1/2 left-4 -translate-y-1/2 w-3 h-3 rounded-full bg-white/30" />
-          <div className="absolute top-1/2 right-4 -translate-y-1/2 w-3 h-3 rounded-full bg-white/30" />
+      {/* Card shadow */}
+      <div className="absolute inset-0 bg-te-dark/15 rounded-xl translate-x-2 translate-y-2" />
+
+      <div className="relative bg-white rounded-xl border-2 border-te-dark/10 overflow-hidden shadow-sm hover:shadow-xl transition-all">
+        {/* Lanyard hole */}
+        <div className="absolute top-2 left-1/2 -translate-x-1/2 z-10">
+          <div className="w-8 h-4 bg-te-surface rounded-b-full border-2 border-t-0 border-te-dark/10 flex justify-center">
+            <div className="w-3 h-3 rounded-full bg-te-beige border border-te-dark/10 -mt-0.5" />
+          </div>
         </div>
 
-        {/* Lanyard slot */}
-        <div className="absolute top-4 left-1/2 -translate-x-1/2 w-6 h-2 rounded-full border-2 border-te-dark/10 bg-te-beige" />
+        {/* Photo section */}
+        <div className="relative h-48 bg-te-surface overflow-hidden">
+          <Image
+            src={role.image}
+            alt={role.organization}
+            fill
+            className="object-cover"
+          />
+          {/* Photo overlay gradient */}
+          <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent" />
 
-        <div className="p-5 pt-4">
-          {/* Badge number */}
-          <div className="text-xs font-mono text-text-muted mb-3">
-            #{String(index + 1).padStart(2, '0')}
+          {/* Tape corners */}
+          <div className="absolute top-3 left-3 w-8 h-3 bg-te-orange/40 rotate-[-15deg] rounded-sm" />
+          <div className="absolute top-3 right-3 w-8 h-3 bg-te-orange/40 rotate-[15deg] rounded-sm" />
+        </div>
+
+        {/* Badge content */}
+        <div className="p-5 pt-3">
+          {/* Organization badge */}
+          <div className="inline-block px-2 py-1 bg-te-orange text-white text-[10px] font-bold uppercase tracking-wider rounded mb-3">
+            {role.organization}
           </div>
 
-          <h3 className={`font-bold text-te-dark mb-1 ${role.featured ? 'text-xl' : 'text-lg'}`}>
+          <h3 className="text-lg font-bold text-te-dark mb-2 leading-tight">
             {role.title}
           </h3>
-
-          <p className="text-te-orange font-medium text-sm mb-1">
-            {role.organization}
-          </p>
 
           <p className="text-text-muted text-xs font-mono mb-3">
             {role.period}
@@ -103,27 +125,14 @@ function BadgeCard({ role, index }: { role: LeadershipItem; index: number }) {
           </p>
         </div>
 
-        {/* Bottom barcode */}
-        <div className="px-5 pb-3">
-          <div className="flex gap-0.5 h-4 opacity-15">
-            {[...Array(16)].map((_, i) => (
-              <div
-                key={i}
-                className="bg-te-dark"
-                style={{ width: i % 3 === 0 ? '3px' : '1px' }}
-              />
-            ))}
-          </div>
-        </div>
+        {/* Bottom stripe */}
+        <div className="h-2 bg-gradient-to-r from-te-orange via-te-orange/60 to-te-orange" />
       </div>
     </motion.div>
   );
 }
 
 export default function Leadership() {
-  const featured = leadershipRoles.find((role) => role.featured);
-  const others = leadershipRoles.filter((role) => !role.featured);
-
   return (
     <section id="leadership" className="py-16 px-4">
       <div className="max-w-5xl mx-auto">
@@ -141,32 +150,10 @@ export default function Leadership() {
           </p>
         </motion.div>
 
-        {/* TEDx Banner */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mb-10"
-        >
-          <div className="relative overflow-hidden rounded-xl bg-te-dark p-6 text-white">
-            <div className="absolute top-2 right-4 text-5xl font-bold opacity-10">
-              TEDx
-            </div>
-            <span className="inline-block px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider bg-te-orange rounded mb-2">
-              Coming Soon
-            </span>
-            <h3 className="text-lg font-bold">Upcoming TEDx Talk</h3>
-            <p className="text-white/60 text-sm mt-1">
-              Speaking on technology, identity, and community.
-            </p>
-          </div>
-        </motion.div>
-
         {/* Badge Grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-          {featured && <BadgeCard role={featured} index={0} />}
-          {others.map((role, index) => (
-            <BadgeCard key={role.title} role={role} index={index + 1} />
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+          {leadershipRoles.map((role, index) => (
+            <BadgeCard key={role.title} role={role} index={index} />
           ))}
         </div>
 

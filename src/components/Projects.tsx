@@ -27,19 +27,17 @@ const projects: Project[] = [
     ],
     tags: ["Python", "ML", "Chrome Extension"],
     github: "https://github.com/messiahmajid/scamspot",
-    badge: "Hackathon Winner",
   },
   {
     title: "pyCapsid",
-    role: "Research Developer",
-    description: "Open-source Python package for modeling viral capsid dynamics. Used in active research.",
+    role: "Research Trainee",
+    description: "Explored computational virology through hands-on work with an open-source capsid modeling package.",
     highlights: [
-      "95% accuracy in rigid domain identification",
-      "0.88 correlation with experimental data",
-      "Adopted by research lab for ongoing work",
+      "Studied bioinformatics methods and scientific literature",
+      "Gained experience with protein structure analysis pipelines",
     ],
-    tags: ["Python", "Bioinformatics", "Open Source"],
-    github: "https://github.com/messiahmajid/pycapsid",
+    tags: ["Python", "Bioinformatics", "Learning"],
+    github: "https://github.com/luquelab/pycapsid",
   },
 ];
 
@@ -79,7 +77,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
             <h3 className="text-2xl font-bold text-te-dark">
               {project.title}
             </h3>
-            <p className="text-sm text-text-muted font-medium">
+            <p className="text-sm text-te-orange font-medium">
               {project.role}
             </p>
           </div>

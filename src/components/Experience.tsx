@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import { motion } from "framer-motion";
 
 interface ExperienceItem {
@@ -10,6 +11,8 @@ interface ExperienceItem {
   period: string;
   type: "industry" | "research";
   highlights: string[];
+  image?: string;
+  link?: string;
 }
 
 const experiences: ExperienceItem[] = [
@@ -17,12 +20,13 @@ const experiences: ExperienceItem[] = [
     company: "Johnson & Johnson",
     role: "MedTech Supply Chain Intern",
     location: "Raritan, NJ",
-    period: "May 2025 - Present",
+    period: "Summer 2025",
     type: "industry",
     highlights: [
       "Fixed 20+ data pipeline issues in ML-powered delivery systems",
       "Built automation tools that save 30+ hours monthly",
     ],
+    image: "/experience/jnj.jpg",
   },
   {
     company: "UM Luque Laboratory",
@@ -31,9 +35,11 @@ const experiences: ExperienceItem[] = [
     period: "Jan 2025 - Present",
     type: "research",
     highlights: [
-      "Developed viral behavior prediction tools (88% accuracy)",
-      "Analyzed thousands of genomic sequences for research validation",
+      "Study computational virology and bioinformatics methods",
+      "Support ongoing viral capsid dynamics research",
     ],
+    image: "/experience/luque-lab.jpg",
+    link: "https://luquelab.github.io/test_webpage/pages/team/",
   },
 ];
 
@@ -48,26 +54,28 @@ function CalendarCard({ exp, index }: { exp: ExperienceItem; index: number }) {
       transition={{ delay: index * 0.2 }}
       className="relative"
     >
-      <div className="bg-white rounded-xl border border-te-dark/10 overflow-hidden shadow-sm hover:shadow-lg transition-all group">
-        {/* Calendar header with rings */}
-        <div className="relative bg-te-surface px-5 py-3 border-b border-te-dark/10">
-          <div className="absolute top-0 left-0 right-0 flex justify-center gap-8 -translate-y-1/2">
-            {[...Array(5)].map((_, i) => (
-              <div key={i} className="w-3 h-3 rounded-full bg-te-beige border-2 border-te-dark/20" />
-            ))}
-          </div>
+      {/* Card shadow */}
+      <div className="absolute inset-0 bg-te-dark/15 rounded-xl translate-x-2 translate-y-2" />
 
-          <div className="flex items-center justify-between pt-1">
-            <span className="text-xs font-mono text-text-muted uppercase tracking-wider">
-              {exp.type === "industry" ? "Industry" : "Research"}
-            </span>
-            <div className="w-8 h-8 rounded-full bg-te-orange/10 border border-te-orange/30 flex items-center justify-center">
-              <span className="text-te-orange font-bold text-xs">
-                {exp.type === "industry" ? "IN" : "RS"}
-              </span>
+      <div className="relative bg-white rounded-xl border border-te-dark/10 overflow-hidden shadow-sm hover:shadow-lg transition-all group">
+        {/* Image section (only if image exists) */}
+        {exp.image ? (
+          <div className="relative h-44 overflow-hidden">
+            <Image
+              src={exp.image}
+              alt={exp.company}
+              fill
+              className="object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-white via-white/30 to-transparent" />
+            {/* Type badge on image */}
+            <div className="absolute top-3 left-3">
+              <div className="px-2 py-1 bg-te-orange text-white text-[10px] font-bold uppercase tracking-wider rounded">
+                {exp.type === "industry" ? "Industry" : "Research"}
+              </div>
             </div>
           </div>
-        </div>
+        ) : null}
 
         <div className="p-5">
           <div className="inline-block px-3 py-1 bg-te-orange text-white text-xs font-bold rounded mb-3">
@@ -99,8 +107,23 @@ function CalendarCard({ exp, index }: { exp: ExperienceItem; index: number }) {
           </ul>
         </div>
 
-        <div className="h-4 bg-gradient-to-b from-transparent to-te-beige/50" />
+        {/* Bottom stripe */}
+        <div className="h-2 bg-gradient-to-r from-te-orange via-te-orange/60 to-te-orange" />
       </div>
+
+      {/* Link below card */}
+      {exp.link && (
+        <div className="relative z-10 flex justify-center mt-4">
+          <a
+            href={exp.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 text-sm font-medium text-te-orange hover:underline transition-colors cursor-pointer"
+          >
+            Visit Lab Website →
+          </a>
+        </div>
+      )}
     </motion.div>
   );
 }

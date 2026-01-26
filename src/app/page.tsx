@@ -3,9 +3,11 @@
 import Navigation from "@/components/Navigation";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
+import Honors from "@/components/Honors";
 import Skills from "@/components/Skills";
 import Experience from "@/components/Experience";
 import Projects from "@/components/Projects";
+import TEDxTalk from "@/components/TEDxTalk";
 import Leadership from "@/components/Leadership";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
@@ -29,6 +31,10 @@ export default function Home() {
             <SectionDivider variant="line" />
             <Projects />
             <SectionDivider variant="dots" />
+            <TEDxTalk />
+            <SectionDivider variant="wave" />
+            <Honors />
+            <SectionDivider variant="line" />
             <Leadership />
             <SectionDivider variant="brackets" />
             <Contact />
