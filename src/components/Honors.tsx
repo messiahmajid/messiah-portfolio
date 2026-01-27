@@ -42,6 +42,7 @@ export default function Honors() {
                   alt="Stamps Scholar"
                   fill
                   className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 50vw"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent" />
                 {/* Badge */}
@@ -101,6 +102,7 @@ export default function Honors() {
                   alt="Omicron Delta Kappa"
                   fill
                   className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 50vw"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent" />
                 {/* Badge */}
@@ -209,6 +211,7 @@ export default function Honors() {
                     alt="Robert Bales Cole Award"
                     fill
                     className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 40vw"
                   />
                   <div className="absolute inset-0 bg-gradient-to-l from-transparent to-te-dark/30 md:block hidden" />
                   <div className="absolute inset-0 bg-gradient-to-t from-te-dark/50 to-transparent md:hidden" />

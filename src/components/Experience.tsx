@@ -66,6 +66,8 @@ function CalendarCard({ exp, index }: { exp: ExperienceItem; index: number }) {
               alt={exp.company}
               fill
               className="object-cover"
+              priority={index === 0}
+              sizes="(max-width: 768px) 100vw, 50vw"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-white via-white/30 to-transparent" />
             {/* Type badge on image */}

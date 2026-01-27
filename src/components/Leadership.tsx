@@ -96,6 +96,7 @@ function BadgeCard({ role, index }: { role: LeadershipItem; index: number }) {
             alt={role.organization}
             fill
             className="object-cover"
+            sizes="(max-width: 768px) 100vw, 33vw"
           />
           {/* Photo overlay gradient */}
           <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent" />
