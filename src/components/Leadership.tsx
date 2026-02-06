@@ -11,6 +11,7 @@ interface LeadershipItem {
   highlight: string;
   image: string;
   featured?: boolean;
+  link?: string;
 }
 
 const leadershipRoles: LeadershipItem[] = [
@@ -21,6 +22,7 @@ const leadershipRoles: LeadershipItem[] = [
     highlight: "Founded UM's chapter, built community of 50+ Black & Latinx CS students",
     image: "/leadership/colorstack.jpg",
     featured: true,
+    link: "https://colorstackum.org",
   },
   {
     title: "Sponsorship Chair",
@@ -109,9 +111,20 @@ function BadgeCard({ role, index }: { role: LeadershipItem; index: number }) {
         {/* Badge content */}
         <div className="p-5 pt-3">
           {/* Organization badge */}
-          <div className="inline-block px-2 py-1 bg-te-orange text-white text-[10px] font-bold uppercase tracking-wider rounded mb-3">
-            {role.organization}
-          </div>
+          {role.link ? (
+            <a
+              href={role.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block px-2 py-1 bg-te-orange text-white text-[10px] font-bold uppercase tracking-wider rounded mb-3 hover:bg-te-orange/80 transition-colors"
+            >
+              {role.organization}
+            </a>
+          ) : (
+            <div className="inline-block px-2 py-1 bg-te-orange text-white text-[10px] font-bold uppercase tracking-wider rounded mb-3">
+              {role.organization}
+            </div>
+          )}
 
           <h3 className="text-lg font-bold text-te-dark mb-2 leading-tight">
             {role.title}

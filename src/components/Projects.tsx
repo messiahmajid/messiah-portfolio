@@ -17,6 +17,18 @@ interface Project {
 
 const projects: Project[] = [
   {
+    title: "Betting Autopsy",
+    role: "Solo Developer",
+    description: "Data-driven analysis tool examining whether prediction markets accurately forecast outcomes, analyzing 600+ resolved markets from Metaculus and Manifold.",
+    highlights: [
+      "Analyzed 600+ resolved markets with calibration testing",
+      "Built interactive dashboard with FastAPI and Plotly",
+      "Identified favorite-longshot bias: low-probability events overpriced by ~3.5%",
+    ],
+    tags: ["Python", "Data Analysis", "FastAPI", "DuckDB"],
+    github: "https://github.com/messiahmajid/betting-autopsy",
+  },
+  {
     title: "ScamSpot",
     role: "Lead Developer",
     description: "Chrome extension that detects social engineering in real-time using fine-tuned LLMs.",
