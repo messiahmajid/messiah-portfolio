@@ -17,6 +17,30 @@ interface Project {
 
 const projects: Project[] = [
   {
+    title: "AppealAI",
+    role: "Solo Developer",
+    description: "AI-powered insurance prior authorization appeal letter generator that reduces physician appeal writing from 30-60 minutes to under 2 minutes, with RAG over 11 medical guidelines and live PubMed evidence search.",
+    highlights: [
+      "5-layer anti-hallucination system ensuring every claim is traceable to clinical notes or guidelines",
+      "RAG pipeline over 11 medical guidelines with live PubMed search via NCBI API",
+      "Multi-model LLM support with automatic fallback (Claude Haiku → Gemini → OpenRouter)",
+    ],
+    tags: ["Next.js", "RAG", "Claude API", "PubMed", "TypeScript"],
+    github: "https://github.com/messiahmajid/appealai",
+  },
+  {
+    title: "DrugLens",
+    role: "Solo Developer",
+    description: "AI-powered drug-target interaction predictor that computationally screens whether a drug molecule will bind to a protein target in under 500ms, trained on 30K+ experimentally validated interactions.",
+    highlights: [
+      "0.935 AUROC on Davis Kinase Dataset with XGBoost on 2,483-dimensional feature vectors",
+      "SHAP explainability for every prediction — critical for scientific trust",
+      "Similar drug search using Tanimoto similarity over known compounds",
+    ],
+    tags: ["Python", "XGBoost", "RDKit", "SHAP", "Streamlit"],
+    github: "https://github.com/messiahmajid/DrugLens",
+  },
+  {
     title: "Betting Autopsy",
     role: "Solo Developer",
     description: "Data-driven analysis tool examining whether prediction markets accurately forecast outcomes, analyzing 600+ resolved markets from Metaculus and Manifold.",
@@ -174,7 +198,7 @@ export default function Projects() {
             Featured <span className="text-te-orange">Projects</span>
           </h2>
           <p className="text-text-secondary max-w-xl">
-            Selected work in ML, bioinformatics, and software engineering.
+            Selected work in healthcare AI, ML, bioinformatics, and software engineering.
           </p>
         </motion.div>
 
