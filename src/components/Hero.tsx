@@ -129,25 +129,24 @@ export default function Hero() {
           Messiah Majid
         </motion.h1>
 
-        {/* Tagline */}
-        <motion.h2
+        {/* Description */}
+        <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
-          className="text-2xl sm:text-3xl md:text-4xl font-medium text-text-secondary mb-6"
+          className="text-lg text-text-muted max-w-2xl mx-auto mb-6 leading-relaxed"
         >
-          Data Scientist & Analyst
-        </motion.h2>
+          I like working with data, asking questions, and building things that make complicated systems easier to understand.
+        </motion.p>
 
-        {/* Description */}
+        {/* School */}
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4 }}
           className="text-lg text-text-muted max-w-2xl mx-auto mb-10 leading-relaxed"
         >
-          Turning complex data into actionable insights. Studying Computer Science,
-          Mathematics, and Biology at the{" "}
+          Currently studying Computer Science, Mathematics, and Biology at the{" "}
           <span className="text-te-orange">University of Miami</span>.
         </motion.p>
 

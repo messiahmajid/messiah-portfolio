@@ -174,21 +174,6 @@ export default function TEDxTalk() {
               — {descriptionParts[2].text}
             </p>
 
-            {/* Theme Tags */}
-            <div className="flex flex-wrap gap-3 pt-2">
-              {descriptionParts[3].tags?.map((tag, i) => (
-                <motion.span
-                  key={tag}
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.1 }}
-                  className="px-4 py-2 bg-te-dark text-white text-sm font-mono rounded-lg"
-                >
-                  {tag}
-                </motion.span>
-              ))}
-            </div>
           </motion.div>
 
           {/* Right Column */}

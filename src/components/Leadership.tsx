@@ -167,7 +167,7 @@ export default function Leadership() {
         {/* Badge Grid */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
           {leadershipRoles.map((role, index) => (
-            <BadgeCard key={role.title} role={role} index={index} />
+            <BadgeCard key={`${role.title}-${role.organization}`} role={role} index={index} />
           ))}
         </div>
 

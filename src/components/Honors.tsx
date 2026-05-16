@@ -119,22 +119,13 @@ export default function Honors() {
                   Omicron Delta Kappa
                 </h3>
 
-                <p className="text-text-secondary text-sm leading-relaxed mb-4">
-                  Being inducted into ODK was a moment of reflection—recognizing that leadership
-                  isn&apos;t just about what you do, but how you bring people together across
-                  different backgrounds and perspectives.
+                <p className="text-text-secondary text-sm leading-relaxed mb-3">
+                  Omicron Delta Kappa is a national leadership honor society recognizing students for scholarship, leadership, service, and campus involvement.
                 </p>
 
-                <div className="flex flex-wrap gap-2">
-                  {["Leadership", "Scholarship", "Service"].map((tag) => (
-                    <span
-                      key={tag}
-                      className="px-2 py-1 bg-te-surface text-text-muted text-xs rounded"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
+                <p className="text-text-secondary text-sm leading-relaxed">
+                  What meant the most to me about joining ODK was being surrounded by people at UM doing genuinely impressive things — building organizations, conducting research, creating opportunities for others, and pushing their fields forward in different ways.
+                </p>
               </div>
             </div>
           </motion.div>
@@ -162,45 +153,18 @@ export default function Honors() {
                     Robert Bates Cole Award
                   </h3>
 
-                  <div className="space-y-4 mb-8">
-                    <p className="text-lg text-white/80 leading-relaxed">
-                      Winning this award meant more to me than I expected. It&apos;s not just about
-                      logging volunteer hours—it&apos;s about the quiet, consistent work of showing
-                      up for your community.
+                  <div className="space-y-4">
+                    <p className="text-white/80 leading-relaxed">
+                      This award recognized students involved in service and leadership across the University of Miami community.
                     </p>
 
                     <p className="text-white/70 leading-relaxed">
-                      This award recognizes students who exemplify integrity and dedication through
-                      exceptional participation in community service. For me, service has never been
-                      about recognition—it&apos;s about the people you help along the way.
+                      A lot of the opportunities I&apos;ve had in college came from people who were willing to give their time, open doors for others, and help without expecting recognition for it. Being part of communities built by people like that shaped how I think about leadership and service.
                     </p>
-                  </div>
 
-                  {/* Award criteria */}
-                  <div className="grid grid-cols-2 gap-4">
-                    {[
-                      { label: "Integrity", desc: "Leading with honesty" },
-                      { label: "Dedication", desc: "Consistent commitment" },
-                      { label: "Service", desc: "Community impact" },
-                      { label: "Leadership", desc: "Organizing initiatives" },
-                    ].map((item, i) => (
-                      <motion.div
-                        key={item.label}
-                        initial={{ opacity: 0, x: -10 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: 0.3 + i * 0.1 }}
-                        className="flex items-center gap-3"
-                      >
-                        <div className="w-8 h-8 rounded-full bg-te-orange/20 flex items-center justify-center shrink-0">
-                          <div className="w-2 h-2 rounded-full bg-te-orange" />
-                        </div>
-                        <div>
-                          <p className="font-medium text-white text-sm">{item.label}</p>
-                          <p className="text-white/50 text-xs">{item.desc}</p>
-                        </div>
-                      </motion.div>
-                    ))}
+                    <p className="text-white/70 leading-relaxed">
+                      Most of the work behind strong communities is steady and largely invisible. I&apos;m grateful to have learned from people who showed me what that looks like.
+                    </p>
                   </div>
                 </div>
 
@@ -217,6 +181,124 @@ export default function Honors() {
                   <div className="absolute inset-0 bg-gradient-to-t from-te-dark/50 to-transparent md:hidden" />
 
                   {/* Corner decoration */}
+                  <div className="absolute top-4 right-4 w-12 h-12 border-2 border-white/20 rounded-full flex items-center justify-center">
+                    <div className="w-6 h-6 border-2 border-te-orange/60 rounded-full" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Jenkins Legacy Leadership Award */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.2 }}
+          className="mt-8"
+        >
+          <div className="relative">
+            <div className="absolute inset-0 bg-te-dark/15 rounded-2xl translate-x-3 translate-y-3" />
+
+            <div className="relative bg-te-dark rounded-2xl overflow-hidden text-white">
+              <div className="grid md:grid-cols-5">
+                {/* Image side - left */}
+                <div className="md:col-span-2 relative h-64 md:h-auto min-h-[280px]">
+                  <Image
+                    src="/honors/first-gen-canes-legacy.jpg"
+                    alt="First Gen Canes Legacy Leadership Award"
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 40vw"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent to-te-dark/30 md:block hidden" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-te-dark/50 to-transparent md:hidden" />
+
+                  <div className="absolute top-4 left-4 w-12 h-12 border-2 border-white/20 rounded-full flex items-center justify-center">
+                    <div className="w-6 h-6 border-2 border-te-orange/60 rounded-full" />
+                  </div>
+                </div>
+
+                {/* Content side */}
+                <div className="md:col-span-3 p-8 md:p-10">
+                  <div className="inline-block px-3 py-1 bg-te-orange text-white text-xs font-bold uppercase tracking-wider rounded mb-6">
+                    First Gen Canes
+                  </div>
+
+                  <h3 className="text-2xl md:text-3xl font-bold mb-6">
+                    First Gen Canes Legacy Leadership Award
+                  </h3>
+
+                  <div className="space-y-4">
+                    <p className="text-white/80 leading-relaxed">
+                      Receiving this award made me reflect a lot on what being first-generation has actually meant in my life.
+                    </p>
+
+                    <p className="text-white/70 leading-relaxed">
+                      For a long time, I thought being first-gen was mostly about pressure — translating things for my parents, figuring things out alone, feeling like every opportunity had to count for something bigger than myself. But over time I realized it was also about community.
+                    </p>
+
+                    <p className="text-white/70 leading-relaxed">
+                      A lot of the opportunities, confidence, and direction I&apos;ve found in college came from people who took the time to help me, guide me, or simply make space for me when I needed it. This award reminded me how important that kind of support really is.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Vivian Berger Giller Endowed Impact Award */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.2 }}
+          className="mt-8"
+        >
+          <div className="relative">
+            <div className="absolute inset-0 bg-te-dark/15 rounded-2xl translate-x-3 translate-y-3" />
+
+            <div className="relative bg-te-dark rounded-2xl overflow-hidden text-white">
+              <div className="grid md:grid-cols-5">
+                {/* Content side */}
+                <div className="md:col-span-3 p-8 md:p-10 order-2 md:order-1">
+                  <div className="inline-block px-3 py-1 bg-te-orange text-white text-xs font-bold uppercase tracking-wider rounded mb-6">
+                    Impact Award
+                  </div>
+
+                  <h3 className="text-2xl md:text-3xl font-bold mb-6">
+                    Vivian Berger Giller Endowed Impact Award
+                  </h3>
+
+                  <div className="space-y-4">
+                    <p className="text-white/80 leading-relaxed">
+                      This award recognized students who created meaningful impact through leadership, service, and campus initiatives.
+                    </p>
+
+                    <p className="text-white/70 leading-relaxed">
+                      A lot of the work I&apos;ve done in college has been collaborative by nature — helping organize programs, working alongside student organizations, contributing to projects that improve student experiences, and trying to leave spaces better than I found them.
+                    </p>
+
+                    <p className="text-white/70 leading-relaxed">
+                      I&apos;ve been lucky to work with people who care deeply about building things that genuinely help others, and this recognition felt representative of that collective effort more than anything individual.
+                    </p>
+                  </div>
+                </div>
+
+                {/* Image side - right */}
+                <div className="md:col-span-2 relative h-64 md:h-auto min-h-[280px] order-1 md:order-2">
+                  <Image
+                    src="/honors/vivian-berger-giller.jpg"
+                    alt="Vivian Berger Giller Endowed Impact Award"
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 40vw"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-l from-transparent to-te-dark/30 md:block hidden" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-te-dark/50 to-transparent md:hidden" />
+
                   <div className="absolute top-4 right-4 w-12 h-12 border-2 border-white/20 rounded-full flex items-center justify-center">
                     <div className="w-6 h-6 border-2 border-te-orange/60 rounded-full" />
                   </div>

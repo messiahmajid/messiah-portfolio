@@ -9,6 +9,7 @@ import Experience from "@/components/Experience";
 import Projects from "@/components/Projects";
 import TEDxTalk from "@/components/TEDxTalk";
 import Leadership from "@/components/Leadership";
+import Research from "@/components/Research";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import MainContainer from "@/components/MainContainer";
@@ -31,6 +32,8 @@ export default function Home() {
             <SectionDivider variant="line" />
             <Projects />
             <SectionDivider variant="dots" />
+            <Research />
+            <SectionDivider variant="brackets" />
             <TEDxTalk />
             <SectionDivider variant="wave" />
             <Honors />

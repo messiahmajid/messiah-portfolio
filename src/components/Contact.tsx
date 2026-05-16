@@ -41,7 +41,7 @@ export default function Contact() {
             <div className="absolute top-4 right-4 w-16 h-20 border-2 border-dashed border-te-orange/50 rounded flex items-center justify-center">
               <div className="text-center">
                 <span className="text-2xl">📮</span>
-                <p className="text-[8px] text-te-orange font-bold mt-1">2025</p>
+                <p className="text-[8px] text-te-orange font-bold mt-1">2026</p>
               </div>
             </div>
 
