@@ -16,7 +16,7 @@ export default function Honors() {
           className="mb-12"
         >
           <h2 className="text-4xl sm:text-5xl font-bold text-te-dark mb-4">
-            Honors & <span className="text-te-orange">Recognition</span>
+            honors & <span className="text-te-orange">recognition.</span>
           </h2>
           <p className="text-text-secondary max-w-xl">
             Awards and scholarships that have shaped my journey.

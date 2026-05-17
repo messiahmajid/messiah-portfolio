@@ -161,7 +161,7 @@ export default function Leadership() {
           className="mb-12"
         >
           <h2 className="text-4xl sm:text-5xl font-bold text-te-dark mb-4">
-            Leadership & <span className="text-te-orange">Community</span>
+            leadership & <span className="text-te-orange">community.</span>
           </h2>
           <p className="text-text-secondary max-w-xl">
             Organizations, initiatives, and spaces I've helped grow alongside others.
