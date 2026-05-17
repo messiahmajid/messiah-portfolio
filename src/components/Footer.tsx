@@ -56,15 +56,6 @@ export default function Footer() {
             </motion.a>
           </div>
 
-          {/* Tech Stack */}
-          <div className="text-center md:text-right">
-            <p className="text-text-muted text-sm">
-              Built with{" "}
-              <span className="text-text-secondary">Next.js</span>
-              {" & "}
-              <span className="text-text-secondary">Framer Motion</span>
-            </p>
-          </div>
         </div>
       </div>
     </footer>
