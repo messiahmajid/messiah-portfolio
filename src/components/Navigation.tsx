@@ -198,9 +198,6 @@ export default function Navigation() {
                 {/* Footer */}
                 <div className="mt-auto">
                   <div className="h-px w-full bg-te-dark/10" />
-                  <p className="text-text-muted text-sm mt-4 text-center">
-                    Built with Next.js & Framer Motion
-                  </p>
                 </div>
               </div>
             </motion.div>
