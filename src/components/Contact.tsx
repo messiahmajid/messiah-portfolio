@@ -16,7 +16,7 @@ export default function Contact() {
           className="text-center mb-12"
         >
           <h2 className="text-4xl sm:text-5xl font-bold text-te-dark mb-4">
-            get in <span className="text-te-orange">touch.</span>
+            Get In <span className="text-te-orange">Touch</span>
           </h2>
           <p className="text-text-secondary">
             Let&apos;s build something amazing together.

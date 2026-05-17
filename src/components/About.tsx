@@ -115,7 +115,7 @@ export default function About() {
           className="mb-10"
         >
           <h2 className="text-4xl sm:text-5xl font-bold text-te-dark mb-4">
-            about <span className="text-te-orange">me.</span>
+            About <span className="text-te-orange">Me</span>
           </h2>
         </motion.div>
 

@@ -31,7 +31,7 @@ export default function Research() {
           className="mb-10"
         >
           <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-te-dark">
-            library research <span className="text-te-orange">scholar.</span>
+            Library Research <span className="text-te-orange">Scholar</span>
           </h2>
           <p className="text-text-muted mt-3 font-mono">
             University of Miami Libraries

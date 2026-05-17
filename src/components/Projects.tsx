@@ -195,7 +195,7 @@ export default function Projects() {
           className="mb-16"
         >
           <h2 className="text-4xl sm:text-5xl font-bold text-te-dark mb-4">
-            projects & <span className="text-te-orange">explorations.</span>
+            Projects & <span className="text-te-orange">Explorations</span>
           </h2>
           <p className="text-text-secondary max-w-xl">
             Things I've built, explored, researched, or spent too much time thinking about.

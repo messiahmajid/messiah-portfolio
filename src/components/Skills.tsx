@@ -140,7 +140,7 @@ export default function Skills() {
           className="mb-12"
         >
           <h2 className="text-4xl sm:text-5xl font-bold text-te-dark mb-4">
-            skills & <span className="text-te-orange">tools.</span>
+            Skills & <span className="text-te-orange">Tools</span>
           </h2>
           <p className="text-text-secondary max-w-xl">
             Technologies, frameworks, and platforms I've worked with across projects and research.
