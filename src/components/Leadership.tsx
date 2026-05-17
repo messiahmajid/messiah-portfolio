@@ -19,7 +19,7 @@ const leadershipRoles: LeadershipItem[] = [
     title: "Founder & Co-President",
     organization: "ColorStack UM",
     period: "Aug 2023 - Present",
-    highlight: "Founded UM's chapter, built community of 50+ Black & Latinx CS students",
+    highlight: "Founded UM's chapter, building community of 150+ minority and underrepresented students in tech",
     image: "/leadership/colorstack.jpg",
     featured: true,
     link: "https://colorstackum.org",
@@ -28,29 +28,33 @@ const leadershipRoles: LeadershipItem[] = [
     title: "Sponsorship Chair",
     organization: "Miami Day of Service",
     period: "Mar 2024 - Present",
-    highlight: "Secured 20+ sponsors, coordinated 6,000 students across 300 orgs",
+    highlight: "Raised $8000+, secured 20+ sponsors, coordinated 600+ students across 300 orgs for UM's largest service initiative",
     image: "/leadership/dayofservice.jpg",
+    link: "https://multimedia.miami.edu/miami-dream-day-2025",
   },
   {
-    title: "International Student Liaison",
+    title: "International Student Liaison & Assistant Director, Academic Liaison Council",
     organization: "Student Government",
-    period: "Mar 2024 - Present",
-    highlight: "Connected 200+ international students to career resources",
+    period: "Mar 2024 - April 2026",
+    highlight: "Advocated for student needs and helped connect students to academic, professional, and campus resources",
     image: "/leadership/studentgov.jpg",
+    link: "https://sg.miami.edu/about-us/index.html",
   },
   {
     title: "First Year Fellow",
     organization: "UM Residential Life",
     period: "Apr 2024 - Present",
-    highlight: "Mentored 78 students, led 12 coding workshops",
+    highlight: "Mentored 160+ first-year students through advising, programming, and peer support",
     image: "/leadership/reslife.jpg",
+    link: "https://hrl.studentaffairs.miami.edu/employment-opportunities/student-staff-opportunities/first-year-fellow/index.html",
   },
   {
     title: "Facilitator",
     organization: "First Year U",
     period: "Aug 2023 - Present",
-    highlight: "Led seminars on civic engagement and public health",
+    highlight: "Guided first-year students through leadership programming centered on dialogue, service, and civic engagement",
     image: "/leadership/firstyearu.jpg",
+    link: "https://serveandlead.studentaffairs.miami.edu/programs-and-events/leadership-programs/first-year-u/index.html",
   },
   {
     title: "Sponsorship Chair",
@@ -78,7 +82,7 @@ function BadgeCard({ role, index }: { role: LeadershipItem; index: number }) {
       whileHover={{ rotate: hoverRotation, y: -8, scale: 1.02 }}
       viewport={{ once: true }}
       transition={{ delay: index * 0.08, type: "spring", stiffness: 200 }}
-      className={`relative ${role.featured ? 'sm:col-span-2 lg:col-span-1' : ''}`}
+      className={`relative self-start ${role.featured ? 'sm:col-span-2 lg:col-span-1' : ''}`}
     >
       {/* Card shadow */}
       <div className="absolute inset-0 bg-te-dark/15 rounded-xl translate-x-2 translate-y-2" />
@@ -157,10 +161,10 @@ export default function Leadership() {
           className="mb-12"
         >
           <h2 className="text-4xl sm:text-5xl font-bold text-te-dark mb-4">
-            Leadership & <span className="text-te-orange">Impact</span>
+            Leadership & <span className="text-te-orange">Community</span>
           </h2>
           <p className="text-text-secondary max-w-xl">
-            Roles where I built communities and mentored others.
+            Organizations, initiatives, and spaces I've helped grow alongside others.
           </p>
         </motion.div>
 

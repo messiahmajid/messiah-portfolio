@@ -143,11 +143,11 @@ export default function Skills() {
             Skills & <span className="text-te-orange">Tools</span>
           </h2>
           <p className="text-text-secondary max-w-xl">
-            Technologies I use to build and ship products.
+            Technologies, frameworks, and platforms I've worked with across projects and research.
           </p>
         </motion.div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 items-start">
           {skillCategories.map((category, index) => (
             <CategoryBox key={category.title} category={category} index={index} />
           ))}

@@ -195,14 +195,14 @@ export default function Projects() {
           className="mb-16"
         >
           <h2 className="text-4xl sm:text-5xl font-bold text-te-dark mb-4">
-            Featured <span className="text-te-orange">Projects</span>
+            Projects & <span className="text-te-orange">Explorations</span>
           </h2>
           <p className="text-text-secondary max-w-xl">
-            Selected work in healthcare AI, ML, bioinformatics, and software engineering.
+            Things I've built, explored, researched, or spent too much time thinking about.
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-10 md:gap-12">
+        <div className="grid md:grid-cols-2 gap-10 md:gap-12 items-start">
           {projects.map((project, index) => (
             <ProjectCard key={project.title} project={project} index={index} />
           ))}

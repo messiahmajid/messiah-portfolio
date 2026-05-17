@@ -64,22 +64,31 @@ export default function Navigation() {
       >
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <div className="flex items-center justify-between">
-            {/* Logo */}
-            <motion.a
-              href="#"
-              onClick={(e) => {
-                e.preventDefault();
-                window.scrollTo({ top: 0, behavior: "smooth" });
-              }}
-              className="relative group"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              <span className="text-xl font-bold text-te-dark">
-                Messiah
-                <span className="text-te-orange">.</span>
-              </span>
-            </motion.a>
+            {/* Logo + Personal link */}
+            <div className="flex items-center gap-4">
+              <motion.a
+                href="/"
+                className="relative group"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <span className="text-xl font-bold text-te-dark">
+                  Messiah
+                  <span className="text-te-orange">.</span>
+                </span>
+              </motion.a>
+
+              <motion.a
+                href="/personal"
+                className="relative text-xs font-medium text-text-muted hover:text-te-dark transition-colors px-3 py-1 rounded-full"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <span className="absolute inset-[-1.5px] rounded-full bg-gradient-to-r from-red-400 via-yellow-300 via-green-400 via-blue-400 to-purple-400 opacity-35 blur-[2px] animate-pulse" />
+                <span className="absolute inset-[1.5px] rounded-full bg-te-beige" />
+                <span className="relative">personal</span>
+              </motion.a>
+            </div>
 
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center gap-1">
@@ -175,6 +184,15 @@ export default function Navigation() {
                       <span className="text-lg font-medium">{item.name}</span>
                     </motion.button>
                   ))}
+                  <motion.a
+                    href="/personal"
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: navItems.length * 0.05 }}
+                    className="text-left px-4 py-3 rounded-lg text-text-secondary hover:bg-te-dark/5 hover:text-te-dark transition-all"
+                  >
+                    <span className="text-lg font-medium">Personal</span>
+                  </motion.a>
                 </nav>
 
                 {/* Footer */}

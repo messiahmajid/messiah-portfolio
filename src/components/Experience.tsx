@@ -141,14 +141,14 @@ export default function Experience() {
           className="mb-12"
         >
           <h2 className="text-4xl sm:text-5xl font-bold text-te-dark mb-4">
-            Work <span className="text-te-orange">Experience</span>
+            <span className="text-te-orange">Experience</span>
           </h2>
           <p className="text-text-secondary max-w-xl">
-            Industry and research roles where I shipped real products.
+            Places where I've gotten to learn, solve problems, and work on real systems.
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid md:grid-cols-2 gap-8 items-start">
           {experiences.map((exp, index) => (
             <CalendarCard key={exp.company} exp={exp} index={index} />
           ))}
