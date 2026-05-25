@@ -55,21 +55,21 @@ const books: BookItem[] = [
     author: "John Steinbeck",
     body: "A novel about family, morality, inheritance, and the tension between who people are and who they want to become.",
     reflection:
-      "I'm only around twenty pages in, but already I can feel how deeply human this book is going to be. There's something about Steinbeck's writing that makes even ordinary emotions feel ancient and heavy. Everybody already feels flawed in a very recognizable way. I also love how patient the writing is. It feels less interested in rushing toward plot and more interested in sitting with people long enough to understand them.",
+      "I'm now a few chapters in, and I took a break for a bit because life got busy, but I've been enjoying it. The beginning is slower than I expected, but I don't mind it because Steinbeck makes the slowness feel intentional. He starts with the Salinas Valley, the mountains on both sides, the dry land, the river, the way the place can be beautiful and still feel hard to live in.\n\nI'm also interested in how much of the early book is about families before it is about plot. The Hamiltons feel warm and crowded and alive, with all the children and the sense that there is never quite enough money, but still a lot of energy in the house. The Trasks feel heavier and stranger.\n\nI also like that it's already asking questions about family that I think about a lot, like how much of who you are comes from where you were born? How much comes from your parents? How much comes from the stories people tell about you before you even get to define yourself? I'm very intrigued to see the answers Steinbeck offers here, or if these are the questions he's tackling at all and I got it all wrong. Only one way to find out.",
     image: "/personal/east-of-eden.jpg",
   },
 ];
 
 const poems: PoemItem[] = [
   {
-    title: "The Summer Day",
-    author: "Mary Oliver",
-    body: "Who made the world?\nWho made the swan, and the black bear?\nWho made the grasshopper?\nThis grasshopper, I mean —\nthe one who has flung herself out of the grass,\nthe one who is eating sugar out of my hand,\nwho is moving her jaws back and forth instead of up and down —\nwho is gazing around with her enormous and complicated eyes.\nNow she lifts her pale forearms and thoroughly washes her face.\nNow she snaps her wings open, and floats away.\nI don't know exactly what a prayer is.\nI do know how to pay attention, how to fall down\ninto the grass, how to kneel down in the grass,\nhow to be idle and blessed, how to stroll through the fields,\nwhich is what I have been doing all day.\nTell me, what else should I have done?\nDoesn't everything die at last, and too soon?\nTell me, what is it you plan to do\nwith your one wild and precious life?",
+    title: "Everything is Waiting for You",
+    author: "David Whyte",
+    body: "Your great mistake is to act the drama\nas if you were alone. As if life\nwere a progressive and cunning crime\nwith no witness to the tiny hidden\ntransgressions. To feel abandoned is to deny\nthe intimacy of your surroundings. Surely,\neven you, at times, have felt the grand array;\nthe swelling presence, and the chorus, crowding\nout your solo voice. You must note\nthe way the soap dish enables you,\nor the window latch grants you freedom.\nAlertness is the hidden discipline of familiarity.\nThe stairs are your mentor of things\nto come, the doors have always been there\nto frighten you and invite you,\nand the tiny speaker in the phone\nis your dream-ladder to divinity.\n\nPut down the weight of your aloneness and ease into the\nconversation. The kettle is singing\neven as it pours you a drink, the cooking pots\nhave left their arrogant aloofness and\nseen the good in you at last. All the birds\nand creatures of the world are unutterably\nthemselves. Everything is waiting for you.",
     reflection: undefined,
   },
 ];
 
-const videoLink = "https://youtu.be/WnzR5aOElvw?si=l2Y-fzacwBRQ3FYw";
+const videoLink = "https://youtu.be/Swms06sGoNo?si=h-zT0ikmLT4cmhHL";
 
 function PaperEntry({ item }: { item: PaperItem; index: number }) {
   return (
@@ -211,7 +211,7 @@ function VideoEntry() {
             <div className="relative w-64 h-40 sm:w-80 sm:h-48 bg-zinc-900 rounded-lg overflow-hidden border-2 border-zinc-700">
               {/* YouTube thumbnail */}
               <img
-                src="https://img.youtube.com/vi/WnzR5aOElvw/maxresdefault.jpg"
+                src="https://img.youtube.com/vi/Swms06sGoNo/maxresdefault.jpg"
                 alt="Video thumbnail"
                 className="absolute inset-0 w-full h-full object-cover"
               />
