@@ -18,7 +18,7 @@ interface ExperienceItem {
 const experiences: ExperienceItem[] = [
   {
     company: "Johnson & Johnson",
-    role: "Enterprise Contract Management — Contract Solutions Intern",
+    role: "Enterprise Contract Management Contract Solutions Intern",
     location: "Raritan, NJ",
     period: "Summer 2026",
     type: "industry",
