@@ -18,6 +18,19 @@ interface ExperienceItem {
 const experiences: ExperienceItem[] = [
   {
     company: "Johnson & Johnson",
+    role: "Enterprise Contract Management — Contract Solutions Intern",
+    location: "Raritan, NJ",
+    period: "Summer 2026",
+    type: "industry",
+    highlights: [
+      "Automated reporting and validation workflows supporting enterprise contract operations and Contract Coverage testing",
+      "Used Cognos to analyze Medicaid, Medicare, and ADAP payer data and identify reporting and process gaps",
+      "Worked with business and technical teams to map workflows, surface pain points, and support process improvements",
+    ],
+    image: "/experience/ecm.jpg",
+  },
+  {
+    company: "Johnson & Johnson",
     role: "MedTech Supply Chain Intern",
     location: "Raritan, NJ",
     period: "Summer 2025",
