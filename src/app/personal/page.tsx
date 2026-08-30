@@ -179,9 +179,11 @@ function BookEntry({ item }: { item: BookItem }) {
             {item.body}
           </p>
 
-          <p className="text-te-dark/70 text-base leading-[1.8]">
-            {item.reflection}
-          </p>
+          <div className="text-te-dark/70 text-base leading-[1.8] space-y-4">
+            {item.reflection.split("\n\n").map((para, i) => (
+              <p key={i}>{para}</p>
+            ))}
+          </div>
         </div>
       </div>
     </motion.div>
