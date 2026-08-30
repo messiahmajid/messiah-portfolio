@@ -65,13 +65,6 @@ export default function Honors() {
                   push me to think bigger every day.
                 </p>
 
-                <div className="bg-te-surface rounded-lg p-3 border-l-4 border-te-orange">
-                  <p className="text-xs text-text-muted italic">
-                    Awarded to exceptional high school seniors who demonstrate academic
-                    excellence and leadership potential.
-                  </p>
-                </div>
-
                 <a
                   href="https://admissions.miami.edu/undergraduate/financial-aid/scholarships/stamps/index.html"
                   target="_blank"
