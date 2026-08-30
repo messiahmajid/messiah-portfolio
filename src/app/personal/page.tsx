@@ -69,7 +69,7 @@ const poems: PoemItem[] = [
   },
 ];
 
-const videoLink = "https://youtu.be/Swms06sGoNo?si=h-zT0ikmLT4cmhHL";
+const videoLink = "https://youtu.be/DgeRVUSuGvQ?si=QEPq0roDkd1SyR44";
 
 function PaperEntry({ item }: { item: PaperItem; index: number }) {
   return (
@@ -213,7 +213,7 @@ function VideoEntry() {
             <div className="relative w-64 h-40 sm:w-80 sm:h-48 bg-zinc-900 rounded-lg overflow-hidden border-2 border-zinc-700">
               {/* YouTube thumbnail */}
               <img
-                src="https://img.youtube.com/vi/Swms06sGoNo/maxresdefault.jpg"
+                src="https://img.youtube.com/vi/DgeRVUSuGvQ/maxresdefault.jpg"
                 alt="Video thumbnail"
                 className="absolute inset-0 w-full h-full object-cover"
               />
