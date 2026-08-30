@@ -1,24 +1,10 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
-
-const images = [
-  "/research/library-scholar-1.jpg",
-  "/research/library-scholar-2.jpg",
-  "/research/library-scholar-3.jpg",
-];
+import { motion } from "framer-motion";
 
 export default function Research() {
-  const [currentImage, setCurrentImage] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentImage((prev) => (prev + 1) % images.length);
-    }, 4000);
-    return () => clearInterval(interval);
-  }, []);
 
   return (
     <section id="research" className="py-20 px-4">
@@ -41,7 +27,7 @@ export default function Research() {
           </p>
         </motion.div>
 
-        {/* Image Carousel - Full Width */}
+        {/* Image */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -51,36 +37,14 @@ export default function Research() {
           <div className="absolute inset-0 bg-te-dark/20 rounded-2xl translate-x-3 translate-y-3" />
 
           <div className="relative rounded-2xl overflow-hidden border-2 border-te-dark/10">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={currentImage}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.8 }}
-              >
-                <Image
-                  src={images[currentImage]}
-                  alt="Library Research Scholar"
-                  width={1200}
-                  height={800}
-                  className="w-full h-auto"
-                  sizes="100vw"
-                />
-              </motion.div>
-            </AnimatePresence>
-
-            {/* Image indicators */}
-            <div className="absolute bottom-4 right-4 flex gap-2">
-              {images.map((_, i) => (
-                <div
-                  key={i}
-                  className={`w-2.5 h-2.5 rounded-full transition-colors ${
-                    i === currentImage ? "bg-te-orange" : "bg-white/40"
-                  }`}
-                />
-              ))}
-            </div>
+            <Image
+              src="/research/library-scholar-1.jpg"
+              alt="Library Research Scholar"
+              width={1200}
+              height={800}
+              className="w-full h-auto"
+              sizes="100vw"
+            />
           </div>
         </motion.div>
 
