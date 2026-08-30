@@ -2,7 +2,6 @@
 
 import Navigation from "@/components/Navigation";
 import Hero from "@/components/Hero";
-import About from "@/components/About";
 import Honors from "@/components/Honors";
 import Skills from "@/components/Skills";
 import Experience from "@/components/Experience";
@@ -24,8 +23,6 @@ export default function Home() {
           <Hero />
           <div className="max-w-6xl mx-auto px-4">
             <SectionDivider variant="dots" />
-            <About />
-            <SectionDivider variant="brackets" />
             <Skills />
             <SectionDivider variant="wave" />
             <Experience />

@@ -69,45 +69,33 @@ function FloatingElements() {
   );
 }
 
+function FloatingHead() {
+  return (
+    <motion.div
+      initial={{ opacity: 0, scale: 0.8 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ delay: 0.05 }}
+      className="flex justify-center mb-6"
+    >
+      <div className="w-36 h-36 rounded-full overflow-hidden shadow-lg">
+        <img
+          src="/headshot.png"
+          alt="Messiah Majid"
+          className="w-full h-full object-cover"
+          style={{ objectPosition: "50% 28%" }}
+        />
+      </div>
+    </motion.div>
+  );
+}
+
 export default function Hero() {
   return (
-    <section className="min-h-screen flex items-center justify-center px-4 pt-16 relative">
+    <section id="hero" className="min-h-screen flex items-center justify-center px-4 pt-16 relative">
       <FloatingElements />
 
       <div className="max-w-4xl mx-auto text-center relative z-10">
-        {/* Decorative element above greeting */}
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0 }}
-          className="flex items-center justify-center gap-3 mb-6"
-        >
-          <motion.div
-            animate={{ scaleX: [0.8, 1, 0.8] }}
-            transition={{ duration: 3, repeat: Infinity }}
-            className="w-8 h-0.5 bg-te-orange/40"
-          />
-          <motion.div
-            animate={{ rotate: [0, 180, 360] }}
-            transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
-            className="w-3 h-3 border-2 border-te-orange/50 rounded-sm"
-          />
-          <motion.div
-            animate={{ scale: [1, 1.2, 1] }}
-            transition={{ duration: 2, repeat: Infinity }}
-            className="w-2 h-2 bg-te-orange/60 rounded-full"
-          />
-          <motion.div
-            animate={{ rotate: [0, -180, -360] }}
-            transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
-            className="w-3 h-3 border-2 border-te-orange/50 rounded-sm"
-          />
-          <motion.div
-            animate={{ scaleX: [0.8, 1, 0.8] }}
-            transition={{ duration: 3, repeat: Infinity }}
-            className="w-8 h-0.5 bg-te-orange/40"
-          />
-        </motion.div>
+        <FloatingHead />
 
         {/* Greeting */}
         <motion.p

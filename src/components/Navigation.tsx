@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const navItems = [
-  { name: "About", href: "#about" },
+  { name: "About", href: "#hero" },
   { name: "Skills", href: "#skills" },
   { name: "Experience", href: "#experience" },
   { name: "Projects", href: "#projects" },
@@ -17,13 +17,17 @@ const navItems = [
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [activeSection, setActiveSection] = useState("");
+  const [activeSection, setActiveSection] = useState("hero");
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
 
-      // Determine active section
+      if (window.scrollY < 100) {
+        setActiveSection("hero");
+        return;
+      }
+
       const sections = navItems.map((item) => item.href.slice(1));
       for (const section of [...sections].reverse()) {
         const element = document.getElementById(section);

@@ -163,7 +163,7 @@ export default function Experience() {
 
         <div className="grid md:grid-cols-2 gap-8 items-start">
           {experiences.map((exp, index) => (
-            <CalendarCard key={exp.company} exp={exp} index={index} />
+            <CalendarCard key={`${exp.company}-${exp.period}`} exp={exp} index={index} />
           ))}
         </div>
       </div>
