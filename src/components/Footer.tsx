@@ -4,9 +4,8 @@ import React from "react";
 import { motion } from "framer-motion";
 import { GitHubIcon, LinkedInIcon, EmailIcon } from "./Icons";
 
-const currentYear = new Date().getFullYear();
-
 export default function Footer() {
+  const currentYear = new Date().getFullYear();
   return (
     <footer className="py-12 px-4 relative">
       {/* Divider */}

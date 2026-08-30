@@ -63,10 +63,11 @@ export default function Contact() {
               {/* Message */}
               <div className="mb-8">
                 <p className="text-text-secondary leading-relaxed italic">
-                  &ldquo;I&apos;m always excited to connect with fellow developers,
-                  researchers, and innovators. Whether you have a project idea,
-                  research opportunity, or just want to chat about tech—I&apos;d love
-                  to hear from you!&rdquo;
+                  &ldquo;I&apos;m always excited to connect with curious people, funny
+                  people, thoughtful people, and anyone doing something interesting.
+                  If something here caught your attention, feel free to reach out.
+                  I&apos;m always open to new ideas, good conversations, and
+                  opportunities to work on something worth exploring.&rdquo;
                 </p>
               </div>
 
