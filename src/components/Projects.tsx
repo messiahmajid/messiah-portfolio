@@ -17,6 +17,19 @@ interface Project {
 
 const projects: Project[] = [
   {
+    title: "Go!",
+    role: "Developer",
+    badge: "ShellHacks",
+    description: "Voice-driven macOS copilot that teaches users any app by pointing at it, flying an on-screen cursor to each control and coaching them step by step, or completing the task itself and verifying every action.",
+    highlights: [
+      "Agentic Gemini planner that works in any Mac app with zero app-specific scripts",
+      "Closed-loop execution that verifies each step against the live screen and corrects wrong clicks",
+      "Local safety kernel that gates every action, refusing password fields and purchases",
+    ],
+    tags: ["Swift", "AppKit", "Accessibility API", "ScreenCaptureKit", "WebSockets"],
+    github: "https://github.com/messiahmajid/Project_Go_ShellHacks",
+  },
+  {
     title: "AppealAI",
     role: "Solo Developer",
     description: "AI-powered insurance prior authorization appeal letter generator that reduces physician appeal writing from 30-60 minutes to under 2 minutes, with RAG over 11 medical guidelines and live PubMed evidence search.",
